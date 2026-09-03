@@ -1,0 +1,713 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed": "#001d36",
+              secondary: "#5129e5",
+              "surface-dim": "#d9dadc",
+              "outline-variant": "#c6c6cb",
+              "inverse-surface": "#2e3132",
+              error: "#ba1a1a",
+              "on-background": "#191c1e",
+              "primary-fixed": "#e2e2e9",
+              "tertiary-container": "#001d36",
+              "surface-container": "#edeef0",
+              "secondary-fixed-dim": "#c8bfff",
+              "primary-fixed-dim": "#c6c6cd",
+              "on-primary-container": "#82838a",
+              tertiary: "#000000",
+              "secondary-fixed": "#e5deff",
+              "surface-container-high": "#e7e8ea",
+              "surface-variant": "#e1e2e4",
+              "on-tertiary": "#ffffff",
+              background: "#f8f9fb",
+              "tertiary-fixed-dim": "#9dcaff",
+              "inverse-primary": "#c6c6cd",
+              outline: "#76777b",
+              "on-tertiary-container": "#1588dd",
+              "surface-tint": "#5d5e64",
+              "on-tertiary-fixed-variant": "#00497c",
+              "on-secondary-container": "#f3eeff",
+              "surface-bright": "#f8f9fb",
+              "on-secondary-fixed-variant": "#4206d7",
+              "tertiary-fixed": "#d1e4ff",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#45474c",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1a1b21",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#1a1b21",
+              "on-surface-variant": "#46464b",
+              surface: "#f8f9fb",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "inverse-on-surface": "#f0f1f3",
+              "on-secondary-fixed": "#190064",
+              primary: "#000000",
+              "on-primary": "#ffffff",
+              "secondary-container": "#6a4bfd",
+              "on-surface": "#191c1e",
+              "surface-container-highest": "#e1e2e4",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              xs: "8px",
+              lg: "48px",
+              md: "24px",
+              gutter: "24px",
+              xl: "80px",
+              "container-max": "1280px",
+              unit: "4px",
+              sm: "16px",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "headline-lg-mobile": ["Space Grotesk"],
+              caption: ["Inter"],
+              "headline-lg": ["Space Grotesk"],
+              "body-md": ["Inter"],
+              "headline-md": ["Space Grotesk"],
+              "label-mono": ["IBM Plex Mono"],
+              "headline-xl": ["Space Grotesk"],
+            },
+            fontSize: {
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              caption: ["12px", { lineHeight: "1.4", fontWeight: "500" }],
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "label-mono": ["14px", { lineHeight: "1.2", fontWeight: "500" }],
+              "headline-xl": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-background font-body-md text-on-surface">
+    <header
+      class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(17,19,24,0.04)]"
+    >
+      <div
+        class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between"
+      >
+        <div class="flex items-center gap-sm">
+          <img
+            alt="Paradoxx Primary Logo"
+            class="h-8 w-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+          /><span
+            class="font-headline-md text-headline-md text-primary tracking-tight"
+            >Paradoxx</span
+          >
+        </div>
+        <nav
+          class="hidden lg:flex items-center gap-lg"
+          data-active-classes="text-secondary font-semibold"
+        >
+          <a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="products"
+            href="#"
+            >Products</a
+          ><a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="services"
+            href="#"
+            >Services</a
+          ><a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="solutions"
+            href="#"
+            >Solutions</a
+          ><a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="industries"
+            href="#"
+            >Industries</a
+          ><a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="work"
+            href="#"
+            >Work</a
+          ><a
+            aria-current="page"
+            class="transition-colors text-secondary font-semibold"
+            data-path="company"
+            href="#"
+            >Company</a
+          >
+        </nav>
+        <div class="flex items-center gap-md">
+          <a
+            class="hidden sm:block text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="contact"
+            href="#"
+            >Contact</a
+          ><button
+            class="bg-secondary text-on-secondary px-md py-xs rounded-lg text-body-md font-body-md hover:shadow-lg transition-all"
+          >
+            Start a project
+          </button>
+          <div
+            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-on-primary text-[18px]"
+              >person</span
+            > 
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="w-full pt-20 bg-background">
+      <div class="flex flex-col w-full relative">
+        <section
+          class="relative w-full min-h-[80vh] flex items-center bg-surface-container-low overflow-hidden -mt-20 pt-20"
+        >
+          <div class="absolute inset-0 z-0">
+            <div
+              class="bg-cover bg-center w-full h-full mix-blend-multiply opacity-40"
+              data-alt="Abstract geometric art representing technological progress. Sharp, minimalist lines in deep violet (#5129e5) and stark white, intersecting over a soft, mist-colored background (#f2f4f6). The lighting is studio-quality, casting subtle, diffused shadows that give the shapes a sense of physical weight and depth. The mood is precise, futuristic, and calm."
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCtyvaylQuJYeZoBd8Mu6uE0fqnnKMudtJkXB5EkQbFLIvryjiFARFeltf8FJwyF3Agls_59Ongiz5iVB6gY4cKVlH7Ur-xHeYLDW1hE5n2g4P86gFihFE0yjQyVfwhysk_FQZtjio2WZGS6_89pRkdUgy9jPtaB2IkQGEp1KnN2PrUYq14XSFP9lFVLANficxLW7WHtams1QnphnCGxSIX7fCtwb0s2-htibHK48QTdtSFLOq5gDbo&quot;);
+              "
+            ></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"
+            ></div>
+          </div>
+          <div
+            class="relative z-10 max-w-container-max mx-auto px-md w-full grid grid-cols-12 gap-gutter"
+          >
+            <div class="col-span-12 lg:col-span-8 lg:col-start-1">
+              <div class="flex items-center gap-xs mb-lg">
+                <span class="w-8 h-px bg-secondary"></span>
+                <span
+                  class="font-label-mono text-label-mono text-secondary tracking-widest uppercase"
+                  >About Us</span
+                >
+              </div>
+              <h1
+                class="font-headline-xl text-headline-xl text-on-surface mb-lg max-w-[800px] leading-tight"
+              >
+                We turn technological possibility into practical progress.
+              </h1>
+              <p
+                class="font-body-lg text-body-lg text-on-surface-variant max-w-[600px]"
+              >
+                Software, digital products and technological services engineered
+                for human intent.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="py-xl bg-background">
+          <div class="max-w-container-max mx-auto px-md">
+            <div class="grid grid-cols-12 gap-gutter">
+              <div class="col-span-12 lg:col-span-5 relative group">
+                <div class="sticky top-32">
+                  <div
+                    class="w-full h-[600px] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  >
+                    <div
+                      class="bg-cover bg-center w-full h-full"
+                      data-alt="A sophisticated modern office in Varel, Germany. Minimalist interior design with clean lines, warm natural wood textures, and large windows letting in soft natural light. Subtle accents of deep violet (#5129e5) in the furniture. A single, focused individual is visible in the background, working intently. The image exudes calm, high-end European craftsmanship, and quiet innovation."
+                      style="
+                        background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDusp6JGcTbkykjFBa6cBv3jFWeaeuPAkR27DMblxFlmDv2SQYkIlkecYv2jthSQOGFu52UO6zJhKHfJPSrVbxPxiGWpTf3lgVuyMR-BO4VrVZ4w0VP21ryPESKtPTi3bhwZIM3DI4yLsWPRUxSvTKK_Cqd08GewXZNhmAofM6Dnryxq4diuW8e5J3sakBNvc9tHZ3qnwyYwDp9SZFGMu_fOJMjkHZ0yw8bNKIIXPPLr9gGsp45UCpg&quot;);
+                      "
+                    ></div>
+                  </div>
+                  <div
+                    class="absolute -bottom-8 -right-8 bg-surface p-lg rounded-xl shadow-xl max-w-xs z-10"
+                  >
+                    <span
+                      class="font-label-mono text-label-mono text-secondary mb-xs block"
+                      >EST. 2024</span
+                    >
+                    <span
+                      class="font-headline-md text-headline-md text-on-surface"
+                      >Varel, Germany</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-span-12 lg:col-span-6 lg:col-start-7 pt-lg lg:pt-0"
+              >
+                <div class="mb-xl">
+                  <div class="flex items-center gap-sm mb-md">
+                    <span
+                      class="material-symbols-outlined text-secondary"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >explore</span
+                    >
+                    <h2
+                      class="font-headline-lg text-headline-lg text-on-surface"
+                    >
+                      Mission
+                    </h2>
+                  </div>
+                  <p
+                    class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed"
+                  >
+                    To transform complex ideas and inefficient processes into
+                    clear, useful and dependable digital products.
+                  </p>
+                </div>
+                <div class="mb-xl">
+                  <div class="flex items-center gap-sm mb-md">
+                    <span
+                      class="material-symbols-outlined text-secondary"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >visibility</span
+                    >
+                    <h2
+                      class="font-headline-lg text-headline-lg text-on-surface"
+                    >
+                      Vision
+                    </h2>
+                  </div>
+                  <p
+                    class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed"
+                  >
+                    To become a trusted European technology company known for
+                    engineering digital solutions that are both ambitious in
+                    capability and uncompromising in clarity.
+                  </p>
+                </div>
+                <div class="p-lg bg-surface-container rounded-2xl">
+                  <h3
+                    class="font-headline-md text-headline-md text-on-surface mb-md"
+                  >
+                    Company Profile
+                  </h3>
+                  <ul class="space-y-md">
+                    <li
+                      class="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center"
+                    >
+                      <span
+                        class="font-caption text-caption text-on-surface-variant uppercase tracking-wider mb-unit sm:mb-0"
+                        >Headquarters</span
+                      >
+                      <span
+                        class="font-body-md text-body-md text-on-surface font-medium"
+                        >Varel, Germany</span
+                      >
+                    </li>
+                    <li
+                      class="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center"
+                    >
+                      <span
+                        class="font-caption text-caption text-on-surface-variant uppercase tracking-wider mb-unit sm:mb-0"
+                        >Founder &amp; MD</span
+                      >
+                      <span
+                        class="font-body-md text-body-md text-on-surface font-medium"
+                        >Dr. Yuno Rolfes</span
+                      >
+                    </li>
+                    <li
+                      class="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center"
+                    >
+                      <span
+                        class="font-caption text-caption text-on-surface-variant uppercase tracking-wider mb-unit sm:mb-0"
+                        >Entity</span
+                      >
+                      <span
+                        class="font-body-md text-body-md text-on-surface font-medium"
+                        >Paradoxx UG (haftungsbeschränkt)</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="py-xl bg-inverse-surface text-inverse-on-surface relative overflow-hidden"
+        >
+          <div
+            class="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none"
+          >
+            <svg
+              class="w-full h-full fill-current"
+              preserveaspectratio="none"
+              viewbox="0 0 100 100"
+            >
+              <polygon points="100,0 100,100 0,100"></polygon>
+            </svg>
+          </div>
+          <div class="max-w-container-max mx-auto px-md relative z-10">
+            <div class="grid grid-cols-12 gap-gutter">
+              <div class="col-span-12 md:col-span-8 lg:col-span-6">
+                <h2
+                  class="font-headline-lg text-headline-lg text-surface-container-lowest mb-lg"
+                >
+                  The Paradox
+                </h2>
+                <div
+                  class="space-y-md font-body-lg text-body-lg text-surface-variant"
+                >
+                  <p>
+                    Technology is built on absolute logic, yet it must serve
+                    highly subjective human needs. It progresses at blinding
+                    speed, yet we demand it be dependable and secure. It is
+                    inherently complex, yet it must feel simple to use.
+                  </p>
+                  <p>This is the tension we navigate.</p>
+                  <p>
+                    We believe the best digital products are born not from
+                    avoiding these contradictions, but from embracing them. By
+                    holding ambition and usefulness, speed and responsibility,
+                    complexity and clarity in balance, we create solutions that
+                    don't just work—they make sense.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="py-xl bg-surface">
+          <div class="max-w-container-max mx-auto px-md">
+            <div
+              class="flex flex-col md:flex-row md:items-end justify-between mb-xl"
+            >
+              <div>
+                <h2
+                  class="font-headline-lg text-headline-lg text-on-surface mb-sm"
+                >
+                  Core Values
+                </h2>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant max-w-md"
+                >
+                  The principles that guide our decisions, our engineering, and
+                  our relationships.
+                </p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sm">
+              <div
+                class="bg-surface-container p-lg rounded-2xl group hover:bg-secondary hover:-translate-y-2 transition-all duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-on-secondary/20 flex items-center justify-center mb-lg transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface group-hover:text-on-secondary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >lens_blur</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                >
+                  Clarity
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                >
+                  We distill the complex into the comprehensible. Simplicity is
+                  our ultimate sophistication.
+                </p>
+              </div>
+              <div
+                class="bg-surface-container p-lg rounded-2xl group hover:bg-secondary hover:-translate-y-2 transition-all duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-on-secondary/20 flex items-center justify-center mb-lg transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface group-hover:text-on-secondary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >search</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                >
+                  Curiosity
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                >
+                  We ask 'why' before 'how'. Deep understanding precedes
+                  effective engineering.
+                </p>
+              </div>
+              <div
+                class="bg-surface-container p-lg rounded-2xl group hover:bg-secondary hover:-translate-y-2 transition-all duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-on-secondary/20 flex items-center justify-center mb-lg transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface group-hover:text-on-secondary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >verified_user</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                >
+                  Responsibility
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                >
+                  We build systems that are secure, ethical, and built to last.
+                  We own the outcomes.
+                </p>
+              </div>
+              <div
+                class="bg-surface-container p-lg rounded-2xl group hover:bg-secondary hover:-translate-y-2 transition-all duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-on-secondary/20 flex items-center justify-center mb-lg transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface group-hover:text-on-secondary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >architecture</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                >
+                  Craft
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                >
+                  We take pride in the details. Excellence in execution is
+                  non-negotiable.
+                </p>
+              </div>
+              <div
+                class="bg-surface-container p-lg rounded-2xl group hover:bg-secondary hover:-translate-y-2 transition-all duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-on-secondary/20 flex items-center justify-center mb-lg transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface group-hover:text-on-secondary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >group_work</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                >
+                  Collaboration
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                >
+                  The best work happens together. We partner deeply with our
+                  clients and each other.
+                </p>
+              </div>
+              <div
+                class="bg-surface-container p-lg rounded-2xl group hover:bg-secondary hover:-translate-y-2 transition-all duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-on-secondary/20 flex items-center justify-center mb-lg transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface group-hover:text-on-secondary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >trending_up</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                >
+                  Progress
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                >
+                  We move forward purposefully, seeking measurable improvements
+                  in everything we touch.
+                </p>
+              </div>
+              <div
+                class="bg-surface-container p-lg rounded-2xl group hover:bg-secondary hover:-translate-y-2 transition-all duration-300 lg:col-span-2"
+              >
+                <div
+                  class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-on-secondary/20 flex items-center justify-center mb-lg transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface group-hover:text-on-secondary"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >transform</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                >
+                  Adaptability
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80 max-w-md"
+                >
+                  In a rapidly changing landscape, rigidity is a liability. We
+                  design for change, ensuring our solutions evolve alongside new
+                  challenges.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer
+      class="w-full bg-surface-container-lowest py-xl shadow-[0_-4px_20px_rgba(17,19,24,0.02)]"
+    >
+      <div class="max-w-container-max mx-auto px-md">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg mb-xl"
+        >
+          <div class="lg:col-span-2">
+            <div class="flex items-center gap-sm mb-md">
+              <img
+                alt="Paradoxx Primary Logo"
+                class="h-6 w-auto object-contain"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+              /><span class="font-headline-md text-headline-md text-primary"
+                >Paradoxx</span
+              >
+            </div>
+            <p
+              class="text-body-md font-body-md text-on-surface-variant max-w-xs mb-sm"
+            >
+              Software, digital products and technological services engineered
+              for human intent.
+            </p>
+            <p class="text-caption font-caption text-outline">Varel, Germany</p>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+              Company
+            </h4>
+            <ul
+              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+            >
+              <li><a class="hover:text-secondary" href="#">About Us</a></li>
+              <li><a class="hover:text-secondary" href="#">Careers</a></li>
+              <li><a class="hover:text-secondary" href="#">News</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+              Capabilities
+            </h4>
+            <ul
+              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+            >
+              <li><a class="hover:text-secondary" href="#">Strategy</a></li>
+              <li><a class="hover:text-secondary" href="#">Design</a></li>
+              <li><a class="hover:text-secondary" href="#">Engineering</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+              Resources
+            </h4>
+            <ul
+              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+            >
+              <li>
+                <a class="hover:text-secondary" href="#">Documentation</a>
+              </li>
+              <li><a class="hover:text-secondary" href="#">Support</a></li>
+              <li><a class="hover:text-secondary" href="#">Case Studies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-outline-variant pt-md flex flex-col md:flex-row justify-between items-center gap-md"
+        >
+          <span class="text-caption font-caption text-on-surface-variant"
+            >© 2024 Paradoxx UG (haftungsbeschränkt). All rights reserved.</span
+          >
+          <div
+            class="flex gap-md text-caption font-caption text-on-surface-variant"
+          >
+            <a class="hover:text-secondary" href="#">Privacy Policy</a
+            ><a class="hover:text-secondary" href="#">Terms of Service</a
+            ><a class="hover:text-secondary" href="#">Legal Notice</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
