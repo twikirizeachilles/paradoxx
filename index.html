@@ -1,0 +1,989 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed": "#001d36",
+              secondary: "#5129e5",
+              "surface-dim": "#d9dadc",
+              "outline-variant": "#c6c6cb",
+              "inverse-surface": "#2e3132",
+              error: "#ba1a1a",
+              "on-background": "#191c1e",
+              "primary-fixed": "#e2e2e9",
+              "tertiary-container": "#001d36",
+              "surface-container": "#edeef0",
+              "secondary-fixed-dim": "#c8bfff",
+              "primary-fixed-dim": "#c6c6cd",
+              "on-primary-container": "#82838a",
+              tertiary: "#000000",
+              "secondary-fixed": "#e5deff",
+              "surface-container-high": "#e7e8ea",
+              "surface-variant": "#e1e2e4",
+              "on-tertiary": "#ffffff",
+              background: "#f8f9fb",
+              "tertiary-fixed-dim": "#9dcaff",
+              "inverse-primary": "#c6c6cd",
+              outline: "#76777b",
+              "on-tertiary-container": "#1588dd",
+              "surface-tint": "#5d5e64",
+              "on-tertiary-fixed-variant": "#00497c",
+              "on-secondary-container": "#f3eeff",
+              "surface-bright": "#f8f9fb",
+              "on-secondary-fixed-variant": "#4206d7",
+              "tertiary-fixed": "#d1e4ff",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#45474c",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1a1b21",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#1a1b21",
+              "on-surface-variant": "#46464b",
+              surface: "#f8f9fb",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "inverse-on-surface": "#f0f1f3",
+              "on-secondary-fixed": "#190064",
+              primary: "#000000",
+              "on-primary": "#ffffff",
+              "secondary-container": "#6a4bfd",
+              "on-surface": "#191c1e",
+              "surface-container-highest": "#e1e2e4",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              xs: "8px",
+              lg: "48px",
+              md: "24px",
+              gutter: "24px",
+              xl: "80px",
+              "container-max": "1280px",
+              unit: "4px",
+              sm: "16px",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "headline-lg-mobile": ["Space Grotesk"],
+              caption: ["Inter"],
+              "headline-lg": ["Space Grotesk"],
+              "body-md": ["Inter"],
+              "headline-md": ["Space Grotesk"],
+              "label-mono": ["IBM Plex Mono"],
+              "headline-xl": ["Space Grotesk"],
+            },
+            fontSize: {
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              caption: ["12px", { lineHeight: "1.4", fontWeight: "500" }],
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "label-mono": ["14px", { lineHeight: "1.2", fontWeight: "500" }],
+              "headline-xl": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-background font-body-md text-on-surface">
+    <header
+      class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(17,19,24,0.04)]"
+    >
+      <div
+        class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between"
+      >
+        <div class="flex items-center gap-sm">
+          <img
+            alt="Paradoxx Primary Logo"
+            class="h-8 w-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+          /><span
+            class="font-headline-md text-headline-md text-primary tracking-tight"
+            >Paradoxx</span
+          >
+        </div>
+        <nav
+          class="hidden lg:flex items-center gap-lg"
+          data-active-classes="text-secondary font-semibold"
+        >
+          <a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="products"
+            href="#"
+            >Products</a
+          ><a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="services"
+            href="#"
+            >Services</a
+          ><a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="solutions"
+            href="#"
+            >Solutions</a
+          ><a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="industries"
+            href="#"
+            >Industries</a
+          ><a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="work"
+            href="#"
+            >Work</a
+          ><a
+            aria-current="page"
+            class="transition-colors text-secondary font-semibold"
+            data-path="company"
+            href="#"
+            >Company</a
+          >
+        </nav>
+        <div class="flex items-center gap-md">
+          <a
+            class="hidden sm:block text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-path="contact"
+            href="#"
+            >Contact</a
+          ><button
+            class="bg-secondary text-on-secondary px-md py-xs rounded-lg text-body-md font-body-md hover:shadow-lg transition-all"
+          >
+            Start a project
+          </button>
+          <div
+            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-on-primary text-[18px]"
+              >person</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="w-full pt-20 bg-background">
+      <div class="flex flex-col w-full">
+        <!-- Hero Section -->
+        <section
+          class="relative min-h-[90vh] flex items-center pt-24 pb-xl overflow-hidden"
+        >
+          <!-- Ambient Background -->
+          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div
+              class="absolute -top-1/2 -right-1/2 w-[150%] h-[150%] bg-gradient-radial from-secondary/10 via-transparent to-transparent opacity-50 mix-blend-multiply blur-3xl animate-[spin_60s_linear_infinite]"
+            ></div>
+            <div
+              class="absolute -bottom-1/2 -left-1/2 w-[150%] h-[150%] bg-gradient-radial from-tertiary-fixed-dim/20 via-transparent to-transparent opacity-40 mix-blend-screen blur-3xl animate-[spin_45s_linear_infinite_reverse]"
+            ></div>
+            <!-- SVG Data Grid -->
+            <svg
+              class="absolute inset-0 w-full h-full opacity-5"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <pattern
+                  height="40"
+                  id="hero-grid"
+                  patternunits="userSpaceOnUse"
+                  width="40"
+                >
+                  <path
+                    d="M0 40V0H40"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1"
+                  ></path>
+                </pattern>
+              </defs>
+              <rect
+                class="text-on-surface"
+                fill="url(#hero-grid)"
+                height="100%"
+                width="100%"
+              ></rect>
+            </svg>
+          </div>
+          <div
+            class="max-w-container-max mx-auto px-md w-full grid grid-cols-1 lg:grid-cols-12 gap-lg relative z-10"
+          >
+            <!-- Typography Side -->
+            <div class="lg:col-span-7 flex flex-col justify-center">
+              <div
+                class="inline-flex items-center gap-xs bg-surface-container py-unit px-sm rounded-full mb-md w-fit backdrop-blur-md"
+              >
+                <span
+                  class="w-2 h-2 rounded-full bg-secondary animate-pulse"
+                ></span>
+                <span
+                  class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest"
+                  >Software · Digital Products · Technology</span
+                >
+              </div>
+              <h1
+                class="font-headline-xl text-headline-xl text-on-surface mb-sm leading-tight text-balance"
+              >
+                Complex ideas.<br />
+                <span
+                  class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary-fixed-dim"
+                  >Clear digital products.</span
+                >
+              </h1>
+              <p
+                class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-lg"
+              >
+                Paradoxx designs, develops and operates software that helps
+                companies and organisations solve real problems, simplify their
+                work and create new possibilities.
+              </p>
+              <div class="flex flex-wrap items-center gap-sm">
+                <button
+                  class="bg-secondary hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed transition-all duration-300 text-on-secondary px-lg py-sm rounded-lg font-body-md shadow-md hover:shadow-xl hover:-translate-y-1"
+                >
+                  Start a project
+                </button>
+                <button
+                  class="bg-transparent border border-outline hover:border-secondary hover:text-secondary transition-colors duration-300 text-on-surface px-lg py-sm rounded-lg font-body-md flex items-center gap-xs group"
+                >
+                  Explore our capabilities
+                  <span
+                    class="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1"
+                    >arrow_forward</span
+                  >
+                </button>
+              </div>
+            </div>
+            <!-- Interactive Abstract Visual Side -->
+            <div
+              class="lg:col-span-5 relative hidden lg:block h-[600px] perspective-1000"
+              id="hero-visual-container"
+            >
+              <!-- Interactive Elements will be injected via JS below to represent complexity to clarity -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="w-full h-full relative cursor-crosshair"
+                  id="particle-network"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Intro Section (Large Typography Statement) -->
+        <section class="py-xl bg-surface-container-low relative">
+          <div class="max-w-container-max mx-auto px-md">
+            <div class="max-w-4xl mx-auto text-center">
+              <h2
+                class="font-headline-lg text-headline-lg text-on-surface tracking-tight text-balance"
+              >
+                Technology should make things clearer, not more complicated.
+              </h2>
+            </div>
+          </div>
+        </section>
+        <!-- Services Bento Grid -->
+        <section class="py-xl bg-background">
+          <div class="max-w-container-max mx-auto px-md">
+            <div
+              class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg"
+            >
+              <div>
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                >
+                  From first question to working product
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant max-w-xl"
+                >
+                  We provide end-to-end capabilities designed to bridge the gap
+                  between human intent and machine execution.
+                </p>
+              </div>
+              <button
+                class="bg-surface-container hover:bg-surface-variant text-on-surface px-md py-xs rounded-full font-label-mono text-label-mono transition-colors flex items-center gap-xs shrink-0"
+              >
+                View all services
+                <span class="material-symbols-outlined text-[16px]"
+                  >arrow_outward</span
+                >
+              </button>
+            </div>
+            <div
+              class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-md auto-rows-[240px]"
+            >
+              <!-- Service: AI Solutions (Large feature) -->
+              <div
+                class="md:col-span-4 lg:col-span-4 row-span-2 bg-surface-container rounded-[32px] p-lg relative overflow-hidden group hover:shadow-xl transition-all duration-500"
+              >
+                <div
+                  class="absolute top-0 right-0 w-[80%] h-full bg-gradient-to-l from-tertiary-fixed/30 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                ></div>
+                <div
+                  class="absolute -bottom-20 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-colors duration-700"
+                ></div>
+                <div class="relative z-10 h-full flex flex-col justify-between">
+                  <div
+                    class="w-12 h-12 rounded-xl bg-secondary text-on-secondary flex items-center justify-center mb-md"
+                  >
+                    <span class="material-symbols-outlined">psychology</span>
+                  </div>
+                  <div>
+                    <h4
+                      class="font-headline-lg text-headline-lg text-on-surface mb-sm"
+                    >
+                      AI Solutions
+                    </h4>
+                    <p
+                      class="font-body-lg text-body-lg text-on-surface-variant max-w-md"
+                    >
+                      Integrating intelligent systems that reason, learn, and
+                      adapt to automate complex workflows and surface unseen
+                      insights.
+                    </p>
+                  </div>
+                </div>
+                <!-- Decorative AI visualization -->
+                <div
+                  class="absolute right-lg bottom-lg w-64 h-64 hidden lg:block opacity-80 group-hover:scale-105 transition-transform duration-700"
+                >
+                  <svg
+                    class="w-full h-full text-secondary animate-[spin_20s_linear_infinite]"
+                    viewbox="0 0 100 100"
+                  >
+                    <circle
+                      cx="50"
+                      cy="50"
+                      fill="none"
+                      r="40"
+                      stroke="currentColor"
+                      stroke-dasharray="2 4"
+                      stroke-width="0.5"
+                    ></circle>
+                    <circle
+                      class="origin-center animate-[spin_15s_linear_infinite_reverse]"
+                      cx="50"
+                      cy="50"
+                      fill="none"
+                      r="30"
+                      stroke="currentColor"
+                      stroke-dasharray="10 5"
+                      stroke-width="1"
+                    ></circle>
+                    <circle
+                      cx="50"
+                      cy="50"
+                      fill="none"
+                      r="20"
+                      stroke="currentColor"
+                      stroke-dasharray="4 8"
+                      stroke-width="0.5"
+                    ></circle>
+                    <path
+                      d="M50 10 L50 20 M50 80 L50 90 M10 50 L20 50 M80 50 L90 50"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <!-- Service: Product Strategy -->
+              <div
+                class="md:col-span-2 lg:col-span-2 row-span-1 bg-surface-container rounded-[24px] p-md relative overflow-hidden group hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+              >
+                <div class="flex items-start justify-between mb-sm">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined">architecture</span>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-outline opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                    >arrow_forward</span
+                  >
+                </div>
+                <h4
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                >
+                  Product Strategy
+                </h4>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant line-clamp-2"
+                >
+                  Defining the clear path from ambiguous problem to viable
+                  digital product.
+                </p>
+              </div>
+              <!-- Service: Software Development -->
+              <div
+                class="md:col-span-2 lg:col-span-2 row-span-1 bg-surface-container rounded-[24px] p-md relative overflow-hidden group hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+              >
+                <div class="flex items-start justify-between mb-sm">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-surface-dim text-on-surface flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined">code</span>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-outline opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                    >arrow_forward</span
+                  >
+                </div>
+                <h4
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                >
+                  Software Development
+                </h4>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant line-clamp-2"
+                >
+                  Robust engineering designed for scale, performance, and
+                  longevity.
+                </p>
+              </div>
+              <!-- Service: UI/UX Design -->
+              <div
+                class="md:col-span-2 lg:col-span-2 row-span-1 bg-surface-container rounded-[24px] p-md relative overflow-hidden group hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+              >
+                <div class="flex items-start justify-between mb-sm">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined"
+                      >design_services</span
+                    >
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-outline opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                    >arrow_forward</span
+                  >
+                </div>
+                <h4
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                >
+                  UI/UX Design
+                </h4>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant line-clamp-2"
+                >
+                  Crafting intuitive, highly polished interfaces that guide
+                  human intent.
+                </p>
+              </div>
+              <!-- Service: Automation -->
+              <div
+                class="md:col-span-2 lg:col-span-2 row-span-1 bg-surface-container rounded-[24px] p-md relative overflow-hidden group hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+              >
+                <div class="flex items-start justify-between mb-sm">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-surface-variant text-on-surface flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined">account_tree</span>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-outline opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                    >arrow_forward</span
+                  >
+                </div>
+                <h4
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                >
+                  Automation
+                </h4>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant line-clamp-2"
+                >
+                  Streamlining operations by connecting disjointed systems and
+                  processes.
+                </p>
+              </div>
+              <!-- Service: Cloud & Operations -->
+              <div
+                class="md:col-span-2 lg:col-span-2 row-span-1 bg-surface-container rounded-[24px] p-md relative overflow-hidden group hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+              >
+                <div class="flex items-start justify-between mb-sm">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined">cloud_sync</span>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-outline opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                    >arrow_forward</span
+                  >
+                </div>
+                <h4
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                >
+                  Cloud and Operations
+                </h4>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant line-clamp-2"
+                >
+                  Reliable infrastructure management and continuous deployment
+                  strategies.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Flagship / Editorial Section -->
+        <section
+          class="py-xl bg-inverse-surface text-inverse-on-surface relative overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 bg-[url('placeholder')] bg-cover bg-center opacity-20 mix-blend-luminosity"
+            data-alt="Abstract architectural rendering of a massive, impossibly complex server array turning into a sleek, monolithic, glowing glass prism in a minimalist studio setting. Deep dramatic lighting, cinematic, high contrast black and white with subtle violet and cyan accents."
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAOXEvNlAVi7wLZ0S2faqxHKUo3948oQbJknvr0EMEMziQXQzC-nuUHmyiRc4Szuduxc6nlFWmLah31BJw-dtHB5BSXhCUxNR4B0f3kV5voSys-3oAtt006r9L2bTPwJKNawzWe-Sfom7OnDFM5Q68eiDaidWdSmBY6nUcO7mvmQswaXaZVobQ5sbe96WBOP-0gvTb6_35iLhD6mqcq0pVBmVm7glCZAStaLpZgQ5CGRuSFEl0oHxte&quot;);
+            "
+          ></div>
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/80 to-transparent"
+          ></div>
+          <div
+            class="max-w-container-max mx-auto px-md relative z-10 flex flex-col md:flex-row items-center gap-lg"
+          >
+            <div class="flex-1">
+              <h2
+                class="font-headline-xl text-headline-xl text-on-secondary mb-md"
+              >
+                Launch the right product, not just more software.
+              </h2>
+              <p
+                class="font-body-lg text-body-lg text-inverse-primary max-w-xl mb-lg"
+              >
+                We believe in deliberate engineering. Every line of code should
+                serve a human purpose. We partner with visionaries to build
+                systems that are as elegant underneath as they are on the
+                surface.
+              </p>
+              <div class="grid grid-cols-2 gap-md">
+                <div class="border-l-2 border-secondary pl-sm">
+                  <div
+                    class="font-headline-lg text-headline-lg text-on-secondary mb-unit counter-animate"
+                    data-target="98"
+                  >
+                    0
+                  </div>
+                  <div
+                    class="font-label-mono text-label-mono text-inverse-primary uppercase"
+                  >
+                    Uptime Reliability %
+                  </div>
+                </div>
+                <div class="border-l-2 border-tertiary-fixed-dim pl-sm">
+                  <div
+                    class="font-headline-lg text-headline-lg text-on-secondary mb-unit counter-animate"
+                    data-target="42"
+                  >
+                    0
+                  </div>
+                  <div
+                    class="font-label-mono text-label-mono text-inverse-primary uppercase"
+                  >
+                    Products Launched
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Abstract representation of 'the right product' -->
+            <div class="flex-1 w-full flex justify-center">
+              <div class="relative w-80 h-80">
+                <div
+                  class="absolute inset-0 border border-outline-variant/30 rounded-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"
+                ></div>
+                <div
+                  class="absolute inset-4 border border-secondary/50 rounded-full animate-[spin_10s_linear_infinite]"
+                ></div>
+                <div
+                  class="absolute inset-8 border border-tertiary-fixed-dim/40 rounded-full animate-[spin_15s_linear_infinite_reverse]"
+                ></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div
+                    class="w-32 h-32 bg-gradient-to-br from-secondary to-tertiary-fixed-dim rounded-2xl shadow-2xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition-transform duration-500 cursor-pointer"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[48px] text-on-secondary"
+                      >diamond</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- About Preview -->
+        <section class="py-xl bg-surface-container-low">
+          <div class="max-w-container-max mx-auto px-md">
+            <div
+              class="bg-surface rounded-[40px] p-lg md:p-xl shadow-sm relative overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 w-64 h-64 bg-secondary/5 rounded-bl-full pointer-events-none"
+              ></div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-lg relative z-10">
+                <div>
+                  <span
+                    class="font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-sm block"
+                    >About Paradoxx</span
+                  >
+                  <h3
+                    class="font-headline-lg text-headline-lg text-on-surface mb-md"
+                  >
+                    A technology company from Varel with a wider perspective.
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant mb-lg"
+                  >
+                    We fuse German engineering precision with forward-thinking
+                    design to create digital solutions that stand the test of
+                    time. Our team operates at the intersection of complex logic
+                    and simple, intuitive user experiences.
+                  </p>
+                  <button
+                    class="bg-primary text-on-primary hover:bg-inverse-surface px-md py-sm rounded-lg font-body-md transition-colors flex items-center gap-xs"
+                  >
+                    Read our story
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                  </button>
+                </div>
+                <!-- Map Container -->
+                <div
+                  class="relative h-64 md:h-full min-h-[300px] rounded-2xl overflow-hidden shadow-inner group"
+                >
+                  <div
+                    class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    data-location="Varel, Germany"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDDJmLoX10L2ZNKf3p8GZ8N99fC7zeRKm32xvFx1JmgPbrbMsqZDl0TrMccXG6YvbSFJV31MyS2fpPjHxEVI12tPyPOtFdkcW67JnkfSs_zrQcsLXEsAyIeiWBbF5Cn0H_y6TAI0kBN-jEhj1ihfqHjh00vV6FqvZyKmikN2kIiQy97K1cQiKa8Ab1s-2dTXiW-DZxj_FHYJLDrl0lgr6QxEXMPYHVUQMeyVAs7VDg1phdlGxCqa2O4&quot;);
+                    "
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent pointer-events-none"
+                  ></div>
+                  <div
+                    class="absolute bottom-md left-md bg-surface/90 backdrop-blur-sm px-sm py-unit rounded-md font-label-mono text-label-mono text-on-surface shadow-sm"
+                  >
+                    53°23'N 8°08'E
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <script>
+        // Counter Animation
+        document.addEventListener("DOMContentLoaded", () => {
+          const counters = document.querySelectorAll(".counter-animate");
+
+          const animateCounter = (el) => {
+            const target = parseInt(el.getAttribute("data-target"));
+            const duration = 2000; // ms
+            const stepTime = Math.abs(Math.floor(duration / target));
+            let current = 0;
+
+            const timer = setInterval(() => {
+              current += 1;
+              el.textContent = current;
+              if (current >= target) {
+                clearInterval(timer);
+                el.textContent = target; // ensure it ends on target exactly
+              }
+            }, stepTime);
+          };
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  animateCounter(entry.target);
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.5 },
+          );
+
+          counters.forEach((counter) => observer.observe(counter));
+
+          // Abstract Hero Interaction (Complexity to Clarity)
+          const container = document.getElementById("particle-network");
+          if (container) {
+            const numParticles = 40;
+            const particles = [];
+            let mouseX = 0,
+              mouseY = 0;
+            let isHovering = false;
+
+            container.addEventListener("mousemove", (e) => {
+              const rect = container.getBoundingClientRect();
+              mouseX = e.clientX - rect.left;
+              mouseY = e.clientY - rect.top;
+            });
+
+            container.addEventListener("mouseenter", () => (isHovering = true));
+            container.addEventListener(
+              "mouseleave",
+              () => (isHovering = false),
+            );
+
+            for (let i = 0; i < numParticles; i++) {
+              const p = document.createElement("div");
+              p.className =
+                "absolute w-1.5 h-1.5 bg-outline rounded-full transition-colors duration-300";
+              const x = Math.random() * 100;
+              const y = Math.random() * 100;
+              p.style.left = `${x}%`;
+              p.style.top = `${y}%`;
+
+              // Store base positions for 'clarity' state (a grid)
+              const cols = 8;
+              const gridX = ((i % cols) / (cols - 1)) * 80 + 10;
+              const gridY =
+                (Math.floor(i / cols) / (Math.floor(numParticles / cols) - 1)) *
+                  80 +
+                10;
+
+              particles.push({
+                el: p,
+                chaosX: x,
+                chaosY: y,
+                gridX: gridX,
+                gridY: gridY,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+              });
+              container.appendChild(p);
+            }
+
+            // Lines SVG
+            const svg = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "svg",
+            );
+            svg.setAttribute(
+              "class",
+              "absolute inset-0 w-full h-full pointer-events-none",
+            );
+            container.appendChild(svg);
+            const lines = [];
+
+            for (let i = 0; i < numParticles; i++) {
+              for (let j = i + 1; j < numParticles; j++) {
+                if (Math.random() > 0.8) {
+                  const line = document.createElementNS(
+                    "http://www.w3.org/2000/svg",
+                    "line",
+                  );
+                  line.setAttribute("stroke", "currentColor");
+                  line.setAttribute("stroke-width", "0.5");
+                  line.setAttribute(
+                    "class",
+                    "text-outline/30 transition-colors duration-300",
+                  );
+                  svg.appendChild(line);
+                  lines.push({ el: line, p1: particles[i], p2: particles[j] });
+                }
+              }
+            }
+
+            function animate() {
+              const rect = container.getBoundingClientRect();
+              const width = rect.width;
+              const height = rect.height;
+
+              particles.forEach((p) => {
+                if (isHovering) {
+                  // Move towards grid (Clarity)
+                  p.chaosX += (p.gridX - p.chaosX) * 0.05;
+                  p.chaosY += (p.gridY - p.chaosY) * 0.05;
+                  p.el.classList.replace("bg-outline", "bg-secondary");
+                } else {
+                  // Wander aimlessly (Complexity)
+                  p.chaosX += p.vx;
+                  p.chaosY += p.vy;
+
+                  if (p.chaosX < 0 || p.chaosX > 100) p.vx *= -1;
+                  if (p.chaosY < 0 || p.chaosY > 100) p.vy *= -1;
+
+                  p.el.classList.replace("bg-secondary", "bg-outline");
+                }
+
+                p.el.style.transform = `translate(-50%, -50%)`;
+                p.el.style.left = `${p.chaosX}%`;
+                p.el.style.top = `${p.chaosY}%`;
+              });
+
+              lines.forEach((l) => {
+                l.el.setAttribute("x1", `${l.p1.chaosX}%`);
+                l.el.setAttribute("y1", `${l.p1.chaosY}%`);
+                l.el.setAttribute("x2", `${l.p2.chaosX}%`);
+                l.el.setAttribute("y2", `${l.p2.chaosY}%`);
+
+                if (isHovering) {
+                  l.el.classList.replace(
+                    "text-outline/30",
+                    "text-secondary/30",
+                  );
+                } else {
+                  l.el.classList.replace(
+                    "text-secondary/30",
+                    "text-outline/30",
+                  );
+                }
+              });
+
+              requestAnimationFrame(animate);
+            }
+            animate();
+          }
+        });
+      </script>
+    </main>
+    <footer
+      class="w-full bg-surface-container-lowest py-xl shadow-[0_-4px_20px_rgba(17,19,24,0.02)]"
+    >
+      <div class="max-w-container-max mx-auto px-md">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg mb-xl"
+        >
+          <div class="lg:col-span-2">
+            <div class="flex items-center gap-sm mb-md">
+              <img
+                alt="Paradoxx Primary Logo"
+                class="h-6 w-auto object-contain"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+              /><span class="font-headline-md text-headline-md text-primary"
+                >Paradoxx</span
+              >
+            </div>
+            <p
+              class="text-body-md font-body-md text-on-surface-variant max-w-xs mb-sm"
+            >
+              Software, digital products and technological services engineered
+              for human intent.
+            </p>
+            <p class="text-caption font-caption text-outline">Varel, Germany</p>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+              Company
+            </h4>
+            <ul
+              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+            >
+              <li><a class="hover:text-secondary" href="#">About Us</a></li>
+              <li><a class="hover:text-secondary" href="#">Careers</a></li>
+              <li><a class="hover:text-secondary" href="#">News</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+              Capabilities
+            </h4>
+            <ul
+              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+            >
+              <li><a class="hover:text-secondary" href="#">Strategy</a></li>
+              <li><a class="hover:text-secondary" href="#">Design</a></li>
+              <li><a class="hover:text-secondary" href="#">Engineering</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+              Resources
+            </h4>
+            <ul
+              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+            >
+              <li>
+                <a class="hover:text-secondary" href="#">Documentation</a>
+              </li>
+              <li><a class="hover:text-secondary" href="#">Support</a></li>
+              <li><a class="hover:text-secondary" href="#">Case Studies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-outline-variant pt-md flex flex-col md:flex-row justify-between items-center gap-md"
+        >
+          <span class="text-caption font-caption text-on-surface-variant"
+            >© 2024 Paradoxx UG (haftungsbeschränkt). All rights reserved.</span
+          >
+          <div
+            class="flex gap-md text-caption font-caption text-on-surface-variant"
+          >
+            <a class="hover:text-secondary" href="#">Privacy Policy</a
+            ><a class="hover:text-secondary" href="#">Terms of Service</a
+            ><a class="hover:text-secondary" href="#">Legal Notice</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
