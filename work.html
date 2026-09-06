@@ -1,0 +1,1621 @@
+<!doctype html>
+<html class="scroll-smooth" lang="en" style="">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Paradoxx — Engineering Digital Products</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "inverse-surface": "#2e3132",
+              "inverse-on-surface": "#f0f1f3",
+              "surface-dim": "#d9dadc",
+              "on-tertiary-fixed": "#001d36",
+              error: "#ba1a1a",
+              "surface-tint": "#5d5e64",
+              "surface-container-highest": "#e1e2e4",
+              "on-surface": "#191c1e",
+              "on-primary-fixed": "#1a1b21",
+              "surface-variant": "#e1e2e4",
+              "on-secondary-fixed": "#190064",
+              "surface-container": "#edeef0",
+              "surface-container-low": "#f2f4f6",
+              "on-primary-container": "#82838a",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#45474c",
+              "tertiary-fixed": "#d1e4ff",
+              "outline-variant": "#c6c6cb",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8bfff",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#f3eeff",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#6a4bfd",
+              surface: "#f8f9fb",
+              "on-tertiary-container": "#1588dd",
+              primary: "#000000",
+              "tertiary-fixed-dim": "#9dcaff",
+              "tertiary-container": "#001d36",
+              outline: "#76777b",
+              "primary-fixed-dim": "#c6c6cd",
+              "primary-fixed": "#e2e2e9",
+              "on-secondary-fixed-variant": "#4206d7",
+              "on-tertiary-fixed-variant": "#00497c",
+              tertiary: "#000000",
+              "inverse-primary": "#c6c6cd",
+              "surface-container-high": "#e7e8ea",
+              "secondary-fixed": "#e5deff",
+              "on-error-container": "#93000a",
+              "on-background": "#191c1e",
+              "primary-container": "#1a1b21",
+              background: "#f8f9fb",
+              secondary: "#5129e5",
+              "surface-bright": "#f8f9fb",
+              "on-surface-variant": "#46464b",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              sm: "16px",
+              lg: "48px",
+              xs: "8px",
+              md: "24px",
+              "container-max": "1280px",
+              unit: "4px",
+              xl: "80px",
+            },
+            fontFamily: {
+              "headline-lg": ["Space Grotesk"],
+              "label-mono": ["IBM Plex Mono"],
+              "body-lg": ["Inter"],
+              "headline-lg-mobile": ["Space Grotesk"],
+              "headline-md": ["Space Grotesk"],
+              "headline-xl": ["Space Grotesk"],
+              caption: ["Inter"],
+              "body-md": ["Inter"],
+            },
+            fontSize: {
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-mono": ["14px", { lineHeight: "1.2", fontWeight: "500" }],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "headline-xl": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              caption: ["12px", { lineHeight: "1.4", fontWeight: "500" }],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background font-body-md text-body-md text-on-surface antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col justify-between"
+  >
+    <header
+      class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+    >
+      <div
+        class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between gap-md"
+      >
+        <div class="flex items-center gap-xs">
+          <a
+            class="flex items-center gap-xs group focus:outline-none"
+            data-path="home"
+            href="#"
+            ><img
+              alt="Paradoxx wordmark logo. Custom typography using 'Space Grotesk' style. The 'xx' should be the distinguishing feature, perhaps interlocking or stylized to show connection and clarity. Minimalist, high contrast (Ink #111318). Horizontal orientation."
+              class="h-8 w-auto object-contain"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+            /><span
+              class="font-headline-md text-headline-md tracking-tight text-on-surface"
+              >Paradoxx</span
+            ></a
+          >
+        </div>
+        <nav
+          class="hidden lg:flex items-center gap-md"
+          data-active-classes="text-on-surface font-semibold"
+        >
+          <a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Produkte"
+            data-en="Products"
+            data-path="products"
+            href="#"
+            >Products</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Leistungen"
+            data-en="Services"
+            data-path="services"
+            href="#"
+            >Services</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Lösungen"
+            data-en="Solutions"
+            data-path="solutions"
+            href="#"
+            >Solutions</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Branchen"
+            data-en="Industries"
+            data-path="industries"
+            href="#"
+            >Industries</a
+          ><a
+            aria-current="page"
+            class="transition-colors text-on-surface font-semibold"
+            data-de="Referenzen"
+            data-en="Work"
+            data-path="work"
+            href="#"
+            >Work</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Unternehmen"
+            data-en="Company"
+            data-path="company"
+            href="#"
+            >Company</a
+          >
+        </nav>
+        <div class="hidden lg:flex items-center gap-xs">
+          <div
+            aria-label="Language Selector"
+            class="inline-flex items-center bg-surface-container rounded-full p-unit text-caption font-label-mono"
+            role="group"
+          >
+            <button
+              class="px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary"
+              id="btn-lang-en"
+              type="button"
+            >
+              EN</button
+            ><button
+              class="px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface"
+              id="btn-lang-de"
+              type="button"
+            >
+              DE
+            </button>
+          </div>
+          <a
+            class="inline-flex items-center justify-center px-sm py-xs rounded-full font-label-mono text-label-mono text-on-surface bg-surface-container-lowest hover:bg-surface-container-high transition-colors shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+            data-de="Kontakt"
+            data-en="Contact"
+            data-path="contact"
+            href="#"
+            >Contact</a
+          ><a
+            class="inline-flex items-center justify-center px-sm py-xs rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-colors"
+            data-de="Projekt starten"
+            data-en="Start a project"
+            data-path="start-a-project"
+            href="#"
+            >Start a project</a
+          >
+        </div>
+        <button
+          aria-label="Toggle navigation menu"
+          class="lg:hidden p-2.5 text-neutral-800 hover:text-black focus:outline-none"
+          id="mobile-menu-toggle"
+        >
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+      <div
+        class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0 invisible"
+        id="mobile-drawer-root"
+      >
+        <div
+          class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm pointer-events-auto"
+          id="mobile-drawer-backdrop"
+        ></div>
+        <div
+          class="absolute top-0 right-0 h-full w-full max-w-xs sm:max-w-sm bg-surface shadow-2xl flex flex-col justify-between p-md border-l border-surface-container-high pointer-events-auto transform translate-x-full transition-transform duration-300 overflow-y-auto"
+          id="mobile-drawer-panel"
+        >
+          <div class="flex flex-col gap-md">
+            <div
+              class="flex items-center justify-between pb-sm border-b border-surface-container"
+            >
+              <div class="flex items-center gap-xs">
+                <span
+                  class="font-headline-md text-headline-md tracking-tight text-on-surface"
+                  >Paradoxx</span
+                ><span
+                  class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container-high text-on-surface-variant uppercase tracking-wider"
+                  >Varel / DE</span
+                >
+              </div>
+              <button
+                aria-label="Close navigation menu"
+                class="flex items-center justify-center w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors focus:outline-none text-neutral-800 hover:text-black"
+                id="mobile-menu-close"
+                type="button"
+              >
+                <i class="fa-solid fa-xmark text-xl"></i>
+              </button>
+            </div>
+            <nav class="flex flex-col gap-xs" id="mobile-drawer-nav">
+              <a
+                class="px-xs py-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+                data-de="Produkte"
+                data-en="Products"
+                data-path="products"
+                href="#"
+                >Products</a
+              ><a
+                class="px-xs py-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+                data-de="Leistungen"
+                data-en="Services"
+                data-path="services"
+                href="#"
+                >Services</a
+              ><a
+                class="px-xs py-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+                data-de="Lösungen"
+                data-en="Solutions"
+                data-path="solutions"
+                href="#"
+                >Solutions</a
+              ><a
+                class="px-xs py-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+                data-de="Branchen"
+                data-en="Industries"
+                data-path="industries"
+                href="#"
+                >Industries</a
+              ><a
+                aria-current="page"
+                class="px-xs py-xs transition-colors text-on-surface font-semibold bg-surface-container-low rounded-lg"
+                data-de="Referenzen"
+                data-en="Work"
+                data-path="work"
+                href="#"
+                >Work</a
+              ><a
+                class="px-xs py-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+                data-de="Unternehmen"
+                data-en="Company"
+                data-path="company"
+                href="#"
+                >Company</a
+              ><a
+                class="px-xs py-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+                data-de="Kontakt"
+                data-en="Contact"
+                data-path="contact"
+                href="#"
+                >Contact</a
+              >
+            </nav>
+          </div>
+          <div
+            class="flex flex-col gap-sm pt-md border-t border-surface-container"
+          >
+            <div class="flex items-center justify-between">
+              <span
+                class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                data-de="SPRACHE"
+                data-en="LANGUAGE"
+                >LANGUAGE</span
+              >
+              <div
+                aria-label="Drawer Language Selector"
+                class="inline-flex items-center bg-surface-container rounded-full p-unit text-caption font-label-mono"
+                role="group"
+              >
+                <button
+                  class="px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary"
+                  id="btn-drawer-lang-en"
+                  type="button"
+                >
+                  EN</button
+                ><button
+                  class="px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface"
+                  id="btn-drawer-lang-de"
+                  type="button"
+                >
+                  DE
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-col gap-xs pt-xs">
+              <a
+                class="inline-flex items-center justify-center w-full px-sm py-xs rounded-full font-label-mono text-label-mono text-on-surface bg-surface-container-lowest hover:bg-surface-container-high transition-colors shadow-sm"
+                data-de="Kontakt"
+                data-en="Contact"
+                data-path="contact"
+                href="#"
+                >Contact</a
+              ><a
+                class="inline-flex items-center justify-center w-full px-sm py-xs rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-colors"
+                data-de="Projekt starten"
+                data-en="Start a project"
+                data-path="start-a-project"
+                href="#"
+                >Start a project</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="w-full pt-20 bg-background flex-1">
+      <div class="flex flex-col w-full">
+        <!-- Subtle Blueprint Ambient Backdrop -->
+        <div class="relative w-full overflow-hidden">
+          <div
+            class="absolute inset-0 pointer-events-none opacity-40 bg-[radial-gradient(#5129e5_1px,transparent_1px)] [background-size:32px_32px]"
+          ></div>
+          <!-- 1. HERO SECTION -->
+          <section
+            class="relative max-w-container-max mx-auto px-md pt-lg pb-xl flex flex-col items-start"
+          >
+            <!-- Technical Overline / Monospace Stamp -->
+            <div
+              class="inline-flex items-center gap-xs px-sm py-unit rounded-full bg-surface-container-high text-on-surface-variant font-label-mono text-caption uppercase tracking-wider mb-md"
+            >
+              <span
+                class="w-2 h-2 rounded-full bg-secondary animate-pulse"
+              ></span>
+              <span
+                class=""
+                data-de="Referenzen &amp; Fallstudien"
+                data-en="Selected Work &amp; Case Studies"
+                >Selected Work &amp; Case Studies</span
+              >
+              <span class="text-outline">/</span>
+              <span class="font-label-mono text-secondary">ARCHIVE_V25</span>
+            </div>
+            <!-- Main Typography Hierarchy -->
+            <div
+              class="grid grid-cols-1 lg:grid-cols-12 gap-md w-full items-end mb-lg"
+            >
+              <div class="lg:col-span-8 flex flex-col">
+                <h1
+                  class="font-headline-xl text-[32px] sm:text-headline-xl tracking-tight text-on-surface"
+                >
+                  <span
+                    class=""
+                    data-de="Durchdachte Systeme."
+                    data-en="Deliberate systems."
+                    >Deliberate systems.</span
+                  ><br />
+                  <span
+                    class="text-secondary"
+                    data-de="Messbare Wirkung."
+                    data-en="Measurable impact."
+                    >Measurable impact.</span
+                  >
+                </h1>
+              </div>
+              <div class="lg:col-span-4 flex flex-col justify-end">
+                <p
+                  class="font-body-lg text-body-lg text-on-surface-variant"
+                  data-de="Erfahren Sie, wie wir zukunftsorientierten Unternehmen, dynamischen Ventures und öffentlichen Institutionen helfen, technisches Chaos durch klare digitale Produkte zu ersetzen."
+                  data-en="Explore how we help forward-thinking enterprises, fast-moving ventures, and public institutions replace technical chaos with clear digital products."
+                >
+                  Explore how we help forward-thinking enterprises, fast-moving
+                  ventures, and public institutions replace technical chaos with
+                  clear digital products.
+                </p>
+              </div>
+            </div>
+            <!-- Quick Metrics Ribbon -->
+            <div
+              class="w-full grid grid-cols-2 md:grid-cols-4 gap-sm p-sm bg-surface-container-lowest rounded-xl shadow-sm mb-lg"
+            >
+              <div class="p-sm flex flex-col">
+                <span class="font-headline-md text-headline-md text-on-surface"
+                  >99.98%</span
+                >
+                <span
+                  class="font-caption text-caption text-on-surface-variant"
+                  data-de="Service SLA Stabilität"
+                  data-en="Service SLA Stability"
+                  >Service SLA Stability</span
+                >
+              </div>
+              <div class="p-sm flex flex-col">
+                <span class="font-headline-md text-headline-md text-secondary"
+                  >€180M+</span
+                >
+                <span
+                  class="font-caption text-caption text-on-surface-variant"
+                  data-de="Verarbeitetes Kundenvolumen"
+                  data-en="Client GMV Processed"
+                  >Client GMV Processed</span
+                >
+              </div>
+              <div class="p-sm flex flex-col">
+                <span class="font-headline-md text-headline-md text-on-surface"
+                  >&lt; 14 wks</span
+                >
+                <span
+                  class="font-caption text-caption text-on-surface-variant"
+                  data-de="Mittlere Produktionszeit"
+                  data-en="Mean Production Delivery"
+                  >Mean Production Delivery</span
+                >
+              </div>
+              <div class="p-sm flex flex-col">
+                <span class="font-headline-md text-headline-md text-on-surface"
+                  >ISO 27001</span
+                >
+                <span
+                  class="font-caption text-caption text-on-surface-variant"
+                  data-de="Auditierte Sicherheitsstandards"
+                  data-en="Audited Security Rigor"
+                  >Audited Security Rigor</span
+                >
+              </div>
+            </div>
+            <!-- Filter Controls Pill Bar -->
+            <div
+              class="w-full flex flex-wrap items-center justify-between gap-sm pt-xs"
+            >
+              <div
+                class="flex items-center gap-xs overflow-x-auto max-w-full pb-xs flex-nowrap sm:flex-wrap"
+                id="filter-container"
+              >
+                <button
+                  class="filter-btn px-sm py-xs rounded-full font-label-mono text-caption transition-all bg-primary text-on-primary shadow-sm"
+                  data-de="Alle Kategorien [04]"
+                  data-en="All Categories [04]"
+                  data-filter="all"
+                  type="button"
+                >
+                  All Categories [04]
+                </button>
+                <button
+                  class="filter-btn px-sm py-xs rounded-full font-label-mono text-caption transition-all bg-surface-container text-on-surface-variant hover:text-on-surface"
+                  data-de="Enterprise Software"
+                  data-en="Enterprise Software"
+                  data-filter="enterprise"
+                  type="button"
+                >
+                  Enterprise Software
+                </button>
+                <button
+                  class="filter-btn px-sm py-xs rounded-full font-label-mono text-caption transition-all bg-surface-container text-on-surface-variant hover:text-on-surface"
+                  data-de="KI &amp; Automatisierung"
+                  data-en="AI &amp; Automation"
+                  data-filter="ai"
+                  type="button"
+                >
+                  AI &amp; Automation
+                </button>
+                <button
+                  class="filter-btn px-sm py-xs rounded-full font-label-mono text-caption transition-all bg-surface-container text-on-surface-variant hover:text-on-surface"
+                  data-de="Öffentliche Infrastruktur"
+                  data-en="Public Infrastructure"
+                  data-filter="public"
+                  type="button"
+                >
+                  Public Infrastructure
+                </button>
+                <button
+                  class="filter-btn px-sm py-xs rounded-full font-label-mono text-caption transition-all bg-surface-container text-on-surface-variant hover:text-on-surface"
+                  data-de="Digitale Plattformen"
+                  data-en="Digital Platforms"
+                  data-filter="platforms"
+                  type="button"
+                >
+                  Digital Platforms
+                </button>
+              </div>
+              <div
+                class="hidden sm:flex items-center gap-xs font-label-mono text-caption text-on-surface-variant"
+              >
+                <span
+                  class="material-symbols-outlined text-[16px] text-secondary"
+                  >tune</span
+                >
+                <span
+                  class=""
+                  data-de="Geordnet nach Architektur-Skalierung"
+                  data-en="Index Ordered by Architectural Scale"
+                  >Index Ordered by Architectural Scale</span
+                >
+              </div>
+            </div>
+          </section>
+          <!-- 2. FEATURED CASE STUDIES -->
+          <section
+            class="max-w-container-max mx-auto px-md pb-xl flex flex-col gap-lg"
+          >
+            <!-- CASE STUDY 01: Sovereign Workflow & Intelligence Engine -->
+            <article
+              class="case-card group w-full bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+              data-category="ai public enterprise"
+            >
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <!-- Text & Data Spec Column -->
+                <div
+                  class="lg:col-span-7 p-md lg:p-lg flex flex-col justify-between"
+                >
+                  <div class="flex flex-col gap-sm">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-xs">
+                        <span
+                          class="font-label-mono text-caption text-secondary font-semibold"
+                          >CASE // 01</span
+                        >
+                        <span class="text-outline-variant font-label-mono"
+                          >•</span
+                        >
+                        <span
+                          class="font-label-mono text-caption text-on-surface-variant"
+                          data-de="Öffentlicher &amp; Regulierter Sektor"
+                          data-en="Public &amp; Regulated Sector"
+                          >Public &amp; Regulated Sector</span
+                        >
+                      </div>
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container text-on-surface"
+                        >DSGVO Tier-1</span
+                      >
+                    </div>
+                    <h2
+                      class="font-headline-lg text-headline-lg tracking-tight text-on-surface pt-xs"
+                    >
+                      <span
+                        class=""
+                        data-de="Souveräne Workflow- &amp; Intelligence-Engine"
+                        data-en="Sovereign Workflow &amp; Intelligence Engine"
+                        >Sovereign Workflow &amp; Intelligence Engine</span
+                      >
+                    </h2>
+                    <p
+                      class="font-body-md text-body-md text-on-surface-variant pt-xs"
+                      data-de="Ein Multi-Agenten-Backend für Bundesbehörden zur sicheren Bearbeitung komplexer Anträge mit kryptografischen Prüfprotokollen, lokaler LLM-Ausführung und Human-in-the-Loop-Validierung."
+                      data-en="A multi-agent processing backend built for federal institutions to adjudicate complex claims securely with cryptographic audit trails, on-premise LLM execution, and human-in-the-loop validation."
+                    >
+                      A multi-agent processing backend built for federal
+                      institutions to adjudicate complex claims securely with
+                      cryptographic audit trails, on-premise LLM execution, and
+                      human-in-the-loop validation.
+                    </p>
+                    <!-- Tags / Chips -->
+                    <div class="flex flex-wrap gap-xs pt-xs">
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                        >Distributed Architecture</span
+                      >
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                        >AI Orchestration</span
+                      >
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-lg bg-secondary-fixed text-on-secondary-fixed font-medium"
+                        >Rust / Ollama</span
+                      >
+                    </div>
+                  </div>
+                  <!-- Key Metric Box -->
+                  <div
+                    class="mt-lg pt-md bg-surface-container-low rounded-lg p-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-sm"
+                  >
+                    <div>
+                      <div
+                        class="font-headline-md text-headline-md text-secondary font-bold"
+                      >
+                        78%
+                      </div>
+                      <div
+                        class="font-caption text-caption text-on-surface-variant uppercase tracking-wider"
+                        data-de="Reduktion der manuellen Fallbearbeitungszeit"
+                        data-en="Reduction in manual case resolution time"
+                      >
+                        Reduction in manual case resolution time
+                      </div>
+                    </div>
+                    <a
+                      class="inline-flex items-center gap-xs font-label-mono text-caption text-secondary hover:text-secondary-container transition-colors group-hover:translate-x-1 duration-200"
+                      data-path="contact"
+                      href="#"
+                    >
+                      <span
+                        class=""
+                        data-de="Architektur-Blueprint anfordern"
+                        data-en="Request Architecture Blueprint"
+                        >Request Architecture Blueprint</span
+                      >
+                      <span class="material-symbols-outlined text-[16px]"
+                        >arrow_forward</span
+                      >
+                    </a>
+                  </div>
+                </div>
+                <!-- Rich Visual / Image Mock Column -->
+                <div
+                  class="lg:col-span-5 bg-surface-container flex flex-col relative overflow-hidden min-h-[280px] lg:min-h-full"
+                >
+                  <img
+                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    data-alt="High-contrast minimalist UI interface of an AI governance dashboard with clean data streams, tabular lineage graphs, slate-grey and deep indigo accents on mist grey background, modern industrial software aesthetic."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7GnhpU2rcwExP3CDN6rO2RzL3YWrWndrxI3CZp7no1aiBJ9Od9yN46EJsGHv26zVtHw0xnDap5_C-J2U9k-Wng4ZI8kFIWOYinTlP5y02JJbNtLv7C3Gx-gBTxGVFr07m-LcXatLT6booQKn6j70S8KEYMLKOJ0PTHwKOAjWEi9jPibTvLx7HZTTGnQTeXR4UTxQSalhmMY-XMMh7YdonBlYzXBlFKsLm39UjqNOKRiEJ_rI-53_t"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 right-4 bg-surface/95 backdrop-blur-md p-sm rounded-lg shadow-sm flex items-center justify-between"
+                  >
+                    <div
+                      class="flex items-center gap-xs font-label-mono text-caption text-on-surface"
+                    >
+                      <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                      <span class="">CLUSTER STATUS: NORMAL</span>
+                    </div>
+                    <span
+                      class="font-label-mono text-caption text-on-surface-variant"
+                      >NODE_08 // VAREL DC</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </article>
+            <!-- CASE STUDY 02: Global Logistics Real-Time Telemetry Fabric -->
+            <article
+              class="case-card group w-full bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+              data-category="enterprise platforms"
+            >
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <!-- Visual Column Left for Asymmetry -->
+                <div
+                  class="lg:col-span-5 order-2 lg:order-1 bg-surface-container relative overflow-hidden min-h-[280px] lg:min-h-full flex flex-col"
+                >
+                  <img
+                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    data-alt="Technical telemetry wireframe showing dynamic geo-spatial routing vectors, real-time latency graphs, deep charcoal background with violet node points, ultra-precise data visualization aesthetic."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO4ONEJKa1fFAp9Aa-peloNZ1jmgWs0z9EveHEQ3eZIC2_1CZ92aPD8C0VDzDqufyyayUS0wohh93pQyW9OHnP1DDdipCQJ4JUxkAgEjqUK21CdYi_G1O8Cr-tLMYEuF7UivQokmblxa-W7w7TbHfQGqXXLxVISckteMjSalN_Yza_BBiXSjeXe90nIvb6tODOswZ_bHdNh8hfefeaJhctH5nPhB3ozycdXjCngcK22O9tYZ9Ordag"
+                  />
+                  <div
+                    class="absolute top-4 left-4 bg-primary text-on-primary font-label-mono text-caption px-xs py-unit rounded-full"
+                  >
+                    STREAM: KAFKA-GO_TOPIC_A
+                  </div>
+                </div>
+                <!-- Text Column Right -->
+                <div
+                  class="lg:col-span-7 order-1 lg:order-2 p-md lg:p-lg flex flex-col justify-between"
+                >
+                  <div class="flex flex-col gap-sm">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-xs">
+                        <span
+                          class="font-label-mono text-caption text-secondary font-semibold"
+                          >CASE // 02</span
+                        >
+                        <span class="text-outline-variant font-label-mono"
+                          >•</span
+                        >
+                        <span
+                          class="font-label-mono text-caption text-on-surface-variant"
+                          data-de="Lieferkette &amp; Globale Flotte"
+                          data-en="Supply Chain &amp; Global Fleet"
+                          >Supply Chain &amp; Global Fleet</span
+                        >
+                      </div>
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container text-on-surface"
+                        >Sub-20ms Engine</span
+                      >
+                    </div>
+                    <h2
+                      class="font-headline-lg text-headline-lg tracking-tight text-on-surface pt-xs"
+                    >
+                      <span
+                        class=""
+                        data-de="Echtzeit-Telemetrie-Infrastruktur für globale Logistik"
+                        data-en="Global Logistics Real-Time Telemetry Fabric"
+                        >Global Logistics Real-Time Telemetry Fabric</span
+                      >
+                    </h2>
+                    <p
+                      class="font-body-md text-body-md text-on-surface-variant pt-xs"
+                      data-de="Neukonzeption von lückenloser Ortung, Kühlketten-Temperaturüberwachung und prädiktiver Routenoptimierung für 42 europäische See- und Schienenknotenpunkte ohne Ausfallrisiko."
+                      data-en="Re-engineering continuous location, cold-chain temperature telemetry, and predictive re-routing across 42 European maritime and rail hubs without single points of failure."
+                    >
+                      Re-engineering continuous location, cold-chain temperature
+                      telemetry, and predictive re-routing across 42 European
+                      maritime and rail hubs without single points of failure.
+                    </p>
+                    <!-- Tags / Chips -->
+                    <div class="flex flex-wrap gap-xs pt-xs">
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                        >Kafka Streaming</span
+                      >
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                        >Go Microservices</span
+                      >
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                        >ClickHouse</span
+                      >
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-lg bg-secondary-fixed text-on-secondary-fixed font-medium"
+                        >Real-Time Analytics</span
+                      >
+                    </div>
+                  </div>
+                  <!-- Key Metric Box -->
+                  <div
+                    class="mt-lg pt-md bg-surface-container-low rounded-lg p-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-sm"
+                  >
+                    <div>
+                      <div
+                        class="font-headline-md text-headline-md text-on-surface font-bold"
+                      >
+                        140k+
+                        <span class="text-secondary font-headline-md"
+                          >events/s</span
+                        >
+                      </div>
+                      <div
+                        class="font-caption text-caption text-on-surface-variant uppercase tracking-wider"
+                        data-de="Verarbeitet mit durchgehend unter 20ms Latenz"
+                        data-en="Processed at sub-20ms latency sustained"
+                      >
+                        Processed at sub-20ms latency sustained
+                      </div>
+                    </div>
+                    <a
+                      class="inline-flex items-center gap-xs font-label-mono text-caption text-secondary hover:text-secondary-container transition-colors group-hover:translate-x-1 duration-200"
+                      data-path="contact"
+                      href="#"
+                    >
+                      <span
+                        class=""
+                        data-de="Technologie-Stack einsehen"
+                        data-en="Inspect Stack Architecture"
+                        >Inspect Stack Architecture</span
+                      >
+                      <span class="material-symbols-outlined text-[16px]"
+                        >arrow_forward</span
+                      >
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <!-- 2-COLUMN SPLIT FOR CASES 03 & 04 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+              <!-- CASE STUDY 03: Practice Management Portal -->
+              <article
+                class="case-card group w-full bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 p-md lg:p-lg flex flex-col justify-between"
+                data-category="enterprise platforms"
+              >
+                <div class="flex flex-col gap-sm">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-xs">
+                      <span
+                        class="font-label-mono text-caption text-secondary font-semibold"
+                        >CASE // 03</span
+                      >
+                      <span class="text-outline-variant font-label-mono"
+                        >•</span
+                      >
+                      <span
+                        class="font-label-mono text-caption text-on-surface-variant"
+                        data-de="Professional Services"
+                        data-en="Professional Services"
+                        >Professional Services</span
+                      >
+                    </div>
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded-full bg-secondary-fixed text-on-secondary-fixed font-medium"
+                      >B2B SaaS</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md text-on-surface pt-xs"
+                  >
+                    <span
+                      class=""
+                      data-de="Modernes Enterprise Praxis-Management-Portal"
+                      data-en="Next-Gen Enterprise Practice Management Portal"
+                      >Next-Gen Enterprise Practice Management Portal</span
+                    >
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Zusammenführung von sieben Legacy-Desktop-Applikationen in einen einheitlichen, barrierefreien Workspace zur Minimierung von Kontextwechseln und Beschleunigung der Abrechnung."
+                    data-en="Consolidating seven legacy desktop apps into a unified, accessible workspace that reduced context-switching and accelerated cross-functional billing workflows."
+                  >
+                    Consolidating seven legacy desktop apps into a unified,
+                    accessible workspace that reduced context-switching and
+                    accelerated cross-functional billing workflows.
+                  </p>
+                  <div
+                    class="w-full h-48 rounded-lg overflow-hidden bg-surface-container mt-xs"
+                  >
+                    <img
+                      class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      data-alt="Sleek modern desktop software dashboard mockup showing team capacity schedules, invoice state diagrams, and typography-focused design system in clean monochrome and signal purple."
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP5pvl1BkGba5SImiUfDgVHeqI3MvPHXIv8OpjCst5sbTAj_9ax2fNc66aVJ5IKRajK7hbnsoQtHTypq5TZEadr2lGaCtC0ySWjmzpNfi2HXyjmxMGvKOFTZxfIjo27nnW83k5cUl000rCXC_Q9cfQaOoWTACQtyKa0NhOv9B2fBzy6z2k3yk5NDGMjmlb7y6EL9oKv_sL8pjtL278l24AMOuHI0gAkPwOam5m-pyQZAvtEL6L7XfR"
+                    />
+                  </div>
+                  <div class="flex flex-wrap gap-xs pt-xs">
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                      >Next.js</span
+                    >
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                      >Custom Design System</span
+                    >
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                      >Multi-Tenancy</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="mt-md pt-sm bg-surface-container-low rounded-lg p-sm flex items-center justify-between"
+                >
+                  <div>
+                    <div
+                      class="font-headline-md text-headline-md text-secondary font-bold"
+                    >
+                      4.2x
+                    </div>
+                    <div
+                      class="font-caption text-caption text-on-surface-variant uppercase"
+                      data-de="Team-Onboarding-Geschwindigkeit"
+                      data-en="Team onboarding velocity"
+                    >
+                      Team onboarding velocity
+                    </div>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary group-hover:translate-x-1 transition-all"
+                    >north_east</span
+                  >
+                </div>
+              </article>
+              <!-- CASE STUDY 04: Modular Digital Learning Suite -->
+              <article
+                class="case-card group w-full bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 p-md lg:p-lg flex flex-col justify-between"
+                data-category="platforms public"
+              >
+                <div class="flex flex-col gap-sm">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-xs">
+                      <span
+                        class="font-label-mono text-caption text-secondary font-semibold"
+                        >CASE // 04</span
+                      >
+                      <span class="text-outline-variant font-label-mono"
+                        >•</span
+                      >
+                      <span
+                        class="font-label-mono text-caption text-on-surface-variant"
+                        data-de="Bildung &amp; Zertifizierung"
+                        data-en="Education &amp; Certification"
+                        >Education &amp; Certification</span
+                      >
+                    </div>
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container text-on-surface"
+                      >WCAG 2.1 AAA</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md text-on-surface pt-xs"
+                  >
+                    <span
+                      class=""
+                      data-de="Modulare Digitale Lern- &amp; Zertifizierungsplattform"
+                      data-en="Modular Digital Learning &amp; Credentialing Suite"
+                      >Modular Digital Learning &amp; Credentialing Suite</span
+                    >
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Skalierbares Micro-Frontend-Ökosystem für verifizierte Zertifikate, asynchrones Prüfen und Offline-First-Synchronisierung für Berufsakademien."
+                    data-en="Scalable micro-frontend ecosystem delivering verified credential management, asynchronous testing, and offline-first mobile sync for vocational academies."
+                  >
+                    Scalable micro-frontend ecosystem delivering verified
+                    credential management, asynchronous testing, and
+                    offline-first mobile sync for vocational academies.
+                  </p>
+                  <div
+                    class="w-full h-48 rounded-lg overflow-hidden bg-surface-container mt-xs"
+                  >
+                    <img
+                      class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      data-alt="Student and examiner credentialing portal interface mockup, high typographic contrast, progress rings, dark indigo and crisp paper white colorway, modular card grid."
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdlsMtwHyZN9oiXVupuDRCAza4FP_1AqoadCG_W1ojvsibMs98YfdOrBRMrVgV52kgCZFRXJX35E0tyTyjg_DbJhrK0GauFQKk0lwsStzqAMUzi_ZhR_b9lJ315HUDKy70ERjl9VlMtisfgrkXbpuSTt5WWPRV0pLkir5lSo_KnF9E_viA3Hwoc43LmlUKSlsMIlkbK1viS9Bgt8h1nRsJl9S9J9eynTmn93QRvXD1DetszKCI2HDV"
+                    />
+                  </div>
+                  <div class="flex flex-wrap gap-xs pt-xs">
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                      >Micro-frontends</span
+                    >
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                      >WCAG AAA</span
+                    >
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded-lg bg-surface-container text-on-surface"
+                      >OpenID Connect</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="mt-md pt-sm bg-surface-container-low rounded-lg p-sm flex items-center justify-between"
+                >
+                  <div>
+                    <div
+                      class="font-headline-md text-headline-md text-on-surface font-bold"
+                    >
+                      120,000+
+                    </div>
+                    <div
+                      class="font-caption text-caption text-on-surface-variant uppercase"
+                      data-de="Zertifizierte aktive Nutzer"
+                      data-en="Certified active users"
+                    >
+                      Certified active users
+                    </div>
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary group-hover:translate-x-1 transition-all"
+                    >north_east</span
+                  >
+                </div>
+              </article>
+            </div>
+          </section>
+          <!-- 3. CLIENT CONFIDENTIALITY PROTECTED STATEMENT (Atmospheric Callout) -->
+          <section class="max-w-container-max mx-auto px-md pb-xl">
+            <div
+              class="w-full rounded-xl bg-primary-container text-on-primary overflow-hidden shadow-xl relative p-md lg:p-xl"
+            >
+              <!-- Living Grid / Mesh Backdrop Overlay -->
+              <div
+                class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#6a4bfd_1px,transparent_1px)] [background-size:24px_24px]"
+              ></div>
+              <div
+                class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-lg items-center"
+              >
+                <div class="lg:col-span-8 flex flex-col gap-sm">
+                  <div
+                    class="inline-flex items-center gap-xs font-label-mono text-caption text-secondary-fixed"
+                  >
+                    <span class="material-symbols-outlined text-[16px]"
+                      >lock</span
+                    >
+                    <span
+                      class=""
+                      data-de="VERTRAULICHKEIT AUS PRINZIP"
+                      data-en="CONFIDENTIALITY BY PRINCIPLE"
+                      >CONFIDENTIALITY BY PRINCIPLE</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-lg text-headline-lg tracking-tight text-on-primary"
+                  >
+                    <span
+                      class=""
+                      data-de="Wir bauen Kerntechnologie, keine Trophäensammlungen."
+                      data-en="We engineer secret weapons, not trophy cases."
+                      >We engineer secret weapons, not trophy cases.</span
+                    >
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-primary-container max-w-2xl"
+                    data-de="Ein beträchtlicher Teil unserer Aufträge unterliegt strengen Geheimhaltungsvereinbarungen mit DAX-Konzernen, sicherheitsrelevanten Organisationen und Private-Equity-Investoren. Wir anonymisieren Markenkennzeichen und Telemetriedaten gezielt zum Schutz der Wettbewerbsvorteile unserer Kunden."
+                    data-en="A significant share of our contracts operate under strict Non-Disclosure Agreements with DAX enterprises, defense contractors, and private capital institutions. We deliberately anonymize brand identifiers and operational telemetry to protect competitive advantages."
+                  >
+                    A significant share of our contracts operate under strict
+                    Non-Disclosure Agreements with DAX enterprises, defense
+                    contractors, and private capital institutions. We
+                    deliberately anonymize brand identifiers and operational
+                    telemetry to protect competitive advantages.
+                  </p>
+                </div>
+                <div
+                  class="lg:col-span-4 flex flex-col gap-sm bg-inverse-surface/50 backdrop-blur-md p-md rounded-xl"
+                >
+                  <div
+                    class="flex items-center justify-between font-label-mono text-caption text-secondary-fixed-dim pb-xs"
+                  >
+                    <span
+                      class=""
+                      data-de="COMPLIANCE PROTOKOLL"
+                      data-en="COMPLIANCE PROTOCOL"
+                      >COMPLIANCE PROTOCOL</span
+                    >
+                    <span class="">VERIFIED</span>
+                  </div>
+                  <ul
+                    class="flex flex-col gap-xs font-label-mono text-caption text-inverse-on-surface"
+                  >
+                    <li class="flex items-center gap-xs">
+                      <span
+                        class="material-symbols-outlined text-secondary text-[16px]"
+                        >check_circle</span
+                      >
+                      <span class="">Air-gapped development labs</span>
+                    </li>
+                    <li class="flex items-center gap-xs">
+                      <span
+                        class="material-symbols-outlined text-secondary text-[16px]"
+                        >check_circle</span
+                      >
+                      <span class="">Zero third-party code telemetry</span>
+                    </li>
+                    <li class="flex items-center gap-xs">
+                      <span
+                        class="material-symbols-outlined text-secondary text-[16px]"
+                        >check_circle</span
+                      >
+                      <span class="">German sovereign cloud hosting</span>
+                    </li>
+                    <li class="flex items-center gap-xs">
+                      <span
+                        class="material-symbols-outlined text-secondary text-[16px]"
+                        >check_circle</span
+                      >
+                      <span class="">Custom NDA &amp; IP vesting day 1</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- 4. CLIENT ENGAGEMENT PROCESS & DISCUSSION CTA -->
+          <section class="max-w-container-max mx-auto px-md pb-xl">
+            <div
+              class="w-full bg-surface-container rounded-xl p-md lg:p-xl flex flex-col items-center text-center"
+            >
+              <span
+                class="font-label-mono text-caption text-secondary uppercase tracking-wider mb-xs"
+                data-de="NÄCHSTER MEILENSTEIN"
+                data-en="NEXT MILESTONE"
+                >NEXT MILESTONE</span
+              >
+              <h2
+                class="font-headline-lg text-headline-lg tracking-tight text-on-surface max-w-xl mb-sm"
+              >
+                <span
+                  class=""
+                  data-de="Bereit für Ihren nächsten Meilenstein?"
+                  data-en="Ready to build your next breakthrough?"
+                  >Ready to build your next breakthrough?</span
+                >
+              </h2>
+              <p
+                class="font-body-md text-body-md text-on-surface-variant max-w-lg mb-lg"
+                data-de="Teilen Sie Ihre Systemanforderungen, Produkt-Roadmaps oder Engpässe mit uns. Unser technisches Führungsteam bewertet Spezifikationen innerhalb von 48 Stunden."
+                data-en="Share your system constraints, product roadmaps, or integration bottlenecks. We review specifications with engineering leadership within 48 hours."
+              >
+                Share your system constraints, product roadmaps, or integration
+                bottlenecks. We review specifications with engineering
+                leadership within 48 hours.
+              </p>
+              <div class="flex flex-wrap items-center justify-center gap-sm">
+                <a
+                  class="inline-flex items-center gap-xs px-md py-sm rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-all shadow-md"
+                  data-path="start-a-project"
+                  href="#"
+                >
+                  <span
+                    class=""
+                    data-de="Projektanfrage starten"
+                    data-en="Initiate Project Scoping"
+                    >Initiate Project Scoping</span
+                  >
+                  <span class="material-symbols-outlined text-[18px]"
+                    >east</span
+                  >
+                </a>
+                <a
+                  class="inline-flex items-center gap-xs px-md py-sm rounded-full font-label-mono text-label-mono bg-surface-container-lowest hover:bg-surface-container-high text-on-surface transition-colors shadow-sm"
+                  data-path="contact"
+                  href="#"
+                >
+                  <span
+                    class=""
+                    data-de="Technisches Erstgespräch"
+                    data-en="Direct Engineering Call"
+                    >Direct Engineering Call</span
+                  >
+                </a>
+              </div>
+              <!-- Footprint meta -->
+              <div
+                class="mt-lg pt-sm flex items-center gap-sm font-label-mono text-caption text-on-surface-variant"
+              >
+                <span class="">VAREL / NIEDERSACHSEN</span>
+                <span class="">•</span>
+                <span class="">DISPATCH TIME: ≤ 2 DAYS</span>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Interactive Filter Logic -->
+        <script>
+          (function () {
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            const caseCards = document.querySelectorAll(".case-card");
+
+            filterButtons.forEach((btn) => {
+              btn.addEventListener("click", () => {
+                const targetFilter = btn.getAttribute("data-filter");
+
+                // Toggle button active styling
+                filterButtons.forEach((b) => {
+                  b.classList.remove(
+                    "bg-primary",
+                    "text-on-primary",
+                    "shadow-sm",
+                  );
+                  b.classList.add(
+                    "bg-surface-container",
+                    "text-on-surface-variant",
+                  );
+                });
+                btn.classList.remove(
+                  "bg-surface-container",
+                  "text-on-surface-variant",
+                );
+                btn.classList.add("bg-primary", "text-on-primary", "shadow-sm");
+
+                // Filter cards
+                caseCards.forEach((card) => {
+                  const categories = card.getAttribute("data-category") || "";
+                  if (
+                    targetFilter === "all" ||
+                    categories.includes(targetFilter)
+                  ) {
+                    card.style.display = "flex";
+                  } else {
+                    card.style.display = "none";
+                  }
+                });
+              });
+            });
+          })();
+        </script>
+      </div>
+    </main>
+    <footer class="w-full bg-surface-container-low pt-xl pb-lg">
+      <div class="max-w-container-max mx-auto px-md">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg pb-xl"
+        >
+          <div class="lg:col-span-2 flex flex-col gap-sm pr-lg">
+            <div class="flex items-center gap-xs">
+              <img
+                alt="Paradoxx wordmark logo. Custom typography using 'Space Grotesk' style. The 'xx' should be the distinguishing feature, perhaps interlocking or stylized to show connection and clarity. Minimalist, high contrast (Ink #111318). Horizontal orientation."
+                class="h-7 w-auto object-contain"
+                src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+              /><span
+                class="font-headline-md text-headline-md tracking-tight text-on-surface"
+                >Paradoxx</span
+              >
+            </div>
+            <p
+              class="text-on-surface-variant font-body-md text-body-md max-w-md"
+              data-de="Software, digitale Produkte und Technologiedienstleistungen für menschliche Intention entwickelt."
+              data-en="Software, digital products and technological services engineered for human intent."
+            >
+              Software, digital products and technological services engineered
+              for human intent.
+            </p>
+            <div
+              class="flex items-center gap-xs font-label-mono text-caption text-on-surface-variant pt-xs"
+            >
+              <span class="material-symbols-outlined text-[16px]"
+                >location_on</span
+              ><span class="">Varel, Germany</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface uppercase tracking-wider mb-xs"
+              data-de="Unternehmen"
+              data-en="Company"
+              >Company</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Über uns"
+                  data-en="About"
+                  data-path="about"
+                  href="#"
+                  >About</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Historie"
+                  data-en="Story"
+                  data-path="story"
+                  href="#"
+                  >Story</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Führungsteam"
+                  data-en="Leadership"
+                  data-path="leadership"
+                  href="#"
+                  >Leadership</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Karriere"
+                  data-en="Careers"
+                  data-path="careers"
+                  href="#"
+                  >Careers</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Newsroom"
+                  data-en="Newsroom"
+                  data-path="newsroom"
+                  href="#"
+                  >Newsroom</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface uppercase tracking-wider mb-xs"
+              data-de="Kompetenzen"
+              data-en="Capabilities"
+              >Capabilities</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Leistungen"
+                  data-en="Services"
+                  data-path="services"
+                  href="#"
+                  >Services</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Produkte"
+                  data-en="Products"
+                  data-path="products"
+                  href="#"
+                  >Products</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Lösungen"
+                  data-en="Solutions"
+                  data-path="solutions"
+                  href="#"
+                  >Solutions</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Branchen"
+                  data-en="Industries"
+                  data-path="industries"
+                  href="#"
+                  >Industries</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Referenzen"
+                  data-en="Work"
+                  data-path="work"
+                  href="#"
+                  >Work</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface uppercase tracking-wider mb-xs"
+              data-de="Ressourcen"
+              data-en="Resources"
+              >Resources</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Einblicke"
+                  data-en="Insights"
+                  data-path="insights"
+                  href="#"
+                  >Insights</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Forschung"
+                  data-en="Research"
+                  data-path="research"
+                  href="#"
+                  >Research</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Häufige Fragen"
+                  data-en="FAQs"
+                  data-path="faqs"
+                  href="#"
+                  >FAQs</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Support"
+                  data-en="Support"
+                  data-path="support"
+                  href="#"
+                  >Support</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Kontakt"
+                  data-en="Contact"
+                  data-path="contact"
+                  href="#"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="pt-md flex flex-col md:flex-row items-center justify-between gap-md text-caption font-label-mono text-on-surface-variant"
+        >
+          <div class="flex items-center gap-xs">
+            <span class=""
+              >© <span class="" id="copyright-year">2026</span> Paradoxx Studio
+              GmbH.</span
+            ><span
+              class=""
+              data-de="Alle Rechte vorbehalten."
+              data-en="All rights reserved."
+              >All rights reserved.</span
+            >
+          </div>
+          <div class="flex items-center gap-md">
+            <a
+              class="hover:text-on-surface transition-colors"
+              data-de="Datenschutz"
+              data-en="Privacy Policy"
+              data-path="privacy-policy"
+              href="#"
+              >Privacy Policy</a
+            ><a
+              class="hover:text-on-surface transition-colors"
+              data-de="AGB"
+              data-en="Terms of Service"
+              data-path="terms-of-service"
+              href="#"
+              >Terms of Service</a
+            ><a
+              class="hover:text-on-surface transition-colors"
+              data-de="Impressum"
+              data-en="Legal Notice"
+              data-path="legal-notice"
+              href="#"
+              >Legal Notice</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        document.getElementById("copyright-year").textContent =
+          new Date().getFullYear();
+        var curLang = "en";
+        var btnEn = document.getElementById("btn-lang-en");
+        var btnDe = document.getElementById("btn-lang-de");
+        var drawerBtnEn = document.getElementById("btn-drawer-lang-en");
+        var drawerBtnDe = document.getElementById("btn-drawer-lang-de");
+        function setLanguage(lang) {
+          curLang = lang;
+          document.documentElement.setAttribute("lang", lang);
+          var translatables = document.querySelectorAll("[data-en][data-de]");
+          translatables.forEach(function (el) {
+            var val = el.getAttribute("data-" + lang);
+            if (val) {
+              el.textContent = val;
+            }
+          });
+          var activeClass =
+            "px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary";
+          var inactiveClass =
+            "px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface";
+          if (lang === "en") {
+            if (btnEn) btnEn.className = activeClass;
+            if (btnDe) btnDe.className = inactiveClass;
+            if (drawerBtnEn) drawerBtnEn.className = activeClass;
+            if (drawerBtnDe) drawerBtnDe.className = inactiveClass;
+          } else {
+            if (btnDe) btnDe.className = activeClass;
+            if (btnEn) btnEn.className = inactiveClass;
+            if (drawerBtnDe) drawerBtnDe.className = activeClass;
+            if (drawerBtnEn) drawerBtnEn.className = inactiveClass;
+          }
+        }
+        if (btnEn && btnDe) {
+          btnEn.addEventListener("click", function () {
+            setLanguage("en");
+          });
+          btnDe.addEventListener("click", function () {
+            setLanguage("de");
+          });
+        }
+        if (drawerBtnEn && drawerBtnDe) {
+          drawerBtnEn.addEventListener("click", function () {
+            setLanguage("en");
+          });
+          drawerBtnDe.addEventListener("click", function () {
+            setLanguage("de");
+          });
+        }
+      })();
+    </script>
+    <script>
+      (function () {
+        var toggleBtn = document.getElementById("mobile-menu-toggle");
+        var drawerRoot = document.getElementById("mobile-drawer-root");
+        var drawerPanel = document.getElementById("mobile-drawer-panel");
+        var drawerBackdrop = document.getElementById("mobile-drawer-backdrop");
+        var closeBtn = document.getElementById("mobile-menu-close");
+
+        if (!toggleBtn || !drawerRoot || !drawerPanel) return;
+
+        function openDrawer() {
+          drawerRoot.classList.remove(
+            "opacity-0",
+            "invisible",
+            "pointer-events-none",
+          );
+          drawerRoot.classList.add("opacity-100");
+          drawerPanel.classList.remove("translate-x-full");
+          drawerPanel.classList.add("translate-x-0");
+          document.body.classList.add("overflow-hidden");
+        }
+
+        function closeDrawer() {
+          drawerRoot.classList.remove("opacity-100");
+          drawerRoot.classList.add(
+            "opacity-0",
+            "invisible",
+            "pointer-events-none",
+          );
+          drawerPanel.classList.remove("translate-x-0");
+          drawerPanel.classList.add("translate-x-full");
+          document.body.classList.remove("overflow-hidden");
+        }
+
+        toggleBtn.addEventListener("click", openDrawer);
+        if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+        if (drawerBackdrop)
+          drawerBackdrop.addEventListener("click", closeDrawer);
+
+        var links = drawerPanel.querySelectorAll("a");
+        links.forEach(function (l) {
+          l.addEventListener("click", closeDrawer);
+        });
+      })();
+    </script>
+  </body>
+</html>

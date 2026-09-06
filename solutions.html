@@ -1,29 +1,15 @@
-<html lang="en">
+<!doctype html>
+
+<html lang="en" style="">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <style>
-      @layer base {
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-        }
-        body {
-          overscroll-behavior: none;
-        }
-        main > :first-child {
-          margin-top: 0 !important;
-        }
-        main > :last-child {
-          margin-bottom: 0 !important;
-        }
-      }
-      ::-webkit-scrollbar {
-        display: none;
-      }
-    </style>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Paradoxx Solutions</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
       tailwind.config = {
         theme: {
@@ -143,20 +129,42 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-      rel="stylesheet"
-    />
-    <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
   </head>
   <body class="bg-background font-body-md text-on-surface">
+    <svg
+      aria-hidden="true"
+      class="inline-defs-container"
+      style="position: absolute; width: 0; height: 0; overflow: hidden"
+    ></svg>
     <header
       class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(17,19,24,0.04)]"
     >
       <div
-        class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between"
+        class="h-20 max-w-container-max mx-auto px-4 sm:px-md flex items-center justify-between"
       >
         <div class="flex items-center gap-sm">
           <img
@@ -174,62 +182,214 @@
         >
           <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_products"
             data-path="products"
             href="#"
             >Products</a
           ><a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_services"
             data-path="services"
             href="#"
             >Services</a
           ><a
             aria-current="page"
             class="transition-colors text-secondary font-semibold"
+            data-i18n="nav_solutions"
             data-path="solutions"
             href="#"
             >Solutions</a
           ><a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_industries"
             data-path="industries"
             href="#"
             >Industries</a
           ><a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_work"
             data-path="work"
             href="#"
             >Work</a
           ><a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_company"
             data-path="company"
             href="#"
             >Company</a
           >
         </nav>
-        <div class="flex items-center gap-md">
+        <div class="hidden lg:flex items-center gap-md">
+          <div
+            class="flex items-center bg-surface-container-high rounded-full p-1 text-caption font-label-mono"
+            id="lang-toggle-group"
+          >
+            <button
+              class="px-sm py-xs rounded-full bg-surface-container-lowest text-on-surface font-semibold shadow-sm transition-all"
+              id="btn-lang-en"
+              onclick="setLanguage('en')"
+            >
+              EN</button
+            ><button
+              class="px-sm py-xs rounded-full text-on-surface-variant hover:text-on-surface transition-all"
+              id="btn-lang-de"
+              onclick="setLanguage('de')"
+            >
+              DE
+            </button>
+          </div>
           <a
-            class="hidden sm:block text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            class="inline-flex items-center justify-center text-body-md font-body-md text-on-surface border border-outline-variant px-md py-xs rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-all"
+            data-i18n="nav_contact"
             data-path="contact"
             href="#"
             >Contact</a
           ><button
             class="bg-secondary text-on-secondary px-md py-xs rounded-lg text-body-md font-body-md hover:shadow-lg transition-all"
+            data-i18n="btn_start_project"
           >
             Start a project
           </button>
+        </div>
+        <button
+          aria-label="Toggle navigation menu"
+          class="lg:hidden p-2.5 text-neutral-800 hover:text-black focus:outline-none"
+          id="mobile-menu-toggle"
+        >
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+      <div
+        class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none lg:hidden"
+        id="mobile-drawer-backdrop"
+        onclick="closeMobileDrawer()"
+      ></div>
+      <aside
+        class="fixed top-0 right-0 h-full w-[85%] max-w-xs bg-surface-container-lowest shadow-2xl z-50 transform translate-x-full transition-all duration-300 lg:hidden flex flex-col justify-between overflow-y-auto border-l border-outline-variant/20"
+        id="mobile-sidebar-drawer"
+      >
+        <div class="p-md flex flex-col">
           <div
-            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
+            class="flex items-center justify-between pb-md border-b border-surface-variant/50 mb-md"
           >
-            <span class="material-symbols-outlined text-on-primary text-[18px]"
-              >person</span
+            <div class="flex flex-col">
+              <div class="flex items-center gap-xs">
+                <img
+                  alt="Paradoxx Logo"
+                  class="h-6 w-auto object-contain"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+                /><span
+                  class="font-headline-md text-xl text-primary font-semibold tracking-tight"
+                  >Paradoxx</span
+                >
+              </div>
+              <span class="font-label-mono text-[10px] text-outline mt-xs"
+                >53°23'N 8°08'E · Varel</span
+              >
+            </div>
+            <button
+              aria-label="Close menu"
+              class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none"
+              id="mobile-menu-close"
+              onclick="closeMobileDrawer()"
             >
+              <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+          </div>
+          <nav class="flex flex-col space-y-sm mb-lg">
+            <a
+              class="text-body-md font-body-md text-on-surface-variant hover:text-secondary py-1 transition-colors mobile-nav-link"
+              data-i18n="nav_products"
+              data-path="products"
+              href="#"
+              >Products</a
+            ><a
+              class="text-body-md font-body-md text-on-surface-variant hover:text-secondary py-1 transition-colors mobile-nav-link"
+              data-i18n="nav_services"
+              data-path="services"
+              href="#"
+              >Services</a
+            ><a
+              aria-current="page"
+              class="text-body-md font-semibold text-secondary py-1 transition-colors mobile-nav-link"
+              data-i18n="nav_solutions"
+              data-path="solutions"
+              href="#"
+              >Solutions</a
+            ><a
+              class="text-body-md font-body-md text-on-surface-variant hover:text-secondary py-1 transition-colors mobile-nav-link"
+              data-i18n="nav_industries"
+              data-path="industries"
+              href="#"
+              >Industries</a
+            ><a
+              class="text-body-md font-body-md text-on-surface-variant hover:text-secondary py-1 transition-colors mobile-nav-link"
+              data-i18n="nav_work"
+              data-path="work"
+              href="#"
+              >Work</a
+            ><a
+              class="text-body-md font-body-md text-on-surface-variant hover:text-secondary py-1 transition-colors mobile-nav-link"
+              data-i18n="nav_company"
+              data-path="company"
+              href="#"
+              >Company</a
+            ><a
+              class="text-body-md font-body-md text-on-surface-variant hover:text-secondary py-1 transition-colors mobile-nav-link"
+              data-i18n="nav_contact"
+              data-path="contact"
+              href="#"
+              >Contact</a
+            >
+          </nav>
+        </div>
+        <div
+          class="p-md border-t border-surface-variant/50 flex flex-col gap-md bg-surface-container-low"
+        >
+          <div class="flex items-center justify-between">
+            <span
+              class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+              >Language</span
+            >
+            <div
+              class="flex items-center bg-surface-container-high rounded-full p-1 text-caption font-label-mono"
+            >
+              <button
+                class="px-2.5 py-1 rounded-full bg-surface-container-lowest text-on-surface font-semibold shadow-sm transition-all"
+                id="btn-drawer-lang-en"
+                onclick="setLanguage('en')"
+              >
+                EN</button
+              ><button
+                class="px-2.5 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-all"
+                id="btn-drawer-lang-de"
+                onclick="setLanguage('de')"
+              >
+                DE
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col gap-sm">
+            <a
+              class="w-full inline-flex items-center justify-center text-body-md font-body-md text-on-surface border border-outline-variant py-2 px-md rounded-lg hover:bg-surface-container-high hover:text-on-surface transition-all text-center mobile-nav-link"
+              data-i18n="nav_contact"
+              data-path="contact"
+              href="#"
+              >Contact</a
+            ><button
+              class="w-full bg-secondary text-on-secondary py-2.5 px-md rounded-lg text-body-md font-medium hover:shadow-lg transition-all text-center mobile-nav-link"
+              data-i18n="btn_start_project"
+            >
+              Start a project
+            </button>
           </div>
         </div>
-      </div>
+      </aside>
     </header>
     <main class="w-full pt-20 bg-background">
       <div class="flex flex-col w-full">
         <section
-          class="w-full relative px-md lg:px-xl py-xl bg-background overflow-hidden"
+          class="w-full relative px-4 sm:px-md lg:px-xl py-lg lg:py-xl bg-background overflow-hidden"
         >
           <div
             class="absolute inset-0 pointer-events-none opacity-20 hidden md:block"
@@ -269,40 +429,44 @@
             <div class="lg:col-span-7 flex flex-col justify-center">
               <span
                 class="font-label-mono text-label-mono text-secondary mb-sm uppercase tracking-wider block"
+                data-i18n="hero_badge"
                 >[ SOLUTIONS ]</span
               >
               <h1
-                class="font-headline-xl text-headline-lg-mobile lg:text-headline-xl text-on-background mb-md max-w-3xl"
+                class="font-headline-xl text-3xl sm:text-5xl lg:text-headline-xl text-on-background mb-md max-w-3xl leading-tight sm:leading-tight"
+                data-i18n="hero_title"
               >
                 Engineered outcomes for complex business intent.
               </h1>
               <p
-                class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-lg"
+                class="font-body-lg text-body-md sm:text-body-lg text-on-surface-variant max-w-2xl mb-lg"
+                data-i18n="hero_desc"
               >
                 We organize our expertise around your specific challenges. From
                 validating new ventures to scaling enterprise infrastructure, we
                 provide end-to-end delivery frameworks tailored to your
                 operational realities.
               </p>
-              <div class="flex flex-wrap gap-sm">
+              <div class="flex flex-col sm:flex-row flex-wrap gap-sm">
                 <button
-                  class="bg-secondary text-on-secondary px-lg py-sm rounded-lg font-body-md text-body-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                  class="w-full sm:w-auto bg-secondary text-on-secondary px-lg py-sm rounded-lg font-body-md text-body-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-center"
+                  data-i18n="hero_btn_primary"
                 >
-                  Explore Capabilities
-                </button>
-                <button
-                  class="bg-surface text-on-surface border border-outline-variant px-lg py-sm rounded-lg font-body-md text-body-md hover:bg-surface-container-low transition-colors duration-300"
+                  Explore Capabilities</button
+                ><button
+                  class="w-full sm:w-auto bg-surface text-on-surface border border-outline-variant px-lg py-sm rounded-lg font-body-md text-body-md hover:bg-surface-container-low transition-colors duration-300 text-center"
+                  data-i18n="hero_btn_secondary"
                 >
                   View Methodology
                 </button>
               </div>
             </div>
-            <div class="lg:col-span-5 relative hidden lg:block">
+            <div class="lg:col-span-5 relative mt-md lg:mt-0">
               <div
-                class="absolute inset-0 bg-secondary/5 rounded-[40px] transform rotate-3 scale-105"
+                class="hidden lg:block absolute inset-0 bg-secondary/5 rounded-[40px] transform rotate-3 scale-105"
               ></div>
               <div
-                class="w-full h-[600px] rounded-[40px] overflow-hidden relative shadow-2xl z-10"
+                class="w-full h-[320px] sm:h-[450px] lg:h-[600px] rounded-2xl lg:rounded-[40px] overflow-hidden relative shadow-2xl z-10 bg-cover bg-center"
                 data-alt="Abstract architectural rendering showing structural frameworks and glowing data nodes connecting in a complex, minimalist European style. High contrast, using the brand's signal violet and neutral mist colors. The composition should suggest precise engineering and strategic planning."
                 style="
                   background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDWJfIK7rDJQm8T1FqGMvxuCiIvO78n9-zSBbH-kkTHQIfOCmiwvzj5ergLZQF82QarrtAbozJDkOyNB6g3DODzKZSmXIYV74U20-hMI48hMWOAh5hQeytxoHoIqcDVGjYlYT0GsUBkb_3YCJIHubc1LU2_r2HGU908PBSqFU02qEDp26HSPRbzqbG0Pue35MptNZAkJ0vfJfo5vpVwLQtgzvUlu5YwrKDXVQONyPNlPotg6Shgbfax&quot;);
@@ -311,13 +475,14 @@
                 <div
                   class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent mix-blend-multiply"
                 ></div>
-                <div class="absolute bottom-0 left-0 p-lg w-full">
+                <div class="absolute bottom-0 left-0 p-md sm:p-lg w-full">
                   <div class="flex items-center gap-xs mb-sm">
                     <span
                       class="w-2 h-2 rounded-full bg-secondary animate-pulse"
-                    ></span>
-                    <span
+                    ></span
+                    ><span
                       class="font-label-mono text-caption text-on-primary uppercase tracking-widest opacity-80"
+                      data-i18n="hero_sys_active"
                       >System Analysis Active</span
                     >
                   </div>
@@ -334,16 +499,20 @@
           </div>
         </section>
         <section
-          class="w-full px-md lg:px-xl py-xl bg-surface-container-lowest"
+          class="w-full px-4 sm:px-md lg:px-xl py-lg lg:py-xl bg-surface-container-lowest"
         >
           <div class="max-w-container-max mx-auto">
-            <div class="mb-xl max-w-3xl">
+            <div class="mb-lg lg:mb-xl max-w-3xl">
               <h2
-                class="font-headline-lg text-headline-lg text-on-surface mb-sm"
+                class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface mb-sm"
+                data-i18n="obj_section_title"
               >
                 Select your objective.
               </h2>
-              <p class="font-body-md text-body-md text-on-surface-variant">
+              <p
+                class="font-body-md text-body-md text-on-surface-variant"
+                data-i18n="obj_section_desc"
+              >
                 Navigate our solutions based on the immediate operational gap
                 you are trying to close.
               </p>
@@ -351,16 +520,14 @@
             <div
               class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md lg:gap-lg"
             >
-              <!-- Challenge 1 -->
-              <a
-                class="group block relative bg-background rounded-2xl p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+              <!-- Challenge 1 --><a
+                class="group block relative bg-background rounded-2xl p-6 sm:p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
                 href="#"
-              >
-                <div
+                ><div
                   class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-100 transition-opacity duration-500"
                 >
                   <span
-                    class="material-symbols-outlined text-[64px] text-secondary"
+                    class="material-symbols-outlined text-[48px] sm:text-[64px] text-secondary"
                     >lightbulb</span
                   >
                 </div>
@@ -369,12 +536,14 @@
                   >01</span
                 >
                 <h3
-                  class="font-headline-md text-headline-md text-on-surface mb-sm pr-12"
+                  class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-sm pr-12"
+                  data-i18n="c1_title"
                 >
                   "I have a new product idea."
                 </h3>
                 <p
-                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-[80px]"
+                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-0 sm:min-h-[80px]"
+                  data-i18n="c1_desc"
                 >
                   From concept validation to MVP development. We reduce risk
                   through rapid prototyping and user-centric architecture,
@@ -383,37 +552,36 @@
                 <div class="flex flex-wrap gap-xs mb-lg">
                   <span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c1_tag1"
                     >Strategy</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c1_tag2"
                     >Prototyping</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c1_tag3"
                     >MVP</span
                   >
                 </div>
                 <div
                   class="flex items-center text-secondary font-body-md text-body-md font-medium group-hover:gap-sm transition-all duration-300"
                 >
-                  <span>Explore Pathway</span>
-                  <span
+                  <span class="" data-i18n="card_explore_path"
+                    >Explore Pathway</span
+                  ><span
                     class="material-symbols-outlined text-[20px] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-4 group-hover:translate-x-0 duration-300"
                     >arrow_forward</span
                   >
-                </div>
-              </a>
-              <!-- Challenge 2 -->
-              <a
-                class="group block relative bg-background rounded-2xl p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+                </div></a
+              ><!-- Challenge 2 --><a
+                class="group block relative bg-background rounded-2xl p-6 sm:p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
                 href="#"
-              >
-                <div
+                ><div
                   class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-100 transition-opacity duration-500"
                 >
                   <span
-                    class="material-symbols-outlined text-[64px] text-secondary"
+                    class="material-symbols-outlined text-[48px] sm:text-[64px] text-secondary"
                     >autorenew</span
                   >
                 </div>
@@ -422,12 +590,14 @@
                   >02</span
                 >
                 <h3
-                  class="font-headline-md text-headline-md text-on-surface mb-sm pr-12"
+                  class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-sm pr-12"
+                  data-i18n="c2_title"
                 >
                   "I need to automate a process."
                 </h3>
                 <p
-                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-[80px]"
+                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-0 sm:min-h-[80px]"
+                  data-i18n="c2_desc"
                 >
                   Identify bottlenecks and deploy custom internal tooling or
                   AI-driven workflows to reduce manual overhead and increase
@@ -436,37 +606,36 @@
                 <div class="flex flex-wrap gap-xs mb-lg">
                   <span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c2_tag1"
                     >RPA</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c2_tag2"
                     >Workflow Design</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c2_tag3"
                     >Internal Tools</span
                   >
                 </div>
                 <div
                   class="flex items-center text-secondary font-body-md text-body-md font-medium group-hover:gap-sm transition-all duration-300"
                 >
-                  <span>Explore Pathway</span>
-                  <span
+                  <span class="" data-i18n="card_explore_path"
+                    >Explore Pathway</span
+                  ><span
                     class="material-symbols-outlined text-[20px] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-4 group-hover:translate-x-0 duration-300"
                     >arrow_forward</span
                   >
-                </div>
-              </a>
-              <!-- Challenge 3 -->
-              <a
-                class="group block relative bg-background rounded-2xl p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+                </div></a
+              ><!-- Challenge 3 --><a
+                class="group block relative bg-background rounded-2xl p-6 sm:p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
                 href="#"
-              >
-                <div
+                ><div
                   class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-100 transition-opacity duration-500"
                 >
                   <span
-                    class="material-symbols-outlined text-[64px] text-secondary"
+                    class="material-symbols-outlined text-[48px] sm:text-[64px] text-secondary"
                     >architecture</span
                   >
                 </div>
@@ -475,12 +644,14 @@
                   >03</span
                 >
                 <h3
-                  class="font-headline-md text-headline-md text-on-surface mb-sm pr-12"
+                  class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-sm pr-12"
+                  data-i18n="c3_title"
                 >
                   "I need to modernise software."
                 </h3>
                 <p
-                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-[80px]"
+                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-0 sm:min-h-[80px]"
+                  data-i18n="c3_desc"
                 >
                   Refactor legacy codebases, migrate to scalable cloud
                   architectures, and update UI/UX systems without disrupting
@@ -489,37 +660,36 @@
                 <div class="flex flex-wrap gap-xs mb-lg">
                   <span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c3_tag1"
                     >Cloud Migration</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c3_tag2"
                     >Refactoring</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c3_tag3"
                     >UX Revamp</span
                   >
                 </div>
                 <div
                   class="flex items-center text-secondary font-body-md text-body-md font-medium group-hover:gap-sm transition-all duration-300"
                 >
-                  <span>Explore Pathway</span>
-                  <span
+                  <span class="" data-i18n="card_explore_path"
+                    >Explore Pathway</span
+                  ><span
                     class="material-symbols-outlined text-[20px] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-4 group-hover:translate-x-0 duration-300"
                     >arrow_forward</span
                   >
-                </div>
-              </a>
-              <!-- Challenge 4 -->
-              <a
-                class="group block relative bg-background rounded-2xl p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+                </div></a
+              ><!-- Challenge 4 --><a
+                class="group block relative bg-background rounded-2xl p-6 sm:p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
                 href="#"
-              >
-                <div
+                ><div
                   class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-100 transition-opacity duration-500"
                 >
                   <span
-                    class="material-symbols-outlined text-[64px] text-secondary"
+                    class="material-symbols-outlined text-[48px] sm:text-[64px] text-secondary"
                     >smart_toy</span
                   >
                 </div>
@@ -528,12 +698,14 @@
                   >04</span
                 >
                 <h3
-                  class="font-headline-md text-headline-md text-on-surface mb-sm pr-12"
+                  class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-sm pr-12"
+                  data-i18n="c4_title"
                 >
                   "I want to use AI responsibly."
                 </h3>
                 <p
-                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-[80px]"
+                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-0 sm:min-h-[80px]"
+                  data-i18n="c4_desc"
                 >
                   Integrate Large Language Models and machine learning securely.
                   We focus on ethical deployment, data privacy, and measurable
@@ -542,37 +714,36 @@
                 <div class="flex flex-wrap gap-xs mb-lg">
                   <span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c4_tag1"
                     >LLM Integration</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c4_tag2"
                     >Data Privacy</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c4_tag3"
                     >ML Ops</span
                   >
                 </div>
                 <div
                   class="flex items-center text-secondary font-body-md text-body-md font-medium group-hover:gap-sm transition-all duration-300"
                 >
-                  <span>Explore Pathway</span>
-                  <span
+                  <span class="" data-i18n="card_explore_path"
+                    >Explore Pathway</span
+                  ><span
                     class="material-symbols-outlined text-[20px] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-4 group-hover:translate-x-0 duration-300"
                     >arrow_forward</span
                   >
-                </div>
-              </a>
-              <!-- Challenge 5 -->
-              <a
-                class="group block relative bg-background rounded-2xl p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+                </div></a
+              ><!-- Challenge 5 --><a
+                class="group block relative bg-background rounded-2xl p-6 sm:p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
                 href="#"
-              >
-                <div
+                ><div
                   class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-100 transition-opacity duration-500"
                 >
                   <span
-                    class="material-symbols-outlined text-[64px] text-secondary"
+                    class="material-symbols-outlined text-[48px] sm:text-[64px] text-secondary"
                     >hub</span
                   >
                 </div>
@@ -581,12 +752,14 @@
                   >05</span
                 >
                 <h3
-                  class="font-headline-md text-headline-md text-on-surface mb-sm pr-12"
+                  class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-sm pr-12"
+                  data-i18n="c5_title"
                 >
                   "I need to connect systems."
                 </h3>
                 <p
-                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-[80px]"
+                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-0 sm:min-h-[80px]"
+                  data-i18n="c5_desc"
                 >
                   Build robust APIs and middleware to unify siloed data. Ensure
                   seamless communication between legacy software and modern SaaS
@@ -595,37 +768,36 @@
                 <div class="flex flex-wrap gap-xs mb-lg">
                   <span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c5_tag1"
                     >API Design</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c5_tag2"
                     >Middleware</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c5_tag3"
                     >Data Lakes</span
                   >
                 </div>
                 <div
                   class="flex items-center text-secondary font-body-md text-body-md font-medium group-hover:gap-sm transition-all duration-300"
                 >
-                  <span>Explore Pathway</span>
-                  <span
+                  <span class="" data-i18n="card_explore_path"
+                    >Explore Pathway</span
+                  ><span
                     class="material-symbols-outlined text-[20px] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-4 group-hover:translate-x-0 duration-300"
                     >arrow_forward</span
                   >
-                </div>
-              </a>
-              <!-- Challenge 6 -->
-              <a
-                class="group block relative bg-background rounded-2xl p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+                </div></a
+              ><!-- Challenge 6 --><a
+                class="group block relative bg-background rounded-2xl p-6 sm:p-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
                 href="#"
-              >
-                <div
+                ><div
                   class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-100 transition-opacity duration-500"
                 >
                   <span
-                    class="material-symbols-outlined text-[64px] text-secondary"
+                    class="material-symbols-outlined text-[48px] sm:text-[64px] text-secondary"
                     >support_agent</span
                   >
                 </div>
@@ -634,12 +806,14 @@
                   >06</span
                 >
                 <h3
-                  class="font-headline-md text-headline-md text-on-surface mb-sm pr-12"
+                  class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-sm pr-12"
+                  data-i18n="c6_title"
                 >
                   "I need support for an existing product."
                 </h3>
                 <p
-                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-[80px]"
+                  class="font-body-md text-body-md text-on-surface-variant mb-lg min-h-0 sm:min-h-[80px]"
+                  data-i18n="c6_desc"
                 >
                   Comprehensive SLA-driven maintenance, performance
                   optimization, and continuous iteration for products already in
@@ -648,48 +822,53 @@
                 <div class="flex flex-wrap gap-xs mb-lg">
                   <span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c6_tag1"
                     >SLA Management</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c6_tag2"
                     >Optimization</span
-                  >
-                  <span
+                  ><span
                     class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-md font-label-mono text-[10px] uppercase"
+                    data-i18n="c6_tag3"
                     >DevOps</span
                   >
                 </div>
                 <div
                   class="flex items-center text-secondary font-body-md text-body-md font-medium group-hover:gap-sm transition-all duration-300"
                 >
-                  <span>Explore Pathway</span>
-                  <span
+                  <span class="" data-i18n="card_explore_path"
+                    >Explore Pathway</span
+                  ><span
                     class="material-symbols-outlined text-[20px] opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-4 group-hover:translate-x-0 duration-300"
                     >arrow_forward</span
                   >
-                </div>
-              </a>
+                </div></a
+              >
             </div>
           </div>
         </section>
         <section
-          class="w-full px-md lg:px-xl py-xl bg-background border-t border-surface-variant/50"
+          class="w-full px-4 sm:px-md lg:px-xl py-lg lg:py-xl bg-background border-t border-surface-variant/50"
         >
           <div
-            class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-xl items-center"
+            class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-lg lg:gap-xl items-center"
           >
             <div>
               <span
                 class="font-label-mono text-label-mono text-secondary mb-sm uppercase tracking-wider block"
+                data-i18n="deliv_badge"
                 >End-to-End Delivery</span
               >
               <h2
-                class="font-headline-lg text-headline-lg text-on-surface mb-md"
+                class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface mb-md"
+                data-i18n="deliv_title"
               >
                 Beyond isolated components.
               </h2>
               <p
-                class="font-body-lg text-body-lg text-on-surface-variant mb-lg"
+                class="font-body-lg text-body-md sm:text-body-lg text-on-surface-variant mb-lg"
+                data-i18n="deliv_desc"
               >
                 We don't just write code; we engineer products. Our delivery
                 methodology ensures that strategy, design, and engineering
@@ -708,11 +887,13 @@
                   <div>
                     <h4
                       class="font-headline-md text-body-md text-on-surface mb-xs font-semibold"
+                      data-i18n="step1_title"
                     >
                       1. Alignment &amp; Discovery
                     </h4>
                     <p
                       class="font-body-md text-body-md text-on-surface-variant"
+                      data-i18n="step1_desc"
                     >
                       Mapping technological capabilities to strategic business
                       objectives before a single line of code is written.
@@ -730,11 +911,13 @@
                   <div>
                     <h4
                       class="font-headline-md text-body-md text-on-surface mb-xs font-semibold"
+                      data-i18n="step2_title"
                     >
                       2. Architecture &amp; Design
                     </h4>
                     <p
                       class="font-body-md text-body-md text-on-surface-variant"
+                      data-i18n="step2_desc"
                     >
                       Defining scalable systems and human-centric interfaces
                       that dictate clear development pathways.
@@ -752,11 +935,13 @@
                   <div>
                     <h4
                       class="font-headline-md text-body-md text-on-surface mb-xs font-semibold"
+                      data-i18n="step3_title"
                     >
                       3. Agile Engineering
                     </h4>
                     <p
                       class="font-body-md text-body-md text-on-surface-variant"
+                      data-i18n="step3_desc"
                     >
                       Iterative, test-driven development ensuring high-quality,
                       maintainable software delivery.
@@ -766,7 +951,7 @@
               </div>
             </div>
             <div
-              class="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-xl"
+              class="relative h-[320px] sm:h-[450px] lg:h-[500px] w-full rounded-2xl overflow-hidden shadow-xl bg-cover bg-center"
               data-alt="A macro shot of a sleek, dark-themed digital workspace showing intricate wireframes overlapping with lines of code. Subtle volumetric lighting highlights the depth between the strategy and execution layers. Minimalist, premium tech aesthetic with touches of signal violet."
               style="
                 background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDby3wbGSxhTdWrmntV1SRbMuIu_IBxWHQSK7TWQQRJgps8VHrfAzeiaFXb9oHM1vGKuPEewiCsqBqnzPl63KtxTB7cei3pBo-dJR1Wa-u8KgZw4BDG5OBI-ZlHQ0uSm3qe56igkBdeiyw6PAPZl7lQ4-rInBjuz_wLU7-g90keT88UlQSFI012G1l109zGCnZazLSvKq1vqRNhGzau8He2r2RRnSmP3WMNyiL3jNES_RCdmCw7R2nl&quot;);
@@ -774,14 +959,15 @@
             >
               <div class="absolute inset-0 bg-primary/20"></div>
               <div
-                class="absolute bottom-md right-md bg-surface-container-lowest/90 backdrop-blur-md p-md rounded-xl max-w-xs shadow-lg border border-outline-variant/20"
+                class="absolute bottom-sm right-sm sm:bottom-md sm:right-md bg-surface-container-lowest/90 backdrop-blur-md p-sm sm:p-md rounded-xl max-w-[calc(100%-2rem)] sm:max-w-xs shadow-lg border border-outline-variant/20"
               >
                 <div class="flex items-center gap-sm mb-xs">
-                  <span class="material-symbols-outlined text-secondary"
-                    >check_circle</span
-                  >
                   <span
-                    class="font-label-mono text-label-mono text-on-surface font-semibold"
+                    class="material-symbols-outlined text-secondary text-[20px]"
+                    >check_circle</span
+                  ><span
+                    class="font-label-mono text-caption sm:text-label-mono text-on-surface font-semibold"
+                    data-i18n="badge_velocity"
                     >Delivery Velocity</span
                   >
                 </div>
@@ -801,7 +987,7 @@
     <footer
       class="w-full bg-surface-container-lowest py-xl shadow-[0_-4px_20px_rgba(17,19,24,0.02)]"
     >
-      <div class="max-w-container-max mx-auto px-md">
+      <div class="max-w-container-max mx-auto px-4 sm:px-md">
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg mb-xl"
         >
@@ -817,67 +1003,481 @@
             </div>
             <p
               class="text-body-md font-body-md text-on-surface-variant max-w-xs mb-sm"
+              data-i18n="footer_desc"
             >
               Software, digital products and technological services engineered
               for human intent.
             </p>
-            <p class="text-caption font-caption text-outline">Varel, Germany</p>
+            <p
+              class="text-caption font-caption text-outline"
+              data-i18n="footer_loc"
+            >
+              Varel, Germany
+            </p>
           </div>
           <div>
-            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_company_title"
+            >
               Company
             </h4>
             <ul
               class="space-y-sm text-body-md font-body-md text-on-surface-variant"
             >
-              <li><a class="hover:text-secondary" href="#">About Us</a></li>
-              <li><a class="hover:text-secondary" href="#">Careers</a></li>
-              <li><a class="hover:text-secondary" href="#">News</a></li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_about"
+                  href="#"
+                  >About</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_story"
+                  href="#"
+                  >Story</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_lead"
+                  href="#"
+                  >Leadership</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_careers"
+                  href="#"
+                  >Careers</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_news"
+                  href="#"
+                  >Newsroom</a
+                >
+              </li>
             </ul>
           </div>
           <div>
-            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_cap_title"
+            >
               Capabilities
             </h4>
             <ul
               class="space-y-sm text-body-md font-body-md text-on-surface-variant"
             >
-              <li><a class="hover:text-secondary" href="#">Strategy</a></li>
-              <li><a class="hover:text-secondary" href="#">Design</a></li>
-              <li><a class="hover:text-secondary" href="#">Engineering</a></li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_services"
+                  href="#"
+                  >Services</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_products"
+                  href="#"
+                  >Products</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_solutions"
+                  href="#"
+                  >Solutions</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_industries"
+                  href="#"
+                  >Industries</a
+                >
+              </li>
+              <li class="">
+                <a class="hover:text-secondary" data-i18n="ft_cap_work" href="#"
+                  >Work</a
+                >
+              </li>
             </ul>
           </div>
           <div>
-            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_res_title"
+            >
               Resources
             </h4>
             <ul
               class="space-y-sm text-body-md font-body-md text-on-surface-variant"
             >
-              <li>
-                <a class="hover:text-secondary" href="#">Documentation</a>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_insights"
+                  href="#"
+                  >Insights</a
+                >
               </li>
-              <li><a class="hover:text-secondary" href="#">Support</a></li>
-              <li><a class="hover:text-secondary" href="#">Case Studies</a></li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_research"
+                  href="#"
+                  >Research</a
+                >
+              </li>
+              <li class="">
+                <a class="hover:text-secondary" data-i18n="ft_res_faqs" href="#"
+                  >FAQs</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_support"
+                  href="#"
+                  >Support</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_contact"
+                  href="#"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
         </div>
         <div
           class="border-t border-outline-variant pt-md flex flex-col md:flex-row justify-between items-center gap-md"
         >
-          <span class="text-caption font-caption text-on-surface-variant"
-            >© 2024 Paradoxx UG (haftungsbeschränkt). All rights reserved.</span
+          <span
+            class="text-caption font-caption text-on-surface-variant text-center md:text-left"
+            data-i18n="footer_copyright"
+            >© <span class="current-year">2026</span> Paradoxx UG
+            (haftungsbeschränkt). All rights reserved.</span
           >
           <div
-            class="flex gap-md text-caption font-caption text-on-surface-variant"
+            class="flex flex-wrap justify-center gap-md text-caption font-caption text-on-surface-variant"
           >
-            <a class="hover:text-secondary" href="#">Privacy Policy</a
-            ><a class="hover:text-secondary" href="#">Terms of Service</a
-            ><a class="hover:text-secondary" href="#">Legal Notice</a>
+            <a class="hover:text-secondary" data-i18n="footer_privacy" href="#"
+              >Privacy Policy</a
+            ><a class="hover:text-secondary" data-i18n="footer_terms" href="#"
+              >Terms of Service</a
+            ><a class="hover:text-secondary" data-i18n="footer_legal" href="#"
+              >Legal Notice</a
+            >
           </div>
         </div>
       </div>
     </footer>
+    <script>
+      const translations = {
+        en: {
+          nav_products: "Products",
+          nav_services: "Services",
+          nav_solutions: "Solutions",
+          nav_industries: "Industries",
+          nav_work: "Work",
+          nav_company: "Company",
+          nav_contact: "Contact",
+          btn_start_project: "Start a project",
+          hero_badge: "[ SOLUTIONS ]",
+          hero_title: "Engineered outcomes for complex business intent.",
+          hero_desc:
+            "We organize our expertise around your specific challenges. From validating new ventures to scaling enterprise infrastructure, we provide end-to-end delivery frameworks tailored to your operational realities.",
+          hero_btn_primary: "Explore Capabilities",
+          hero_btn_secondary: "View Methodology",
+          hero_sys_active: "System Analysis Active",
+          obj_section_title: "Select your objective.",
+          obj_section_desc:
+            "Navigate our solutions based on the immediate operational gap you are trying to close.",
+          c1_title: '"I have a new product idea."',
+          c1_desc:
+            "From concept validation to MVP development. We reduce risk through rapid prototyping and user-centric architecture, ensuring product-market fit before scaling.",
+          c1_tag1: "Strategy",
+          c1_tag2: "Prototyping",
+          c1_tag3: "MVP",
+          c2_title: '"I need to automate a process."',
+          c2_desc:
+            "Identify bottlenecks and deploy custom internal tooling or AI-driven workflows to reduce manual overhead and increase operational velocity.",
+          c2_tag1: "RPA",
+          c2_tag2: "Workflow Design",
+          c2_tag3: "Internal Tools",
+          c3_title: '"I need to modernise software."',
+          c3_desc:
+            "Refactor legacy codebases, migrate to scalable cloud architectures, and update UI/UX systems without disrupting current business operations.",
+          c3_tag1: "Cloud Migration",
+          c3_tag2: "Refactoring",
+          c3_tag3: "UX Revamp",
+          c4_title: '"I want to use AI responsibly."',
+          c4_desc:
+            "Integrate Large Language Models and machine learning securely. We focus on ethical deployment, data privacy, and measurable ROI for AI initiatives.",
+          c4_tag1: "LLM Integration",
+          c4_tag2: "Data Privacy",
+          c4_tag3: "ML Ops",
+          c5_title: '"I need to connect systems."',
+          c5_desc:
+            "Build robust APIs and middleware to unify siloed data. Ensure seamless communication between legacy software and modern SaaS platforms.",
+          c5_tag1: "API Design",
+          c5_tag2: "Middleware",
+          c5_tag3: "Data Lakes",
+          c6_title: '"I need support for an existing product."',
+          c6_desc:
+            "Comprehensive SLA-driven maintenance, performance optimization, and continuous iteration for products already in market.",
+          c6_tag1: "SLA Management",
+          c6_tag2: "Optimization",
+          c6_tag3: "DevOps",
+          card_explore_path: "Explore Pathway",
+          deliv_badge: "End-to-End Delivery",
+          deliv_title: "Beyond isolated components.",
+          deliv_desc:
+            "We don't just write code; we engineer products. Our delivery methodology ensures that strategy, design, and engineering operate as a single, coherent unit focused on your business intent.",
+          step1_title: "1. Alignment & Discovery",
+          step1_desc:
+            "Mapping technological capabilities to strategic business objectives before a single line of code is written.",
+          step2_title: "2. Architecture & Design",
+          step2_desc:
+            "Defining scalable systems and human-centric interfaces that dictate clear development pathways.",
+          step3_title: "3. Agile Engineering",
+          step3_desc:
+            "Iterative, test-driven development ensuring high-quality, maintainable software delivery.",
+          badge_velocity: "Delivery Velocity",
+          footer_desc:
+            "Software, digital products and technological services engineered for human intent.",
+          footer_loc: "Varel, Germany",
+          ft_company_title: "Company",
+          ft_company_about: "About",
+          ft_company_story: "Story",
+          ft_company_lead: "Leadership",
+          ft_company_careers: "Careers",
+          ft_company_news: "Newsroom",
+          ft_cap_title: "Capabilities",
+          ft_cap_services: "Services",
+          ft_cap_products: "Products",
+          ft_cap_solutions: "Solutions",
+          ft_cap_industries: "Industries",
+          ft_cap_work: "Work",
+          ft_res_title: "Resources",
+          ft_res_insights: "Insights",
+          ft_res_research: "Research",
+          ft_res_faqs: "FAQs",
+          ft_res_support: "Support",
+          ft_res_contact: "Contact",
+          footer_copyright:
+            "© {YEAR} Paradoxx UG (haftungsbeschränkt). All rights reserved.",
+          footer_privacy: "Privacy Policy",
+          footer_terms: "Terms of Service",
+          footer_legal: "Legal Notice",
+        },
+        de: {
+          nav_products: "Produkte",
+          nav_services: "Leistungen",
+          nav_solutions: "Lösungen",
+          nav_industries: "Branchen",
+          nav_work: "Referenzen",
+          nav_company: "Unternehmen",
+          nav_contact: "Kontakt",
+          btn_start_project: "Projekt starten",
+          hero_badge: "[ LÖSUNGEN ]",
+          hero_title:
+            "Entwickelte Ergebnisse für komplexe geschäftliche Absichten.",
+          hero_desc:
+            "Wir organisieren unsere Expertise um Ihre spezifischen Herausforderungen. Von der Validierung neuer Initiativen bis zur Skalierung von Unternehmensinfrastrukturen bieten wir ganzheitliche Umsetzungsmodelle, abgestimmt auf Ihre betriebliche Realität.",
+          hero_btn_primary: "Kompetenzen erkunden",
+          hero_btn_secondary: "Methodik ansehen",
+          hero_sys_active: "Systemanalyse Aktiv",
+          obj_section_title: "Wählen Sie Ihr Ziel.",
+          obj_section_desc:
+            "Navigieren Sie durch unsere Lösungen basierend auf der unmittelbaren betrieblichen Lücke, die Sie schließen möchten.",
+          c1_title: '"Ich habe eine neue Produktidee."',
+          c1_desc:
+            "Von der Konzeptvalidierung bis zum MVP. Wir minimieren Risiken durch schnelles Prototyping und nutzerzentrierte Architektur – für gesichertes Product-Market-Fit vor der Skalierung.",
+          c1_tag1: "Strategie",
+          c1_tag2: "Prototyping",
+          c1_tag3: "MVP",
+          c2_title: '"Ich muss einen Prozess automatisieren."',
+          c2_desc:
+            "Engpässe identifizieren und maßgeschneiderte interne Tools oder KI-gestützte Workflows etablieren, um manuelle Aufwände zu senken und die Prozessgeschwindigkeit zu steigern.",
+          c2_tag1: "RPA",
+          c2_tag2: "Workflow-Design",
+          c2_tag3: "Interne Tools",
+          c3_title: '"Ich muss Software modernisieren."',
+          c3_desc:
+            "Altsysteme refaktorisieren, in skalierbare Cloud-Architekturen überführen und UX/UI modernisieren – ganz ohne Unterbrechung Ihres laufenden Geschäftsbetriebs.",
+          c3_tag1: "Cloud-Migration",
+          c3_tag2: "Refactoring",
+          c3_tag3: "UX-Relaunch",
+          c4_title: '"Ich möchte KI verantwortungsvoll einsetzen."',
+          c4_desc:
+            "LLMs und Machine Learning sicher integrieren. Wir fokussieren uns auf ethischen Einsatz, Datenschutz und messbaren ROI für Ihre KI-Initiativen.",
+          c4_tag1: "LLM-Integration",
+          c4_tag2: "Datenschutz",
+          c4_tag3: "ML Ops",
+          c5_title: '"Ich muss Systeme verbinden."',
+          c5_desc:
+            "Robuste APIs und Middleware entwickeln, um Datensilos aufzubrechen. Nahtlose Kommunikation zwischen Legacy-Systemen und modernen SaaS-Plattformen garantieren.",
+          c5_tag1: "API-Design",
+          c5_tag2: "Middleware",
+          c5_tag3: "Data Lakes",
+          c6_title: '"Ich benötige Support für ein bestehendes Produkt."',
+          c6_desc:
+            "Umfassende SLA-Wartung, Performance-Optimierung und kontinuierliche Weiterentwicklung für bereits am Markt etablierte Softwareprodukte.",
+          c6_tag1: "SLA-Betreuung",
+          c6_tag2: "Optimierung",
+          c6_tag3: "DevOps",
+          card_explore_path: "Pfad erkunden",
+          deliv_badge: "End-to-End Delivery",
+          deliv_title: "Mehr als isolierte Komponenten.",
+          deliv_desc:
+            "Wir schreiben nicht bloß Code; wir entwickeln Produkte. Unsere Liefermethodik stellt sicher, dass Strategie, Design und Engineering als homogene, kohärente Einheit auf Ihre Unternehmensziele ausgerichtet sind.",
+          step1_title: "1. Ausrichtung & Entdeckung",
+          step1_desc:
+            "Technologische Möglichkeiten mit strategischen Unternehmenszielen abstimmen, bevor eine einzige Zeile Code entsteht.",
+          step2_title: "2. Architektur & Design",
+          step2_desc:
+            "Definition skalierbarer Systeme und nutzerorientierter Oberflächen als klares Fundament der Entwicklung.",
+          step3_title: "3. Agile Entwicklung",
+          step3_desc:
+            "Iterative, testgetriebene Entwicklung für langlebige, wartungsfreundliche Software auf höchstem Niveau.",
+          badge_velocity: "Liefergeschwindigkeit",
+          footer_desc:
+            "Software, digitale Produkte und Technologiedienste – entwickelt für menschliche Absichten.",
+          footer_loc: "Varel, Deutschland",
+          ft_company_title: "Unternehmen",
+          ft_company_about: "Über uns",
+          ft_company_story: "Geschichte",
+          ft_company_lead: "Führungsebene",
+          ft_company_careers: "Karriere",
+          ft_company_news: "Newsroom",
+          ft_cap_title: "Kompetenzen",
+          ft_cap_services: "Leistungen",
+          ft_cap_products: "Produkte",
+          ft_cap_solutions: "Lösungen",
+          ft_cap_industries: "Branchen",
+          ft_cap_work: "Referenzen",
+          ft_res_title: "Ressourcen",
+          ft_res_insights: "Einblicke",
+          ft_res_research: "Forschung",
+          ft_res_faqs: "FAQs",
+          ft_res_support: "Support",
+          ft_res_contact: "Kontakt",
+          footer_copyright:
+            "© {YEAR} Paradoxx UG (haftungsbeschränkt). Alle Rechte vorbehalten.",
+          footer_privacy: "Datenschutzerklärung",
+          footer_terms: "AGB",
+          footer_legal: "Impressum",
+        },
+      };
+
+      function openMobileDrawer() {
+        const drawer = document.getElementById("mobile-sidebar-drawer");
+        const backdrop = document.getElementById("mobile-drawer-backdrop");
+        if (drawer && backdrop) {
+          drawer.classList.remove("translate-x-full");
+          backdrop.classList.remove("opacity-0", "pointer-events-none");
+          backdrop.classList.add("opacity-100", "pointer-events-auto");
+          document.body.classList.add("overflow-hidden");
+        }
+      }
+
+      function closeMobileDrawer() {
+        const drawer = document.getElementById("mobile-sidebar-drawer");
+        const backdrop = document.getElementById("mobile-drawer-backdrop");
+        if (drawer && backdrop) {
+          drawer.classList.add("translate-x-full");
+          backdrop.classList.remove("opacity-100", "pointer-events-auto");
+          backdrop.classList.add("opacity-0", "pointer-events-none");
+          document.body.classList.remove("overflow-hidden");
+        }
+      }
+
+      function setLanguage(lang) {
+        const currentYear = new Date().getFullYear();
+        document.documentElement.lang = lang;
+
+        const btnEn = document.getElementById("btn-lang-en");
+        const btnDe = document.getElementById("btn-lang-de");
+        const btnDrawerEn = document.getElementById("btn-drawer-lang-en");
+        const btnDrawerDe = document.getElementById("btn-drawer-lang-de");
+
+        const activeClasses = [
+          "bg-surface-container-lowest",
+          "text-on-surface",
+          "font-semibold",
+          "shadow-sm",
+        ];
+        const inactiveClasses = [
+          "text-on-surface-variant",
+          "hover:text-on-surface",
+        ];
+
+        const applyClasses = (activeEl, inactiveEl) => {
+          if (activeEl && inactiveEl) {
+            activeEl.classList.add(...activeClasses);
+            activeEl.classList.remove(...inactiveClasses);
+            inactiveEl.classList.remove(...activeClasses);
+            inactiveEl.classList.add(...inactiveClasses);
+          }
+        };
+
+        if (lang === "en") {
+          applyClasses(btnEn, btnDe);
+          applyClasses(btnDrawerEn, btnDrawerDe);
+        } else {
+          applyClasses(btnDe, btnEn);
+          applyClasses(btnDrawerDe, btnDrawerEn);
+        }
+
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang] && translations[lang][key]) {
+            let text = translations[lang][key];
+            if (key === "footer_copyright") {
+              text = text.replace("{YEAR}", currentYear);
+            }
+            el.textContent = text;
+          }
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".current-year").forEach(function (el) {
+          el.textContent = new Date().getFullYear();
+        });
+
+        const toggleBtn = document.getElementById("mobile-menu-toggle");
+        if (toggleBtn) {
+          toggleBtn.addEventListener("click", openMobileDrawer);
+        }
+
+        const closeBtn = document.getElementById("mobile-menu-close");
+        if (closeBtn) {
+          closeBtn.addEventListener("click", closeMobileDrawer);
+        }
+
+        document.querySelectorAll(".mobile-nav-link").forEach(function (link) {
+          link.addEventListener("click", closeMobileDrawer);
+        });
+      });
+    </script>
   </body>
 </html>
-\

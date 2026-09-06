@@ -1,0 +1,2126 @@
+<!doctype html>
+<html class="scroll-smooth" lang="en" style="">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Paradoxx — Engineering Digital Products</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Subtle custom interactive touches */
+      .nav-link-hover {
+        position: relative;
+      }
+      .nav-link-hover::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #5129e5;
+        transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 9999px;
+      }
+      .nav-link-hover:hover::after {
+        width: 100%;
+      }
+      .footer-link-hover {
+        position: relative;
+        display: inline-block;
+      }
+      .footer-link-hover::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1.5px;
+        bottom: -1px;
+        left: 0;
+        background-color: #5129e5;
+        transition: width 0.2s ease-in-out;
+      }
+      .footer-link-hover:hover::after {
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#00497c",
+              "outline-variant": "#c6c6cb",
+              "tertiary-container": "#001d36",
+              "inverse-on-surface": "#f0f1f3",
+              surface: "#f8f9fb",
+              "primary-fixed-dim": "#c6c6cd",
+              "surface-container-low": "#f2f4f6",
+              "on-surface-variant": "#46464b",
+              "on-primary-fixed-variant": "#45474c",
+              "secondary-fixed-dim": "#c8bfff",
+              "on-tertiary-fixed": "#001d36",
+              "on-secondary-container": "#f3eeff",
+              "on-tertiary-container": "#1588dd",
+              "primary-container": "#1a1b21",
+              "surface-bright": "#f8f9fb",
+              "inverse-primary": "#c6c6cd",
+              "tertiary-fixed": "#d1e4ff",
+              "surface-container-highest": "#e1e2e4",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#e5deff",
+              "on-error": "#ffffff",
+              "surface-container": "#edeef0",
+              "on-error-container": "#93000a",
+              "on-background": "#191c1e",
+              "secondary-container": "#6a4bfd",
+              secondary: "#5129e5",
+              "error-container": "#ffdad6",
+              "surface-dim": "#d9dadc",
+              background: "#f8f9fb",
+              "on-secondary-fixed": "#190064",
+              tertiary: "#000000",
+              "inverse-surface": "#2e3132",
+              "on-surface": "#191c1e",
+              "primary-fixed": "#e2e2e9",
+              outline: "#76777b",
+              "on-secondary-fixed-variant": "#4206d7",
+              "surface-tint": "#5d5e64",
+              "surface-variant": "#e1e2e4",
+              "tertiary-fixed-dim": "#9dcaff",
+              "on-primary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              primary: "#000000",
+              "on-primary-fixed": "#1a1b21",
+              "surface-container-high": "#e7e8ea",
+              "on-primary-container": "#82838a",
+              error: "#ba1a1a",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              xl: "80px",
+              unit: "4px",
+              md: "24px",
+              lg: "48px",
+              sm: "16px",
+              gutter: "24px",
+              xs: "8px",
+              "container-max": "1280px",
+            },
+            fontFamily: {
+              "body-md": ["Inter"],
+              "headline-xl": ["Space Grotesk"],
+              "body-lg": ["Inter"],
+              "headline-lg": ["Space Grotesk"],
+              "label-mono": ["IBM Plex Mono"],
+              caption: ["Inter"],
+              "headline-md": ["Space Grotesk"],
+              "headline-lg-mobile": ["Space Grotesk"],
+            },
+            fontSize: {
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "headline-xl": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-mono": ["14px", { lineHeight: "1.2", fontWeight: "500" }],
+              caption: ["12px", { lineHeight: "1.4", fontWeight: "500" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background font-body-md text-body-md text-on-surface antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col justify-between"
+  >
+    <svg
+      aria-hidden="true"
+      class="inline-defs-container"
+      style="position: absolute; width: 0; height: 0; overflow: hidden"
+    ></svg>
+    <!-- HEADER NAVIGATION -->
+    <header
+      class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_1px_8px_rgba(0,0,0,0.03)] transition-all"
+    >
+      <div
+        class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between gap-md"
+      >
+        <!-- Brand & Location Tag -->
+        <div class="flex items-center gap-xs">
+          <a
+            class="flex items-center gap-xs group focus:outline-none transition-transform hover:opacity-90 active:scale-[0.98]"
+            data-path="home"
+            href="#"
+          >
+            <img
+              alt="Paradoxx wordmark logo"
+              class="h-8 w-auto object-contain transition-transform group-hover:scale-105"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+            />
+            <span
+              class="font-headline-md text-headline-md tracking-tight text-on-surface group-hover:text-secondary transition-colors"
+              >=Paradoxx</span
+            >
+          </a>
+          <span
+            class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container-high text-on-surface-variant uppercase tracking-wider hidden lg:inline-flex items-center gap-1.5 border border-outline-variant/30 hover:border-secondary/50 hover:bg-secondary-fixed/50 hover:text-secondary transition-all cursor-default select-none shadow-sm"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            <span class="">Varel / DE</span>
+          </span>
+        </div>
+        <!-- Desktop Nav Links -->
+        <nav class="hidden lg:flex items-center gap-md">
+          <a
+            class="nav-link-hover text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md py-1"
+            data-de="Produkte"
+            data-en="Products"
+            data-path="products"
+            href="#"
+            >Products</a
+          >
+          <a
+            class="nav-link-hover text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md py-1"
+            data-de="Leistungen"
+            data-en="Services"
+            data-path="services"
+            href="#"
+            >Services</a
+          >
+          <a
+            class="nav-link-hover text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md py-1"
+            data-de="Lösungen"
+            data-en="Solutions"
+            data-path="solutions"
+            href="#"
+            >Solutions</a
+          >
+          <a
+            class="nav-link-hover text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md py-1"
+            data-de="Branchen"
+            data-en="Industries"
+            data-path="industries"
+            href="#"
+            >Industries</a
+          >
+          <a
+            class="nav-link-hover text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md py-1"
+            data-de="Referenzen"
+            data-en="Work"
+            data-path="work"
+            href="#"
+            >Work</a
+          >
+          <a
+            class="nav-link-hover text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md py-1"
+            data-de="Unternehmen"
+            data-en="Company"
+            data-path="company"
+            href="#"
+            >Company</a
+          >
+        </nav>
+        <!-- Language Selector & Active Contact / Start CTA -->
+        <div class="hidden lg:flex items-center gap-xs">
+          <!-- Language Switcher -->
+          <div
+            aria-label="Language Selector"
+            class="inline-flex items-center bg-surface-container rounded-full p-unit text-caption font-label-mono border border-surface-container-high shadow-inner"
+            role="group"
+          >
+            <button
+              class="lang-btn-en px-xs py-unit rounded-full font-label-mono font-medium transition-all duration-200 bg-primary text-on-primary shadow-sm hover:opacity-95"
+              id="btn-lang-en"
+              onclick="setLanguage('en')"
+              type="button"
+            >
+              EN
+            </button>
+            <button
+              class="lang-btn-de px-xs py-unit rounded-full font-label-mono font-medium transition-all duration-200 text-on-surface-variant hover:text-on-surface"
+              id="btn-lang-de"
+              onclick="setLanguage('de')"
+              type="button"
+            >
+              DE
+            </button>
+          </div>
+          <!-- Contact Button (Prominently highlighted as Active Page) -->
+          <a
+            class="inline-flex items-center justify-center gap-1.5 px-sm py-xs rounded-full font-label-mono text-label-mono text-secondary font-semibold bg-secondary-fixed border-2 border-secondary hover:bg-secondary hover:text-on-secondary shadow-sm hover:shadow-md transition-all scale-[1.02] active:scale-[0.98]"
+            data-de="Kontakt"
+            data-en="Contact"
+            data-path="contact"
+            href="#"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-secondary group-hover:bg-on-secondary animate-pulse"
+            ></span>
+            <span data-de="Kontakt" data-en="Contact" class="">Contact</span>
+          </a>
+          <!-- Start a Project Button (CTA) -->
+          <a
+            class="group inline-flex items-center justify-center gap-1 px-sm py-xs rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-all duration-200 shadow-sm hover:shadow-lg hover:scale-[1.03] active:scale-[0.98]"
+            data-path="start-a-project"
+            href="#"
+          >
+            <span data-de="Projekt starten" data-en="Start a project" class=""
+              >Start a project</span
+            >
+            <span
+              class="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:translate-x-0.5"
+              >arrow_forward</span
+            >
+          </a>
+        </div>
+        <!-- Mobile Menu Toggle Button -->
+        <button
+          aria-label="Toggle navigation menu"
+          class="lg:hidden p-2.5 text-neutral-800 hover:text-black focus:outline-none flex items-center justify-center rounded-lg hover:bg-surface-container transition-colors"
+          id="mobile-menu-toggle"
+          type="button"
+        >
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+      <!-- Mobile Navigation Drawer -->
+      <div
+        class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0"
+        id="mobile-nav-wrapper"
+      >
+        <div
+          class="absolute inset-0 bg-primary/40 backdrop-blur-sm pointer-events-auto"
+          id="mobile-nav-backdrop"
+        ></div>
+        <aside
+          class="absolute top-0 right-0 h-full w-full max-w-sm bg-surface/95 backdrop-blur-xl shadow-2xl flex flex-col justify-between p-md border-l border-surface-container-high pointer-events-auto transform translate-x-full transition-transform duration-300 overflow-y-auto"
+          id="mobile-nav-panel"
+        >
+          <div class="flex flex-col gap-md">
+            <div
+              class="flex items-center justify-between pb-sm border-b border-surface-container-high"
+            >
+              <div class="flex flex-col">
+                <div class="flex items-center gap-xs">
+                  <img
+                    alt="Paradoxx logo"
+                    class="h-6 w-auto object-contain"
+                    src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+                  />
+                  <span
+                    class="font-headline-md text-headline-md tracking-tight text-on-surface text-lg"
+                    >Paradoxx</span
+                  >
+                </div>
+                <span
+                  class="font-label-mono text-caption text-on-surface-variant/70 mt-1"
+                  >Varel / DE • 53°23′N 8°08′E</span
+                >
+              </div>
+              <button
+                aria-label="Close Menu"
+                class="p-2 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center focus:outline-none transition-colors"
+                id="mobile-menu-close"
+                type="button"
+              >
+                <i class="fa-solid fa-xmark text-xl"></i>
+              </button>
+            </div>
+            <div
+              class="flex items-center justify-between py-xs px-sm bg-surface-container rounded-lg border border-surface-container-high"
+            >
+              <span
+                class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider font-semibold"
+                data-de="SPRACHE"
+                data-en="LANGUAGE"
+                >LANGUAGE</span
+              >
+              <div
+                aria-label="Drawer Language Selector"
+                class="inline-flex items-center bg-surface-container-high rounded-full p-unit text-caption font-label-mono shadow-inner border border-surface-container"
+                role="group"
+              >
+                <button
+                  class="lang-btn-en px-xs py-unit rounded-full font-label-mono font-medium transition-all duration-200 bg-primary text-on-primary shadow-sm hover:opacity-95"
+                  id="drawer-lang-en"
+                  onclick="setLanguage('en')"
+                  type="button"
+                >
+                  EN
+                </button>
+                <button
+                  class="lang-btn-de px-xs py-unit rounded-full font-label-mono font-medium transition-all duration-200 text-on-surface-variant hover:text-on-surface"
+                  id="drawer-lang-de"
+                  onclick="setLanguage('de')"
+                  type="button"
+                >
+                  DE
+                </button>
+              </div>
+            </div>
+            <nav class="flex flex-col gap-1 py-xs">
+              <a
+                class="drawer-nav-link px-sm py-xs rounded-lg text-on-surface hover:bg-surface-container font-body-md text-body-md transition-colors flex items-center justify-between hover:translate-x-1"
+                data-de="Produkte"
+                data-en="Products"
+                data-path="products"
+                href="#"
+              >
+                <span data-de="Produkte" data-en="Products" class=""
+                  >Products</span
+                >
+                <span
+                  class="font-label-mono text-caption text-on-surface-variant/50"
+                  >01</span
+                >
+              </a>
+              <a
+                class="drawer-nav-link px-sm py-xs rounded-lg text-on-surface hover:bg-surface-container font-body-md text-body-md transition-colors flex items-center justify-between hover:translate-x-1"
+                data-de="Leistungen"
+                data-en="Services"
+                data-path="services"
+                href="#"
+              >
+                <span data-de="Leistungen" data-en="Services" class=""
+                  >Services</span
+                >
+                <span
+                  class="font-label-mono text-caption text-on-surface-variant/50"
+                  >02</span
+                >
+              </a>
+              <a
+                class="drawer-nav-link px-sm py-xs rounded-lg text-on-surface hover:bg-surface-container font-body-md text-body-md transition-colors flex items-center justify-between hover:translate-x-1"
+                data-de="Lösungen"
+                data-en="Solutions"
+                data-path="solutions"
+                href="#"
+              >
+                <span data-de="Lösungen" data-en="Solutions" class=""
+                  >Solutions</span
+                >
+                <span
+                  class="font-label-mono text-caption text-on-surface-variant/50"
+                  >03</span
+                >
+              </a>
+              <a
+                class="drawer-nav-link px-sm py-xs rounded-lg text-on-surface hover:bg-surface-container font-body-md text-body-md transition-colors flex items-center justify-between hover:translate-x-1"
+                data-de="Branchen"
+                data-en="Industries"
+                data-path="industries"
+                href="#"
+              >
+                <span data-de="Branchen" data-en="Industries" class=""
+                  >Industries</span
+                >
+                <span
+                  class="font-label-mono text-caption text-on-surface-variant/50"
+                  >04</span
+                >
+              </a>
+              <a
+                class="drawer-nav-link px-sm py-xs rounded-lg text-on-surface hover:bg-surface-container font-body-md text-body-md transition-colors flex items-center justify-between hover:translate-x-1"
+                data-de="Referenzen"
+                data-en="Work"
+                data-path="work"
+                href="#"
+              >
+                <span data-de="Referenzen" data-en="Work" class="">Work</span>
+                <span
+                  class="font-label-mono text-caption text-on-surface-variant/50"
+                  >05</span
+                >
+              </a>
+              <a
+                class="drawer-nav-link px-sm py-xs rounded-lg text-on-surface hover:bg-surface-container font-body-md text-body-md transition-colors flex items-center justify-between hover:translate-x-1"
+                data-de="Unternehmen"
+                data-en="Company"
+                data-path="company"
+                href="#"
+              >
+                <span data-de="Unternehmen" data-en="Company" class=""
+                  >Company</span
+                >
+                <span
+                  class="font-label-mono text-caption text-on-surface-variant/50"
+                  >06</span
+                >
+              </a>
+              <!-- Active Contact Link in Mobile Drawer -->
+              <a
+                class="drawer-nav-link px-sm py-xs rounded-lg bg-secondary-fixed text-secondary border-2 border-secondary font-semibold font-body-md text-body-md transition-colors flex items-center justify-between shadow-sm"
+                data-de="Kontakt (Aktiv)"
+                data-en="Contact (Active)"
+                data-path="contact"
+                href="#"
+              >
+                <span class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  <span
+                    data-de="Kontakt (Aktiv)"
+                    data-en="Contact (Active)"
+                    class=""
+                    >Contact (Active)</span
+                  >
+                </span>
+                <span
+                  class="font-label-mono text-caption text-secondary font-bold"
+                  >07</span
+                >
+              </a>
+            </nav>
+          </div>
+          <div
+            class="flex flex-col gap-sm pt-md border-t border-surface-container-high"
+          >
+            <div
+              class="flex flex-col gap-1 font-label-mono text-caption text-on-surface-variant"
+            >
+              <span class="flex items-center gap-1.5">
+                <span
+                  class="w-2 h-2 rounded-full bg-secondary animate-ping"
+                ></span>
+                <span
+                  data-de="Live-Desk Verfügbar"
+                  data-en="Live Desk Available"
+                  class=""
+                  >Live Desk Available</span
+                >
+              </span>
+              <span class="text-on-surface font-semibold"
+                >hello@paradoxx.dev</span
+              >
+            </div>
+            <div class="flex flex-col gap-xs">
+              <a
+                class="drawer-nav-link w-full inline-flex items-center justify-center gap-xs px-sm py-xs rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary text-center shadow-md transition-all hover:scale-[1.02]"
+                data-de="Projekt starten"
+                data-en="Start a project"
+                data-path="start-a-project"
+                href="#"
+              >
+                <span
+                  data-de="Projekt starten"
+                  data-en="Start a project"
+                  class=""
+                  >Start a project</span
+                >
+                <span class="material-symbols-outlined text-[16px]"
+                  >arrow_forward</span
+                >
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="w-full pt-20 bg-background flex-1">
+      <div class="flex flex-col w-full relative">
+        <!-- Dynamic Ambient Blueprint Wireframe -->
+        <div
+          class="absolute inset-0 pointer-events-none overflow-hidden select-none -z-10 opacity-35"
+        >
+          <svg
+            class="w-full h-full text-secondary/20"
+            height="100%"
+            width="100%"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <pattern
+                height="72"
+                id="grid-pattern"
+                patternUnits="userSpaceOnUse"
+                width="72"
+              >
+                <path
+                  d="M 72 0 L 0 0 0 72"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-dasharray="3 3"
+                  stroke-width="0.75"
+                ></path>
+                <circle cx="0" cy="0" fill="currentColor" r="1.5"></circle>
+                <path
+                  d="M 0 0 L 72 72"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-opacity="0.4"
+                  stroke-width="0.3"
+                ></path>
+              </pattern>
+              <radialGradient cx="40%" cy="30%" id="fade-glow" r="55%">
+                <stop
+                  offset="0%"
+                  stop-color="#5129e5"
+                  stop-opacity="0.08"
+                ></stop>
+                <stop
+                  offset="100%"
+                  stop-color="#5129e5"
+                  stop-opacity="0"
+                ></stop>
+              </radialGradient>
+            </defs>
+            <rect fill="url(#grid-pattern)" height="100%" width="100%"></rect>
+            <rect fill="url(#fade-glow)" height="100%" width="100%"></rect>
+          </svg>
+        </div>
+        <!-- SECTION 1: HERO -->
+        <section
+          class="max-w-container-max mx-auto w-full px-md pt-lg pb-xl relative overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 pointer-events-none select-none overflow-hidden"
+          >
+            <img
+              alt="Architectural technical blueprint grid background"
+              class="absolute inset-0 w-full h-full object-cover opacity-40"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1WT1pMEhlSJ2Kk3WVfwdNFUQJqXrGdhGgze2BUbxumIbOpKK6tqhpmxyoyGUxhDAl76NTvGBnUyIZptcXiuUa_h0NFeGs1YIIW56uXrCz8uon2BB2WYUhCJktXxgC4jv6RdbbP3qEFQDGzBQvmNiZYRuvejNGY0HpY8wMDAhwxN75KwQ_Qi5xHBpg6bOpbBGInNrIL4R2si2Fyp0sTc7R7v_yavyI84VRoLoGlL-4myWrYtTswXZAhgIJc"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"
+            ></div>
+          </div>
+          <div
+            class="flex flex-col items-center text-center gap-sm max-w-3xl mx-auto relative"
+          >
+            <div
+              class="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed/50 border border-secondary/20 shadow-sm"
+            >
+              <span
+                class="w-2 h-2 rounded-full bg-secondary animate-pulse"
+              ></span>
+              <span
+                class="font-label-mono text-caption text-secondary font-medium tracking-wide uppercase"
+                data-de="DIREKTER DRAHT ZUM ENGINEERING-TEAM"
+                data-en="DIRECT ACCESS TO ENGINEERING"
+                >DIRECT ACCESS TO ENGINEERING</span
+              >
+            </div>
+            <h1
+              class="font-headline-xl text-4xl sm:text-5xl md:text-headline-xl text-on-surface tracking-tight text-center"
+              data-de="Verwandeln wir Komplexität in Klarheit."
+              data-en="Let's turn complexity into clarity."
+            >
+              Let's turn complexity into clarity.
+            </h1>
+            <p
+              class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto text-center"
+              data-de="Ob Sie eine fertig definierte Produktarchitektur mitbringen oder ein offenes Problem, das strategische Konzeption erfordert: Wir hören zu und setzen um."
+              data-en="Whether you have a fully scoped product architecture or an ambiguous problem needing strategic discovery, we are ready to listen and execute."
+            >
+              Whether you have a fully scoped product architecture or an
+              ambiguous problem needing strategic discovery, we are ready to
+              listen and execute.
+            </p>
+          </div>
+        </section>
+        <!-- SECTION 2: INTERACTIVE TWO-COLUMN WORKFLOW -->
+        <section class="max-w-container-max mx-auto w-full px-md pb-xl">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+            <!-- COLUMN A: Project Intake & Inquiry Engine (Col 1-7) -->
+            <div
+              class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-md sm:p-lg border border-surface-container-high/80 shadow-[0_4px_24px_rgba(17,19,24,0.05)] hover:shadow-[0_8px_30px_rgba(81,41,229,0.06)] hover:border-secondary/30 transition-all duration-300 flex flex-col gap-lg"
+            >
+              <div
+                class="flex items-center justify-between pb-xs border-b border-surface-container-high"
+              >
+                <div>
+                  <span
+                    class="font-label-mono text-caption text-secondary uppercase tracking-wider font-semibold"
+                    data-de="SCHRITT 01 — SCOPE &amp; INTENTION"
+                    data-en="STEP 01 — SCOPE &amp; INTENT"
+                    >STEP 01 — SCOPE &amp; INTENT</span
+                  >
+                  <h2
+                    class="font-headline-md text-headline-md text-on-surface"
+                    data-de="Projektfokus wählen"
+                    data-en="Select Project Focus"
+                  >
+                    Select Project Focus
+                  </h2>
+                </div>
+                <span
+                  class="font-label-mono text-caption text-on-surface-variant/70 px-2 py-1 rounded bg-surface-container border border-surface-container-high"
+                  >SEC: 256-BIT</span
+                >
+              </div>
+              <!-- Dynamic Service Scope Selection Chips -->
+              <div class="flex flex-col gap-2">
+                <label
+                  class="font-label-mono text-caption text-on-surface font-semibold"
+                  data-de="BEREICHE &amp; SCHWERPUNKTE (MEHRFACHAUSWAHL)"
+                  data-en="DISCIPLINES &amp; PRIORITIES (MULTI-SELECT)"
+                  >DISCIPLINES &amp; PRIORITIES (MULTI-SELECT)</label
+                >
+                <div class="flex flex-wrap gap-xs" id="scope-chips-container">
+                  <button
+                    class="scope-chip min-h-[44px] px-sm py-xs rounded-full font-label-mono text-caption bg-surface-container text-on-surface border border-transparent hover:border-secondary/50 hover:bg-secondary-fixed/50 hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-left flex items-center gap-1.5"
+                    data-active="false"
+                    type="button"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 rounded-full bg-secondary/50"
+                    ></span>
+                    <span
+                      data-de="Neue Produktentwicklung"
+                      data-en="New Product Development"
+                      class=""
+                      >New Product Development</span
+                    >
+                  </button>
+                  <button
+                    class="scope-chip min-h-[44px] px-sm py-xs rounded-full font-label-mono text-caption bg-surface-container text-on-surface border border-transparent hover:border-secondary/50 hover:bg-secondary-fixed/50 hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-left flex items-center gap-1.5"
+                    data-active="false"
+                    type="button"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 rounded-full bg-secondary/50"
+                    ></span>
+                    <span
+                      data-de="KI- &amp; Automatisierungs-Integration"
+                      data-en="AI &amp; Automation Integration"
+                      class=""
+                      >AI &amp; Automation Integration</span
+                    >
+                  </button>
+                  <button
+                    class="scope-chip min-h-[44px] px-sm py-xs rounded-full font-label-mono text-caption bg-surface-container text-on-surface border border-transparent hover:border-secondary/50 hover:bg-secondary-fixed/50 hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-left flex items-center gap-1.5"
+                    data-active="false"
+                    type="button"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 rounded-full bg-secondary/50"
+                    ></span>
+                    <span
+                      data-de="System-Modernisierung &amp; Refactoring"
+                      data-en="System Modernization / Refactoring"
+                      class=""
+                      >System Modernization / Refactoring</span
+                    >
+                  </button>
+                  <button
+                    class="scope-chip min-h-[44px] px-sm py-xs rounded-full font-label-mono text-caption bg-surface-container text-on-surface border border-transparent hover:border-secondary/50 hover:bg-secondary-fixed/50 hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-left flex items-center gap-1.5"
+                    data-active="false"
+                    type="button"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 rounded-full bg-secondary/50"
+                    ></span>
+                    <span
+                      data-de="Design-System &amp; UX"
+                      data-en="Design System &amp; UX"
+                      class=""
+                      >Design System &amp; UX</span
+                    >
+                  </button>
+                  <button
+                    class="scope-chip min-h-[44px] px-sm py-xs rounded-full font-label-mono text-caption bg-surface-container text-on-surface border border-transparent hover:border-secondary/50 hover:bg-secondary-fixed/50 hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-left flex items-center gap-1.5"
+                    data-active="false"
+                    type="button"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 rounded-full bg-secondary/50"
+                    ></span>
+                    <span
+                      data-de="Strategische Technologieberatung"
+                      data-en="Strategic Tech Advisory"
+                      class=""
+                      >Strategic Tech Advisory</span
+                    >
+                  </button>
+                </div>
+              </div>
+              <!-- Form Elements -->
+              <form class="flex flex-col gap-md" id="contact-intake-form">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+                  <div class="flex flex-col gap-xs">
+                    <label
+                      class="font-label-mono text-caption text-on-surface font-semibold"
+                      data-de="VOLLSTÄNDIGER NAME *"
+                      data-en="FULL NAME *"
+                      for="input-name"
+                      >FULL NAME *</label
+                    >
+                    <input
+                      class="w-full min-h-[44px] px-sm py-xs rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md border border-transparent hover:border-surface-variant focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 outline-none transition-all"
+                      data-de-placeholder="z.B. Dr. Elena Vance"
+                      data-en-placeholder="e.g. Dr. Elena Vance"
+                      id="input-name"
+                      placeholder="e.g. Dr. Elena Vance"
+                      required=""
+                      type="text"
+                    />
+                  </div>
+                  <div class="flex flex-col gap-xs">
+                    <label
+                      class="font-label-mono text-caption text-on-surface font-semibold"
+                      data-de="GESCHÄFTLICHE E-MAIL *"
+                      data-en="WORK EMAIL *"
+                      for="input-email"
+                      >WORK EMAIL *</label
+                    >
+                    <input
+                      class="w-full min-h-[44px] px-sm py-xs rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md border border-transparent hover:border-surface-variant focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 outline-none transition-all"
+                      data-de-placeholder="elena@unternehmen.de"
+                      data-en-placeholder="elena@enterprise.de"
+                      id="input-email"
+                      placeholder="elena@enterprise.de"
+                      required=""
+                      type="email"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+                  <div class="flex flex-col gap-xs">
+                    <label
+                      class="font-label-mono text-caption text-on-surface font-semibold"
+                      data-de="UNTERNEHMEN / ORGANISATION"
+                      data-en="COMPANY / INSTITUTION"
+                      for="input-company"
+                      >COMPANY / INSTITUTION</label
+                    >
+                    <input
+                      class="w-full min-h-[44px] px-sm py-xs rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md border border-transparent hover:border-surface-variant focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 outline-none transition-all"
+                      data-de-placeholder="z.B. Quanten Dynamik GmbH"
+                      data-en-placeholder="Quantum Dynamics SE"
+                      id="input-company"
+                      placeholder="Quantum Dynamics SE"
+                      type="text"
+                    />
+                  </div>
+                  <div class="flex flex-col gap-xs">
+                    <label
+                      class="font-label-mono text-caption text-on-surface font-semibold"
+                      data-de="GEPLANTER ZEITRAHMEN"
+                      data-en="TARGET TIMELINE"
+                      for="input-timeline"
+                      >TARGET TIMELINE</label
+                    >
+                    <select
+                      class="w-full min-h-[44px] px-sm py-xs rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md border border-transparent hover:border-surface-variant focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 outline-none transition-all cursor-pointer"
+                      id="input-timeline"
+                    >
+                      <option
+                        data-de="Sofort (&lt; 1 Monat)"
+                        data-en="Immediate (&lt; 1 month)"
+                        value="immediate"
+                      >
+                        Immediate (&lt; 1 month)
+                      </option>
+                      <option
+                        data-de="Nächstes Quartal (Q2/Q3)"
+                        data-en="Next Quarter (Q2/Q3)"
+                        value="q_next"
+                      >
+                        Next Quarter (Q2/Q3)
+                      </option>
+                      <option
+                        data-de="Konzept- / Sondierungsphase"
+                        data-en="Discovery / Exploratory Phase"
+                        value="exploratory"
+                      >
+                        Discovery / Exploratory Phase
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Budget Bracket Selection -->
+                <div class="flex flex-col gap-xs pt-xs">
+                  <div class="flex items-center justify-between">
+                    <label
+                      class="font-label-mono text-caption text-on-surface font-semibold"
+                      data-de="VORAUSSICHTLICHES BUDGET (EUR)"
+                      data-en="ANTICIPATED BUDGET BRACKET (EUR)"
+                      >ANTICIPATED BUDGET BRACKET (EUR)</label
+                    >
+                    <span
+                      class="font-label-mono text-caption text-on-surface-variant"
+                      data-de="Flexibel / Unverbindlich"
+                      data-en="Flexible / Non-binding"
+                      >Flexible / Non-binding</span
+                    >
+                  </div>
+                  <div
+                    class="grid grid-cols-2 sm:grid-cols-4 gap-xs"
+                    id="budget-options"
+                  >
+                    <button
+                      class="budget-pill min-h-[44px] px-xs py-xs rounded-lg text-center font-label-mono text-caption transition-all flex items-center justify-center bg-secondary text-on-secondary shadow-sm hover:scale-[1.02] border border-secondary"
+                      data-value="tier1"
+                      type="button"
+                    >
+                      &lt; €25,000
+                    </button>
+                    <button
+                      class="budget-pill min-h-[44px] px-xs py-xs rounded-lg text-center font-label-mono text-caption bg-surface-container text-on-surface hover:bg-secondary-fixed/70 hover:border-secondary/40 border border-transparent transition-all flex items-center justify-center hover:scale-[1.02]"
+                      data-value="tier2"
+                      type="button"
+                    >
+                      €25k – €75k
+                    </button>
+                    <button
+                      class="budget-pill min-h-[44px] px-xs py-xs rounded-lg text-center font-label-mono text-caption bg-surface-container text-on-surface hover:bg-secondary-fixed/70 hover:border-secondary/40 border border-transparent transition-all flex items-center justify-center hover:scale-[1.02]"
+                      data-value="tier3"
+                      type="button"
+                    >
+                      €75k – €200k
+                    </button>
+                    <button
+                      class="budget-pill min-h-[44px] px-xs py-xs rounded-lg text-center font-label-mono text-caption bg-surface-container text-on-surface hover:bg-secondary-fixed/70 hover:border-secondary/40 border border-transparent transition-all flex items-center justify-center hover:scale-[1.02]"
+                      data-value="tier4"
+                      type="button"
+                    >
+                      &gt; €200,000
+                    </button>
+                  </div>
+                </div>
+                <!-- Message Field -->
+                <div class="flex flex-col gap-xs">
+                  <label
+                    class="font-label-mono text-caption text-on-surface font-semibold"
+                    data-de="PROJEKTUMFANG / TECHNISCHE HERAUSFORDERUNG *"
+                    data-en="PROJECT SCOPE / ARCHITECTURAL CHALLENGE *"
+                    for="input-scope"
+                    >PROJECT SCOPE / ARCHITECTURAL CHALLENGE *</label
+                  >
+                  <textarea
+                    class="w-full px-sm py-xs rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md border border-transparent hover:border-surface-variant focus:border-secondary focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/20 outline-none transition-all resize-none"
+                    data-de-placeholder="Beschreiben Sie das Kernziel, technologische Randbedingungen oder das konkrete Problem..."
+                    data-en-placeholder="Outline the core objective, technology stack constraints, or the problem you are solving..."
+                    id="input-scope"
+                    placeholder="Outline the core objective, technology stack constraints, or the problem you are solving..."
+                    required=""
+                    rows="4"
+                  ></textarea>
+                </div>
+                <!-- Consent & GDPR -->
+                <div class="flex items-start gap-xs pt-xs">
+                  <input
+                    class="mt-1 accent-secondary rounded cursor-pointer h-4 w-4"
+                    id="input-privacy"
+                    required=""
+                    type="checkbox"
+                  />
+                  <label
+                    class="font-caption text-caption text-on-surface-variant cursor-pointer select-none leading-relaxed"
+                    for="input-privacy"
+                  >
+                    <span
+                      data-de="Ich stimme zu, dass Paradoxx meine Angaben gemäß DSGVO verarbeitet, um die Anfrage zu bearbeiten. Vertraulichkeit bleibt garantiert."
+                      data-en="I agree that Paradoxx processes my data according to GDPR to respond to this request. We maintain strict non-disclosure."
+                      class=""
+                      >I agree that Paradoxx processes my data according to GDPR
+                      to respond to this request. We maintain strict
+                      non-disclosure.</span
+                    >
+                  </label>
+                </div>
+                <!-- Action Submission Row -->
+                <div
+                  class="flex flex-col sm:flex-row items-center justify-between gap-md pt-sm"
+                >
+                  <div class="flex items-center gap-xs text-on-surface-variant">
+                    <span
+                      class="material-symbols-outlined text-[18px] text-secondary"
+                      >encrypted</span
+                    >
+                    <span
+                      class="font-label-mono text-caption"
+                      data-de="Verschlüsselte Übertragung (TLS 1.3)"
+                      data-en="Encrypted Transport (TLS 1.3)"
+                      >Encrypted Transport (TLS 1.3)</span
+                    >
+                  </div>
+                  <button
+                    class="group w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-xs px-lg py-xs rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                    id="btn-submit-form"
+                    type="submit"
+                  >
+                    <span
+                      data-de="Projektanfrage absenden"
+                      data-en="Send Project Inquiry"
+                      class=""
+                      >Send Project Inquiry</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-[18px] transition-transform duration-200 group-hover:translate-x-1"
+                      >arrow_forward</span
+                    >
+                  </button>
+                </div>
+                <!-- Success banner feedback -->
+                <div
+                  class="hidden p-sm rounded-lg bg-surface-container-high border border-secondary/30 text-on-surface font-body-md text-body-md items-center gap-xs shadow-sm transition-all"
+                  id="form-feedback"
+                >
+                  <span
+                    class="material-symbols-outlined text-secondary text-2xl"
+                    >task_alt</span
+                  >
+                  <span
+                    data-de="Übertragung bestätigt. Wir melden uns innerhalb von 24 Werktagsstunden."
+                    data-en="Transmission confirmed. We will reach back within 24 business hours."
+                    id="form-feedback-text"
+                    class=""
+                    >Transmission confirmed. We will reach back within 24
+                    business hours.</span
+                  >
+                </div>
+              </form>
+            </div>
+            <!-- COLUMN B: Direct Channels, Coordinates, Calendar Call & Spatial Visual (Col 8-12) -->
+            <div class="lg:col-span-5 flex flex-col gap-md">
+              <!-- Direct Channel Card -->
+              <div
+                class="bg-surface-container-lowest rounded-xl p-md sm:p-lg border border-surface-container-high/80 shadow-[0_4px_20px_rgba(17,19,24,0.04)] hover:shadow-[0_8px_28px_rgba(81,41,229,0.07)] hover:border-secondary/30 transition-all duration-300 flex flex-col gap-md"
+              >
+                <div
+                  class="flex items-center justify-between pb-xs border-b border-surface-container-high"
+                >
+                  <span
+                    class="font-label-mono text-caption text-secondary uppercase tracking-wider font-semibold"
+                    data-de="DIREKTER KONTAKT"
+                    data-en="DIRECT ACCESS"
+                    >DIRECT ACCESS</span
+                  >
+                  <span
+                    class="inline-flex items-center gap-1.5 font-label-mono text-caption text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"
+                    ></span>
+                    <span data-de="Live-Desk aktiv" data-en="Live Desk" class=""
+                      >Live Desk</span
+                    >
+                  </span>
+                </div>
+                <div class="flex flex-col gap-sm">
+                  <div class="flex flex-col group">
+                    <span
+                      class="font-label-mono text-caption text-on-surface-variant"
+                      data-de="ANFRAGEN &amp; BERATUNG"
+                      data-en="INQUIRIES &amp; ADVISORY"
+                      >INQUIRIES &amp; ADVISORY</span
+                    >
+                    <a
+                      class="font-headline-md text-headline-md text-on-surface group-hover:text-secondary transition-colors break-all flex items-center gap-1"
+                      href="mailto:info@kutas.org"
+                      ><span class="">info@kutas.org</span>
+                      <span
+                        class="material-symbols-outlined text-[20px] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-secondary"
+                        >arrow_outward</span
+                      ></a
+                    >
+                  </div>
+                  <div class="flex flex-col group">
+                    <span
+                      class="font-label-mono text-caption text-on-surface-variant"
+                      data-de="DEUTSCHER KONTAKTKANAL"
+                      data-en="GERMAN DOMAIN CONTACT"
+                      >GERMAN DOMAIN CONTACT</span
+                    >
+                  </div>
+                </div>
+                <!-- Schedule Discovery Call Button -->
+                <div class="pt-xs">
+                  <a
+                    class="w-full flex items-center justify-between px-md py-sm rounded-lg bg-surface-container text-on-surface border border-transparent hover:border-secondary/40 hover:bg-secondary hover:text-on-secondary group transition-all duration-200 shadow-sm hover:shadow-md hover:scale-[1.01]"
+                    href="#contact-intake-form"
+                    id="btn-schedule-call"
+                  >
+                    <div class="flex flex-col text-left">
+                      <span
+                        class="font-label-mono text-caption text-on-surface-variant group-hover:text-on-secondary/80 transition-colors uppercase tracking-wider"
+                        data-de="SOFORTIGES KENNENLERNEN"
+                        data-en="INSTANT DISCOVERY"
+                        >INSTANT DISCOVERY</span
+                      >
+                      <span
+                        class="font-body-md text-body-md font-semibold"
+                        data-de="20-Min. Call buchen"
+                        data-en="Book 20-min Intro Call"
+                        >Book 20-min Intro Call</span
+                      >
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-2xl group-hover:translate-x-1 group-hover:scale-110 transition-transform"
+                      >calendar_month</span
+                    >
+                  </a>
+                </div>
+              </div>
+              <!-- Studio Coordinates & Engineering Presence Card -->
+              <div
+                class="bg-surface-container-lowest rounded-xl p-md sm:p-lg border border-surface-container-high/80 shadow-[0_4px_20px_rgba(17,19,24,0.04)] hover:shadow-[0_8px_28px_rgba(81,41,229,0.07)] hover:border-secondary/30 transition-all duration-300 flex flex-col gap-sm"
+              >
+                <div class="flex items-center justify-between">
+                  <span
+                    class="font-label-mono text-caption text-secondary uppercase tracking-wider font-semibold"
+                    data-de="STUDIO STANDORT"
+                    data-en="STUDIO HEADQUARTERS"
+                    >STUDIO HEADQUARTERS</span
+                  >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant bg-surface-container px-2 py-0.5 rounded"
+                    data-de="NIEDERSACHSEN"
+                    data-en="LOWER SAXONY"
+                    >LOWER SAXONY</span
+                  >
+                </div>
+                <div class="flex flex-col gap-unit">
+                  <span
+                    class="font-headline-md text-headline-md text-on-surface"
+                    data-de="Varel, Deutschland"
+                    data-en="Varel, Germany"
+                    >Varel, Germany</span
+                  >
+                  <span
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Region Friesland / Nordsee Tech-Korridor"
+                    data-en="Friesland Region / North Sea Tech Corridor"
+                    >Friesland Region / North Sea Tech Corridor</span
+                  >
+                  <div
+                    class="flex items-center gap-xs font-label-mono text-caption text-on-surface-variant mt-xs bg-surface-container-low px-2 py-1 rounded w-fit"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[16px] text-secondary"
+                      >explore</span
+                    >
+                    <span class="">53° 23′ 48″ N, 8° 08′ 12″ E</span>
+                  </div>
+                </div>
+                <!-- Stylized Spatial Wireframe Map Display -->
+                <div
+                  class="relative w-full h-44 rounded-lg bg-surface-container overflow-hidden mt-xs group border border-surface-container-high"
+                >
+                  <div
+                    class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    data-alt="High-contrast architectural aerial orthophoto map of Varel Friesland Germany rendered with delicate white vector node overlays, technical cartography markers, and clean modernist topography in soft cool slate tones."
+                    data-location="Varel, Germany"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAidTU-grJidm1CpduuJ789qBudHZQ9f2GAOtN0hM-HEOea7CBXeCG4vQSKJDMcWxBZTx-xDVgd90ckjOsYzszGgzWoK8wmuWeBm7-ltWZXeHtTks1alx4O5LgLJWCWZkwbjoP8ohVPO19fUJRydF3YnSlUxSFpfezasWxgVXKggwqB8i_VxxWXEZQAdLWcDGVA7-EjjiS1wJDw4wUrS5ai6_OWEYLGNYeFR0sjpaGBvWyWMC4bLo47&quot;);
+                    "
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex items-end p-sm"
+                  >
+                    <div
+                      class="flex items-center justify-between w-full text-on-primary"
+                    >
+                      <span
+                        class="font-label-mono text-caption tracking-wider flex items-center gap-1.5"
+                      >
+                        <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                        NODE: PARADOXX-HUB-VRL
+                      </span>
+                      <span
+                        class="px-xs py-unit rounded bg-secondary text-on-secondary font-label-mono text-caption font-semibold shadow-sm"
+                        data-de="AKTIV"
+                        data-en="ACTIVE"
+                        >ACTIVE</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Legal & Entity Blueprint Spec -->
+                <div
+                  class="pt-xs flex flex-col gap-unit font-label-mono text-caption text-on-surface-variant divide-y divide-surface-container-high"
+                >
+                  <div class="flex justify-between py-1">
+                    <span data-de="RECHTSFORM" data-en="LEGAL ENTITY" class=""
+                      >LEGAL ENTITY</span
+                    >
+                    <span class="text-on-surface font-medium"
+                      >Paradoxx UG (haftungsbeschränkt)</span
+                    >
+                  </div>
+                  <div class="flex justify-between py-1">
+                    <span
+                      data-de="HANDELSREGISTER"
+                      data-en="COMMERCIAL REGISTER"
+                      class=""
+                      >COMMERCIAL REGISTER</span
+                    >
+                    <span
+                      class="text-on-surface font-medium"
+                      data-de="Amtsgericht Oldenburg"
+                      data-en="District Court Oldenburg"
+                      >District Court Oldenburg</span
+                    >
+                  </div>
+                  <div class="flex justify-between py-1">
+                    <span data-de="ZEITZONE" data-en="TIMEZONE" class=""
+                      >TIMEZONE</span
+                    >
+                    <span class="text-on-surface font-medium"
+                      >Europe/Berlin (CET/CEST)</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Visual Proof Element: Architecting with Intent -->
+              <div
+                class="relative rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(17,19,24,0.04)] h-48 bg-primary-container group border border-surface-container-high"
+              >
+                <div
+                  class="w-full h-full bg-cover bg-center mix-blend-luminosity opacity-40 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-50"
+                  data-alt="Close up photography of minimalist industrial designer studio in Germany with matte black ceramic desk surfaces, ultra wide code terminal screen displaying algorithmic neural topology diagrams, and gentle violet rim lighting."
+                  style="
+                    background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA6EFQo71efABclnhqe842b5TydVSvZNdIVY_exUDoeHYJ3actI7R70P4Y-3Wdr5ZFrDv8wwQvvMJCOOKzQiOVWLI7aMA4o6O05uAZ4VTYi3ri7crflkiE5nJjTlJPYVCh4dscRl227WD2BM5_kEY4_2NkzmC8Iawg2wqG3714Sj4WLG6YazpBdBjF0YysdIGFvKxZR8H0SVS4bMcerNhq65zgvqUxbgDtB4mfxT-Hm44jSN6tfRC-b&quot;);
+                  "
+                ></div>
+                <div
+                  class="absolute inset-0 p-md flex flex-col justify-between"
+                >
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="font-label-mono text-caption text-secondary-fixed tracking-wider uppercase font-semibold"
+                      data-de="METHODIK"
+                      data-en="METHODOLOGY"
+                      >METHODOLOGY</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-secondary-fixed text-[20px]"
+                      >precision_manufacturing</span
+                    >
+                  </div>
+                  <div>
+                    <p
+                      class="font-headline-md text-headline-md text-on-primary leading-tight"
+                      data-de="Klarheit unter technischer Komplexität."
+                      data-en="Engineered for clarity under pressure."
+                    >
+                      Engineered for clarity under pressure.
+                    </p>
+                    <p
+                      class="font-label-mono text-caption text-on-primary-container mt-1"
+                      data-de="Vom ersten Entwurf bis zum Produktiv-Deployment."
+                      data-en="From first sketch to production deployment."
+                    >
+                      From first sketch to production deployment.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- SECTION 3: FAQ & ENGAGEMENT FRAMEWORK (Interactive Modern Accordion) -->
+        <section
+          class="w-full bg-surface-container-low py-16 sm:py-20 px-6 border-t border-surface-container-high/60"
+        >
+          <div class="max-w-4xl mx-auto flex flex-col gap-10">
+            <!-- Centered Header -->
+            <div class="flex flex-col items-center text-center gap-2">
+              <span
+                class="font-label-mono text-caption text-secondary uppercase tracking-widest font-semibold"
+                data-de="TRANSPARENZ &amp; PROZESS"
+                data-en="TRANSPARENCY &amp; PROCESS"
+                >TRANSPARENCY &amp; PROCESS</span
+              >
+              <h2
+                class="font-headline-xl text-3xl sm:text-4xl md:text-5xl font-bold text-on-surface tracking-tight"
+                id="faq-heading"
+              >
+                Frequently Asked <span class="text-secondary">Questions</span>
+              </h2>
+              <p
+                class="font-body-md text-body-md text-on-surface-variant max-w-xl"
+                data-de="Alles, was Sie über unsere Zusammenarbeit, Sicherheitsstandards und Projektschritte wissen müssen."
+                data-en="Everything you need to know about our engagement model, protocols, and technical milestones."
+              >
+                Everything you need to know about our engagement model,
+                protocols, and technical milestones.
+              </p>
+            </div>
+            <!-- Stacked Accordion Items -->
+            <div
+              class="flex flex-col gap-4 w-full"
+              id="faq-accordion-container"
+            >
+              <!-- FAQ Item 1 (Default Open) -->
+              <div
+                class="faq-accordion-item rounded-2xl bg-white shadow-sm border-2 border-secondary/60 hover:border-secondary transition-all duration-300 overflow-hidden"
+                data-open="true"
+              >
+                <button
+                  aria-expanded="true"
+                  class="faq-accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary select-none hover:bg-surface-container-low/40 transition-colors"
+                  type="button"
+                >
+                  <div class="flex items-center gap-3 pr-4">
+                    <span
+                      class="font-label-mono text-caption px-2.5 py-1 rounded bg-secondary-fixed text-secondary font-semibold"
+                      >01</span
+                    >
+                    <h3
+                      class="font-headline-md text-lg sm:text-xl font-semibold text-on-surface"
+                      data-de="Wie starten wir gemeinsam ein Projekt?"
+                      data-en="How do we begin a project?"
+                    >
+                      How do we begin a project?
+                    </h3>
+                  </div>
+                  <span
+                    class="faq-icon-box w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 bg-secondary text-white shadow-sm"
+                  >
+                    <i class="fa-solid fa-chevron-up text-sm"></i>
+                  </span>
+                </button>
+                <div
+                  class="faq-accordion-content px-6 pb-6 pt-1 text-on-surface-variant font-body-md text-body-md border-t border-surface-container/60"
+                >
+                  <p
+                    class="pt-3 leading-relaxed"
+                    data-de="Jede Zusammenarbeit beginnt mit einer strukturierten 45-minütigen technischen Discovery-Session. Wir analysieren Ihr Kernproblem, prüfen die technische Machbarkeit und definieren einen konkreten Prototyp- oder Architektur-Meilenstein, bevor verbindliche Verträge geschlossen werden."
+                    data-en="Every collaboration starts with a structured 45-minute technical discovery session. We evaluate the core problem, establish mutual feasibility, and define a prototype or phased architecture milestone before contractual commitments."
+                  >
+                    Every collaboration starts with a structured 45-minute
+                    technical discovery session. We evaluate the core problem,
+                    establish mutual feasibility, and define a prototype or
+                    phased architecture milestone before contractual
+                    commitments.
+                  </p>
+                </div>
+              </div>
+              <!-- FAQ Item 2 (Default Closed) -->
+              <div
+                class="faq-accordion-item rounded-2xl bg-white shadow-sm border border-surface-container-high hover:border-secondary/40 hover:shadow-md transition-all duration-300 overflow-hidden"
+                data-open="false"
+              >
+                <button
+                  aria-expanded="false"
+                  class="faq-accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary select-none hover:bg-surface-container-low/40 transition-colors"
+                  type="button"
+                >
+                  <div class="flex items-center gap-3 pr-4">
+                    <span
+                      class="font-label-mono text-caption px-2.5 py-1 rounded bg-surface-container text-secondary font-semibold"
+                      >02</span
+                    >
+                    <h3
+                      class="font-headline-md text-lg sm:text-xl font-semibold text-on-surface"
+                      data-de="Wie wird Vertraulichkeit und Datenschutz garantiert?"
+                      data-en="How is confidentiality and IP handled?"
+                    >
+                      How is confidentiality and IP handled?
+                    </h3>
+                  </div>
+                  <span
+                    class="faq-icon-box w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 bg-surface-container text-secondary"
+                  >
+                    <i class="fa-solid fa-chevron-down text-sm"></i>
+                  </span>
+                </button>
+                <div
+                  class="faq-accordion-content hidden px-6 pb-6 pt-1 text-on-surface-variant font-body-md text-body-md border-t border-surface-container/60"
+                >
+                  <p
+                    class="pt-3 leading-relaxed"
+                    data-de="Wir unterzeichnen standardmäßig bilaterale Geheimhaltungsvereinbarungen (NDAs). Alle Daten verbleiben auf deutschen/EU-Servern unter strenger DSGVO. Ihr geistiges Eigentum, Patente und alle erstellten Code-Repositories gehören uneingeschränkt Ihnen."
+                    data-en="We routinely execute mutual NDAs prior to in-depth technical exchanges. All data remains hosted on strict German/EU servers under GDPR regulations. Your intellectual property and code repositories remain 100% yours."
+                  >
+                    We routinely execute mutual NDAs prior to in-depth technical
+                    exchanges. All data remains hosted on strict German/EU
+                    servers under GDPR regulations. Your intellectual property
+                    and code repositories remain 100% yours.
+                  </p>
+                </div>
+              </div>
+              <!-- FAQ Item 3 (Default Closed) -->
+              <div
+                class="faq-accordion-item rounded-2xl bg-white shadow-sm border border-surface-container-high hover:border-secondary/40 hover:shadow-md transition-all duration-300 overflow-hidden"
+                data-open="false"
+              >
+                <button
+                  aria-expanded="false"
+                  class="faq-accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary select-none hover:bg-surface-container-low/40 transition-colors"
+                  type="button"
+                >
+                  <div class="flex items-center gap-3 pr-4">
+                    <span
+                      class="font-label-mono text-caption px-2.5 py-1 rounded bg-surface-container text-secondary font-semibold"
+                      >03</span
+                    >
+                    <h3
+                      class="font-headline-md text-lg sm:text-xl font-semibold text-on-surface"
+                      data-de="Arbeiten Sie auch mit internationalen Kunden?"
+                      data-en="Do you work internationally?"
+                    >
+                      Do you work internationally?
+                    </h3>
+                  </div>
+                  <span
+                    class="faq-icon-box w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 bg-surface-container text-secondary"
+                  >
+                    <i class="fa-solid fa-chevron-down text-sm"></i>
+                  </span>
+                </button>
+                <div
+                  class="faq-accordion-content hidden px-6 pb-6 pt-1 text-on-surface-variant font-body-md text-body-md border-t border-surface-container/60"
+                >
+                  <p
+                    class="pt-3 leading-relaxed"
+                    data-de="Ja. Obwohl unser Hauptsitz in Varel (Deutschland) liegt, ist unsere Betriebssprache zweisprachig (Englisch und Deutsch). Wir entwickeln verteilte Systeme für Unternehmen in der DACH-Region, Skandinavien, Großbritannien, Nordamerika und weltweit."
+                    data-en="Yes. While headquartered in Varel (Germany), our operational language is bilingual (English and German). We engineer distributed systems for enterprises across the DACH region, Scandinavia, the UK, North America, and the entire world at large."
+                  >
+                    Yes. While headquartered in Varel (Germany), our operational
+                    language is bilingual (English and German). We engineer
+                    distributed systems for enterprises across the DACH region,
+                    Scandinavia, the UK, North America, and the entire world at
+                    large.
+                  </p>
+                </div>
+              </div>
+              <!-- FAQ Item 4 (Default Closed) -->
+              <div
+                class="faq-accordion-item rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border-2 border-secondary/60 hover:border-secondary"
+                data-open="true"
+              >
+                <button
+                  aria-expanded="true"
+                  class="faq-accordion-trigger w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary select-none hover:bg-surface-container-low/40 transition-colors"
+                  type="button"
+                >
+                  <div class="flex items-center gap-3 pr-4">
+                    <span
+                      class="font-label-mono text-caption px-2.5 py-1 rounded bg-surface-container text-secondary font-semibold"
+                      >04</span
+                    >
+                    <h3
+                      class="font-headline-md text-lg sm:text-xl font-semibold text-on-surface"
+                      data-de="Welche Technologien und Architektur-Stacks unterstützen Sie?"
+                      data-en="Which tech stacks and architectures do you support?"
+                    >
+                      Which tech stacks and architectures do you support?
+                    </h3>
+                  </div>
+                  <span
+                    class="faq-icon-box w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 bg-secondary text-white shadow-sm"
+                    ><i class="fa-solid fa-chevron-up text-sm"></i
+                  ></span>
+                </button>
+                <div
+                  class="faq-accordion-content px-6 pb-6 pt-1 text-on-surface-variant font-body-md text-body-md border-t border-surface-container/60"
+                >
+                  <p
+                    class="pt-3 leading-relaxed"
+                    data-de="Wir sind spezialisiert auf moderne TypeScript/Node- und Python-Ökosysteme, WordPress-Plattformen, Cloud-native Infrastruktur (AWS, GCP, Kubernetes) sowie reaktive, hochperformante Web- und Mobil-Clients. Wir integrieren uns nahtlos in bestehende Tech-Stacks oder konzipieren Greenfield-Systeme von Grund auf."
+                    data-en="We specialize in modern TypeScript/Node and Python ecosystems, WordPress platforms, cloud-native infrastructure (AWS, GCP, Kubernetes), and reactive high-performance web and mobile clients. We seamlessly integrate into existing tech stacks or design greenfield systems from scratch."
+                  >
+                    We specialize in modern TypeScript/Node and Python
+                    ecosystems, WordPress platforms, cloud-native infrastructure
+                    (AWS, GCP, Kubernetes), and reactive high-performance web
+                    and mobile clients. We seamlessly integrate into existing
+                    tech stacks or design greenfield systems from scratch.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- FOOTER -->
+    <footer
+      class="w-full bg-surface-container-low pt-xl pb-lg border-t border-surface-container-high/70"
+    >
+      <div class="max-w-container-max mx-auto px-md">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg pb-xl"
+        >
+          <!-- Company Info & Logo -->
+          <div class="lg:col-span-2 flex flex-col gap-sm pr-lg">
+            <div class="flex items-center gap-xs">
+              <a class="flex items-center gap-xs group" href="#">
+                <img
+                  alt="Paradoxx wordmark logo"
+                  class="h-7 w-auto object-contain transition-transform group-hover:scale-105"
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+                />
+                <span
+                  class="font-headline-md text-headline-md tracking-tight text-on-surface group-hover:text-secondary transition-colors"
+                  >Paradoxx</span
+                >
+              </a>
+            </div>
+            <p
+              class="text-on-surface-variant font-body-md text-body-md max-w-md"
+              data-de="Software, digitale Produkte und Technologiedienstleistungen für menschliche Intention entwickelt."
+              data-en="Software, digital products and technological services engineered for human intent."
+            >
+              Software, digital products and technological services engineered
+              for human intent.
+            </p>
+            <div
+              class="flex items-center gap-xs font-label-mono text-caption text-on-surface-variant pt-xs"
+            >
+              <span class="material-symbols-outlined text-[16px] text-secondary"
+                >location_on</span
+              >
+              <span
+                data-de="Varel, Deutschland"
+                data-en="Varel, Germany"
+                class=""
+                >Varel, Germany</span
+              >
+            </div>
+          </div>
+          <!-- Col 1: Company -->
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface font-semibold uppercase tracking-wider mb-xs"
+              data-de="Unternehmen"
+              data-en="Company"
+              >Company</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Über uns"
+                  data-en="About"
+                  data-path="about"
+                  href="#"
+                  >About</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Historie"
+                  data-en="Story"
+                  data-path="story"
+                  href="#"
+                  >Story</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Führungsteam"
+                  data-en="Leadership"
+                  data-path="leadership"
+                  href="#"
+                  >Leadership</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Karriere"
+                  data-en="Careers"
+                  data-path="careers"
+                  href="#"
+                  >Careers</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Newsroom"
+                  data-en="Newsroom"
+                  data-path="newsroom"
+                  href="#"
+                  >Newsroom</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Col 2: Capabilities -->
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface font-semibold uppercase tracking-wider mb-xs"
+              data-de="Kompetenzen"
+              data-en="Capabilities"
+              >Capabilities</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Leistungen"
+                  data-en="Services"
+                  data-path="services"
+                  href="#"
+                  >Services</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Produkte"
+                  data-en="Products"
+                  data-path="products"
+                  href="#"
+                  >Products</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Lösungen"
+                  data-en="Solutions"
+                  data-path="solutions"
+                  href="#"
+                  >Solutions</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Branchen"
+                  data-en="Industries"
+                  data-path="industries"
+                  href="#"
+                  >Industries</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Referenzen"
+                  data-en="Work"
+                  data-path="work"
+                  href="#"
+                  >Work</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Col 3: Resources -->
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface font-semibold uppercase tracking-wider mb-xs"
+              data-de="Ressourcen"
+              data-en="Resources"
+              >Resources</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Einblicke"
+                  data-en="Insights"
+                  data-path="insights"
+                  href="#"
+                  >Insights</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Forschung"
+                  data-en="Research"
+                  data-path="research"
+                  href="#"
+                  >Research</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Häufige Fragen"
+                  data-en="FAQs"
+                  data-path="faqs"
+                  href="#"
+                  >FAQs</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors"
+                  data-de="Support"
+                  data-en="Support"
+                  data-path="support"
+                  href="#"
+                  >Support</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="footer-link-hover hover:text-secondary transition-colors text-secondary font-medium"
+                  data-de="Kontakt"
+                  data-en="Contact"
+                  data-path="contact"
+                  href="#"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Bottom Bar -->
+        <div
+          class="pt-md border-t border-surface-container-high/60 flex flex-col md:flex-row items-center justify-between gap-md text-caption font-label-mono text-on-surface-variant"
+        >
+          <div class="flex items-center gap-xs">
+            <span class=""
+              >© <span id="copyright-year" class="">2026</span> Paradoxx Studio
+              GmbH.</span
+            >
+            <span
+              data-de="Alle Rechte vorbehalten."
+              data-en="All rights reserved."
+              class=""
+              >All rights reserved.</span
+            >
+          </div>
+          <div class="flex items-center gap-md">
+            <a
+              class="footer-link-hover hover:text-secondary transition-colors"
+              data-de="Datenschutz"
+              data-en="Privacy Policy"
+              data-path="privacy-policy"
+              href="#"
+              >Privacy Policy</a
+            >
+            <a
+              class="footer-link-hover hover:text-secondary transition-colors"
+              data-de="AGB"
+              data-en="Terms of Service"
+              data-path="terms-of-service"
+              href="#"
+              >Terms of Service</a
+            >
+            <a
+              class="footer-link-hover hover:text-secondary transition-colors"
+              data-de="Impressum"
+              data-en="Legal Notice"
+              data-path="legal-notice"
+              href="#"
+              >Legal Notice</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- CLIENT SCRIPTS (Language Switch, Accordion, Chips, Drawer) -->
+    <script>
+      // Expose setLanguage globally immediately
+      window.setLanguage = function (lang) {
+        try {
+          if (typeof localStorage !== "undefined") {
+            localStorage.setItem("paradoxx_lang", lang);
+          }
+        } catch (e) {}
+
+        document.documentElement.setAttribute("lang", lang);
+
+        // 1. Translate elements with data-en & data-de
+        var translatables = document.querySelectorAll("[data-en][data-de]");
+        translatables.forEach(function (el) {
+          var val = el.getAttribute("data-" + lang);
+          if (val !== null && val !== undefined) {
+            // If element contains complex child icons, only change text if it has no child tags or replace target text
+            if (el.children.length === 0) {
+              el.textContent = val;
+            } else {
+              // If direct text only, check first text node or fallback textContent
+              var textNode = Array.from(el.childNodes).find(
+                (n) =>
+                  n.nodeType === Node.TEXT_NODE &&
+                  n.textContent.trim().length > 0,
+              );
+              if (textNode) {
+                textNode.textContent = val;
+              }
+            }
+          }
+        });
+
+        // 2. Translate placeholders
+        var inputsWithPlaceholder = document.querySelectorAll(
+          "[data-en-placeholder][data-de-placeholder]",
+        );
+        inputsWithPlaceholder.forEach(function (el) {
+          var placeholderVal = el.getAttribute("data-" + lang + "-placeholder");
+          if (placeholderVal) {
+            el.setAttribute("placeholder", placeholderVal);
+          }
+        });
+
+        // 3. Translate select options
+        var selectOptions = document.querySelectorAll(
+          "option[data-en][data-de]",
+        );
+        selectOptions.forEach(function (opt) {
+          var optVal = opt.getAttribute("data-" + lang);
+          if (optVal) {
+            opt.textContent = optVal;
+          }
+        });
+
+        // 4. Translate composite FAQ heading
+        var faqHeading = document.getElementById("faq-heading");
+        if (faqHeading) {
+          if (lang === "de") {
+            faqHeading.innerHTML =
+              'Häufig gestellte <span class="text-secondary">Fragen</span>';
+          } else {
+            faqHeading.innerHTML =
+              'Frequently Asked <span class="text-secondary">Questions</span>';
+          }
+        }
+
+        // 5. Update styling on all EN/DE language buttons
+        var activeClasses = ["bg-primary", "text-on-primary", "shadow-sm"];
+        var inactiveClasses = ["text-on-surface-variant"];
+
+        var allEnButtons = document.querySelectorAll(
+          ".lang-btn-en, #btn-lang-en, #drawer-lang-en",
+        );
+        var allDeButtons = document.querySelectorAll(
+          ".lang-btn-de, #btn-lang-de, #drawer-lang-de",
+        );
+
+        allEnButtons.forEach(function (btn) {
+          if (lang === "en") {
+            btn.classList.remove(...inactiveClasses);
+            btn.classList.add(...activeClasses);
+          } else {
+            btn.classList.remove(...activeClasses);
+            btn.classList.add(...inactiveClasses);
+          }
+        });
+
+        allDeButtons.forEach(function (btn) {
+          if (lang === "de") {
+            btn.classList.remove(...inactiveClasses);
+            btn.classList.add(...activeClasses);
+          } else {
+            btn.classList.remove(...activeClasses);
+            btn.classList.add(...inactiveClasses);
+          }
+        });
+      };
+
+      (function () {
+        // Dynamic Year
+        var yearEl = document.getElementById("copyright-year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // Check saved language
+        var savedLang = "en";
+        try {
+          if (typeof localStorage !== "undefined") {
+            var stored = localStorage.getItem("paradoxx_lang");
+            if (stored === "de" || stored === "en") savedLang = stored;
+          }
+        } catch (e) {}
+
+        // Init language
+        window.setLanguage(savedLang);
+
+        // Attach click listeners to all language switcher triggers
+        var allEnTriggers = document.querySelectorAll(
+          ".lang-btn-en, #btn-lang-en, #drawer-lang-en",
+        );
+        var allDeTriggers = document.querySelectorAll(
+          ".lang-btn-de, #btn-lang-de, #drawer-lang-de",
+        );
+
+        allEnTriggers.forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.setLanguage("en");
+          });
+        });
+
+        allDeTriggers.forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.setLanguage("de");
+          });
+        });
+
+        // Service Scope Chips Toggle Behavior
+        var chips = document.querySelectorAll(".scope-chip");
+        chips.forEach(function (chip) {
+          chip.addEventListener("click", function () {
+            var isActive = this.getAttribute("data-active") === "true";
+            if (isActive) {
+              this.setAttribute("data-active", "false");
+              this.classList.remove(
+                "bg-secondary",
+                "text-on-secondary",
+                "border-secondary",
+                "shadow-md",
+              );
+              this.classList.add(
+                "bg-surface-container",
+                "text-on-surface",
+                "border-transparent",
+              );
+            } else {
+              this.setAttribute("data-active", "true");
+              this.classList.add(
+                "bg-secondary",
+                "text-on-secondary",
+                "border-secondary",
+                "shadow-md",
+              );
+              this.classList.remove(
+                "bg-surface-container",
+                "text-on-surface",
+                "border-transparent",
+              );
+            }
+          });
+        });
+
+        // Budget Pill Selection Toggle
+        var budgetPills = document.querySelectorAll(".budget-pill");
+        budgetPills.forEach(function (pill) {
+          pill.addEventListener("click", function () {
+            budgetPills.forEach(function (p) {
+              p.classList.remove(
+                "bg-secondary",
+                "text-on-secondary",
+                "border-secondary",
+                "shadow-sm",
+              );
+              p.classList.add(
+                "bg-surface-container",
+                "text-on-surface",
+                "border-transparent",
+              );
+            });
+            this.classList.add(
+              "bg-secondary",
+              "text-on-secondary",
+              "border-secondary",
+              "shadow-sm",
+            );
+            this.classList.remove(
+              "bg-surface-container",
+              "text-on-surface",
+              "border-transparent",
+            );
+          });
+        });
+
+        // Interactive Accordion Logic
+        var accordionItems = document.querySelectorAll(".faq-accordion-item");
+        accordionItems.forEach(function (item) {
+          var trigger = item.querySelector(".faq-accordion-trigger");
+          var content = item.querySelector(".faq-accordion-content");
+          var iconBox = item.querySelector(".faq-icon-box");
+
+          trigger.addEventListener("click", function () {
+            var isOpen = item.getAttribute("data-open") === "true";
+
+            if (isOpen) {
+              item.setAttribute("data-open", "false");
+              trigger.setAttribute("aria-expanded", "false");
+              content.classList.add("hidden");
+              item.classList.remove(
+                "border-2",
+                "border-secondary/60",
+                "hover:border-secondary",
+              );
+              item.classList.add(
+                "border",
+                "border-surface-container-high",
+                "hover:border-secondary/40",
+              );
+              iconBox.className =
+                "faq-icon-box w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 bg-surface-container text-secondary";
+              iconBox.innerHTML =
+                '<i class="fa-solid fa-chevron-down text-sm"></i>';
+            } else {
+              item.setAttribute("data-open", "true");
+              trigger.setAttribute("aria-expanded", "true");
+              content.classList.remove("hidden");
+              item.classList.remove(
+                "border",
+                "border-surface-container-high",
+                "hover:border-secondary/40",
+              );
+              item.classList.add(
+                "border-2",
+                "border-secondary/60",
+                "hover:border-secondary",
+              );
+              iconBox.className =
+                "faq-icon-box w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 bg-secondary text-white shadow-sm";
+              iconBox.innerHTML =
+                '<i class="fa-solid fa-chevron-up text-sm"></i>';
+            }
+          });
+        });
+
+        // Form Submission Handling
+        var form = document.getElementById("contact-intake-form");
+        var feedback = document.getElementById("form-feedback");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var btn = document.getElementById("btn-submit-form");
+            btn.disabled = true;
+            btn.classList.add("opacity-70");
+
+            setTimeout(function () {
+              feedback.classList.remove("hidden");
+              feedback.classList.add("flex");
+              form.reset();
+              btn.disabled = false;
+              btn.classList.remove("opacity-70");
+
+              chips.forEach(function (c) {
+                c.setAttribute("data-active", "false");
+                c.classList.remove(
+                  "bg-secondary",
+                  "text-on-secondary",
+                  "border-secondary",
+                  "shadow-md",
+                );
+                c.classList.add(
+                  "bg-surface-container",
+                  "text-on-surface",
+                  "border-transparent",
+                );
+              });
+              budgetPills.forEach(function (b, idx) {
+                if (idx === 0) {
+                  b.classList.add(
+                    "bg-secondary",
+                    "text-on-secondary",
+                    "border-secondary",
+                    "shadow-sm",
+                  );
+                  b.classList.remove(
+                    "bg-surface-container",
+                    "text-on-surface",
+                    "border-transparent",
+                  );
+                } else {
+                  b.classList.remove(
+                    "bg-secondary",
+                    "text-on-secondary",
+                    "border-secondary",
+                    "shadow-sm",
+                  );
+                  b.classList.add(
+                    "bg-surface-container",
+                    "text-on-surface",
+                    "border-transparent",
+                  );
+                }
+              });
+            }, 600);
+          });
+        }
+
+        // Mobile Navigation Drawer
+        var toggleBtn = document.getElementById("mobile-menu-toggle");
+        var closeBtn = document.getElementById("mobile-menu-close");
+        var wrapper = document.getElementById("mobile-nav-wrapper");
+        var panel = document.getElementById("mobile-nav-panel");
+        var backdrop = document.getElementById("mobile-nav-backdrop");
+        var navLinks = document.querySelectorAll(".drawer-nav-link");
+
+        function openDrawer() {
+          if (!wrapper || !panel) return;
+          wrapper.classList.remove("pointer-events-none", "opacity-0");
+          wrapper.classList.add("pointer-events-auto", "opacity-100");
+          panel.classList.remove("translate-x-full");
+          panel.classList.add("translate-x-0");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeDrawer() {
+          if (!wrapper || !panel) return;
+          wrapper.classList.add("pointer-events-none", "opacity-0");
+          wrapper.classList.remove("pointer-events-auto", "opacity-100");
+          panel.classList.add("translate-x-full");
+          panel.classList.remove("translate-x-0");
+          document.body.style.overflow = "";
+        }
+
+        if (toggleBtn) toggleBtn.addEventListener("click", openDrawer);
+        if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+        if (backdrop) backdrop.addEventListener("click", closeDrawer);
+        navLinks.forEach(function (link) {
+          link.addEventListener("click", closeDrawer);
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeDrawer();
+        });
+      })();
+    </script>
+  </body>
+</html>

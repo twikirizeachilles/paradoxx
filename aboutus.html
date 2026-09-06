@@ -1,4 +1,6 @@
-<html lang="en">
+<!doctype html>
+
+<html lang="en" style="">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -150,6 +152,10 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-background font-body-md text-on-surface">
     <header
@@ -174,73 +180,271 @@
         >
           <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_products"
             data-path="products"
             href="#"
             >Products</a
           ><a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_services"
             data-path="services"
             href="#"
             >Services</a
           ><a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_solutions"
             data-path="solutions"
             href="#"
             >Solutions</a
           ><a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_industries"
             data-path="industries"
             href="#"
             >Industries</a
           ><a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_work"
             data-path="work"
             href="#"
             >Work</a
           ><a
             aria-current="page"
             class="transition-colors text-secondary font-semibold"
+            data-i18n="nav_company"
             data-path="company"
             href="#"
             >Company</a
           >
         </nav>
-        <div class="flex items-center gap-md">
+        <div class="hidden lg:flex items-center gap-md">
+          <div
+            aria-label="Language selection"
+            class="flex items-center bg-surface-container-low rounded-lg p-1 border border-outline-variant font-label-mono text-caption"
+            role="group"
+          >
+            <button
+              aria-current="true"
+              aria-label="Switch to English"
+              class="px-2.5 py-1 rounded bg-surface-container-lowest text-primary font-bold shadow-sm transition-all"
+              id="lang-btn-en"
+              onclick="setLanguage('en')"
+              type="button"
+            >
+              EN</button
+            ><span class="text-outline-variant px-0.5 select-none">/</span
+            ><button
+              aria-current="false"
+              aria-label="Switch to German"
+              class="px-2.5 py-1 rounded text-on-surface-variant hover:text-secondary font-medium transition-colors"
+              id="lang-btn-de"
+              onclick="setLanguage('de')"
+              type="button"
+            >
+              DE
+            </button>
+          </div>
           <a
-            class="hidden sm:block text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            class="text-body-md font-body-md font-medium text-on-surface border border-outline-variant rounded-lg px-md py-xs hover:bg-surface-container-low transition-colors"
+            data-i18n="nav_contact"
             data-path="contact"
             href="#"
             >Contact</a
           ><button
             class="bg-secondary text-on-secondary px-md py-xs rounded-lg text-body-md font-body-md hover:shadow-lg transition-all"
+            data-i18n="btn_start_project"
           >
             Start a project
           </button>
-          <div
-            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
-          >
-            <span class="material-symbols-outlined text-on-primary text-[18px]"
-              >person</span
-            > 
-          </div>
         </div>
+        <button
+          aria-label="Toggle navigation menu"
+          class="lg:hidden p-2.5 text-neutral-800 hover:text-black focus:outline-none"
+          id="mobile-menu-toggle"
+        >
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+      <div
+        class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0"
+        id="mobile-drawer"
+      >
+        <div
+          class="absolute inset-0 bg-primary/40 backdrop-blur-sm transition-opacity duration-300"
+          id="mobile-backdrop"
+        ></div>
+        <aside
+          class="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-surface-container-lowest shadow-2xl flex flex-col justify-between p-lg border-l border-outline-variant transform translate-x-full transition-transform duration-300 ease-out pointer-events-auto overflow-y-auto"
+          id="mobile-drawer-panel"
+        >
+          <div class="flex flex-col">
+            <div
+              class="flex items-center justify-between pb-md border-b border-outline-variant"
+            >
+              <div class="flex items-center gap-xs">
+                <img
+                  alt="Paradoxx Primary Logo"
+                  class="h-7 w-auto object-contain"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+                /><span
+                  class="font-headline-md text-headline-md text-primary tracking-tight"
+                  >Paradoxx</span
+                >
+              </div>
+              <button
+                aria-label="Close navigation menu"
+                class="w-9 h-9 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors"
+                id="mobile-menu-close"
+                type="button"
+              >
+                <i class="fa-solid fa-xmark text-xl"></i>
+              </button>
+            </div>
+            <div class="py-xs">
+              <span
+                class="font-label-mono text-caption text-outline tracking-wider uppercase block mt-sm"
+                >53°23'N 8°08'E · Varel, Germany</span
+              >
+            </div>
+            <nav class="flex flex-col space-y-sm mt-md">
+              <a
+                class="mobile-nav-link text-headline-md font-headline-md text-on-surface-variant hover:text-secondary py-xs transition-colors"
+                data-i18n="nav_products"
+                data-path="products"
+                href="#"
+                >Products</a
+              ><a
+                class="mobile-nav-link text-headline-md font-headline-md text-on-surface-variant hover:text-secondary py-xs transition-colors"
+                data-i18n="nav_services"
+                data-path="services"
+                href="#"
+                >Services</a
+              ><a
+                class="mobile-nav-link text-headline-md font-headline-md text-on-surface-variant hover:text-secondary py-xs transition-colors"
+                data-i18n="nav_solutions"
+                data-path="solutions"
+                href="#"
+                >Solutions</a
+              ><a
+                class="mobile-nav-link text-headline-md font-headline-md text-on-surface-variant hover:text-secondary py-xs transition-colors"
+                data-i18n="nav_industries"
+                data-path="industries"
+                href="#"
+                >Industries</a
+              ><a
+                class="mobile-nav-link text-headline-md font-headline-md text-on-surface-variant hover:text-secondary py-xs transition-colors"
+                data-i18n="nav_work"
+                data-path="work"
+                href="#"
+                >Work</a
+              ><a
+                aria-current="page"
+                class="mobile-nav-link text-headline-md font-headline-md text-secondary font-semibold py-xs transition-colors"
+                data-i18n="nav_company"
+                data-path="company"
+                href="#"
+                >Company</a
+              ><a
+                class="mobile-nav-link text-headline-md font-headline-md text-on-surface-variant hover:text-secondary py-xs transition-colors"
+                data-i18n="nav_contact"
+                data-path="contact"
+                href="#"
+                >Contact</a
+              >
+            </nav>
+          </div>
+          <div class="pt-md border-t border-outline-variant space-y-md">
+            <div class="flex items-center justify-between">
+              <span
+                class="font-caption text-caption text-on-surface-variant uppercase tracking-wider"
+                >Language</span
+              >
+              <div
+                aria-label="Drawer language selection"
+                class="flex items-center bg-surface-container-low rounded-lg p-1 border border-outline-variant font-label-mono text-caption"
+                role="group"
+              >
+                <button
+                  aria-current="true"
+                  aria-label="Switch to English"
+                  class="px-2.5 py-1 rounded bg-surface-container-lowest text-primary font-bold shadow-sm transition-all"
+                  id="drawer-lang-btn-en"
+                  onclick="setLanguage('en')"
+                  type="button"
+                >
+                  EN</button
+                ><span class="text-outline-variant px-0.5 select-none">/</span
+                ><button
+                  aria-current="false"
+                  aria-label="Switch to German"
+                  class="px-2.5 py-1 rounded text-on-surface-variant hover:text-secondary font-medium transition-colors"
+                  id="drawer-lang-btn-de"
+                  onclick="setLanguage('de')"
+                  type="button"
+                >
+                  DE
+                </button>
+              </div>
+            </div>
+            <a
+              class="mobile-nav-link block text-center text-body-md font-body-md font-medium text-on-surface border border-outline-variant rounded-lg px-md py-sm hover:bg-surface-container-low transition-colors"
+              data-i18n="nav_contact"
+              data-path="contact"
+              href="#"
+              >Contact</a
+            ><button
+              class="mobile-nav-link w-full bg-secondary text-on-secondary py-sm px-md rounded-lg font-body-md font-medium hover:shadow-lg transition-all text-center"
+              data-i18n="btn_start_project"
+            >
+              Start a project
+            </button>
+          </div>
+        </aside>
       </div>
     </header>
     <main class="w-full pt-20 bg-background">
       <div class="flex flex-col w-full relative">
         <section
-          class="relative w-full min-h-[80vh] flex items-center bg-surface-container-low overflow-hidden -mt-20 pt-20"
+          class="relative w-full min-h-[500px] sm:min-h-[640px] lg:min-h-[819px] flex items-center bg-surface-container-low overflow-hidden -mt-20 pt-20"
+          id="hero-carousel-section"
         >
           <div class="absolute inset-0 z-0">
             <div
-              class="bg-cover bg-center w-full h-full mix-blend-multiply opacity-40"
-              data-alt="Abstract geometric art representing technological progress. Sharp, minimalist lines in deep violet (#5129e5) and stark white, intersecting over a soft, mist-colored background (#f2f4f6). The lighting is studio-quality, casting subtle, diffused shadows that give the shapes a sense of physical weight and depth. The mood is precise, futuristic, and calm."
+              class="hero-carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out opacity-100"
+              data-alt="Abstract computational network topography, subtle 3D luminous data nodes, neural graph lines, deep slate and violet ambient glow, clean minimalist tech backdrop, modern engineering data fabric, ultra high resolution"
               style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCtyvaylQuJYeZoBd8Mu6uE0fqnnKMudtJkXB5EkQbFLIvryjiFARFeltf8FJwyF3Agls_59Ongiz5iVB6gY4cKVlH7Ur-xHeYLDW1hE5n2g4P86gFihFE0yjQyVfwhysk_FQZtjio2WZGS6_89pRkdUgy9jPtaB2IkQGEp1KnN2PrUYq14XSFP9lFVLANficxLW7WHtams1QnphnCGxSIX7fCtwb0s2-htibHK48QTdtSFLOq5gDbo&quot;);
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBTgLbEU8tQn2Ru8hv3Ws8I4cyXXxQfsO3Q5_s7GElHvz6OjR3eZ0aBAdjNl3NHGrH39kGbxlZ11o0TmKTZb6TRqa4WjzHdDSLMV9G0Oi-3pSN2gsXEo1bUy-XjQEZuIaivO3qskW6CG6bHb2Aykq7DNFXzrHOewKAb7QXQ3bNUrXOIfFgv7a7Tfp4z8CB6UpJ82LzkYMce-yeLxxObZplHqroNemNfYCDrJPJQPAZPhRVokDk_AnAc&quot;);
               "
             ></div>
             <div
-              class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"
+              class="hero-carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out opacity-0"
+              data-alt="Futuristic architectural engineering blueprints and optical light beam wireframes intersecting in 3D space, delicate geometric lattice, cool tech monochrome with subtle violet gradient, clean enterprise tech backdrop"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAwR-JZzlkjf3g2uCZmQ8r9NoxyeRYgoZXWsN8yTkOo4nE7vudtUgLeCxBDT54Z0hENwOm_Ix1zOvOfZW89FUAell46MqmU1CyAi2nHVUJTbSHKYYAQEtaLrmSDestBuV-_MikNQR18qShPmWThlTBATXCITijHerlQ_RzNBMmHmpyIczxC--xFvsGde3MRBcc50EoE--b7UGeq9F4SHkLJlaTmY9Lgl6VOxKVdtP9bKvKxc8U1-dJG&quot;);
+              "
+            ></div>
+            <div
+              class="hero-carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out opacity-0"
+              data-alt="Sleek high-tech server room and sovereign cloud data center infrastructure, cool LED indicator lights, pristine cable management, minimalist architectural perspective, deep dark slate and gentle purple accents"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDRXOn5MVP0X9WQ4KA4NyA3CxjSaHXjUtMAUQUlDR_OtG-vyQGdH99tEp6PClk94x3cceuUl0vTdLCTyRo2IOWuPwjjzTcjruxDz6DnCD_cs4K6obM6dBtORDThubsCOZbZLNbYjFntNd1yCllLStlPVNG2_oyn6i5hE9OWR_dJI4YslcdSjOvuqemdngEwhipSnGyyib0U0UZ9ZgfmSlwIRBbIu_irQuecsJ1RQvQPz5RuSFKzpocm&quot;);
+              "
+            ></div>
+            <div
+              class="hero-carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out opacity-0"
+              data-alt="Modern minimalist German high-tech software engineering studio laboratory with ambient blue and indigo lighting, ultra-clean architecture, subtle digital screens, glass partitions, architectural precision, low contrast, elegant background for technology company"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCyAmfu_BvUOtU3Nz0-bVx9VE9CQM0ej0oDCXlVgfbNntT_ukBUgo1R3IbTe-Wr-RYe0Tqysg3vTFYeMZcr2cZtZAmTGOYHSuOkyAC9JRsH6ns_KImvGShISqjVSlYbgvkL8a1jNLjaYcfyGKqHvwgsyxiTLSZOFRzhHDNhZxqIRpHe1lBkCvWXwdOB71qkaMqgf5oEo2DyT7Lk_413FitGM6Y52EqY2HGPHTEMlKR_yFkQ1CNtmBrR&quot;);
+              "
+            ></div>
+            <div
+              class="absolute inset-0 bg-background/85 backdrop-blur-[2px]"
+            ></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-transparent"
+            ></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"
             ></div>
           </div>
           <div
@@ -248,23 +452,74 @@
           >
             <div class="col-span-12 lg:col-span-8 lg:col-start-1">
               <div class="flex items-center gap-xs mb-lg">
-                <span class="w-8 h-px bg-secondary"></span>
-                <span
+                <span class="w-8 h-px bg-secondary"></span
+                ><span
                   class="font-label-mono text-label-mono text-secondary tracking-widest uppercase"
+                  data-i18n="hero_eyebrow"
                   >About Us</span
                 >
               </div>
               <h1
-                class="font-headline-xl text-headline-xl text-on-surface mb-lg max-w-[800px] leading-tight"
+                class="font-headline-xl text-headline-lg-mobile md:text-headline-lg lg:text-headline-xl text-on-surface mb-lg max-w-[800px] leading-tight break-words"
+                data-i18n="hero_title"
               >
                 We turn technological possibility into practical progress.
               </h1>
               <p
-                class="font-body-lg text-body-lg text-on-surface-variant max-w-[600px]"
+                class="font-body-lg text-body-md sm:text-body-lg text-on-surface-variant max-w-[600px]"
+                data-i18n="hero_subhead"
               >
                 Software, digital products and technological services engineered
                 for human intent.
               </p>
+            </div>
+          </div>
+          <div
+            class="absolute bottom-8 right-6 md:right-12 z-20 flex items-center gap-3 bg-surface-container-lowest/80 backdrop-blur-md px-3 py-2 rounded-full border border-outline-variant/60 shadow-sm"
+          >
+            <div class="flex items-center gap-1.5" id="carousel-indicators">
+              <button
+                aria-label="Slide 1"
+                class="carousel-dot h-2 w-6 rounded-full bg-secondary transition-all duration-300"
+                data-index="0"
+                type="button"
+              ></button
+              ><button
+                aria-label="Slide 2"
+                class="carousel-dot h-2 w-2 rounded-full bg-outline-variant hover:bg-outline transition-all duration-300"
+                data-index="1"
+                type="button"
+              ></button
+              ><button
+                aria-label="Slide 3"
+                class="carousel-dot h-2 w-2 rounded-full bg-outline-variant hover:bg-outline transition-all duration-300"
+                data-index="2"
+                type="button"
+              ></button
+              ><button
+                aria-label="Slide 4"
+                class="carousel-dot h-2 w-2 rounded-full bg-outline-variant hover:bg-outline transition-all duration-300"
+                data-index="3"
+                type="button"
+              ></button>
+            </div>
+            <div class="h-3 w-px bg-outline-variant/80 mx-0.5"></div>
+            <div class="flex items-center gap-1">
+              <button
+                aria-label="Previous slide"
+                class="w-7 h-7 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors text-xs"
+                id="carousel-prev"
+                type="button"
+              >
+                <i class="fa-solid fa-chevron-left"></i></button
+              ><button
+                aria-label="Next slide"
+                class="w-7 h-7 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors text-xs"
+                id="carousel-next"
+                type="button"
+              >
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
             </div>
           </div>
         </section>
@@ -274,7 +529,7 @@
               <div class="col-span-12 lg:col-span-5 relative group">
                 <div class="sticky top-32">
                   <div
-                    class="w-full h-[600px] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                    class="w-full h-[320px] sm:h-[440px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   >
                     <div
                       class="bg-cover bg-center w-full h-full"
@@ -285,14 +540,15 @@
                     ></div>
                   </div>
                   <div
-                    class="absolute -bottom-8 -right-8 bg-surface p-lg rounded-xl shadow-xl max-w-xs z-10"
+                    class="absolute -bottom-4 right-2 sm:-bottom-8 sm:-right-8 bg-surface p-md sm:p-lg rounded-xl shadow-xl max-w-[220px] sm:max-w-xs z-10"
                   >
                     <span
-                      class="font-label-mono text-label-mono text-secondary mb-xs block"
+                      class="font-label-mono text-caption sm:text-label-mono text-secondary mb-xs block"
+                      data-i18n="profile_badge_est"
                       >EST. 2024</span
-                    >
-                    <span
-                      class="font-headline-md text-headline-md text-on-surface"
+                    ><span
+                      class="font-headline-md text-body-md sm:text-headline-md text-on-surface"
+                      data-i18n="profile_badge_loc"
                       >Varel, Germany</span
                     >
                   </div>
@@ -310,12 +566,14 @@
                     >
                     <h2
                       class="font-headline-lg text-headline-lg text-on-surface"
+                      data-i18n="mission_title"
                     >
                       Mission
                     </h2>
                   </div>
                   <p
                     class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed"
+                    data-i18n="mission_text"
                   >
                     To transform complex ideas and inefficient processes into
                     clear, useful and dependable digital products.
@@ -330,12 +588,14 @@
                     >
                     <h2
                       class="font-headline-lg text-headline-lg text-on-surface"
+                      data-i18n="vision_title"
                     >
                       Vision
                     </h2>
                   </div>
                   <p
                     class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed"
+                    data-i18n="vision_text"
                   >
                     To become a trusted European technology company known for
                     engineering digital solutions that are both ambitious in
@@ -345,6 +605,7 @@
                 <div class="p-lg bg-surface-container rounded-2xl">
                   <h3
                     class="font-headline-md text-headline-md text-on-surface mb-md"
+                    data-i18n="profile_title"
                   >
                     Company Profile
                   </h3>
@@ -354,10 +615,12 @@
                     >
                       <span
                         class="font-caption text-caption text-on-surface-variant uppercase tracking-wider mb-unit sm:mb-0"
+                        data-i18n="profile_hq_label"
                         >Headquarters</span
                       >
                       <span
                         class="font-body-md text-body-md text-on-surface font-medium"
+                        data-i18n="profile_hq_val"
                         >Varel, Germany</span
                       >
                     </li>
@@ -366,6 +629,7 @@
                     >
                       <span
                         class="font-caption text-caption text-on-surface-variant uppercase tracking-wider mb-unit sm:mb-0"
+                        data-i18n="profile_founder_label"
                         >Founder &amp; MD</span
                       >
                       <span
@@ -378,6 +642,7 @@
                     >
                       <span
                         class="font-caption text-caption text-on-surface-variant uppercase tracking-wider mb-unit sm:mb-0"
+                        data-i18n="profile_entity_label"
                         >Entity</span
                       >
                       <span
@@ -406,31 +671,35 @@
             </svg>
           </div>
           <div class="max-w-container-max mx-auto px-md relative z-10">
-            <div class="grid grid-cols-12 gap-gutter">
-              <div class="col-span-12 md:col-span-8 lg:col-span-6">
-                <h2
-                  class="font-headline-lg text-headline-lg text-surface-container-lowest mb-lg"
+            <div class="max-w-[800px] mx-auto text-center">
+              <h2
+                class="font-headline-lg text-headline-lg-mobile sm:text-headline-lg text-surface-container-lowest mb-lg text-center"
+                data-i18n="paradox_title"
+              >
+                The Paradox
+              </h2>
+              <div
+                class="space-y-md font-body-lg text-body-lg text-surface-variant max-w-[680px] mx-auto text-center"
+              >
+                <p class="" data-i18n="paradox_p1">
+                  Technology is built on absolute logic, yet it must serve
+                  highly subjective human needs. It progresses at blinding
+                  speed, yet we demand it be dependable and secure. It is
+                  inherently complex, yet it must feel simple to use.
+                </p>
+                <p
+                  class="text-surface-container-lowest font-medium"
+                  data-i18n="paradox_tension"
                 >
-                  The Paradox
-                </h2>
-                <div
-                  class="space-y-md font-body-lg text-body-lg text-surface-variant"
-                >
-                  <p>
-                    Technology is built on absolute logic, yet it must serve
-                    highly subjective human needs. It progresses at blinding
-                    speed, yet we demand it be dependable and secure. It is
-                    inherently complex, yet it must feel simple to use.
-                  </p>
-                  <p>This is the tension we navigate.</p>
-                  <p>
-                    We believe the best digital products are born not from
-                    avoiding these contradictions, but from embracing them. By
-                    holding ambition and usefulness, speed and responsibility,
-                    complexity and clarity in balance, we create solutions that
-                    don't just work—they make sense.
-                  </p>
-                </div>
+                  This is the tension we navigate.
+                </p>
+                <p class="" data-i18n="paradox_p2">
+                  We believe the best digital products are born not from
+                  avoiding these contradictions, but from embracing them. By
+                  holding ambition and usefulness, speed and responsibility,
+                  complexity and clarity in balance, we create solutions that
+                  don't just work—they make sense.
+                </p>
               </div>
             </div>
           </div>
@@ -443,11 +712,13 @@
               <div>
                 <h2
                   class="font-headline-lg text-headline-lg text-on-surface mb-sm"
+                  data-i18n="values_title"
                 >
                   Core Values
                 </h2>
                 <p
                   class="font-body-md text-body-md text-on-surface-variant max-w-md"
+                  data-i18n="values_subtitle"
                 >
                   The principles that guide our decisions, our engineering, and
                   our relationships.
@@ -469,11 +740,13 @@
                 </div>
                 <h3
                   class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                  data-i18n="val_clarity_title"
                 >
                   Clarity
                 </h3>
                 <p
                   class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                  data-i18n="val_clarity_text"
                 >
                   We distill the complex into the comprehensible. Simplicity is
                   our ultimate sophistication.
@@ -493,11 +766,13 @@
                 </div>
                 <h3
                   class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                  data-i18n="val_curiosity_title"
                 >
                   Curiosity
                 </h3>
                 <p
                   class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                  data-i18n="val_curiosity_text"
                 >
                   We ask 'why' before 'how'. Deep understanding precedes
                   effective engineering.
@@ -517,11 +792,13 @@
                 </div>
                 <h3
                   class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                  data-i18n="val_resp_title"
                 >
                   Responsibility
                 </h3>
                 <p
                   class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                  data-i18n="val_resp_text"
                 >
                   We build systems that are secure, ethical, and built to last.
                   We own the outcomes.
@@ -541,11 +818,13 @@
                 </div>
                 <h3
                   class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                  data-i18n="val_craft_title"
                 >
                   Craft
                 </h3>
                 <p
                   class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                  data-i18n="val_craft_text"
                 >
                   We take pride in the details. Excellence in execution is
                   non-negotiable.
@@ -565,11 +844,13 @@
                 </div>
                 <h3
                   class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                  data-i18n="val_collab_title"
                 >
                   Collaboration
                 </h3>
                 <p
                   class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                  data-i18n="val_collab_text"
                 >
                   The best work happens together. We partner deeply with our
                   clients and each other.
@@ -589,11 +870,13 @@
                 </div>
                 <h3
                   class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                  data-i18n="val_prog_title"
                 >
                   Progress
                 </h3>
                 <p
                   class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80"
+                  data-i18n="val_prog_text"
                 >
                   We move forward purposefully, seeking measurable improvements
                   in everything we touch.
@@ -613,11 +896,13 @@
                 </div>
                 <h3
                   class="font-headline-md text-headline-md text-on-surface group-hover:text-on-secondary mb-sm"
+                  data-i18n="val_adapt_title"
                 >
                   Adaptability
                 </h3>
                 <p
                   class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-secondary/80 max-w-md"
+                  data-i18n="val_adapt_text"
                 >
                   In a rapidly changing landscape, rigidity is a liability. We
                   design for change, ensuring our solutions evolve alongside new
@@ -648,66 +933,569 @@
             </div>
             <p
               class="text-body-md font-body-md text-on-surface-variant max-w-xs mb-sm"
+              data-i18n="footer_desc"
             >
               Software, digital products and technological services engineered
               for human intent.
             </p>
-            <p class="text-caption font-caption text-outline">Varel, Germany</p>
+            <p
+              class="text-caption font-caption text-outline"
+              data-i18n="footer_loc"
+            >
+              Varel, Germany
+            </p>
           </div>
           <div>
-            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_company_title"
+            >
               Company
             </h4>
             <ul
               class="space-y-sm text-body-md font-body-md text-on-surface-variant"
             >
-              <li><a class="hover:text-secondary" href="#">About Us</a></li>
-              <li><a class="hover:text-secondary" href="#">Careers</a></li>
-              <li><a class="hover:text-secondary" href="#">News</a></li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_about"
+                  href="#"
+                  >About</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_story"
+                  href="#"
+                  >Story</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_lead"
+                  href="#"
+                  >Leadership</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_careers"
+                  href="#"
+                  >Careers</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_news"
+                  href="#"
+                  >Newsroom</a
+                >
+              </li>
             </ul>
           </div>
           <div>
-            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_cap_title"
+            >
               Capabilities
             </h4>
             <ul
               class="space-y-sm text-body-md font-body-md text-on-surface-variant"
             >
-              <li><a class="hover:text-secondary" href="#">Strategy</a></li>
-              <li><a class="hover:text-secondary" href="#">Design</a></li>
-              <li><a class="hover:text-secondary" href="#">Engineering</a></li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_services"
+                  href="#"
+                  >Services</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_products"
+                  href="#"
+                  >Products</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_solutions"
+                  href="#"
+                  >Solutions</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_industries"
+                  href="#"
+                  >Industries</a
+                >
+              </li>
+              <li class="">
+                <a class="hover:text-secondary" data-i18n="ft_cap_work" href="#"
+                  >Work</a
+                >
+              </li>
             </ul>
           </div>
           <div>
-            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_res_title"
+            >
               Resources
             </h4>
             <ul
               class="space-y-sm text-body-md font-body-md text-on-surface-variant"
             >
-              <li>
-                <a class="hover:text-secondary" href="#">Documentation</a>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_insights"
+                  href="#"
+                  >Insights</a
+                >
               </li>
-              <li><a class="hover:text-secondary" href="#">Support</a></li>
-              <li><a class="hover:text-secondary" href="#">Case Studies</a></li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_research"
+                  href="#"
+                  >Research</a
+                >
+              </li>
+              <li class="">
+                <a class="hover:text-secondary" data-i18n="ft_res_faqs" href="#"
+                  >FAQs</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_support"
+                  href="#"
+                  >Support</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_contact"
+                  href="#"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
         </div>
         <div
-          class="border-t border-outline-variant pt-md flex flex-col md:flex-row justify-between items-center gap-md"
+          class="border-t border-outline-variant pt-md flex flex-col md:flex-row justify-between items-center gap-md text-center md:text-left"
         >
           <span class="text-caption font-caption text-on-surface-variant"
-            >© 2024 Paradoxx UG (haftungsbeschränkt). All rights reserved.</span
+            >© <span class="current-year">2025</span> Paradoxx UG
+            (haftungsbeschränkt). All rights reserved.</span
           >
           <div
-            class="flex gap-md text-caption font-caption text-on-surface-variant"
+            class="flex flex-wrap justify-center gap-md text-caption font-caption text-on-surface-variant"
           >
-            <a class="hover:text-secondary" href="#">Privacy Policy</a
-            ><a class="hover:text-secondary" href="#">Terms of Service</a
-            ><a class="hover:text-secondary" href="#">Legal Notice</a>
+            <a class="hover:text-secondary" data-i18n="footer_privacy" href="#"
+              >Privacy Policy</a
+            ><a class="hover:text-secondary" data-i18n="footer_terms" href="#"
+              >Terms of Service</a
+            ><a class="hover:text-secondary" data-i18n="footer_legal" href="#"
+              >Legal Notice</a
+            >
           </div>
         </div>
       </div>
     </footer>
+    <script>
+      const translations = {
+        en: {
+          nav_products: "Products",
+          nav_services: "Services",
+          nav_solutions: "Solutions",
+          nav_industries: "Industries",
+          nav_work: "Work",
+          nav_company: "Company",
+          nav_contact: "Contact",
+          btn_start_project: "Start a project",
+          hero_eyebrow: "About Us",
+          hero_title:
+            "We turn technological possibility into practical progress.",
+          hero_subhead:
+            "Software, digital products and technological services engineered for human intent.",
+          profile_badge_est: "EST. 2024",
+          profile_badge_loc: "Varel, Germany",
+          mission_title: "Mission",
+          mission_text:
+            "To transform complex ideas and inefficient processes into clear, useful and dependable digital products.",
+          vision_title: "Vision",
+          vision_text:
+            "To become a trusted European technology company known for engineering digital solutions that are both ambitious in capability and uncompromising in clarity.",
+          profile_title: "Company Profile",
+          profile_hq_label: "Headquarters",
+          profile_hq_val: "Varel, Germany",
+          profile_founder_label: "Founder & MD",
+          profile_entity_label: "Entity",
+          paradox_title: "The Paradox",
+          paradox_p1:
+            "Technology is built on absolute logic, yet it must serve highly subjective human needs. It progresses at blinding speed, yet we demand it be dependable and secure. It is inherently complex, yet it must feel simple to use.",
+          paradox_tension: "This is the tension we navigate.",
+          paradox_p2:
+            "We believe the best digital products are born not from avoiding these contradictions, but from embracing them. By holding ambition and usefulness, speed and responsibility, complexity and clarity in balance, we create solutions that don't just work—they make sense.",
+          values_title: "Core Values",
+          values_subtitle:
+            "The principles that guide our decisions, our engineering, and our relationships.",
+          val_clarity_title: "Clarity",
+          val_clarity_text:
+            "We distill the complex into the comprehensible. Simplicity is our ultimate sophistication.",
+          val_curiosity_title: "Curiosity",
+          val_curiosity_text:
+            "We ask 'why' before 'how'. Deep understanding precedes effective engineering.",
+          val_resp_title: "Responsibility",
+          val_resp_text:
+            "We build systems that are secure, ethical, and built to last. We own the outcomes.",
+          val_craft_title: "Craft",
+          val_craft_text:
+            "We take pride in the details. Excellence in execution is non-negotiable.",
+          val_collab_title: "Collaboration",
+          val_collab_text:
+            "The best work happens together. We partner deeply with our clients and each other.",
+          val_prog_title: "Progress",
+          val_prog_text:
+            "We move forward purposefully, seeking measurable improvements in everything we touch.",
+          val_adapt_title: "Adaptability",
+          val_adapt_text:
+            "In a rapidly changing landscape, rigidity is a liability. We design for change, ensuring our solutions evolve alongside new challenges.",
+          footer_desc:
+            "Software, digital products and technological services engineered for human intent.",
+          footer_loc: "Varel, Germany",
+          ft_company_title: "Company",
+          ft_company_about: "About",
+          ft_company_story: "Story",
+          ft_company_lead: "Leadership",
+          ft_company_careers: "Careers",
+          ft_company_news: "Newsroom",
+          ft_cap_title: "Capabilities",
+          ft_cap_services: "Services",
+          ft_cap_products: "Products",
+          ft_cap_solutions: "Solutions",
+          ft_cap_industries: "Industries",
+          ft_cap_work: "Work",
+          ft_res_title: "Resources",
+          ft_res_insights: "Insights",
+          ft_res_research: "Research",
+          ft_res_faqs: "FAQs",
+          ft_res_support: "Support",
+          ft_res_contact: "Contact",
+          footer_copyright:
+            "© 2024 Paradoxx UG (haftungsbeschränkt). All rights reserved.",
+          footer_privacy: "Privacy Policy",
+          footer_terms: "Terms of Service",
+          footer_legal: "Legal Notice",
+        },
+        de: {
+          nav_products: "Produkte",
+          nav_services: "Leistungen",
+          nav_solutions: "Lösungen",
+          nav_industries: "Branchen",
+          nav_work: "Referenzen",
+          nav_company: "Unternehmen",
+          nav_contact: "Kontakt",
+          btn_start_project: "Projekt starten",
+          hero_eyebrow: "Über uns",
+          hero_title:
+            "Wir verwandeln technologische Möglichkeiten in praktischen Fortschritt.",
+          hero_subhead:
+            "Software, digitale Produkte und technologische Dienstleistungen, entwickelt für menschliche Absichten.",
+          profile_badge_est: "GEGR. 2024",
+          profile_badge_loc: "Varel, Deutschland",
+          mission_title: "Mission",
+          mission_text:
+            "Komplexe Ideen und ineffiziente Prozesse in klare, nützliche und verlässliche digitale Produkte zu verwandeln.",
+          vision_title: "Vision",
+          vision_text:
+            "Ein vertrauenswürdiges europäisches Technologieunternehmen zu werden, bekannt für digitale Lösungen, die sowohl ehrgeizig in ihren Fähigkeiten als auch kompromisslos in ihrer Klarheit sind.",
+          profile_title: "Unternehmensprofil",
+          profile_hq_label: "Hauptsitz",
+          profile_hq_val: "Varel, Deutschland",
+          profile_founder_label: "Gründer & GF",
+          profile_entity_label: "Rechtsform",
+          paradox_title: "Das Paradoxon",
+          paradox_p1:
+            "Technologie basiert auf absoluter Logik und muss dennoch hochgradig subjektiven menschlichen Bedürfnissen dienen. Sie schreitet in rasender Geschwindigkeit voran und muss dennoch zuverlässig und sicher sein. Sie ist von Natur aus komplex und muss sich dennoch einfach anfühlen.",
+          paradox_tension:
+            "Dies ist das Spannungsfeld, in dem wir uns bewegen.",
+          paradox_p2:
+            "Wir glauben, dass die besten digitalen Produkte nicht dadurch entstehen, dass man diesen Widersprüchen ausweicht, sondern indem man sie annimmt. Indem wir Ehrgeiz und Nutzen, Geschwindigkeit und Verantwortung, Komplexität und Klarheit in Balance halten, schaffen wir Lösungen, die nicht nur funktionieren – sondern Sinn ergeben.",
+          values_title: "Grundwerte",
+          values_subtitle:
+            "Die Prinzipien, die unsere Entscheidungen, unsere Entwicklung und unsere Beziehungen leiten.",
+          val_clarity_title: "Klarheit",
+          val_clarity_text:
+            "Wir destillieren das Komplexe ins Verständliche. Einfachheit ist für uns die höchste Form der Vollendung.",
+          val_curiosity_title: "Neugier",
+          val_curiosity_text:
+            "Wir fragen nach dem Warum vor dem Wie. Tiefes Verständnis geht effektiver Ingenieurskunst voraus.",
+          val_resp_title: "Verantwortung",
+          val_resp_text:
+            "Wir bauen Systeme, die sicher, ethisch und langlebig sind. Wir übernehmen Verantwortung für Ergebnisse.",
+          val_craft_title: "Handwerk",
+          val_craft_text:
+            "Wir sind stolz auf jedes Detail. Exzellenz in der Ausführung ist nicht verhandelbar.",
+          val_collab_title: "Zusammenarbeit",
+          val_collab_text:
+            "Die beste Arbeit entsteht gemeinsam. Wir arbeiten partnerschaftlich eng mit unseren Kunden und im Team.",
+          val_prog_title: "Fortschritt",
+          val_prog_text:
+            "Wir bewegen uns zielgerichtet vorwärts und suchen nach messbaren Verbesserungen in allem, was wir tun.",
+          val_adapt_title: "Anpassungsfähigkeit",
+          val_adapt_text:
+            "In einer sich schnell verändernden Welt ist Starrheit ein Risiko. Wir gestalten für den Wandel und stellen sicher, dass sich unsere Lösungen mit neuen Herausforderungen weiterentwickeln.",
+          footer_desc:
+            "Software, digitale Produkte und technologische Dienstleistungen, entwickelt für menschliche Absichten.",
+          footer_loc: "Varel, Deutschland",
+          ft_company_title: "Unternehmen",
+          ft_company_about: "Über uns",
+          ft_company_story: "Geschichte",
+          ft_company_lead: "Führung",
+          ft_company_careers: "Karriere",
+          ft_company_news: "Presse",
+          ft_cap_title: "Leistungen",
+          ft_cap_services: "Services",
+          ft_cap_products: "Produkte",
+          ft_cap_solutions: "Lösungen",
+          ft_cap_industries: "Branchen",
+          ft_cap_work: "Referenzen",
+          ft_res_title: "Ressourcen",
+          ft_res_insights: "Einblicke",
+          ft_res_research: "Forschung",
+          ft_res_faqs: "FAQ",
+          ft_res_support: "Support",
+          ft_res_contact: "Kontakt",
+          footer_copyright:
+            "© 2024 Paradoxx UG (haftungsbeschränkt). Alle Rechte vorbehalten.",
+          footer_privacy: "Datenschutz",
+          footer_terms: "AGB",
+          footer_legal: "Impressum",
+        },
+      };
+
+      let currentLang = "en";
+
+      function setLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
+        document.documentElement.lang = lang;
+
+        const btnEn = document.getElementById("lang-btn-en");
+        const btnDe = document.getElementById("lang-btn-de");
+
+        const activeClasses = [
+          "bg-surface-container-lowest",
+          "text-primary",
+          "font-bold",
+          "shadow-sm",
+        ];
+        const inactiveClasses = [
+          "text-on-surface-variant",
+          "hover:text-secondary",
+          "font-medium",
+        ];
+
+        if (btnEn && btnDe) {
+          if (lang === "en") {
+            btnEn.classList.add(...activeClasses);
+            btnEn.classList.remove(...inactiveClasses);
+            btnEn.setAttribute("aria-current", "true");
+
+            btnDe.classList.remove(...activeClasses);
+            btnDe.classList.add(...inactiveClasses);
+            btnDe.setAttribute("aria-current", "false");
+          } else {
+            btnDe.classList.add(...activeClasses);
+            btnDe.classList.remove(...inactiveClasses);
+            btnDe.setAttribute("aria-current", "true");
+
+            btnEn.classList.remove(...activeClasses);
+            btnEn.classList.add(...inactiveClasses);
+            btnEn.setAttribute("aria-current", "false");
+          }
+        }
+
+        const drawerBtnEn = document.getElementById("drawer-lang-btn-en");
+        const drawerBtnDe = document.getElementById("drawer-lang-btn-de");
+        if (drawerBtnEn && drawerBtnDe) {
+          if (lang === "en") {
+            drawerBtnEn.classList.add(...activeClasses);
+            drawerBtnEn.classList.remove(...inactiveClasses);
+            drawerBtnEn.setAttribute("aria-current", "true");
+
+            drawerBtnDe.classList.remove(...activeClasses);
+            drawerBtnDe.classList.add(...inactiveClasses);
+            drawerBtnDe.setAttribute("aria-current", "false");
+          } else {
+            drawerBtnDe.classList.add(...activeClasses);
+            drawerBtnDe.classList.remove(...inactiveClasses);
+            drawerBtnDe.setAttribute("aria-current", "true");
+
+            drawerBtnEn.classList.remove(...activeClasses);
+            drawerBtnEn.classList.add(...inactiveClasses);
+            drawerBtnEn.setAttribute("aria-current", "false");
+          }
+        }
+
+        const elements = document.querySelectorAll("[data-i18n]");
+        elements.forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+      }
+    </script>
+    <script>
+      function openMobileMenu() {
+        const drawer = document.getElementById("mobile-drawer");
+        const panel = document.getElementById("mobile-drawer-panel");
+        if (!drawer || !panel) return;
+        drawer.classList.remove("pointer-events-none");
+        drawer.classList.remove("opacity-0");
+        drawer.classList.add("opacity-100");
+        panel.classList.remove("translate-x-full");
+        panel.classList.add("translate-x-0");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileMenu() {
+        const drawer = document.getElementById("mobile-drawer");
+        const panel = document.getElementById("mobile-drawer-panel");
+        if (!drawer || !panel) return;
+        panel.classList.remove("translate-x-0");
+        panel.classList.add("translate-x-full");
+        drawer.classList.remove("opacity-100");
+        drawer.classList.add("opacity-0");
+        drawer.classList.add("pointer-events-none");
+        document.body.style.overflow = "";
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.getElementById("mobile-menu-toggle");
+        const closeBtn = document.getElementById("mobile-menu-close");
+        const backdrop = document.getElementById("mobile-backdrop");
+        const navLinks = document.querySelectorAll(".mobile-nav-link");
+
+        if (toggleBtn) {
+          toggleBtn.addEventListener("click", openMobileMenu);
+        }
+        if (closeBtn) {
+          closeBtn.addEventListener("click", closeMobileMenu);
+        }
+        if (backdrop) {
+          backdrop.addEventListener("click", closeMobileMenu);
+        }
+        navLinks.forEach((link) => {
+          link.addEventListener("click", closeMobileMenu);
+        });
+
+        // Background Hero Carousel
+        const slides = document.querySelectorAll(".hero-carousel-slide");
+        const dots = document.querySelectorAll(".carousel-dot");
+        const prevBtn = document.getElementById("carousel-prev");
+        const nextBtn = document.getElementById("carousel-next");
+        const heroSection = document.getElementById("hero-carousel-section");
+        let currentSlide = 0;
+        let carouselTimer = null;
+        const slideCount = slides.length;
+
+        function goToSlide(index) {
+          if (index < 0) {
+            currentSlide = slideCount - 1;
+          } else if (index >= slideCount) {
+            currentSlide = 0;
+          } else {
+            currentSlide = index;
+          }
+
+          slides.forEach((slide, i) => {
+            if (i === currentSlide) {
+              slide.classList.remove("opacity-0");
+              slide.classList.add("opacity-100");
+            } else {
+              slide.classList.remove("opacity-100");
+              slide.classList.add("opacity-0");
+            }
+          });
+
+          dots.forEach((dot, i) => {
+            if (i === currentSlide) {
+              dot.classList.remove("w-2", "bg-outline-variant");
+              dot.classList.add("w-6", "bg-secondary");
+            } else {
+              dot.classList.remove("w-6", "bg-secondary");
+              dot.classList.add("w-2", "bg-outline-variant");
+            }
+          });
+        }
+
+        function nextSlide() {
+          goToSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          goToSlide(currentSlide - 1);
+        }
+
+        function startAutoplay() {
+          stopAutoplay();
+          carouselTimer = setInterval(nextSlide, 5500);
+        }
+
+        function stopAutoplay() {
+          if (carouselTimer) {
+            clearInterval(carouselTimer);
+            carouselTimer = null;
+          }
+        }
+
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            const idx = parseInt(dot.getAttribute("data-index"), 10);
+            goToSlide(idx);
+            startAutoplay();
+          });
+        });
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", () => {
+            nextSlide();
+            startAutoplay();
+          });
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", () => {
+            prevSlide();
+            startAutoplay();
+          });
+        }
+
+        if (heroSection) {
+          heroSection.addEventListener("mouseenter", stopAutoplay);
+          heroSection.addEventListener("mouseleave", startAutoplay);
+        }
+
+        startAutoplay();
+      });
+    </script>
   </body>
 </html>

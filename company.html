@@ -1,0 +1,1618 @@
+<!doctype html>
+<html class="scroll-smooth" lang="en" style="">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Paradoxx — Engineering Digital Products</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "inverse-surface": "#2e3132",
+              "inverse-on-surface": "#f0f1f3",
+              "surface-dim": "#d9dadc",
+              "on-tertiary-fixed": "#001d36",
+              error: "#ba1a1a",
+              "surface-tint": "#5d5e64",
+              "surface-container-highest": "#e1e2e4",
+              "on-surface": "#191c1e",
+              "on-primary-fixed": "#1a1b21",
+              "surface-variant": "#e1e2e4",
+              "on-secondary-fixed": "#190064",
+              "surface-container": "#edeef0",
+              "surface-container-low": "#f2f4f6",
+              "on-primary-container": "#82838a",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#45474c",
+              "tertiary-fixed": "#d1e4ff",
+              "outline-variant": "#c6c6cb",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8bfff",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#f3eeff",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#6a4bfd",
+              surface: "#f8f9fb",
+              "on-tertiary-container": "#1588dd",
+              primary: "#000000",
+              "tertiary-fixed-dim": "#9dcaff",
+              "tertiary-container": "#001d36",
+              outline: "#76777b",
+              "primary-fixed-dim": "#c6c6cd",
+              "primary-fixed": "#e2e2e9",
+              "on-secondary-fixed-variant": "#4206d7",
+              "on-tertiary-fixed-variant": "#00497c",
+              tertiary: "#000000",
+              "inverse-primary": "#c6c6cd",
+              "surface-container-high": "#e7e8ea",
+              "secondary-fixed": "#e5deff",
+              "on-error-container": "#93000a",
+              "on-background": "#191c1e",
+              "primary-container": "#1a1b21",
+              background: "#f8f9fb",
+              secondary: "#5129e5",
+              "surface-bright": "#f8f9fb",
+              "on-surface-variant": "#46464b",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              sm: "16px",
+              lg: "48px",
+              xs: "8px",
+              md: "24px",
+              "container-max": "1280px",
+              unit: "4px",
+              xl: "80px",
+            },
+            fontFamily: {
+              "headline-lg": ["Space Grotesk"],
+              "label-mono": ["IBM Plex Mono"],
+              "body-lg": ["Inter"],
+              "headline-lg-mobile": ["Space Grotesk"],
+              "headline-md": ["Space Grotesk"],
+              "headline-xl": ["Space Grotesk"],
+              caption: ["Inter"],
+              "body-md": ["Inter"],
+            },
+            fontSize: {
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-mono": ["14px", { lineHeight: "1.2", fontWeight: "500" }],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "headline-xl": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              caption: ["12px", { lineHeight: "1.4", fontWeight: "500" }],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background font-body-md text-body-md text-on-surface antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col justify-between"
+  >
+    <header
+      class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+    >
+      <div
+        class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between gap-md"
+      >
+        <div class="flex items-center gap-xs">
+          <a
+            class="flex items-center gap-xs group focus:outline-none"
+            data-path="home"
+            href="#"
+            ><img
+              alt="Paradoxx wordmark logo. Custom typography using 'Space Grotesk' style. The 'xx' should be the distinguishing feature, perhaps interlocking or stylized to show connection and clarity. Minimalist, high contrast (Ink #111318). Horizontal orientation."
+              class="h-8 w-auto object-contain"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+            /><span
+              class="font-headline-md text-headline-md tracking-tight text-on-surface"
+              >Paradoxx</span
+            ></a
+          >
+        </div>
+        <nav
+          class="hidden lg:flex items-center gap-md"
+          data-active-classes="text-on-surface font-semibold"
+        >
+          <a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Produkte"
+            data-en="Products"
+            data-path="products"
+            href="#"
+            >Products</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Leistungen"
+            data-en="Services"
+            data-path="services"
+            href="#"
+            >Services</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Lösungen"
+            data-en="Solutions"
+            data-path="solutions"
+            href="#"
+            >Solutions</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Branchen"
+            data-en="Industries"
+            data-path="industries"
+            href="#"
+            >Industries</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Referenzen"
+            data-en="Work"
+            data-path="work"
+            href="#"
+            >Work</a
+          ><a
+            aria-current="page"
+            class="transition-colors text-on-surface font-semibold"
+            data-de="Unternehmen"
+            data-en="Company"
+            data-path="company"
+            href="#"
+            >Company</a
+          >
+        </nav>
+        <div class="hidden lg:flex items-center gap-xs">
+          <div
+            aria-label="Language Selector"
+            class="inline-flex items-center bg-surface-container rounded-full p-unit text-caption font-label-mono"
+            role="group"
+          >
+            <button
+              class="px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary"
+              id="btn-lang-en"
+              type="button"
+            >
+              EN</button
+            ><button
+              class="px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface"
+              id="btn-lang-de"
+              type="button"
+            >
+              DE
+            </button>
+          </div>
+          <a
+            class="inline-flex items-center justify-center px-sm py-xs rounded-full font-label-mono text-label-mono text-on-surface bg-surface-container-lowest hover:bg-surface-container-high transition-colors shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+            data-de="Kontakt"
+            data-en="Contact"
+            data-path="contact"
+            href="#"
+            >Contact</a
+          ><a
+            class="inline-flex items-center justify-center px-sm py-xs rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-colors"
+            data-de="Projekt starten"
+            data-en="Start a project"
+            data-path="start-a-project"
+            href="#"
+            >Start a project</a
+          >
+        </div>
+        <button
+          aria-label="Toggle navigation menu"
+          class="lg:hidden p-2.5 text-neutral-800 hover:text-black focus:outline-none"
+          id="mobile-menu-toggle"
+        >
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+      <div
+        class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0"
+        id="mobile-nav-container"
+      >
+        <div
+          class="absolute inset-0 bg-primary/40 backdrop-blur-sm transition-opacity duration-300"
+          id="mobile-nav-backdrop"
+        ></div>
+        <aside
+          class="absolute top-0 right-0 h-full w-full max-w-sm bg-surface shadow-2xl flex flex-col justify-between p-lg transform translate-x-full transition-transform duration-300 ease-in-out border-l border-surface-variant/20 overflow-y-auto pointer-events-auto"
+          id="mobile-nav-drawer"
+        >
+          <div class="flex flex-col gap-lg">
+            <div
+              class="flex items-center justify-between pb-sm border-b border-surface-variant/20"
+            >
+              <div class="flex flex-col">
+                <div class="flex items-center gap-xs">
+                  <span
+                    class="font-headline-md text-headline-md tracking-tight text-on-surface"
+                    >Paradoxx</span
+                  ><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                </div>
+                <span
+                  class="font-label-mono text-[11px] text-on-surface-variant uppercase tracking-wider"
+                  >Varel • 53°23'N 8°08'E</span
+                >
+              </div>
+              <button
+                aria-label="Close mobile navigation"
+                class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-surface-container text-on-surface transition-colors focus:outline-none"
+                id="mobile-menu-close"
+              >
+                <i class="fa-solid fa-xmark text-xl"></i>
+              </button>
+            </div>
+            <nav class="flex flex-col gap-xs font-headline-md text-[20px]">
+              <a
+                class="py-xs text-on-surface-variant hover:text-on-surface transition-colors mobile-nav-link"
+                data-de="Produkte"
+                data-en="Products"
+                data-path="products"
+                href="#"
+                >Products</a
+              ><a
+                class="py-xs text-on-surface-variant hover:text-on-surface transition-colors mobile-nav-link"
+                data-de="Leistungen"
+                data-en="Services"
+                data-path="services"
+                href="#"
+                >Services</a
+              ><a
+                class="py-xs text-on-surface-variant hover:text-on-surface transition-colors mobile-nav-link"
+                data-de="Lösungen"
+                data-en="Solutions"
+                data-path="solutions"
+                href="#"
+                >Solutions</a
+              ><a
+                class="py-xs text-on-surface-variant hover:text-on-surface transition-colors mobile-nav-link"
+                data-de="Branchen"
+                data-en="Industries"
+                data-path="industries"
+                href="#"
+                >Industries</a
+              ><a
+                class="py-xs text-on-surface-variant hover:text-on-surface transition-colors mobile-nav-link"
+                data-de="Referenzen"
+                data-en="Work"
+                data-path="work"
+                href="#"
+                >Work</a
+              ><a
+                aria-current="page"
+                class="py-xs text-secondary font-semibold mobile-nav-link"
+                data-de="Unternehmen"
+                data-en="Company"
+                data-path="company"
+                href="#"
+                >Company</a
+              ><a
+                class="py-xs text-on-surface-variant hover:text-on-surface transition-colors mobile-nav-link"
+                data-de="Kontakt"
+                data-en="Contact"
+                data-path="contact"
+                href="#"
+                >Contact</a
+              >
+            </nav>
+          </div>
+          <div
+            class="flex flex-col gap-md pt-lg border-t border-surface-variant/20"
+          >
+            <div class="flex items-center justify-between">
+              <span
+                class="font-label-mono text-caption uppercase text-on-surface-variant"
+                data-de="Sprache"
+                data-en="Language"
+                >Language</span
+              >
+              <div
+                aria-label="Language Selector Mobile"
+                class="inline-flex items-center bg-surface-container rounded-full p-unit text-caption font-label-mono"
+              >
+                <button
+                  class="px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary"
+                  id="btn-drawer-lang-en"
+                  type="button"
+                >
+                  EN</button
+                ><button
+                  class="px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface"
+                  id="btn-drawer-lang-de"
+                  type="button"
+                >
+                  DE
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-col gap-xs">
+              <a
+                class="w-full inline-flex items-center justify-center px-lg py-sm rounded-full font-label-mono text-label-mono bg-surface-container-lowest hover:bg-surface-container text-on-surface border border-surface-variant/30 transition-colors shadow-sm text-center mobile-nav-link"
+                data-de="Kontakt"
+                data-en="Contact"
+                data-path="contact"
+                href="#"
+                >Contact</a
+              ><a
+                class="w-full inline-flex items-center justify-center px-lg py-sm rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-colors shadow-sm text-center mobile-nav-link"
+                data-de="Projekt starten"
+                data-en="Start a project"
+                data-path="start-a-project"
+                href="#"
+                >Start a project</a
+              >
+            </div>
+            <div
+              class="flex items-center justify-between text-caption font-label-mono text-on-surface-variant pt-xs"
+            >
+              <span class="flex items-center gap-unit"
+                ><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Studio Varel</span
+              ><span
+                class=""
+                data-de="Status: Betriebsbereit"
+                data-en="Status: Operational"
+                >Status: Operational</span
+              >
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+    <main class="w-full pt-20 bg-background flex-1">
+      <div class="flex flex-col w-full">
+        <!-- Hero Section -->
+        <section class="relative w-full overflow-hidden bg-surface py-xl">
+          <div
+            class="absolute inset-0 pointer-events-none opacity-40 mix-blend-multiply"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida/AEtjO1WD61b4Ci7tOt8G4xUuX5O1yXBn94DaogT12k1j7ZCvHHTmhnbwGSdKDJa1dMSuxofhl4at6vin2IpQySfwx5EFcO62BSl98Lkwj5ykRB09SAKQX9Iifiz_J2YJFlw6-1SpKcC2oPPjY1G5LTw7fvtawA-63M3xTRvn-53zhLzrwgt7cQWoIz1C3UffI4S2uy134lIuNIKAuDvLO4Q_eppRDZvkRQyJoqrn7c6YwRyaBIX8mA5Sgo7QjE8&quot;);
+              background-size: cover;
+              background-position: center center;
+            "
+          ></div>
+          <div
+            class="relative max-w-container-max mx-auto px-md flex flex-col gap-lg"
+          >
+            <div class="flex flex-wrap items-center justify-between gap-sm">
+              <div
+                class="inline-flex items-center gap-xs px-sm py-unit rounded-full bg-surface-container-high text-on-surface font-label-mono text-caption uppercase tracking-wider"
+              >
+                <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                <span
+                  class=""
+                  data-de="[ UNTERNEHMEN / ÜBER UNS ]"
+                  data-en="[ COMPANY / ABOUT US ]"
+                  >[ COMPANY / ABOUT US ]</span
+                >
+              </div>
+              <div
+                class="flex items-center gap-xs font-label-mono text-caption text-on-surface-variant bg-surface-container-lowest px-sm py-unit rounded-full shadow-sm"
+              ></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-end">
+              <div class="lg:col-span-8 flex flex-col gap-md">
+                <h1
+                  class="font-headline-xl text-headline-xl text-on-surface tracking-tight"
+                  data-de="Klarheit schaffen aus architektonischer Komplexität."
+                  data-en="Engineering clarity from architectural complexity."
+                >
+                  Engineering clarity from architectural complexity.
+                </h1>
+                <p
+                  class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl"
+                  data-de="Paradoxx ist ein unabhängiges Ingenieur- und Digitalproduktstudio, gegründet auf norddeutscher Präzision, handwerklicher Strenge und menschenzentrierter Softwarearchitektur."
+                  data-en="Paradoxx is an independent engineering and digital product studio founded on northern German precision, rigorous craft, and human-centric software architecture."
+                >
+                  Paradoxx is an independent engineering and digital product
+                  studio founded on northern German precision, rigorous craft,
+                  and human-centric software architecture.
+                </p>
+              </div>
+              <div class="lg:col-span-4 flex flex-col justify-end">
+                <div
+                  class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col gap-sm"
+                >
+                  <div class="flex items-center justify-between">
+                    <span
+                      class="font-label-mono text-caption uppercase text-on-surface-variant"
+                      data-de="Studio Status"
+                      data-en="Studio Status"
+                      >Studio Status</span
+                    >
+                    <span
+                      class="inline-flex items-center gap-unit text-caption font-label-mono text-secondary"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 rounded-full bg-secondary"
+                      ></span>
+                      <span
+                        class=""
+                        data-de="Betriebsbereit"
+                        data-en="Operational"
+                        >Operational</span
+                      >
+                    </span>
+                  </div>
+                  <div
+                    class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden"
+                  >
+                    <div class="h-full bg-secondary w-11/12 rounded-full"></div>
+                  </div>
+                  <p
+                    class="font-caption text-caption text-on-surface-variant"
+                    data-de="Entwicklung und Realisierung hochzuverlässiger Systeme für Unternehmen und Pioniere."
+                    data-en="Designing and delivering high-assurance systems for enterprise and disruptive ventures."
+                  >
+                    Designing and delivering high-assurance systems for
+                    enterprise and disruptive ventures.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Quick Metrics Strip -->
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md pt-lg"
+            >
+              <div
+                class="flex flex-col bg-surface-container-lowest p-md rounded-xl shadow-sm"
+              >
+                <span
+                  class="font-label-mono text-caption uppercase text-on-surface-variant"
+                  data-de="Gegründet"
+                  data-en="Founded"
+                  >Founded</span
+                ><span
+                  class="font-headline-lg text-headline-lg text-on-surface mt-xs"
+                  >2021</span
+                ><span
+                  class="font-caption text-caption text-on-surface-variant"
+                  data-de="Friesland, Niedersachsen"
+                  data-en="Friesland, Lower Saxony"
+                  >Friesland, Lower Saxony</span
+                >
+              </div>
+              <div
+                class="flex flex-col bg-surface-container-lowest p-md rounded-xl shadow-sm"
+              >
+                <span
+                  class="font-label-mono text-caption uppercase text-on-surface-variant"
+                  data-de="Inhaberschaft"
+                  data-en="Governance"
+                  >Governance</span
+                ><span
+                  class="font-headline-lg text-headline-lg text-secondary mt-xs"
+                  >100%</span
+                ><span
+                  class="font-caption text-caption text-on-surface-variant"
+                  data-de="Inhabergeführt &amp; Unabhängig"
+                  data-en="Owner-Led &amp; Independent"
+                  >Owner-Led &amp; Independent</span
+                >
+              </div>
+              <div
+                class="flex flex-col bg-surface-container-lowest p-md rounded-xl shadow-sm"
+              >
+                <span
+                  class="font-label-mono text-caption uppercase text-on-surface-variant"
+                  data-de="Hauptsitz"
+                  data-en="Headquarters"
+                  >Headquarters</span
+                ><span
+                  class="font-headline-lg text-headline-lg text-on-surface mt-xs"
+                  >Varel</span
+                ><span
+                  class="font-caption text-caption text-on-surface-variant"
+                  data-de="Jadebusen Region / DE"
+                  data-en="Jade Bay Region / DE"
+                  >Jade Bay Region / DE</span
+                >
+              </div>
+              <div
+                class="flex flex-col bg-surface-container-lowest p-md rounded-xl shadow-sm"
+              >
+                <span
+                  class="font-label-mono text-caption uppercase text-on-surface-variant"
+                  data-de="System-Zuverlässigkeit"
+                  data-en="Production Reliability"
+                  >Production Reliability</span
+                ><span
+                  class="font-headline-lg text-headline-lg text-on-surface mt-xs"
+                  >99.98%</span
+                ><span
+                  class="font-caption text-caption text-on-surface-variant"
+                  data-de="Gemessene SLA-Verfügbarkeit"
+                  data-en="Measured SLA Uptime"
+                  >Measured SLA Uptime</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Narrative / Origin Section -->
+        <section class="w-full bg-surface-container-low py-xl">
+          <div class="max-w-container-max mx-auto px-md">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-xl items-start">
+              <div class="lg:col-span-5 flex flex-col gap-md">
+                <h2
+                  class="font-headline-lg text-headline-lg text-on-surface"
+                  data-de="Von Varel zu globaler Wirkung."
+                  data-en="From Varel to Global Impact."
+                >
+                  From Varel to Global Impact.
+                </h2>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant leading-relaxed"
+                  data-de="In einer Branche, die von rastloser Schnelllebigkeit und Wegwerf-Oberflächen geprägt ist, schlägt Paradoxx seine Wurzeln an der norddeutschen Küste in Varel. Abseits des Lärms überhitzter Tech-Metropolen kultivieren wir bewusste architektonische Klarheit."
+                  data-en="In an industry intoxicated with breathless velocity and temporary disposable interfaces, Paradoxx chose to plant its roots along the northern coastal tides of Varel. Away from the noise of hyperventilating tech clusters, we cultivate deliberate clarity."
+                >
+                  In an industry intoxicated with breathless velocity and
+                  temporary disposable interfaces, Paradoxx chose to plant its
+                  roots along the northern coastal tides of Varel. Away from the
+                  noise of hyperventilating tech clusters, we cultivate
+                  deliberate clarity.
+                </p>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant leading-relaxed"
+                  data-de="Wir bringen ruhige, kompromisslose Ingenieurstandards zu internationalen Digitalunternehmen. Dabei verbinden wir diszipliniertes Systemdesign mit der kreativen Reibung, die für wirklich transformative Produkte erforderlich ist."
+                  data-en="We bring calm, uncompromised engineering standards to international product companies, balancing disciplined systems design with the creative friction required to invent truly transformative digital experiences."
+                >
+                  We bring calm, uncompromised engineering standards to
+                  international product companies, balancing disciplined systems
+                  design with the creative friction required to invent truly
+                  transformative digital experiences.
+                </p>
+              </div>
+              <div class="lg:col-span-7 flex flex-col gap-md">
+                <div
+                  class="relative w-full rounded-xl overflow-hidden shadow-md bg-surface-container-highest"
+                >
+                  <img
+                    class="w-full h-80 object-cover"
+                    data-alt="Minimal architectural photograph of a sleek northern European studio in Varel Germany with sharp concrete, glass panels, warm ambient lighting, and engineering work stations bathed in coastal morning fog."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF2YKODb13j4j8Duf3rOtacivqUwJT6IinxQ5-kclGv4BYdupVeAWrVRcC28yCWsZWold6IjjI_wuyuPf1c1NHdM5o2yGMOM0KRPveYyboKEmUkOH539I1gxa7KxWcjWGDYEJOg10USQa38St9jY-iHbzpGu8RPkT0PHt9O9DMHW53CM5DwsAtAVITBEtSfWwaoX-ILB2n6Qdx1qluZjuGDma7wQCMR0OTt60tnFzanbLAPHlvqbO"
+                  />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 p-md bg-gradient-to-t from-primary/80 to-transparent flex items-end justify-between"
+                  >
+                    <div class="text-on-primary font-label-mono text-caption">
+                      <span
+                        class="opacity-75"
+                        data-de="Arbeitsumgebung /"
+                        data-en="Physical Environment /"
+                        >Physical Environment /</span
+                      >
+                      Studio Varel
+                    </div>
+                    <span
+                      class="px-xs py-unit rounded bg-surface-container-lowest/20 backdrop-blur-sm text-on-primary font-label-mono text-caption"
+                      >Est. 2021</span
+                    >
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                  <div
+                    class="p-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-xs"
+                  >
+                    <div
+                      class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-on-surface mb-xs"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >architecture</span
+                      >
+                    </div>
+                    <h3
+                      class="font-headline-md text-headline-md text-on-surface"
+                      data-de="Handwerk statt Schnellschuss"
+                      data-en="Craft Over Churn"
+                    >
+                      Craft Over Churn
+                    </h3>
+                    <p
+                      class="font-body-md text-body-md text-on-surface-variant"
+                      data-de="Jede Codezeile und jedes Design-Token wird auf langfristige Resilienz geprüft, um technische Schulden von Beginn an zu vermeiden."
+                      data-en="Every line of production code and component token is verified for long-tail resilience, eliminating technical debt from day one."
+                    >
+                      Every line of production code and component token is
+                      verified for long-tail resilience, eliminating technical
+                      debt from day one.
+                    </p>
+                  </div>
+                  <div
+                    class="p-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-xs"
+                  >
+                    <div
+                      class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-secondary mb-xs"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >psychology</span
+                      >
+                    </div>
+                    <h3
+                      class="font-headline-md text-headline-md text-on-surface"
+                      data-de="Menschliche Absicht"
+                      data-en="Human Intent"
+                    >
+                      Human Intent
+                    </h3>
+                    <p
+                      class="font-body-md text-body-md text-on-surface-variant"
+                      data-de="Wir begreifen KI und automatisierte Infrastrukturen als Kraftverstärker menschlicher Intelligenz, niemals als oberflächlichen Ersatz."
+                      data-en="We treat AI and automated infrastructure as force multipliers for human intellect, never as hollow substitutes."
+                    >
+                      We treat AI and automated infrastructure as force
+                      multipliers for human intellect, never as hollow
+                      substitutes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Guiding Convictions (Bento Grid) -->
+        <section class="w-full bg-surface py-xl">
+          <div class="max-w-container-max mx-auto px-md flex flex-col gap-lg">
+            <div
+              class="flex flex-col md:flex-row md:items-end justify-between gap-sm"
+            >
+              <div>
+                <span
+                  class="font-label-mono text-caption uppercase text-secondary tracking-wider"
+                  data-de="[ METHODE &amp; LEITBILD ]"
+                  data-en="[ METHODOLOGY &amp; CREED ]"
+                  >[ METHODOLOGY &amp; CREED ]</span
+                >
+                <h2
+                  class="font-headline-lg text-headline-lg text-on-surface mt-xs"
+                  data-de="Vier Überzeugungen, die alles leiten."
+                  data-en="Four Convictions That Guide Everything."
+                >
+                  Four Convictions That Guide Everything.
+                </h2>
+              </div>
+              <p
+                class="font-body-md text-body-md text-on-surface-variant max-w-md"
+                data-de="Nicht verhandelbare architektonische Grundsätze für jedes System, jedes Interface und jedes Projekt."
+                data-en="Non-negotiable architectural truths applied across every system, interface, and engagement."
+              >
+                Non-negotiable architectural truths applied across every system,
+                interface, and engagement.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+              <div
+                class="bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+              >
+                <div class="flex flex-col gap-md">
+                  <span
+                    class="font-label-mono text-caption text-secondary font-semibold"
+                    >01 / FOCUS</span
+                  >
+                  <h3
+                    class="font-headline-md text-headline-md text-on-surface"
+                    data-de="Nützlich vor beeindruckend"
+                    data-en="Useful before impressive"
+                  >
+                    Useful before impressive
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Ästhetische Freude folgt dem Nutzen. Wir lehnen bloße Spielereien ab, wenn Klarheit schnellere und sicherere Resultate liefert."
+                    data-en="Aesthetic delight follows purpose. We refuse novelty when clarity delivers faster, safer user outcomes."
+                  >
+                    Aesthetic delight follows purpose. We refuse novelty when
+                    clarity delivers faster, safer user outcomes.
+                  </p>
+                </div>
+                <div
+                  class="pt-lg flex items-center justify-between font-label-mono text-caption text-on-surface-variant"
+                >
+                  <span class="" data-de="Priorität" data-en="Priority"
+                    >Priority</span
+                  ><span class="font-semibold text-on-surface"
+                    >P0: Utility</span
+                  >
+                </div>
+              </div>
+              <div
+                class="bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+              >
+                <div class="flex flex-col gap-md">
+                  <span
+                    class="font-label-mono text-caption text-secondary font-semibold"
+                    >02 / TAXONOMY</span
+                  >
+                  <h3
+                    class="font-headline-md text-headline-md text-on-surface"
+                    data-de="Klar vor kompliziert"
+                    data-en="Clear before complex"
+                  >
+                    Clear before complex
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Komplexität ist einfach; Reduktion erfordert Strenge. Wir zerlegen unübersichtliche Altsysteme in schlanke, verständliche Primitive."
+                    data-en="Complexity is easy; reduction demands rigor. We dismantle confusing legacy stacks into lean, coherent primitives."
+                  >
+                    Complexity is easy; reduction demands rigor. We dismantle
+                    confusing legacy stacks into lean, coherent primitives.
+                  </p>
+                </div>
+                <div
+                  class="pt-lg flex items-center justify-between font-label-mono text-caption text-on-surface-variant"
+                >
+                  <span class="" data-de="Strategie" data-en="Strategy"
+                    >Strategy</span
+                  ><span class="font-semibold text-on-surface"
+                    >Deconstruct</span
+                  >
+                </div>
+              </div>
+              <div
+                class="bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+              >
+                <div class="flex flex-col gap-md">
+                  <span
+                    class="font-label-mono text-caption text-secondary font-semibold"
+                    >03 / ETHICS</span
+                  >
+                  <h3
+                    class="font-headline-md text-headline-md text-on-surface"
+                    data-de="Verantwortungsvoll nach Design"
+                    data-en="Responsible by design"
+                  >
+                    Responsible by design
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Datensouverän, barrierefrei und datenschutzkonform. Vertrauenswürdiges Engineering ist für uns Pflicht, kein Zusatz."
+                    data-en="Data sovereign, accessible, and privacy-preserving. High-trust engineering is an obligation, not an add-on."
+                  >
+                    Data sovereign, accessible, and privacy-preserving.
+                    High-trust engineering is an obligation, not an add-on.
+                  </p>
+                </div>
+                <div
+                  class="pt-lg flex items-center justify-between font-label-mono text-caption text-on-surface-variant"
+                >
+                  <span class="" data-de="Standard" data-en="Standard"
+                    >Standard</span
+                  ><span class="font-semibold text-on-surface"
+                    >GDPR / WCAG AAA</span
+                  >
+                </div>
+              </div>
+              <div
+                class="bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+              >
+                <div class="flex flex-col gap-md">
+                  <span
+                    class="font-label-mono text-caption text-secondary font-semibold"
+                    >04 / RESILIENCE</span
+                  >
+                  <h3
+                    class="font-headline-md text-headline-md text-on-surface"
+                    data-de="Gebaut für Weiterentwicklung"
+                    data-en="Built to evolve"
+                  >
+                    Built to evolve
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Software steht niemals still. Wir bauen modulare, typisierte und dokumentierte Fundamente für mühelose Weiterentwicklung."
+                    data-en="Software is never static. We build modular, typed, and well-documented foundations that welcome future refactoring."
+                  >
+                    Software is never static. We build modular, typed, and
+                    well-documented foundations that welcome future refactoring.
+                  </p>
+                </div>
+                <div
+                  class="pt-lg flex items-center justify-between font-label-mono text-caption text-on-surface-variant"
+                >
+                  <span class="" data-de="Lebenszyklus" data-en="Lifecycle"
+                    >Lifecycle</span
+                  ><span class="font-semibold text-on-surface">Evergreen</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Interactive Architecture Preview Section -->
+        <section class="w-full bg-surface-container-low py-xl">
+          <div class="max-w-container-max mx-auto px-md">
+            <div
+              class="bg-primary text-on-primary rounded-xl p-lg md:p-xl shadow-xl overflow-hidden relative"
+            >
+              <div
+                class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-secondary/20 blur-3xl pointer-events-none"
+              ></div>
+              <div
+                class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-lg items-center"
+              >
+                <div class="lg:col-span-6 flex flex-col gap-md">
+                  <div
+                    class="inline-flex items-center gap-xs font-label-mono text-caption uppercase text-secondary-fixed"
+                  >
+                    <span class="material-symbols-outlined text-[16px]"
+                      >terminal</span
+                    >
+                    <span
+                      class=""
+                      data-de="Engineering-Protokoll"
+                      data-en="Engineering Protocol"
+                      >Engineering Protocol</span
+                    >
+                  </div>
+                  <h2
+                    class="font-headline-lg text-headline-lg text-on-primary"
+                    data-de="Ein Standard kontinuierlicher technischer Integrität."
+                    data-en="A standard of continuous technical integrity."
+                  >
+                    A standard of continuous technical integrity.
+                  </h2>
+                  <p
+                    class="font-body-md text-body-md text-on-primary/80"
+                    data-de="Wir vereinen typsichere funktionale Sprachen, verteilte Datenstrom-Architekturen und reaktive Komponenten zu einer konsistenten Pipeline."
+                    data-en="We combine type-safe functional languages, distributed stream architectures, and reactive visual components into one unified delivery pipeline."
+                  >
+                    We combine type-safe functional languages, distributed
+                    stream architectures, and reactive visual components into
+                    one unified delivery pipeline.
+                  </p>
+                  <div class="flex flex-wrap gap-xs pt-xs">
+                    <span
+                      class="px-sm py-unit rounded-full bg-surface-container-highest/10 text-on-primary font-label-mono text-caption"
+                      >Rust</span
+                    >
+                    <span
+                      class="px-sm py-unit rounded-full bg-surface-container-highest/10 text-on-primary font-label-mono text-caption"
+                      >TypeScript</span
+                    >
+                    <span
+                      class="px-sm py-unit rounded-full bg-surface-container-highest/10 text-on-primary font-label-mono text-caption"
+                      >PostgreSQL</span
+                    >
+                    <span
+                      class="px-sm py-unit rounded-full bg-surface-container-highest/10 text-on-primary font-label-mono text-caption"
+                      >WebAssembly</span
+                    >
+                    <span
+                      class="px-sm py-unit rounded-full bg-surface-container-highest/10 text-on-primary font-label-mono text-caption"
+                      >OpenAI API</span
+                    >
+                  </div>
+                </div>
+                <div class="lg:col-span-6">
+                  <div
+                    class="bg-primary-container p-md rounded-xl font-label-mono text-caption text-on-primary-container flex flex-col gap-xs shadow-inner"
+                  >
+                    <div
+                      class="flex items-center justify-between pb-xs text-on-primary/60 border-b border-surface-variant/20"
+                    >
+                      <span class="">// paradoxx-manifest.json</span>
+                      <span class="flex items-center gap-unit"
+                        ><span class="w-2 h-2 rounded-full bg-secondary"></span>
+                        live</span
+                      >
+                    </div>
+                    <pre
+                      class="overflow-x-auto text-on-primary text-xs leading-relaxed py-xs"
+                    ><code>{
+  "entity": "Paradoxx UG (haftungsbeschränkt)",
+  "headquarters": "Varel, Friesland, Germany",
+  "doctrine": "Deterministic, Scalable, Human-Led",
+  "commitments": [
+    "Zero unvalidated external telemetry",
+    "Sub-100ms API response envelope",
+    "Bilingual-native application runtime"
+  ],
+  "license": "Proprietary &amp; Tailored Delivery"
+}</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Team & Leadership Philosophy -->
+        <section class="w-full bg-surface py-xl">
+          <div class="max-w-container-max mx-auto px-md flex flex-col gap-lg">
+            <div
+              class="flex flex-col md:flex-row md:items-end justify-between gap-sm"
+            >
+              <div>
+                <span
+                  class="font-label-mono text-caption uppercase text-secondary tracking-wider"
+                  data-de="[ TEAM &amp; PRAXIS ]"
+                  data-en="[ PEOPLE &amp; PRACTICE ]"
+                  >[ PEOPLE &amp; PRACTICE ]</span
+                >
+                <h2
+                  class="font-headline-lg text-headline-lg text-on-surface mt-xs"
+                  data-de="Geführt von erfahrenen Praktikern."
+                  data-en="Led by Senior Practitioners."
+                >
+                  Led by Senior Practitioners.
+                </h2>
+              </div>
+              <p
+                class="font-body-md text-body-md text-on-surface-variant max-w-md"
+                data-de="Keine Zwischenschichten. Sie arbeiten direkt mit den Architekten zusammen, die Ihre Systeme konzipieren und schreiben."
+                data-en="No layered account managers. You work shoulder-to-shoulder with the actual architects designing and writing your codebase."
+              >
+                No layered account managers. You work shoulder-to-shoulder with
+                the actual architects designing and writing your codebase.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+              <div
+                class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col gap-md"
+              >
+                <div
+                  class="relative h-64 w-full rounded-lg overflow-hidden bg-surface-container-high"
+                >
+                  <img
+                    class="w-full h-full object-cover"
+                    data-alt="Black and white minimalist portrait of a lead software architect looking thoughtfully forward, clean architectural studio background with soft directional light and monochrome tones."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYSE0EB0eOeZHRyVQftvKkbZkDAmt2xbLCUjQv3hKmtQUdsSr_vW7lJVrN2P8H3Q9auiDysPtdu9bsHGjIEaC9sZjflzVH0wYymYHDbKsQ6RGBsI4KUZ_F2zy8IekIfRJ6NIm06j8HDFMbaAM-WAF1afIXczb9Mpmp3ahgqCclDY6DdBxqjagQx9EGaqRXtRBpUSW-zx9U-PbtVn8Z-7eeJ9mVrYJQ9pzqOKl472m1jc29RJDqrMG"
+                  />
+                </div>
+                <div class="flex flex-col gap-xs">
+                  <span
+                    class="font-label-mono text-caption text-secondary font-semibold"
+                    data-de="SYSTEME &amp; CLOUD"
+                    data-en="SYSTEMS &amp; CLOUD"
+                    >SYSTEMS &amp; CLOUD</span
+                  >
+                  <h3 class="font-headline-md text-headline-md text-on-surface">
+                    Product &amp; System Architecture
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Übersetzung komplexer Geschäftsprozesse in skalierbare Microservices, Ausfallsicherheit und moderne Cloud-Strukturen."
+                    data-en="Translating intricate enterprise workflows into scalable microservices, resilient fault tolerances, and robust cloud topology."
+                  >
+                    Translating intricate enterprise workflows into scalable
+                    microservices, resilient fault tolerances, and robust cloud
+                    topology.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col gap-md"
+              >
+                <div
+                  class="relative h-64 w-full rounded-lg overflow-hidden bg-surface-container-high"
+                >
+                  <img
+                    class="w-full h-full object-cover"
+                    data-alt="Artistic high contrast portrait of an interface designer in a modern studio environment, subtle purple rim lighting, minimal desk with engineering sketches in the background."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh08WeWIQB-Q2E0AuS6_X3zypEUvsB0RdY706KCnlS4MtlRrTra4kbJwuG0RzmBSX-cHtIQrAvcJ-59Bi3yB0LOwy--M-PtKenfad0Pp4ffpsHpRuH_2GXlmF9u7qicOeTHGCAoIJAxhGQ7J61ntUNE5G4PcpA5iMRDpl5u-xkZ3vqJDEej8R4NLxQb937whpXzKTZgk2gtuVrcCAsGGoaP7kr02qEZ3V00Gn4ovt9kD3sJ_QjmQvS"
+                  />
+                </div>
+                <div class="flex flex-col gap-xs">
+                  <span
+                    class="font-label-mono text-caption text-secondary font-semibold"
+                    data-de="INTERFACES &amp; GRAFIK"
+                    data-en="INTERFACES &amp; GRAPHICS"
+                    >INTERFACES &amp; GRAPHICS</span
+                  >
+                  <h3 class="font-headline-md text-headline-md text-on-surface">
+                    Interface Design &amp; Systems
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Präzise Design-Frameworks, die Markenidentität, barrierefreie Interaktion und performante Visualisierungen vereinen."
+                    data-en="Precision design frameworks that bridge brand identity, accessible interaction, and high-performance WebGL visuals."
+                  >
+                    Precision design frameworks that bridge brand identity,
+                    accessible interaction, and high-performance WebGL visuals.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col gap-md sm:col-span-2 lg:col-span-1"
+              >
+                <div
+                  class="relative h-64 w-full rounded-lg overflow-hidden bg-surface-container-high"
+                >
+                  <img
+                    alt="Professional candid workplace portrait of a male senior software engineer and AI specialist reviewing telemetry and architecture on multi-screen workstations in a German engineering studio."
+                    class="w-full h-full object-cover"
+                    data-alt="Professional candid workplace portrait of a male senior software engineer and AI specialist reviewing telemetry and architecture on multi-screen workstations in a German engineering studio."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoJqrFE3D3RNkX6RprtyngcD6zox8pX7FVy9aNsp_Oayb3w07jvcKBp5Q7VAjg1AQoll_JvDYOdZzsLXJ5lQU_os9j6V7tWyTI4LLF1pqPmN2VngwsNb8u7QjduWp1lXmhHBA0s4C0x63GdN-WPfgka9kOeKsDpU1J1phJ4-XaJtdQtXPuC4AghuoNiLjvNznjc9hcIfr7Tp7P9GJMNxSy4cCVJ_cAkWpZ30YRImd9ZVOKynAGylGl"
+                  />
+                </div>
+                <div class="flex flex-col gap-xs">
+                  <span
+                    class="font-label-mono text-caption text-secondary font-semibold"
+                    data-de="INTELLIGENZ &amp; DATEN"
+                    data-en="INTELLIGENCE &amp; DATA"
+                    >INTELLIGENCE &amp; DATA</span
+                  >
+                  <h3 class="font-headline-md text-headline-md text-on-surface">
+                    AI &amp; Distributed Computation
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Sichere Einbettung moderner neuronaler Architekturen und Sprachmodelle in produktive Unternehmensprozesse."
+                    data-en="Applying modern neural architectures and large language models safely into real-world business pipelines."
+                  >
+                    Applying modern neural architectures and large language
+                    models safely into real-world business pipelines.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Legal & Corporate Transparency -->
+        <section class="w-full bg-surface-container-low py-xl">
+          <div class="max-w-container-max mx-auto px-md">
+            <div
+              class="bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col gap-md"
+            >
+              <div class="flex flex-wrap items-center justify-between gap-sm">
+                <div class="flex items-center gap-xs">
+                  <span
+                    class="material-symbols-outlined text-secondary text-[20px]"
+                    >verified_user</span
+                  >
+                  <span
+                    class="font-headline-md text-headline-md text-on-surface"
+                    data-de="Transparenz &amp; Unternehmensdaten"
+                    data-en="Corporate Transparency"
+                    >Corporate Transparency</span
+                  >
+                </div>
+              </div>
+              <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-md pt-md border-t border-surface-variant/30"
+              >
+                <div class="flex flex-col gap-unit">
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                    data-de="Rechtsform"
+                    data-en="Legal Entity"
+                    >Legal Entity</span
+                  >
+                  <span
+                    class="font-body-md text-body-md text-on-surface font-semibold"
+                    >Paradoxx UG (haftungsbeschränkt)</span
+                  >
+                </div>
+                <div class="flex flex-col gap-unit">
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                    data-de="Registergericht"
+                    data-en="Registration Court"
+                    >Registration Court</span
+                  >
+                  <span
+                    class="font-body-md text-body-md text-on-surface font-semibold"
+                    data-de="Amtsgericht Oldenburg"
+                    data-en="Amtsgericht Oldenburg"
+                    >Amtsgericht Oldenburg</span
+                  >
+                </div>
+                <div class="flex flex-col gap-unit">
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                    data-de="Sitz der Gesellschaft"
+                    data-en="Registered Office"
+                    >Registered Office</span
+                  >
+                  <span
+                    class="font-body-md text-body-md text-on-surface font-semibold"
+                    >Varel / Friesland, Germany</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Call to Action Banner -->
+        <section class="w-full bg-surface py-xl">
+          <div class="max-w-container-max mx-auto px-md">
+            <div
+              class="bg-surface-container-high rounded-xl p-lg md:p-xl flex flex-col md:flex-row items-center justify-between gap-lg shadow-sm"
+            >
+              <div class="flex flex-col gap-xs max-w-xl">
+                <span
+                  class="font-label-mono text-caption text-secondary uppercase font-semibold tracking-wider"
+                  data-de="[ ZUSAMMENARBEIT ]"
+                  data-en="[ COLLABORATE ]"
+                  >[ COLLABORATE ]</span
+                >
+                <h2
+                  class="font-headline-lg text-headline-lg text-on-surface"
+                  data-de="Bereit für Klarheit in Ihren digitalen Systemen?"
+                  data-en="Ready to engineer clarity for your venture?"
+                >
+                  Ready to engineer clarity for your venture?
+                </h2>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant"
+                  data-de="Ob Sie von Grund auf neu aufbauen oder eine geschäftskritische Plattform modernisieren: Wir sind startklar."
+                  data-en="Whether building from zero or refactoring a mission-critical platform, we are ready to partner."
+                >
+                  Whether building from zero or refactoring a mission-critical
+                  platform, we are ready to partner.
+                </p>
+              </div>
+              <div class="flex flex-wrap items-center gap-xs">
+                <a
+                  class="inline-flex items-center justify-center px-lg py-sm rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-colors shadow-sm"
+                  data-de="Projekt starten"
+                  data-en="Start a project"
+                  data-path="start-a-project"
+                  href="#"
+                >
+                  Start a project
+                </a>
+                <a
+                  class="inline-flex items-center justify-center px-lg py-sm rounded-full font-label-mono text-label-mono bg-surface-container-lowest hover:bg-surface-container text-on-surface transition-colors shadow-sm"
+                  data-de="Kontakt aufnehmen"
+                  data-en="Get in touch"
+                  data-path="contact"
+                  href="#"
+                >
+                  Get in touch
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="w-full bg-surface-container-low pt-xl pb-lg">
+      <div class="max-w-container-max mx-auto px-md">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg pb-xl"
+        >
+          <div class="lg:col-span-2 flex flex-col gap-sm pr-lg">
+            <div class="flex items-center gap-xs">
+              <img
+                alt="Paradoxx wordmark logo. Custom typography using 'Space Grotesk' style. The 'xx' should be the distinguishing feature, perhaps interlocking or stylized to show connection and clarity. Minimalist, high contrast (Ink #111318). Horizontal orientation."
+                class="h-7 w-auto object-contain"
+                src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+              /><span
+                class="font-headline-md text-headline-md tracking-tight text-on-surface"
+                >Paradoxx</span
+              >
+            </div>
+            <p
+              class="text-on-surface-variant font-body-md text-body-md max-w-md"
+              data-de="Software, digitale Produkte und Technologiedienstleistungen für menschliche Intention entwickelt."
+              data-en="Software, digital products and technological services engineered for human intent."
+            >
+              Software, digital products and technological services engineered
+              for human intent.
+            </p>
+            <div
+              class="flex items-center gap-xs font-label-mono text-caption text-on-surface-variant pt-xs"
+            >
+              <span class="material-symbols-outlined text-[16px]"
+                >location_on</span
+              ><span class="">Varel, Germany</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface uppercase tracking-wider mb-xs"
+              data-de="Unternehmen"
+              data-en="Company"
+              >Company</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Über uns"
+                  data-en="About"
+                  data-path="about"
+                  href="#"
+                  >About</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Historie"
+                  data-en="Story"
+                  data-path="story"
+                  href="#"
+                  >Story</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Führungsteam"
+                  data-en="Leadership"
+                  data-path="leadership"
+                  href="#"
+                  >Leadership</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Karriere"
+                  data-en="Careers"
+                  data-path="careers"
+                  href="#"
+                  >Careers</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Newsroom"
+                  data-en="Newsroom"
+                  data-path="newsroom"
+                  href="#"
+                  >Newsroom</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface uppercase tracking-wider mb-xs"
+              data-de="Kompetenzen"
+              data-en="Capabilities"
+              >Capabilities</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Leistungen"
+                  data-en="Services"
+                  data-path="services"
+                  href="#"
+                  >Services</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Produkte"
+                  data-en="Products"
+                  data-path="products"
+                  href="#"
+                  >Products</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Lösungen"
+                  data-en="Solutions"
+                  data-path="solutions"
+                  href="#"
+                  >Solutions</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Branchen"
+                  data-en="Industries"
+                  data-path="industries"
+                  href="#"
+                  >Industries</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Referenzen"
+                  data-en="Work"
+                  data-path="work"
+                  href="#"
+                  >Work</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface uppercase tracking-wider mb-xs"
+              data-de="Ressourcen"
+              data-en="Resources"
+              >Resources</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Einblicke"
+                  data-en="Insights"
+                  data-path="insights"
+                  href="#"
+                  >Insights</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Forschung"
+                  data-en="Research"
+                  data-path="research"
+                  href="#"
+                  >Research</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Häufige Fragen"
+                  data-en="FAQs"
+                  data-path="faqs"
+                  href="#"
+                  >FAQs</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Support"
+                  data-en="Support"
+                  data-path="support"
+                  href="#"
+                  >Support</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Kontakt"
+                  data-en="Contact"
+                  data-path="contact"
+                  href="#"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="pt-md flex flex-col md:flex-row items-center justify-between gap-md text-caption font-label-mono text-on-surface-variant"
+        >
+          <div class="flex items-center gap-xs">
+            <span class=""
+              >© <span class="" id="copyright-year">2026</span>&nbsp;&nbsp;<span
+                id="docs-internal-guid-f03478e8-7fff-f8a4-497e-0558738e5a9b"
+                class=""
+                ><span
+                  style="
+                    font-size: 10.5pt;
+                    font-family: Arial, sans-serif;
+                    color: rgb(0, 0, 0);
+                    background-color: transparent;
+                    font-variant: normal;
+                    vertical-align: baseline;
+                    white-space: pre-wrap;
+                  "
+                  class=""
+                  >Paradoxx UG (haftungsbeschränkt)</span
+                ></span
+              >.</span
+            ><span
+              class=""
+              data-de="Alle Rechte vorbehalten."
+              data-en="All rights reserved."
+              >All rights reserved.</span
+            >
+          </div>
+          <div class="flex items-center gap-md">
+            <a
+              class="hover:text-on-surface transition-colors"
+              data-de="Datenschutz"
+              data-en="Privacy Policy"
+              data-path="privacy-policy"
+              href="#"
+              >Privacy Policy</a
+            ><a
+              class="hover:text-on-surface transition-colors"
+              data-de="AGB"
+              data-en="Terms of Service"
+              data-path="terms-of-service"
+              href="#"
+              >Terms of Service</a
+            ><a
+              class="hover:text-on-surface transition-colors"
+              data-de="Impressum"
+              data-en="Legal Notice"
+              data-path="legal-notice"
+              href="#"
+              >Legal Notice</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        document.getElementById("copyright-year").textContent =
+          new Date().getFullYear();
+        var curLang = "en";
+        var btnEn = document.getElementById("btn-lang-en");
+        var btnDe = document.getElementById("btn-lang-de");
+        var drawerBtnEn = document.getElementById("btn-drawer-lang-en");
+        var drawerBtnDe = document.getElementById("btn-drawer-lang-de");
+        function setLanguage(lang) {
+          curLang = lang;
+          document.documentElement.setAttribute("lang", lang);
+          var translatables = document.querySelectorAll("[data-en][data-de]");
+          translatables.forEach(function (el) {
+            var val = el.getAttribute("data-" + lang);
+            if (val) {
+              el.textContent = val;
+            }
+          });
+          var activeClass =
+            "px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary";
+          var inactiveClass =
+            "px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface";
+          if (lang === "en") {
+            if (btnEn) btnEn.className = activeClass;
+            if (btnDe) btnDe.className = inactiveClass;
+            if (drawerBtnEn) drawerBtnEn.className = activeClass;
+            if (drawerBtnDe) drawerBtnDe.className = inactiveClass;
+          } else {
+            if (btnEn) btnEn.className = inactiveClass;
+            if (btnDe) btnDe.className = activeClass;
+            if (drawerBtnEn) drawerBtnEn.className = inactiveClass;
+            if (drawerBtnDe) drawerBtnDe.className = activeClass;
+          }
+        }
+        if (btnEn)
+          btnEn.addEventListener("click", function () {
+            setLanguage("en");
+          });
+        if (btnDe)
+          btnDe.addEventListener("click", function () {
+            setLanguage("de");
+          });
+        if (drawerBtnEn)
+          drawerBtnEn.addEventListener("click", function () {
+            setLanguage("en");
+          });
+        if (drawerBtnDe)
+          drawerBtnDe.addEventListener("click", function () {
+            setLanguage("de");
+          });
+        var toggleBtn = document.getElementById("mobile-menu-toggle");
+        var container = document.getElementById("mobile-nav-container");
+        var drawer = document.getElementById("mobile-nav-drawer");
+        var backdrop = document.getElementById("mobile-nav-backdrop");
+        var closeBtn = document.getElementById("mobile-menu-close");
+        var navLinks = document.querySelectorAll(".mobile-nav-link");
+        function openDrawer() {
+          if (!container || !drawer) return;
+          container.classList.remove("pointer-events-none", "opacity-0");
+          container.classList.add("pointer-events-auto", "opacity-100");
+          drawer.classList.remove("translate-x-full");
+          drawer.classList.add("translate-x-0");
+          document.body.style.overflow = "hidden";
+        }
+        function closeDrawer() {
+          if (!container || !drawer) return;
+          drawer.classList.remove("translate-x-0");
+          drawer.classList.add("translate-x-full");
+          container.classList.remove("opacity-100", "pointer-events-auto");
+          container.classList.add("opacity-0", "pointer-events-none");
+          document.body.style.overflow = "";
+        }
+        if (toggleBtn) {
+          toggleBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            openDrawer();
+          });
+        }
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            closeDrawer();
+          });
+        }
+        if (backdrop) {
+          backdrop.addEventListener("click", function () {
+            closeDrawer();
+          });
+        }
+        navLinks.forEach(function (link) {
+          link.addEventListener("click", function () {
+            closeDrawer();
+          });
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            closeDrawer();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

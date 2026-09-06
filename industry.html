@@ -1,0 +1,1867 @@
+<!doctype html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Paradoxx — Engineering Digital Products</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "inverse-surface": "#2e3132",
+              "inverse-on-surface": "#f0f1f3",
+              "surface-dim": "#d9dadc",
+              "on-tertiary-fixed": "#001d36",
+              error: "#ba1a1a",
+              "surface-tint": "#5d5e64",
+              "surface-container-highest": "#e1e2e4",
+              "on-surface": "#191c1e",
+              "on-primary-fixed": "#1a1b21",
+              "surface-variant": "#e1e2e4",
+              "on-secondary-fixed": "#190064",
+              "surface-container": "#edeef0",
+              "surface-container-low": "#f2f4f6",
+              "on-primary-container": "#82838a",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#45474c",
+              "tertiary-fixed": "#d1e4ff",
+              "outline-variant": "#c6c6cb",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8bfff",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#f3eeff",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#6a4bfd",
+              surface: "#f8f9fb",
+              "on-tertiary-container": "#1588dd",
+              primary: "#000000",
+              "tertiary-fixed-dim": "#9dcaff",
+              "tertiary-container": "#001d36",
+              outline: "#76777b",
+              "primary-fixed-dim": "#c6c6cd",
+              "primary-fixed": "#e2e2e9",
+              "on-secondary-fixed-variant": "#4206d7",
+              "on-tertiary-fixed-variant": "#00497c",
+              tertiary: "#000000",
+              "inverse-primary": "#c6c6cd",
+              "surface-container-high": "#e7e8ea",
+              "secondary-fixed": "#e5deff",
+              "on-error-container": "#93000a",
+              "on-background": "#191c1e",
+              "primary-container": "#1a1b21",
+              background: "#f8f9fb",
+              secondary: "#5129e5",
+              "surface-bright": "#f8f9fb",
+              "on-surface-variant": "#46464b",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              sm: "16px",
+              lg: "48px",
+              xs: "8px",
+              md: "24px",
+              "container-max": "1280px",
+              unit: "4px",
+              xl: "80px",
+            },
+            fontFamily: {
+              "headline-lg": ["Space Grotesk"],
+              "label-mono": ["IBM Plex Mono"],
+              "body-lg": ["Inter"],
+              "headline-lg-mobile": ["Space Grotesk"],
+              "headline-md": ["Space Grotesk"],
+              "headline-xl": ["Space Grotesk"],
+              caption: ["Inter"],
+              "body-md": ["Inter"],
+            },
+            fontSize: {
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-mono": ["14px", { lineHeight: "1.2", fontWeight: "500" }],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "headline-xl": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              caption: ["12px", { lineHeight: "1.4", fontWeight: "500" }],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background font-body-md text-body-md text-on-surface antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col justify-between"
+  >
+    <header
+      class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+    >
+      <div
+        class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between gap-xs sm:gap-md"
+      >
+        <div class="flex items-center gap-xs">
+          <a
+            class="flex items-center gap-xs group focus:outline-none"
+            data-path="home"
+            href="#"
+            ><img
+              alt="Paradoxx wordmark logo."
+              class="h-7 sm:h-8 w-auto object-contain"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+            /><span
+              class="font-headline-md text-headline-md tracking-tight text-on-surface"
+              >Paradoxx</span
+            ></a
+          ><span
+            class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container-high text-on-surface-variant uppercase tracking-wider hidden lg:inline-block"
+            >Varel / DE</span
+          >
+        </div>
+        <nav
+          class="hidden lg:flex items-center gap-md"
+          data-active-classes="text-on-surface font-semibold"
+        >
+          <a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Produkte"
+            data-en="Products"
+            data-path="products"
+            href="#"
+            >Products</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Leistungen"
+            data-en="Services"
+            data-path="services"
+            href="#"
+            >Services</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Lösungen"
+            data-en="Solutions"
+            data-path="solutions"
+            href="#"
+            >Solutions</a
+          ><a
+            aria-current="page"
+            class="transition-colors text-on-surface font-semibold"
+            data-de="Branchen"
+            data-en="Industries"
+            data-path="industries"
+            href="#"
+            >Industries</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Referenzen"
+            data-en="Work"
+            data-path="work"
+            href="#"
+            >Work</a
+          ><a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md"
+            data-de="Unternehmen"
+            data-en="Company"
+            data-path="company"
+            href="#"
+            >Company</a
+          >
+        </nav>
+        <div class="hidden lg:flex items-center gap-xs">
+          <div
+            aria-label="Language Selector"
+            class="inline-flex items-center bg-surface-container rounded-full p-unit text-caption font-label-mono"
+            role="group"
+          >
+            <button
+              class="px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary"
+              id="btn-lang-en"
+              type="button"
+            >
+              EN</button
+            ><button
+              class="px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface"
+              id="btn-lang-de"
+              type="button"
+            >
+              DE
+            </button>
+          </div>
+          <a
+            class="inline-flex items-center justify-center px-sm py-xs rounded-full font-label-mono text-label-mono text-on-surface bg-surface-container-lowest hover:bg-surface-container-high transition-colors shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+            data-de="Kontakt"
+            data-en="Contact"
+            data-path="contact"
+            href="#"
+            >Contact</a
+          ><a
+            class="inline-flex items-center justify-center px-sm py-xs rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-colors"
+            data-de="Projekt starten"
+            data-en="Start a project"
+            data-path="start-a-project"
+            href="#"
+            >Start a project</a
+          >
+        </div>
+        <button
+          aria-label="Toggle navigation menu"
+          class="lg:hidden p-2.5 text-neutral-800 hover:text-black focus:outline-none flex items-center justify-center"
+          id="mobile-menu-toggle"
+        >
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+      <div
+        class="fixed inset-0 bg-primary/50 backdrop-blur-sm z-50 hidden transition-opacity duration-300"
+        id="mobile-drawer-backdrop"
+      ></div>
+      <aside
+        class="fixed top-0 right-0 h-full w-[320px] max-w-[85vw] bg-surface-container-lowest shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-md border-l border-surface-container-high overflow-y-auto"
+        id="mobile-drawer-panel"
+      >
+        <div class="flex flex-col gap-md">
+          <div
+            class="flex items-center justify-between pb-sm border-b border-surface-container-high"
+          >
+            <div class="flex flex-col">
+              <div class="flex items-center gap-xs">
+                <img
+                  alt="Paradoxx wordmark logo."
+                  class="h-6 w-auto object-contain"
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+                /><span
+                  class="font-headline-md text-xl tracking-tight text-on-surface font-semibold"
+                  >Paradoxx</span
+                >
+              </div>
+              <span class="font-label-mono text-caption text-on-surface-variant"
+                >53°23'N 8°08'E // Varel</span
+              >
+            </div>
+            <button
+              aria-label="Close navigation menu"
+              class="p-2.5 rounded-lg hover:bg-surface-container-high text-on-surface flex items-center justify-center focus:outline-none"
+              id="mobile-menu-close"
+            >
+              <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+          </div>
+          <nav class="flex flex-col gap-xs" id="mobile-drawer-nav">
+            <a
+              class="px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-body-md transition-colors"
+              data-de="Produkte"
+              data-en="Products"
+              data-path="products"
+              href="#"
+              >Products</a
+            ><a
+              class="px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-body-md transition-colors"
+              data-de="Leistungen"
+              data-en="Services"
+              data-path="services"
+              href="#"
+              >Services</a
+            ><a
+              class="px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-body-md transition-colors"
+              data-de="Lösungen"
+              data-en="Solutions"
+              data-path="solutions"
+              href="#"
+              >Solutions</a
+            ><a
+              aria-current="page"
+              class="px-sm py-xs rounded-lg text-secondary font-semibold bg-surface-container-low flex items-center justify-between"
+              data-de="Branchen"
+              data-en="Industries"
+              data-path="industries"
+              href="#"
+              >Industries</a
+            ><a
+              class="px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-body-md transition-colors"
+              data-de="Referenzen"
+              data-en="Work"
+              data-path="work"
+              href="#"
+              >Work</a
+            ><a
+              class="px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-body-md transition-colors"
+              data-de="Unternehmen"
+              data-en="Company"
+              data-path="company"
+              href="#"
+              >Company</a
+            ><a
+              class="px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-body-md transition-colors"
+              data-de="Kontakt"
+              data-en="Contact"
+              data-path="contact"
+              href="#"
+              >Contact</a
+            >
+          </nav>
+        </div>
+        <div
+          class="flex flex-col gap-sm pt-md border-t border-surface-container-high"
+        >
+          <div class="flex items-center justify-between">
+            <span
+              class="font-label-mono text-caption text-on-surface-variant uppercase"
+              >Language</span
+            >
+            <div
+              aria-label="Drawer Language Selector"
+              class="inline-flex items-center bg-surface-container rounded-full p-unit text-caption font-label-mono"
+              role="group"
+            >
+              <button
+                class="px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary"
+                id="drawer-lang-en"
+                type="button"
+              >
+                EN</button
+              ><button
+                class="px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface"
+                id="drawer-lang-de"
+                type="button"
+              >
+                DE
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col gap-xs pt-xs">
+            <a
+              class="w-full inline-flex items-center justify-center px-sm py-xs rounded-full font-label-mono text-label-mono text-on-surface bg-surface-container-low hover:bg-surface-container transition-colors text-center"
+              data-de="Kontakt"
+              data-en="Contact"
+              data-path="contact"
+              href="#"
+              >Contact</a
+            ><a
+              class="w-full inline-flex items-center justify-center px-sm py-xs rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-colors text-center shadow-sm"
+              data-de="Projekt starten"
+              data-en="Start a project"
+              data-path="start-a-project"
+              href="#"
+              >Start a project</a
+            >
+          </div>
+        </div>
+      </aside>
+    </header>
+    <main class="w-full pt-20 bg-background flex-1">
+      <div class="flex flex-col w-full">
+        <!-- Subtle Technical Precision Grid Background (Inspired by Reference Wireframe Aesthetics) -->
+        <div class="relative w-full overflow-hidden bg-background">
+          <!-- Ambient Subtle Geometric Aura -->
+          <div
+            class="absolute top-0 right-1/4 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-3xl pointer-events-none -z-10"
+          ></div>
+          <div
+            class="absolute top-96 left-10 w-[450px] h-[450px] bg-tertiary-fixed/30 rounded-full blur-3xl pointer-events-none -z-10"
+          ></div>
+          <!-- HERO SECTION -->
+          <section
+            class="max-w-container-max mx-auto px-md pt-xl pb-lg relative"
+          >
+            <div class="flex flex-col max-w-4xl">
+              <!-- Top Technical Badge & Coordinates -->
+              <div class="flex flex-wrap items-center gap-xs mb-md">
+                <span
+                  class="inline-flex items-center gap-1.5 px-xs py-unit rounded-full bg-surface-container-high text-on-surface font-label-mono text-caption tracking-wider uppercase"
+                >
+                  <span
+                    class="w-2 h-2 rounded-full bg-secondary animate-pulse"
+                  ></span>
+                  <span
+                    class=""
+                    data-de="[ BRANCHEN &amp; DOMÄNEN ]"
+                    data-en="[ INDUSTRIES &amp; DOMAINS ]"
+                    >[ INDUSTRIES &amp; DOMAINS ]</span
+                  >
+                </span>
+                <span
+                  class="font-label-mono text-caption text-on-surface-variant"
+                  >SYS_SPEC // VERTICALS_V4.2</span
+                >
+                <span
+                  class="font-label-mono text-caption text-outline px-xs py-unit rounded bg-surface-container-low hidden sm:inline"
+                  >EU_STANDARDS_STRICT</span
+                >
+              </div>
+              <!-- Main Headline -->
+              <h1
+                class="font-headline-xl text-3xl sm:text-headline-xl text-on-surface tracking-tight leading-[1.1] sm:leading-[1.05] mb-md"
+              >
+                <span
+                  class=""
+                  data-de="Branchenspezifische Präzision für kritische Industrien."
+                  data-en="Domain precision for critical industries."
+                  >Domain precision for critical industries.</span
+                >
+              </h1>
+              <!-- Subtitle & Value Proposition -->
+              <p
+                class="font-body-md sm:font-body-lg text-body-md sm:text-body-lg text-on-surface-variant max-w-3xl leading-relaxed mb-lg"
+                data-de="Wir entwickeln unternehmenskritische Plattformen, sichere Workflows und maßgeschneiderte Architekturen für strenge Compliance, regulatorische Standards und komplexe Betriebsumgebungen."
+                data-en="We engineer mission-critical platforms, secure workflows, and tailored digital architectures adapted to strict compliance, regulatory standards, and complex operational environments."
+              >
+                We engineer mission-critical platforms, secure workflows, and
+                tailored digital architectures adapted to strict compliance,
+                regulatory standards, and complex operational environments.
+              </p>
+              <!-- Quick Filter Metrics Strip -->
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-xs p-xs bg-surface-container-lowest rounded-xl shadow-sm"
+              >
+                <div
+                  class="p-sm flex flex-col justify-between bg-surface-container-low/50 rounded-lg"
+                >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant uppercase"
+                    data-de="EU Datenresidenz"
+                    data-en="EU Data Residency"
+                    >EU Data Residency</span
+                  ><span
+                    class="font-headline-md text-2xl sm:text-headline-md text-on-surface mt-xs font-semibold"
+                    >100%</span
+                  >
+                </div>
+                <div
+                  class="p-sm flex flex-col justify-between bg-surface-container-low/50 rounded-lg"
+                >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant uppercase"
+                    data-de="Compliance Standards"
+                    data-en="Compliance Standards"
+                    >Compliance Standards</span
+                  ><span
+                    class="font-headline-md text-2xl sm:text-headline-md text-on-surface mt-xs font-semibold"
+                    >ISO / HIPAA</span
+                  >
+                </div>
+                <div
+                  class="p-sm flex flex-col justify-between bg-surface-container-low/50 rounded-lg"
+                >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant uppercase"
+                    data-de="Kernbranchen"
+                    data-en="Core Verticals"
+                    >Core Verticals</span
+                  ><span
+                    class="font-headline-md text-2xl sm:text-headline-md text-on-surface mt-xs font-semibold"
+                    >07 Domains</span
+                  >
+                </div>
+                <div
+                  class="p-sm flex flex-col justify-between bg-surface-container-low/50 rounded-lg"
+                >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant uppercase"
+                    data-de="Entwickelt In"
+                    data-en="Engineered In"
+                    >Engineered In</span
+                  ><span
+                    class="font-headline-md text-2xl sm:text-headline-md text-secondary mt-xs font-semibold"
+                    >Varel, DE</span
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- SECTION: VERTICAL DIRECTORY / INTERACTIVE ACCORDION-GRID -->
+          <section class="max-w-container-max mx-auto px-md pb-xl">
+            <div class="flex items-center justify-between pb-sm mb-lg">
+              <div class="flex items-center gap-xs">
+                <span
+                  class="font-label-mono text-caption text-secondary uppercase font-semibold"
+                  >// 01</span
+                >
+                <h2
+                  class="font-headline-md text-headline-md text-on-surface"
+                  data-de="Spezialisierte Domänen-Architekturen"
+                  data-en="Specialized Domain Architectures"
+                >
+                  Specialized Domain Architectures
+                </h2>
+              </div>
+              <span
+                class="font-label-mono text-caption text-on-surface-variant hidden md:inline-block"
+                data-de="BRANCHE AUSWÄHLEN FÜR SPEZIFIKATIONEN"
+                data-en="SELECT VERTICAL FOR ARCHITECTURE SPECS"
+                >SELECT VERTICAL FOR ARCHITECTURE SPECS</span
+              >
+            </div>
+            <!-- High-Fidelity Bento Grid for the 7 Verticals -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-md">
+              <article
+                class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-md sm:p-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between group relative overflow-hidden"
+              >
+                <div
+                  class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-bl-full pointer-events-none transition-transform group-hover:scale-125"
+                ></div>
+                <div>
+                  <div class="flex items-center justify-between mb-sm">
+                    <div class="flex items-center gap-xs">
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container text-on-surface font-semibold"
+                        >01</span
+                      ><span
+                        class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                        >CORP_ARCH</span
+                      >
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-secondary text-2xl"
+                      >account_balance</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-xs"
+                    data-de="Unternehmens- &amp; Beratungsdienstleistungen"
+                    data-en="Business &amp; Professional Services"
+                  >
+                    Business &amp; Professional Services
+                  </h3>
+                  <p
+                    class="font-body-md text-sm sm:text-body-md text-on-surface-variant mb-md"
+                    data-de="Moderne Mandantenportale, automatisierte Kanzleiprozesse, unveränderliche Audit-Trails und mandantenfähige Sicherheit für Beratungsunternehmen, Kanzleien und Finanzinstitutionen."
+                    data-en="Modern client portals, automated practice management, immutable audit trails, and multi-tenant operational security for global consultancies, legal practices, and corporate finance houses."
+                  >
+                    Modern client portals, automated practice management,
+                    immutable audit trails, and multi-tenant operational
+                    security for global consultancies, legal practices, and
+                    corporate finance houses.
+                  </p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-xs mb-md">
+                    <div
+                      class="p-xs bg-surface-container-low rounded flex items-center gap-xs"
+                    >
+                      <span
+                        class="material-symbols-outlined text-secondary text-sm"
+                        >lock_reset</span
+                      ><span
+                        class="font-label-mono text-caption text-on-surface"
+                        data-de="Mandantenfähiges RBAC &amp; KMS"
+                        data-en="Multi-tenant RBAC &amp; KMS"
+                        >Multi-tenant RBAC &amp; KMS</span
+                      >
+                    </div>
+                    <div
+                      class="p-xs bg-surface-container-low rounded flex items-center gap-xs"
+                    >
+                      <span
+                        class="material-symbols-outlined text-secondary text-sm"
+                        >contract</span
+                      ><span
+                        class="font-label-mono text-caption text-on-surface"
+                        data-de="Automatisierte BilMoG / IFRS"
+                        data-en="Automated BilMoG / IFRS"
+                        >Automated BilMoG / IFRS</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="pt-sm mt-xs flex flex-col sm:flex-row sm:items-center justify-between gap-xs"
+                >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant"
+                    data-de="Deployment: Private Cloud / Hybrid"
+                    data-en="Deployment: Private Cloud / Hybrid"
+                    >Deployment: Private Cloud / Hybrid</span
+                  ><a
+                    class="inline-flex items-center gap-1 font-label-mono text-caption text-secondary font-semibold hover:gap-2 transition-all"
+                    data-path="contact"
+                    href="#"
+                    ><span
+                      class=""
+                      data-de="Lösungs-Blueprints ansehen"
+                      data-en="View Solution Blueprints"
+                      >View Solution Blueprints</span
+                    ><span class="material-symbols-outlined text-sm"
+                      >arrow_forward</span
+                    ></a
+                  >
+                </div>
+              </article>
+              <article
+                class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-md sm:p-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-sm">
+                    <div class="flex items-center gap-xs">
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container text-on-surface font-semibold"
+                        >02</span
+                      ><span
+                        class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                        >EDU_TECH</span
+                      >
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-secondary text-2xl"
+                      >school</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-xs"
+                    data-de="Bildung &amp; Weiterbildung"
+                    data-en="Education &amp; Academy"
+                  >
+                    Education &amp; Academy
+                  </h3>
+                  <p
+                    class="font-body-md text-sm sm:text-body-md text-on-surface-variant mb-md"
+                    data-de="Modulare Lernarchitekturen, kryptografisch verifizierte Micro-Credentials, Engagement-Suites und barrierefreie digitale Bildungscampi."
+                    data-en="Modular learning architectures, cryptographically verified micro-credentials, student engagement suites, and accessible barrier-free digital campuses."
+                  >
+                    Modular learning architectures, cryptographically verified
+                    micro-credentials, student engagement suites, and accessible
+                    barrier-free digital campuses.
+                  </p>
+                  <div
+                    class="p-xs bg-surface-container-low rounded mb-md flex items-center justify-between"
+                  >
+                    <span
+                      class="font-label-mono text-caption text-on-surface-variant"
+                      data-de="Barrierefreiheit nach WCAG 2.1 AAA"
+                      data-en="WCAG 2.1 AAA Accessibility"
+                      >WCAG 2.1 AAA Accessibility</span
+                    ><span
+                      class="material-symbols-outlined text-secondary text-base"
+                      >verified</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="pt-sm flex flex-col sm:flex-row sm:items-center justify-between gap-xs"
+                >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant"
+                    >SCORM / xAPI Native</span
+                  ><a
+                    class="inline-flex items-center gap-1 font-label-mono text-caption text-secondary font-semibold hover:gap-2 transition-all"
+                    data-path="contact"
+                    href="#"
+                    ><span class="" data-de="Mehr erfahren" data-en="Learn More"
+                      >Learn More</span
+                    ><span class="material-symbols-outlined text-sm"
+                      >arrow_forward</span
+                    ></a
+                  >
+                </div>
+              </article>
+              <article
+                class="lg:col-span-6 bg-surface-container-lowest rounded-xl p-md sm:p-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-sm">
+                    <div class="flex items-center gap-xs">
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container text-on-surface font-semibold"
+                        >03</span
+                      ><span
+                        class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                        >SOV_GOV</span
+                      >
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-secondary text-2xl"
+                      >assured_workload</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-xs"
+                    data-de="Öffentlicher Sektor &amp; Verwaltung"
+                    data-en="Government &amp; Public Sector"
+                  >
+                    Government &amp; Public Sector
+                  </h3>
+                  <p
+                    class="font-body-md text-sm sm:text-body-md text-on-surface-variant mb-md"
+                    data-de="Souveräne Datenarchitekturen, OZG-konforme Bürgerservices, kompromisslose DSGVO-Konformität und barrierefreie Schnittstellen nach BITV 2.0."
+                    data-en="Sovereign data architectures, citizen-facing service pipelines, uncompromising GDPR/DSGVO alignment, and strict adherence to German federal standards (OZG, BITV 2.0)."
+                  >
+                    Sovereign data architectures, citizen-facing service
+                    pipelines, uncompromising GDPR/DSGVO alignment, and strict
+                    adherence to German federal standards (OZG, BITV 2.0).
+                  </p>
+                  <div class="flex flex-wrap gap-xs mb-md">
+                    <span
+                      class="px-xs py-unit rounded bg-surface-container font-label-mono text-caption text-on-surface"
+                      >BSI C5 Aligned</span
+                    ><span
+                      class="px-xs py-unit rounded bg-surface-container font-label-mono text-caption text-on-surface"
+                      >OZG 2.0 Ready</span
+                    ><span
+                      class="px-xs py-unit rounded bg-surface-container font-label-mono text-caption text-on-surface"
+                      >BITV / EN 301 549</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="pt-sm flex flex-col sm:flex-row sm:items-center justify-between gap-xs"
+                >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant"
+                    data-de="Air-Gapped &amp; On-Premise"
+                    data-en="Air-Gapped &amp; On-Premise"
+                    >Air-Gapped &amp; On-Premise</span
+                  ><a
+                    class="inline-flex items-center gap-1 font-label-mono text-caption text-secondary font-semibold hover:gap-2 transition-all"
+                    data-path="contact"
+                    href="#"
+                    ><span
+                      class=""
+                      data-de="Öffentliche Referenzen"
+                      data-en="Public Sector Case"
+                      >Public Sector Case</span
+                    ><span class="material-symbols-outlined text-sm"
+                      >arrow_forward</span
+                    ></a
+                  >
+                </div>
+              </article>
+              <article
+                class="lg:col-span-6 bg-surface-container-lowest rounded-xl p-md sm:p-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-sm">
+                    <div class="flex items-center gap-xs">
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container text-on-surface font-semibold"
+                        >04</span
+                      ><span
+                        class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                        >IMPACT_OPS</span
+                      >
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-secondary text-2xl"
+                      >diversity_3</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-xs"
+                    data-de="NGOs &amp; Gemeinnützige Organisationen"
+                    data-en="NGOs &amp; Mission-Driven Organizations"
+                  >
+                    NGOs &amp; Mission-Driven Organizations
+                  </h3>
+                  <p
+                    class="font-body-md text-sm sm:text-body-md text-on-surface-variant mb-md"
+                    data-de="Transparente Spendenverwaltungs-Plattformen, Humanitäre Echtzeit-Logistik und ausfallsichere Low-Bandwidth-Tools für weltweite Hilfseinsätze."
+                    data-en="Transparent donor governance platforms, real-time humanitarian supply chain telemetry, and resilient low-bandwidth field tooling tailored for global crisis responses."
+                  >
+                    Transparent donor governance platforms, real-time
+                    humanitarian supply chain telemetry, and resilient
+                    low-bandwidth field tooling tailored for global crisis
+                    responses.
+                  </p>
+                  <div class="flex flex-wrap gap-xs mb-md">
+                    <span
+                      class="px-xs py-unit rounded bg-surface-container font-label-mono text-caption text-on-surface"
+                      >Offline-First PWA</span
+                    ><span
+                      class="px-xs py-unit rounded bg-surface-container font-label-mono text-caption text-on-surface"
+                      >Audit Transparency</span
+                    ><span
+                      class="px-xs py-unit rounded bg-surface-container font-label-mono text-caption text-on-surface"
+                      >Zero Leakage</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="pt-sm flex flex-col sm:flex-row sm:items-center justify-between gap-xs"
+                >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant"
+                    >Mesh &amp; Offline Sync</span
+                  ><a
+                    class="inline-flex items-center gap-1 font-label-mono text-caption text-secondary font-semibold hover:gap-2 transition-all"
+                    data-path="contact"
+                    href="#"
+                    ><span
+                      class=""
+                      data-de="Framework ansehen"
+                      data-en="Explore Framework"
+                      >Explore Framework</span
+                    ><span class="material-symbols-outlined text-sm"
+                      >arrow_forward</span
+                    ></a
+                  >
+                </div>
+              </article>
+              <article
+                class="lg:col-span-8 bg-surface-container-lowest rounded-xl p-md sm:p-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group"
+              >
+                <div
+                  class="absolute -right-16 -bottom-16 w-64 h-64 bg-surface-container-high/40 rounded-full pointer-events-none"
+                ></div>
+                <div>
+                  <div class="flex items-center justify-between mb-sm">
+                    <div class="flex items-center gap-xs">
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-full bg-secondary text-on-secondary font-semibold"
+                        >05 // CORE</span
+                      ><span
+                        class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                        >MED_TECH_IO</span
+                      >
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-secondary text-2xl"
+                      >vital_signs</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-xs"
+                    data-de="Gesundheitswesen &amp; Life Sciences"
+                    data-en="Healthcare &amp; Life Sciences"
+                  >
+                    Healthcare &amp; Life Sciences
+                  </h3>
+                  <p
+                    class="font-body-md text-sm sm:text-body-md text-on-surface-variant mb-md max-w-2xl"
+                    data-de="Zero-Knowledge Telemetrie-Pipelines, DiGA-konforme klinische Anwendungen, ausfallsichere Patientenportale und nach HIPAA &amp; EU-DSGVO zertifizierte Datenarchitekturen."
+                    data-en="Zero-knowledge telemetry pipelines, DiGA-compliant clinical software, fault-tolerant patient record portals, and HIPAA / EU GDPR certified data residency."
+                  >
+                    Zero-knowledge telemetry pipelines, DiGA-compliant clinical
+                    software, fault-tolerant patient record portals, and HIPAA /
+                    EU GDPR certified data residency.
+                  </p>
+                  <div
+                    class="p-sm bg-surface-container-low rounded-lg mb-md overflow-hidden"
+                  >
+                    <div
+                      class="flex flex-wrap items-center justify-between gap-xs mb-xs"
+                    >
+                      <span
+                        class="font-label-mono text-caption text-on-surface uppercase"
+                        data-de="Telemetrie-Datenfluss (HL7 / FHIR)"
+                        data-en="Telemetry Ingestion Flow (HL7 / FHIR)"
+                        >Telemetry Ingestion Flow (HL7 / FHIR)</span
+                      ><span class="font-label-mono text-caption text-secondary"
+                        >E2E ENCRYPTED</span
+                      >
+                    </div>
+                    <div class="w-full overflow-x-auto">
+                      <svg
+                        class="w-full min-w-[280px] h-12 text-secondary"
+                        fill="none"
+                        preserveAspectRatio="none"
+                        viewBox="0 0 600 48"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0 24H120L135 6L150 42L165 18L180 30L195 24H360L375 10L390 38L405 24H600"
+                          stroke="currentColor"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                        ></path>
+                        <circle
+                          cx="150"
+                          cy="42"
+                          fill="currentColor"
+                          r="3"
+                        ></circle>
+                        <circle
+                          cx="390"
+                          cy="38"
+                          fill="currentColor"
+                          r="3"
+                        ></circle>
+                        <circle
+                          cx="580"
+                          cy="24"
+                          fill="currentColor"
+                          r="3"
+                        ></circle>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="pt-sm flex flex-col sm:flex-row sm:items-center justify-between gap-sm"
+                >
+                  <div
+                    class="flex flex-wrap items-center gap-xs font-label-mono text-caption text-on-surface"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-secondary"></span
+                    ><span class="">FHIR / HL7 Validated</span
+                    ><span class="text-on-surface-variant">|</span
+                    ><span class="">DiGA / DiPA Ready</span>
+                  </div>
+                  <a
+                    class="inline-flex items-center gap-1 font-label-mono text-caption text-secondary font-semibold hover:gap-2 transition-all"
+                    data-path="contact"
+                    href="#"
+                    ><span
+                      class=""
+                      data-de="Medizinische Spezifikation ansehen"
+                      data-en="Review Medical Spec"
+                      >Review Medical Spec</span
+                    ><span class="material-symbols-outlined text-sm"
+                      >arrow_forward</span
+                    ></a
+                  >
+                </div>
+              </article>
+              <article
+                class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-md sm:p-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-sm">
+                    <div class="flex items-center gap-xs">
+                      <span
+                        class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container text-on-surface font-semibold"
+                        >06</span
+                      ><span
+                        class="font-label-mono text-caption text-on-surface-variant uppercase tracking-wider"
+                        >LOG_STREAM</span
+                      >
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-secondary text-2xl"
+                      >local_shipping</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-xs"
+                    data-de="Logistik &amp; Lieferketten"
+                    data-en="Logistics &amp; Supply Chain"
+                  >
+                    Logistics &amp; Supply Chain
+                  </h3>
+                  <p
+                    class="font-body-md text-sm sm:text-body-md text-on-surface-variant mb-md"
+                    data-de="Event-getriebenes Flotten-Tracking, dynamische Lagerhausoptimierung und bidirektionale ERP/API-Synchronisation."
+                    data-en="Event-driven fleet tracking, dynamic warehouse optimization, and robust bidirectional ERP/API middleware synchronization."
+                  >
+                    Event-driven fleet tracking, dynamic warehouse optimization,
+                    and robust bidirectional ERP/API middleware synchronization.
+                  </p>
+                  <div
+                    class="p-xs bg-surface-container-low rounded mb-md flex items-center justify-between"
+                  >
+                    <span
+                      class="font-label-mono text-caption text-on-surface-variant"
+                      data-de="Sub-Sekunden Event-Routing"
+                      data-en="Sub-second Event Routing"
+                      >Sub-second Event Routing</span
+                    ><span
+                      class="font-label-mono text-caption font-semibold text-secondary"
+                      >&lt; 85ms</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="pt-sm flex flex-col sm:flex-row sm:items-center justify-between gap-xs"
+                >
+                  <span
+                    class="font-label-mono text-caption text-on-surface-variant"
+                    >SAP / EDI Integration</span
+                  ><a
+                    class="inline-flex items-center gap-1 font-label-mono text-caption text-secondary font-semibold hover:gap-2 transition-all"
+                    data-path="contact"
+                    href="#"
+                    ><span
+                      class=""
+                      data-de="Logistik-Stack"
+                      data-en="Logistics Stack"
+                      >Logistics Stack</span
+                    ><span class="material-symbols-outlined text-sm"
+                      >arrow_forward</span
+                    ></a
+                  >
+                </div>
+              </article>
+              <article
+                class="lg:col-span-12 bg-surface-container-lowest rounded-xl p-md sm:p-lg shadow-sm hover:shadow-md transition-all flex flex-col lg:flex-row items-start lg:items-center justify-between gap-md group"
+              >
+                <div class="max-w-3xl">
+                  <div class="flex flex-wrap items-center gap-xs mb-xs">
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded-full bg-surface-container text-on-surface font-semibold"
+                      >07</span
+                    ><span
+                      class="font-label-mono text-caption text-secondary uppercase font-semibold"
+                      >ESG_INFRA</span
+                    ><span
+                      class="font-label-mono text-caption text-on-surface-variant"
+                      >// NET_ZERO_COMPLIANCE</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-xl sm:text-headline-md text-on-surface mb-xs"
+                    data-de="Klima &amp; Energiewirtschaft"
+                    data-en="Climate &amp; Energy Systems"
+                  >
+                    Climate &amp; Energy Systems
+                  </h3>
+                  <p
+                    class="font-body-md text-sm sm:text-body-md text-on-surface-variant"
+                    data-de="Dezentrale Smart-Grid-Orchestrierung, automatisierte Treibhausgas-Bilanzierung nach GHG-Protokoll, SCADA-Telemetrie und Lebenszyklus-Monitoring für Betreiber erneuerbarer Energien."
+                    data-en="Decentralized smart grid orchestration, real-time GHG protocol carbon accounting, SCADA telemetry aggregation, and automated lifecycle reporting for renewable energy operators."
+                  >
+                    Decentralized smart grid orchestration, real-time GHG
+                    protocol carbon accounting, SCADA telemetry aggregation, and
+                    automated lifecycle reporting for renewable energy
+                    operators.
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col sm:flex-row items-stretch sm:items-center gap-sm w-full lg:w-auto"
+                >
+                  <div
+                    class="px-md py-sm bg-surface-container-low rounded-lg text-left"
+                  >
+                    <span
+                      class="font-label-mono text-caption text-on-surface-variant block uppercase"
+                      data-de="Datendichte"
+                      data-en="Data Density"
+                      >Data Density</span
+                    ><span
+                      class="font-headline-md text-2xl sm:text-headline-md text-on-surface font-semibold"
+                      >120k eps</span
+                    >
+                  </div>
+                  <a
+                    class="inline-flex items-center justify-center min-h-[44px] px-md py-sm rounded-full font-label-mono text-label-mono bg-primary text-on-primary hover:bg-secondary transition-colors whitespace-nowrap"
+                    data-path="contact"
+                    href="#"
+                    ><span
+                      class=""
+                      data-de="CleanTech-Suite prüfen"
+                      data-en="Examine CleanTech Suite"
+                      >Examine CleanTech Suite</span
+                    ></a
+                  >
+                </div>
+              </article>
+            </div>
+          </section>
+          <!-- SECTION: COMPLIANCE & ENGINEERING STANDARDS MATRIX -->
+          <section class="w-full bg-surface-container-low py-xl">
+            <div class="max-w-container-max mx-auto px-md">
+              <div
+                class="flex flex-col lg:flex-row justify-between items-start gap-lg mb-xl"
+              >
+                <div class="max-w-2xl">
+                  <span
+                    class="font-label-mono text-caption text-secondary uppercase tracking-widest font-semibold"
+                    >// REGULATORY ASSURANCE</span
+                  >
+                  <h2
+                    class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface mt-xs mb-sm tracking-tight"
+                    data-de="Souveräne Sicherheit von Grund auf. Kein nachträglicher Gedanke."
+                    data-en="Sovereign security by design. Not as an afterthought."
+                  >
+                    Sovereign security by design. Not as an afterthought.
+                  </h2>
+                  <p
+                    class="font-body-md text-body-md text-on-surface-variant"
+                    data-de="Europäische Datenschutzanforderungen, Zero-Trust-Infrastruktur und unveränderbare Code-Verifikation stellen sicher, dass Ihre Software den strengsten Prüfungen standhält."
+                    data-en="European privacy requirements, zero-trust infrastructure, and immutable code verification ensure your software satisfies the strictest jurisdictional oversight."
+                  >
+                    European privacy requirements, zero-trust infrastructure,
+                    and immutable code verification ensure your software
+                    satisfies the strictest jurisdictional oversight.
+                  </p>
+                </div>
+                <!-- Location & Origin Stamp -->
+                <div
+                  class="p-md bg-surface-container-lowest rounded-xl shadow-sm flex items-center gap-md"
+                >
+                  <div
+                    class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-secondary"
+                  >
+                    <span class="material-symbols-outlined text-2xl"
+                      >format_image_left</span
+                    >
+                  </div>
+                  <div>
+                    <div
+                      class="font-label-mono text-caption text-on-surface font-semibold"
+                    >
+                      MADE IN VAREL / GERMANY
+                    </div>
+                    <div
+                      class="font-label-mono text-caption text-on-surface-variant"
+                    >
+                      EU CLOUD DIRECTIVE // ART. 28 DSGVO
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Compliance Specification Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+                <!-- Item 1 -->
+                <div
+                  class="p-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between"
+                >
+                  <div>
+                    <span
+                      class="material-symbols-outlined text-secondary text-3xl mb-sm"
+                      >database</span
+                    >
+                    <h3
+                      class="font-headline-md text-headline-md text-on-surface mb-xs"
+                      data-de="Datensouveränität"
+                      data-en="Data Sovereignty"
+                    >
+                      Data Sovereignty
+                    </h3>
+                    <p
+                      class="font-body-md text-body-md text-on-surface-variant mb-md"
+                      data-de="Sämtliche Speicher- und Verarbeitungspipelines sind in zertifizierten deutschen und europäischen Rechenzentren angesiedelt, frei vom US CLOUD Act."
+                      data-en="All storage and processing pipelines are architected within certified EU and German sovereign server clusters, eliminating US CLOUD Act exposure."
+                    >
+                      All storage and processing pipelines are architected
+                      within certified EU and German sovereign server clusters,
+                      eliminating US CLOUD Act exposure.
+                    </p>
+                  </div>
+                  <div class="pt-sm border-t border-transparent">
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded bg-surface-container text-on-surface"
+                      >ISO/IEC 27001 / BSI C5</span
+                    >
+                  </div>
+                </div>
+                <!-- Item 2 -->
+                <div
+                  class="p-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between"
+                >
+                  <div>
+                    <span
+                      class="material-symbols-outlined text-secondary text-3xl mb-sm"
+                      >security</span
+                    >
+                    <h3
+                      class="font-headline-md text-headline-md text-on-surface mb-xs"
+                      data-de="Zero-Trust Enklaven"
+                      data-en="Zero-Trust Enclaves"
+                    >
+                      Zero-Trust Enclaves
+                    </h3>
+                    <p
+                      class="font-body-md text-body-md text-on-surface-variant mb-md"
+                      data-de="Kryptografisch getrennte Micro-Services, mTLS-Verbindungen und durch Hardware-Sicherheitsmodule (HSM) geschützte Schlüsselpaare."
+                      data-en="Cryptographically segregated micro-services, mTLS service-to-service communication, and hardware security module (HSM) managed key pairs."
+                    >
+                      Cryptographically segregated micro-services, mTLS
+                      service-to-service communication, and hardware security
+                      module (HSM) managed key pairs.
+                    </p>
+                  </div>
+                  <div class="pt-sm border-t border-transparent">
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded bg-surface-container text-on-surface"
+                      >E2E Cryptographic Audit</span
+                    >
+                  </div>
+                </div>
+                <!-- Item 3 -->
+                <div
+                  class="p-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between"
+                >
+                  <div>
+                    <span
+                      class="material-symbols-outlined text-secondary text-3xl mb-sm"
+                      >policy</span
+                    >
+                    <h3
+                      class="font-headline-md text-headline-md text-on-surface mb-xs"
+                      data-de="Automatisierte Governance"
+                      data-en="Automated Governance"
+                    >
+                      Automated Governance
+                    </h3>
+                    <p
+                      class="font-body-md text-body-md text-on-surface-variant mb-md"
+                      data-de="Echtzeit-Compliance-Checks direkt in den CI/CD-Pipelines, um regulatorische Abweichungen vor dem Deployment zu verhindern."
+                      data-en="Real-time compliance checks directly baked into CI/CD pipelines, flagging regulatory regressions before deployment occurs."
+                    >
+                      Real-time compliance checks directly baked into CI/CD
+                      pipelines, flagging regulatory regressions before
+                      deployment occurs.
+                    </p>
+                  </div>
+                  <div class="pt-sm border-t border-transparent">
+                    <span
+                      class="font-label-mono text-caption px-xs py-unit rounded bg-surface-container text-on-surface"
+                      >Continuous Policy Enforcement</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- SECTION: INDUSTRIAL PROCESS ROADMAP -->
+          <section class="max-w-container-max mx-auto px-md py-xl">
+            <div class="mb-lg">
+              <span
+                class="font-label-mono text-caption text-secondary uppercase font-semibold"
+                >// ENGAGEMENT LIFECYCLE</span
+              >
+              <h2
+                class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface mt-xs tracking-tight"
+                data-de="Wie wir uns an Ihre operative Realität anpassen"
+                data-en="How we adapt to your operating reality"
+              >
+                How we adapt to your operating reality
+              </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-md relative">
+              <!-- Step 1 -->
+              <div
+                class="p-lg bg-surface-container-lowest rounded-xl shadow-sm relative"
+              >
+                <span
+                  class="font-label-mono text-caption text-secondary font-semibold mb-xs block"
+                  >PHASE 01</span
+                >
+                <h4
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                  data-de="Audit &amp; Grenzen"
+                  data-en="Audit &amp; Boundaries"
+                >
+                  Audit &amp; Boundaries
+                </h4>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant"
+                  data-de="Analyse von Altsystemen, regulatorischen Vorgaben und Sicherheitsgrenzen vor der ersten Codezeile."
+                  data-en="Dissecting legacy infrastructure, regulatory boundaries, and security perimeters before touching code."
+                >
+                  Dissecting legacy infrastructure, regulatory boundaries, and
+                  security perimeters before touching code.
+                </p>
+              </div>
+              <!-- Step 2 -->
+              <div
+                class="p-lg bg-surface-container-lowest rounded-xl shadow-sm relative"
+              >
+                <span
+                  class="font-label-mono text-caption text-secondary font-semibold mb-xs block"
+                  >PHASE 02</span
+                >
+                <h4
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                  data-de="Souveräne Architektur"
+                  data-en="Sovereign Arch"
+                >
+                  Sovereign Arch
+                </h4>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant"
+                  data-de="Konzeption fehlertoleranter, modularer Systemtopologien passend zu spezifischen Branchenstandards."
+                  data-en="Designing fault-tolerant, modular system topology that matches specific domain regulations."
+                >
+                  Designing fault-tolerant, modular system topology that matches
+                  specific domain regulations.
+                </p>
+              </div>
+              <!-- Step 3 -->
+              <div
+                class="p-lg bg-surface-container-lowest rounded-xl shadow-sm relative"
+              >
+                <span
+                  class="font-label-mono text-caption text-secondary font-semibold mb-xs block"
+                  >PHASE 03</span
+                >
+                <h4
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                  data-de="Gehärtete Entwicklung"
+                  data-en="Hardened Build"
+                >
+                  Hardened Build
+                </h4>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant"
+                  data-de="Präzisionsentwicklung mit kontinuierlichen Pen-Tests, statischer Code-Analyse und kryptografischen Logs."
+                  data-en="Precision engineering with continuous automated pen-testing, static analysis, and cryptographic logging."
+                >
+                  Precision engineering with continuous automated pen-testing,
+                  static analysis, and cryptographic logging.
+                </p>
+              </div>
+              <!-- Step 4 -->
+              <div
+                class="p-lg bg-surface-container-lowest rounded-xl shadow-sm relative"
+              >
+                <span
+                  class="font-label-mono text-caption text-secondary font-semibold mb-xs block"
+                  >PHASE 04</span
+                >
+                <h4
+                  class="font-headline-md text-headline-md text-on-surface mb-xs"
+                  data-de="Betrieb &amp; SLA"
+                  data-en="Operation &amp; SLA"
+                >
+                  Operation &amp; SLA
+                </h4>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant"
+                  data-de="Hochverfügbarer Betrieb unter strengen europäischen Service-Level-Agreements und kontinuierlicher Telemetrie."
+                  data-en="Deployments maintained under strict European operational SLAs and 24/7 mission telemetry."
+                >
+                  Deployments maintained under strict European operational SLAs
+                  and 24/7 mission telemetry.
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- SECTION: FINAL CTA / ENGAGEMENT INVITATION -->
+          <section class="max-w-container-max mx-auto px-md pb-xl">
+            <div
+              class="bg-primary text-on-primary rounded-xl p-md sm:p-lg md:p-xl shadow-xl relative overflow-hidden"
+            >
+              <div
+                class="absolute -top-24 -right-24 w-96 h-96 bg-secondary/30 rounded-full blur-3xl pointer-events-none"
+              ></div>
+              <div
+                class="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-lg"
+              >
+                <div class="max-w-2xl">
+                  <div
+                    class="inline-flex items-center gap-xs font-label-mono text-caption text-secondary-fixed mb-xs uppercase"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-secondary-fixed"></span
+                    ><span
+                      class=""
+                      data-de="TECHNISCHEN DIALOG STARTEN"
+                      data-en="INITIATE TECHNICAL DIALOGUE"
+                      >INITIATE TECHNICAL DIALOGUE</span
+                    >
+                  </div>
+                  <h2
+                    class="font-headline-lg text-2xl sm:text-headline-lg text-on-primary tracking-tight mb-sm"
+                    data-de="Lassen Sie uns über die spezifischen Anforderungen Ihrer Branche sprechen."
+                    data-en="Let’s discuss your industry’s operational challenges."
+                  >
+                    Let’s discuss your industry’s operational challenges.
+                  </h2>
+                  <p
+                    class="font-body-md text-sm sm:text-body-md text-on-primary-container max-w-xl"
+                    data-de="Vereinbaren Sie eine vertrauliche Architektur-Beratung mit unserem Entwicklungsteam in Varel. Wir analysieren Compliance, Sicherheitsgrenzen und Implementierungsumfang."
+                    data-en="Schedule a confidential architectural consultation with our engineering team in Varel. We evaluate domain compliance, security perimeters, and implementation scope."
+                  >
+                    Schedule a confidential architectural consultation with our
+                    engineering team in Varel. We evaluate domain compliance,
+                    security perimeters, and implementation scope.
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col sm:flex-row items-stretch sm:items-center gap-xs w-full lg:w-auto"
+                >
+                  <a
+                    class="inline-flex items-center justify-center min-h-[44px] px-lg py-sm rounded-full font-label-mono text-label-mono bg-secondary hover:bg-secondary-container text-on-secondary transition-all shadow-md"
+                    data-path="start-a-project"
+                    href="#"
+                    ><span
+                      class=""
+                      data-de="Projekt starten"
+                      data-en="Start a project"
+                      >Start a project</span
+                    ><span class="material-symbols-outlined ml-1 text-sm"
+                      >arrow_forward</span
+                    ></a
+                  ><a
+                    class="inline-flex items-center justify-center min-h-[44px] px-lg py-sm rounded-full font-label-mono text-label-mono bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 text-on-primary transition-colors"
+                    data-path="contact"
+                    href="#"
+                    ><span
+                      class=""
+                      data-de="Audit anfragen"
+                      data-en="Request Spec Audit"
+                      >Request Spec Audit</span
+                    ></a
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <script>
+        // Language Synchronizer observing Shell EN/DE toggle buttons
+        (function () {
+          function applyCurrentLang() {
+            const htmlLang =
+              document.documentElement.getAttribute("lang") || "en";
+            const elements = document.querySelectorAll("[data-en][data-de]");
+            elements.forEach(function (el) {
+              const val = el.getAttribute("data-" + htmlLang);
+              if (val) {
+                el.innerHTML = val;
+              }
+            });
+          }
+
+          // Observe changes to <html lang="..."> attribute set by shell
+          const observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+              if (
+                mutation.type === "attributes" &&
+                mutation.attributeName === "lang"
+              ) {
+                applyCurrentLang();
+              }
+            });
+          });
+
+          observer.observe(document.documentElement, { attributes: true });
+
+          // Initial run
+          applyCurrentLang();
+        })();
+      </script>
+    </main>
+    <footer class="w-full bg-surface-container-low pt-lg sm:pt-xl pb-lg">
+      <div class="max-w-container-max mx-auto px-md">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-md sm:gap-lg pb-lg sm:pb-xl"
+        >
+          <div
+            class="col-span-1 sm:col-span-2 flex flex-col gap-sm pr-0 lg:pr-lg"
+          >
+            <div class="flex items-center gap-xs">
+              <img
+                alt="Paradoxx wordmark logo."
+                class="h-7 w-auto object-contain"
+                src="https://lh3.googleusercontent.com/aida/AEtjO1VIPEZQTuK1iuSol031YTeFGboFvIIKbPWmvGptabzIgQMAThNo_U0NTGBR3e-SD4YAq_2DA8dSGzT7WNgZjdz-iYu4E3D4eyMFmDJzyJTSyOa0opc286qMmxaT0aESUua4J6hiWmzTWqmwwb_u3d5Jc-HeFK2U8ef5XuDA0Or34jmWc14ye6dd6XChMJeRNehJcmjvGhTjd7xbeluUmNm_viTpsD8oVeifgwDG1NxxBStGFFkuFsHgmg"
+              /><span
+                class="font-headline-md text-headline-md tracking-tight text-on-surface"
+                >Paradoxx</span
+              >
+            </div>
+            <p
+              class="text-on-surface-variant font-body-md text-sm sm:text-body-md max-w-md"
+              data-de="Software, digitale Produkte und Technologiedienstleistungen für menschliche Intention entwickelt."
+              data-en="Software, digital products and technological services engineered for human intent."
+            >
+              Software, digital products and technological services engineered
+              for human intent.
+            </p>
+            <div
+              class="flex flex-wrap items-center gap-xs font-label-mono text-caption text-on-surface-variant pt-xs"
+            >
+              <span class="material-symbols-outlined text-[16px]"
+                >location_on</span
+              ><span class="">Varel, Germany</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface uppercase tracking-wider mb-xs"
+              data-de="Unternehmen"
+              data-en="Company"
+              >Company</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-sm sm:text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Über uns"
+                  data-en="About"
+                  data-path="about"
+                  href="#"
+                  >About</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Historie"
+                  data-en="Story"
+                  data-path="story"
+                  href="#"
+                  >Story</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Führungsteam"
+                  data-en="Leadership"
+                  data-path="leadership"
+                  href="#"
+                  >Leadership</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Karriere"
+                  data-en="Careers"
+                  data-path="careers"
+                  href="#"
+                  >Careers</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Newsroom"
+                  data-en="Newsroom"
+                  data-path="newsroom"
+                  href="#"
+                  >Newsroom</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface uppercase tracking-wider mb-xs"
+              data-de="Kompetenzen"
+              data-en="Capabilities"
+              >Capabilities</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-sm sm:text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Leistungen"
+                  data-en="Services"
+                  data-path="services"
+                  href="#"
+                  >Services</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Produkte"
+                  data-en="Products"
+                  data-path="products"
+                  href="#"
+                  >Products</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Lösungen"
+                  data-en="Solutions"
+                  data-path="solutions"
+                  href="#"
+                  >Solutions</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Branchen"
+                  data-en="Industries"
+                  data-path="industries"
+                  href="#"
+                  >Industries</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Referenzen"
+                  data-en="Work"
+                  data-path="work"
+                  href="#"
+                  >Work</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span
+              class="font-label-mono text-caption text-on-surface uppercase tracking-wider mb-xs"
+              data-de="Ressourcen"
+              data-en="Resources"
+              >Resources</span
+            >
+            <ul
+              class="flex flex-col gap-xs font-body-md text-sm sm:text-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Einblicke"
+                  data-en="Insights"
+                  data-path="insights"
+                  href="#"
+                  >Insights</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Forschung"
+                  data-en="Research"
+                  data-path="research"
+                  href="#"
+                  >Research</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Häufige Fragen"
+                  data-en="FAQs"
+                  data-path="faqs"
+                  href="#"
+                  >FAQs</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Support"
+                  data-en="Support"
+                  data-path="support"
+                  href="#"
+                  >Support</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Support"
+                  data-en="Support"
+                  data-path="support"
+                  href="#"
+                  >Support</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-on-surface transition-colors"
+                  data-de="Kontakt"
+                  data-en="Contact"
+                  data-path="contact"
+                  href="#"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="pt-md flex flex-col md:flex-row items-start sm:items-center justify-between gap-md text-caption font-label-mono text-on-surface-variant border-t border-surface-container-high/50"
+        >
+          <div class="flex flex-wrap items-center gap-xs">
+            <span class=""
+              >© <span class="" id="copyright-year">2026</span> Paradoxx Studio
+              GmbH.</span
+            ><span
+              class=""
+              data-de="Alle Rechte vorbehalten."
+              data-en="All rights reserved."
+              >All rights reserved.</span
+            >
+          </div>
+          <div class="flex flex-wrap items-center gap-sm sm:gap-md">
+            <a
+              class="hover:text-on-surface transition-colors"
+              data-de="Datenschutz"
+              data-en="Privacy Policy"
+              data-path="privacy-policy"
+              href="#"
+              >Privacy Policy</a
+            ><a
+              class="hover:text-on-surface transition-colors"
+              data-de="AGB"
+              data-en="Terms of Service"
+              data-path="terms-of-service"
+              href="#"
+              >Terms of Service</a
+            ><a
+              class="hover:text-on-surface transition-colors"
+              data-de="Impressum"
+              data-en="Legal Notice"
+              data-path="legal-notice"
+              href="#"
+              >Legal Notice</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        document.getElementById("copyright-year").textContent =
+          new Date().getFullYear();
+        var curLang = "en";
+        var btnEn = document.getElementById("btn-lang-en");
+        var btnDe = document.getElementById("btn-lang-de");
+        var drawerBtnEn = document.getElementById("drawer-lang-en");
+        var drawerBtnDe = document.getElementById("drawer-lang-de");
+        function setLanguage(lang) {
+          curLang = lang;
+          document.documentElement.setAttribute("lang", lang);
+          var translatables = document.querySelectorAll("[data-en][data-de]");
+          translatables.forEach(function (el) {
+            var val = el.getAttribute("data-" + lang);
+            if (val) {
+              el.innerHTML = val;
+            }
+          });
+          if (lang === "en") {
+            if (btnEn)
+              btnEn.className =
+                "px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary";
+            if (btnDe)
+              btnDe.className =
+                "px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface";
+            if (drawerBtnEn)
+              drawerBtnEn.className =
+                "px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary";
+            if (drawerBtnDe)
+              drawerBtnDe.className =
+                "px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface";
+          } else {
+            if (btnDe)
+              btnDe.className =
+                "px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary";
+            if (btnEn)
+              btnEn.className =
+                "px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface";
+            if (drawerBtnDe)
+              drawerBtnDe.className =
+                "px-xs py-unit rounded-full font-label-mono transition-colors bg-primary text-on-primary";
+            if (drawerBtnEn)
+              drawerBtnEn.className =
+                "px-xs py-unit rounded-full font-label-mono transition-colors text-on-surface-variant hover:text-on-surface";
+          }
+        }
+        if (btnEn)
+          btnEn.addEventListener("click", function () {
+            setLanguage("en");
+          });
+        if (btnDe)
+          btnDe.addEventListener("click", function () {
+            setLanguage("de");
+          });
+        if (drawerBtnEn)
+          drawerBtnEn.addEventListener("click", function () {
+            setLanguage("en");
+          });
+        if (drawerBtnDe)
+          drawerBtnDe.addEventListener("click", function () {
+            setLanguage("de");
+          });
+      })();
+    </script>
+    <script>
+      (function () {
+        var toggle = document.getElementById("mobile-menu-toggle");
+        var closeBtn = document.getElementById("mobile-menu-close");
+        var backdrop = document.getElementById("mobile-drawer-backdrop");
+        var drawer = document.getElementById("mobile-drawer-panel");
+        function openDrawer() {
+          if (backdrop && drawer) {
+            backdrop.classList.remove("hidden");
+            requestAnimationFrame(function () {
+              drawer.classList.remove("translate-x-full");
+            });
+            document.body.classList.add("overflow-hidden");
+          }
+        }
+        function closeDrawer() {
+          if (backdrop && drawer) {
+            drawer.classList.add("translate-x-full");
+            setTimeout(function () {
+              backdrop.classList.add("hidden");
+            }, 300);
+            document.body.classList.remove("overflow-hidden");
+          }
+        }
+        if (toggle) {
+          toggle.addEventListener("click", openDrawer);
+        }
+        if (closeBtn) {
+          closeBtn.addEventListener("click", closeDrawer);
+        }
+        if (backdrop) {
+          backdrop.addEventListener("click", closeDrawer);
+        }
+        var links = document.querySelectorAll("#mobile-drawer-panel a");
+        links.forEach(function (link) {
+          link.addEventListener("click", closeDrawer);
+        });
+      })();
+    </script>
+  </body>
+</html>
