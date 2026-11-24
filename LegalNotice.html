@@ -1,91 +1,451 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#f8f9fb" />
-    <meta
-      name="description"
-      content="Legal notice and company information for Paradoxx UG (haftungsbeschränkt)."
-    />
-    <title>Legal Notice | Paradoxx</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LegalNotice | Paradoxx</title>
+  <link rel="stylesheet" href="legal-page.css" />
+</head>
+<body class="bg-background font-body-md text-on-surface legal-shell">
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed": "#001d36",
+              secondary: "#5129e5",
+              "surface-dim": "#d9dadc",
+              "outline-variant": "#c6c6cb",
+              "inverse-surface": "#2e3132",
+              error: "#ba1a1a",
+              "on-background": "#191c1e",
+              "primary-fixed": "#e2e2e9",
+              "tertiary-container": "#001d36",
+              "surface-container": "#edeef0",
+              "secondary-fixed-dim": "#c8bfff",
+              "primary-fixed-dim": "#c6c6cd",
+              "on-primary-container": "#82838a",
+              tertiary: "#000000",
+              "secondary-fixed": "#e5deff",
+              "surface-container-high": "#e7e8ea",
+              "surface-variant": "#e1e2e4",
+              "on-tertiary": "#ffffff",
+              background: "#f8f9fb",
+              "tertiary-fixed-dim": "#9dcaff",
+              "inverse-primary": "#c6c6cd",
+              outline: "#76777b",
+              "on-tertiary-container": "#1588dd",
+              "surface-tint": "#5d5e64",
+              "on-tertiary-fixed-variant": "#00497c",
+              "on-secondary-container": "#f3eeff",
+              "surface-bright": "#f8f9fb",
+              "on-secondary-fixed-variant": "#4206d7",
+              "tertiary-fixed": "#d1e4ff",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#45474c",
+              "on-secondary": "#ffffff",
+              "primary-container": "#1a1b21",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#1a1b21",
+              "on-surface-variant": "#46464b",
+              surface: "#f8f9fb",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "inverse-on-surface": "#f0f1f3",
+              "on-secondary-fixed": "#190064",
+              primary: "#000000",
+              "on-primary": "#ffffff",
+              "secondary-container": "#6a4bfd",
+              "on-surface": "#191c1e",
+              "surface-container-highest": "#e1e2e4",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              xs: "8px",
+              lg: "48px",
+              md: "24px",
+              gutter: "24px",
+              xl: "80px",
+              "container-max": "1280px",
+              unit: "4px",
+              sm: "16px",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "headline-lg-mobile": ["Space Grotesk"],
+              caption: ["Inter"],
+              "headline-lg": ["Space Grotesk"],
+              "body-md": ["Inter"],
+              "headline-md": ["Space Grotesk"],
+              "label-mono": ["IBM Plex Mono"],
+              "headline-xl": ["Space Grotesk"],
+            },
+            fontSize: {
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              caption: ["12px", { lineHeight: "1.4", fontWeight: "500" }],
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "label-mono": ["14px", { lineHeight: "1.2", fontWeight: "500" }],
+              "headline-xl": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="legal.css" />
-  </head>
-  <body class="legal-page">
-    <a
-      class="legal-skip"
-      href="#content"
-      data-en="Skip to content"
-      data-de="Zum Inhalt springen"
-      >Skip to content</a
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @keyframes marquee-ltr {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0%);
+        }
+      }
+      .animate-marquee-ltr {
+        display: flex;
+        width: max-content;
+        animation: marquee-ltr 38s linear infinite;
+      }
+      .animate-marquee-ltr:hover {
+        animation-play-state: paused;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .animate-marquee-ltr {
+          animation: none;
+          transform: none;
+        }
+      }
+    </style>
+    <!-- Header -->
+    <header
+      class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(17,19,24,0.04)]"
     >
-    <header class="legal-topbar">
-      <div class="legal-topbar-inner">
-        <a class="legal-brand" href="index.html">PARA<b>DOXX</b></a>
-        <nav class="legal-nav" aria-label="Legal">
-          <a href="LegalNotice.html" data-en="Legal notice" data-de="Impressum"
-            >Legal notice</a
-          ><a
-            href="PrivacyPolicy.html"
-            data-en="Privacy policy"
-            data-de="Datenschutz"
-            >Privacy policy</a
-          ><a
-            href="TermsOfService.html"
-            data-en="Terms of service"
-            data-de="Nutzungsbedingungen"
-            >Terms of service</a
+      <div
+        class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between"
+      >
+        <a class="flex items-center gap-sm" href="#">
+          <img
+            alt="Paradoxx Primary Logo"
+            class="h-8 w-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+          />
+          <span
+            class="font-headline-md text-headline-md text-primary tracking-tight"
+            >Paradoxx</span
+          >
+        </a>
+        <!-- Desktop Nav Links (hidden on < lg) -->
+        <nav class="hidden lg:flex items-center gap-lg">
+          <a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_products"
+            href="industry.html"
+            >Products</a
+          >
+          <a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_services"
+            href="services.html"
+            >Services</a
+          >
+          <a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_solutions"
+            href="solutions.html"
+            >Solutions</a
+          >
+          <a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_industries"
+            href="industry.html"
+            >Industries</a
+          >
+          <a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_work"
+            href="work.html"
+            >Work</a
+          >
+          <a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_company"
+            href="company.html"
+            >Company</a
           >
         </nav>
+        <!-- Desktop Actions (hidden on < lg) -->
+        <div class="hidden lg:flex items-center gap-md">
+          <!-- Language Toggle Pill -->
+          <div
+            class="inline-flex items-center bg-surface-container rounded-full p-unit border border-outline-variant/30 font-label-mono text-caption"
+            id="lang-toggle-container"
+          >
+            <button
+              class="px-sm py-unit rounded-full bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all lang-btn-en"
+              onclick="setLanguage('en')"
+            >
+              EN
+            </button>
+            <button
+              class="px-sm py-unit rounded-full text-on-surface-variant hover:text-primary transition-all lang-btn-de"
+              onclick="setLanguage('de')"
+            >
+              DE
+            </button>
+          </div>
+          <a
+            class="inline-flex items-center justify-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-md py-xs rounded-lg text-body-md font-body-md transition-all"
+            data-i18n="nav_contact"
+            href="contact.html "
+            >Contact</a
+          >
+          <button
+            class="bg-secondary text-on-secondary px-md py-xs rounded-lg text-body-md font-body-md hover:shadow-lg transition-all"
+            data-i18n="btn_start_project"
+            href="contact.html "
+          >
+            Start a project
+          </button>
+        </div>
+        <!-- Mobile Hamburger Button (visible ONLY on < lg) -->
         <button
-          class="legal-lang"
-          type="button"
-          data-legal-language
-          aria-label="Switch language to German"
-        >
-          EN / DE</button
-        ><button
-          class="legal-menu-btn"
-          type="button"
-          data-legal-menu
+          aria-controls="mobile-nav-drawer"
           aria-expanded="false"
-          aria-controls="mobile-nav"
-          aria-label="Open navigation"
+          aria-label="Open Navigation Menu"
+          class="lg:hidden flex items-center justify-center w-11 h-11 rounded-lg border border-outline-variant/40 bg-surface-container-low hover:bg-surface-container text-on-surface hover:text-secondary transition-all"
+          id="mobile-menu-open-btn"
         >
-          ☰
+          <i class="fa-solid fa-bars text-xl"></i>
         </button>
       </div>
-      <nav class="legal-mobile-nav" id="mobile-nav" hidden>
-        <a href="LegalNotice.html" data-en="Legal notice" data-de="Impressum"
-          >Legal notice</a
-        ><a
-          href="PrivacyPolicy.html"
-          data-en="Privacy policy"
-          data-de="Datenschutzerklärung"
-          >Privacy policy</a
-        ><a
-          href="TermsOfService.html"
-          data-en="Terms of service"
-          data-de="Nutzungsbedingungen"
-          >Terms of service</a
-        >
-      </nav>
     </header>
-    +
-    <main id="content" class="legal-wrap">
+    <!-- Mobile Navigation Drawer Overlay & Panel -->
+    <div
+      aria-hidden="true"
+      class="fixed inset-0 z-50 pointer-events-none lg:hidden"
+      id="mobile-nav-overlay-wrapper"
+    >
+      <!-- Backdrop Overlay -->
+      <div
+        class="fixed inset-0 bg-primary/40 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-none"
+        id="mobile-nav-backdrop"
+      ></div>
+      <!-- Slide-out Drawer Panel -->
+      <div
+        aria-label="Mobile Navigation Menu"
+        aria-modal="true"
+        class="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-surface-container-lowest shadow-2xl flex flex-col justify-between p-md sm:p-lg transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-auto border-l border-outline-variant/30 overflow-y-auto"
+        id="mobile-nav-drawer"
+        role="dialog"
+      >
+        <div>
+          <!-- Drawer Header: Brand + Coordinates + Close button -->
+          <div
+            class="flex items-center justify-between pb-md border-b border-outline-variant/30 mb-md"
+          >
+            <div class="flex items-center gap-sm">
+              <img
+                alt="Paradoxx Primary Logo"
+                class="h-7 w-auto object-contain"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+              />
+              <div>
+                <span
+                  class="font-headline-md text-body-lg font-bold text-primary tracking-tight block"
+                  >Paradoxx</span
+                >
+                <span
+                  class="font-label-mono text-[10px] text-outline block leading-none"
+                  data-i18n="about_coords"
+                  >53°23'N 8°08'E – Varel</span
+                >
+              </div>
+            </div>
+            <button
+              aria-label="Close Navigation Menu"
+              class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"
+              id="mobile-menu-close-btn"
+            >
+              <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+          </div>
+          <!-- Drawer Navigation Links -->
+          <nav class="flex flex-col space-y-1">
+            <a
+              class="mobile-nav-link flex items-center justify-between px-md py-sm rounded-lg text-body-lg font-headline-md text-on-surface hover:bg-surface-container hover:text-secondary transition-all"
+              data-i18n="nav_products"
+              href="#"
+            >
+              <span class="">Products</span>
+              <i class="fa-solid fa-chevron-right text-xs text-outline"></i>
+            </a>
+            <a
+              class="mobile-nav-link flex items-center justify-between px-md py-sm rounded-lg text-body-lg font-headline-md text-on-surface hover:bg-surface-container hover:text-secondary transition-all"
+              data-i18n="nav_services"
+              href="#"
+            >
+              <span class="">Services</span>
+              <i class="fa-solid fa-chevron-right text-xs text-outline"></i>
+            </a>
+            <a
+              class="mobile-nav-link flex items-center justify-between px-md py-sm rounded-lg text-body-lg font-headline-md text-on-surface hover:bg-surface-container hover:text-secondary transition-all"
+              data-i18n="nav_solutions"
+              href="#"
+            >
+              <span class="">Solutions</span>
+              <i class="fa-solid fa-chevron-right text-xs text-outline"></i>
+            </a>
+            <a
+              class="mobile-nav-link flex items-center justify-between px-md py-sm rounded-lg text-body-lg font-headline-md text-on-surface hover:bg-surface-container hover:text-secondary transition-all"
+              data-i18n="nav_industries"
+              href="#"
+            >
+              <span class="">Industries</span>
+              <i class="fa-solid fa-chevron-right text-xs text-outline"></i>
+            </a>
+            <a
+              class="mobile-nav-link flex items-center justify-between px-md py-sm rounded-lg text-body-lg font-headline-md text-on-surface hover:bg-surface-container hover:text-secondary transition-all"
+              data-i18n="nav_work"
+              href="#"
+            >
+              <span class="">Work</span>
+              <i class="fa-solid fa-chevron-right text-xs text-outline"></i>
+            </a>
+            <a
+              class="mobile-nav-link flex items-center justify-between px-md py-sm rounded-lg text-body-lg font-headline-md text-on-surface hover:bg-surface-container hover:text-secondary transition-all"
+              data-i18n="nav_company"
+              href="#"
+            >
+              <span class="">Company</span>
+              <i class="fa-solid fa-chevron-right text-xs text-outline"></i>
+            </a>
+            <a
+              class="mobile-nav-link flex items-center justify-between px-md py-sm rounded-lg text-body-lg font-headline-md text-on-surface hover:bg-surface-container hover:text-secondary transition-all"
+              data-i18n="nav_contact"
+              href="#"
+            >
+              <span class="">Contact</span>
+              <i class="fa-solid fa-chevron-right text-xs text-outline"></i>
+            </a>
+          </nav>
+        </div>
+        <!-- Drawer Footer: Language Picker & CTA Buttons -->
+        <div class="pt-md border-t border-outline-variant/30 mt-md space-y-md">
+          <!-- Mobile Language Toggle -->
+          <div
+            class="flex items-center justify-between bg-surface-container-low p-xs rounded-xl border border-outline-variant/30"
+          >
+            <span
+              class="font-label-mono text-caption text-on-surface-variant px-xs"
+              >Language / Sprache</span
+            >
+            <div
+              class="inline-flex items-center bg-surface-container rounded-full p-unit border border-outline-variant/30 font-label-mono text-caption"
+            >
+              <button
+                class="px-sm py-unit rounded-full bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all lang-btn-en"
+                onclick="setLanguage('en')"
+              >
+                EN
+              </button>
+              <button
+                class="px-sm py-unit rounded-full text-on-surface-variant hover:text-primary transition-all lang-btn-de"
+                onclick="setLanguage('de')"
+              >
+                DE
+              </button>
+            </div>
+          </div>
+          <!-- CTA Buttons -->
+          <div class="flex flex-col gap-xs">
+            <button
+              class="mobile-nav-link w-full bg-secondary text-on-secondary px-md py-sm rounded-lg font-body-md font-semibold hover:shadow-lg transition-all text-center"
+              data-i18n="btn_start_project"
+            >
+              Start a project
+            </button>
+            <a
+              class="mobile-nav-link w-full border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-md py-sm rounded-lg font-body-md text-center transition-all"
+              data-i18n="nav_contact"
+              href="contact.html "
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+<main id="content" class="legal-wrap">
       <section class="legal-hero">
         <div
           class="legal-eyebrow"
-          data-en="COMPANY INFORMATION · VAREL, GERMANY"
-          data-de="UNTERNEHMENSANGABEN · VAREL, DEUTSCHLAND"
+          data-en="COMPANY INFORMATION Â· VAREL, GERMANY"
+          data-de="UNTERNEHMENSANGABEN Â· VAREL, DEUTSCHLAND"
         >
-          COMPANY INFORMATION · VAREL, GERMANY
+          COMPANY INFORMATION Â· VAREL, GERMANY
         </div>
         <h1
           data-en="A company should be <em>easy to identify.</em>"
@@ -95,14 +455,14 @@
         </h1>
         <p
           data-en="The information below identifies the company responsible for this website and explains the legal notices that apply."
-          data-de="Die folgenden Angaben nennen das für diese Website verantwortliche Unternehmen und erläutern die anwendbaren rechtlichen Hinweise."
+          data-de="Die folgenden Angaben nennen das fÃ¼r diese Website verantwortliche Unternehmen und erlÃ¤utern die anwendbaren rechtlichen Hinweise."
         >
           The information below identifies the company responsible for this
           website and explains the legal notices that apply.
         </p>
         <div class="legal-meta">
           <span data-en="Legal notice" data-de="Impressum">Legal notice</span
-          ><span>·</span
+          ><span>Â·</span
           ><span
             data-en="Updated 24 November 2026"
             data-de="Stand: 24. November 2026"
@@ -144,27 +504,16 @@
           >
         </aside>
         <article class="legal-copy">
-          <div
-            class="legal-draft-note"
-            data-en="Company details below are drawn from the information you supplied. Please confirm them against a current commercial-register extract. Complete the highlighted contact, VAT, capital and editorial disclosures before this page is published."
-            data-de="Die folgenden Unternehmensangaben beruhen auf den von Ihnen bereitgestellten Informationen. Bitte gleichen Sie sie mit einem aktuellen Handelsregisterauszug ab. Ergänzen Sie die markierten Kontakt-, Umsatzsteuer-, Kapital- und Redaktionsangaben vor der Veröffentlichung."
-          >
-            Company details below are drawn from the information you supplied.
-            Please confirm them against a current commercial-register extract.
-            Complete the highlighted contact, VAT, capital and editorial
-            disclosures before this page is published.
-          </div>
-          +
           <section class="legal-block" id="company">
             <h2
-              data-en="Provider information under § 5 DDG"
-              data-de="Anbieterangaben nach § 5 DDG"
+              data-en="Provider information under Â§ 5 DDG"
+              data-de="Anbieterangaben nach Â§ 5 DDG"
             >
-              Provider information under § 5 DDG
+              Provider information under Â§ 5 DDG
             </h2>
             <div class="legal-detail">
-              <p><strong>Paradoxx UG (haftungsbeschränkt)</strong></p>
-              <p>Danksteder Straße 11</p>
+              <p><strong>Paradoxx UG (haftungsbeschrÃ¤nkt)</strong></p>
+              <p>Danksteder StraÃŸe 11</p>
               <p>26316 Varel</p>
               <p>Germany</p>
             </div>
@@ -173,7 +522,7 @@
             </h3>
             <p
               data-en="Dr. Yuno Rolfes, Managing Director, individually authorised to represent the company."
-              data-de="Dr. Yuno Rolfes, Geschäftsführer, einzelvertretungsberechtigt."
+              data-de="Dr. Yuno Rolfes, GeschÃ¤ftsfÃ¼hrer, einzelvertretungsberechtigt."
             >
               Dr. Yuno Rolfes, Managing Director, individually authorised to
               represent the company.
@@ -181,7 +530,7 @@
             <p
               class="legal-small"
               data-en="The supplied concept note reports this representation authority. Confirm its current wording against the commercial register before release."
-              data-de="Die bereitgestellte Konzeptnotiz nennt diese Vertretungsbefugnis. Bitte prüfen Sie deren aktuelle Formulierung vor Veröffentlichung anhand des Handelsregisters."
+              data-de="Die bereitgestellte Konzeptnotiz nennt diese Vertretungsbefugnis. Bitte prÃ¼fen Sie deren aktuelle Formulierung vor VerÃ¶ffentlichung anhand des Handelsregisters."
             >
               The supplied concept note reports this representation authority.
               Confirm its current wording against the commercial register before
@@ -190,12 +539,7 @@
             <h3 data-en="Contact" data-de="Kontakt">Contact</h3>
             <p>
               Email:
-              <span class="legal-placeholder"
-                >[Add the public business email address]</span
-              ><br /><span data-en="Telephone:" data-de="Telefon:"
-                >Telephone:</span
-              >
-              <span class="legal-placeholder">[Add if available]</span>
+              
             </p>
             <h3 data-en="Commercial Register" data-de="Handelsregister">
               Commercial Register
@@ -209,54 +553,45 @@
             </p>
             <p>
               <span
-                data-en="VAT identification number under § 27a UStG:"
-                data-de="Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:"
-                >VAT identification number under § 27a UStG:</span
+                data-en="VAT identification number under Â§ 27a UStG:"
+                data-de="Umsatzsteuer-Identifikationsnummer gemÃ¤ÃŸ Â§ 27a UStG:"
+                >VAT identification number under Â§ 27a UStG:</span
               >
-              <span class="legal-placeholder"
-                >[Insert if issued; a tax number is not a VAT ID]</span
-              >
-            </p>
+              
             <h3
-              data-en="Share capital — verify before including"
-              data-de="Stammkapital — vor Angabe prüfen"
+              data-en="Share capital â€” verify before including"
+              data-de="Stammkapital â€” vor Angabe prÃ¼fen"
             >
-              Share capital — verify before including
+              Share capital â€” verify before including
             </h3>
             <p
-              data-en="The supplied company note gives registered share capital of EUR 500. If share capital is stated in this notice, § 5 DDG also requires the total outstanding amount of cash contributions, if any. Confirm the paid-up amount before deciding whether to show this information."
-              data-de="Die bereitgestellte Unternehmensunterlage nennt ein Stammkapital von 500 EUR. Wird das Stammkapital im Impressum angegeben, verlangt § 5 DDG zusätzlich die Gesamthöhe noch ausstehender Bareinlagen, falls vorhanden. Prüfen Sie vor einer Veröffentlichung, welcher Betrag bereits eingezahlt wurde."
+              data-en="The supplied company note gives registered share capital of EUR 500. If share capital is stated in this notice, Â§ 5 DDG also requires the total outstanding amount of cash contributions, if any. Confirm the paid-up amount before deciding whether to show this information."
+              data-de="Die bereitgestellte Unternehmensunterlage nennt ein Stammkapital von 500 EUR. Wird das Stammkapital im Impressum angegeben, verlangt Â§ 5 DDG zusÃ¤tzlich die GesamthÃ¶he noch ausstehender Bareinlagen, falls vorhanden. PrÃ¼fen Sie vor einer VerÃ¶ffentlichung, welcher Betrag bereits eingezahlt wurde."
             >
               The supplied company note gives registered share capital of EUR
-              500. If share capital is stated in this notice, § 5 DDG also
+              500. If share capital is stated in this notice, Â§ 5 DDG also
               requires the total outstanding amount of cash contributions, if
               any. Confirm the paid-up amount before deciding whether to show
               this information.
             </p>
           </section>
-          +
           <section class="legal-block" id="editorial">
             <h2
               data-en="Editorial responsibility, where required"
-              data-de="Verantwortlichkeit für redaktionelle Inhalte, sofern erforderlich"
+              data-de="Verantwortlichkeit fÃ¼r redaktionelle Inhalte, sofern erforderlich"
             >
               Editorial responsibility, where required
             </h2>
             <p
-              data-en="If this website publishes journalistic-editorial content within the meaning of § 18 (2) MStV, identify the person responsible and provide the required name and address here."
-              data-de="Veröffentlicht diese Website journalistisch-redaktionelle Inhalte im Sinne von § 18 Abs. 2 MStV, sind hier die verantwortliche Person sowie die erforderlichen Namens- und Adressangaben aufzunehmen."
+              data-en="If this website publishes journalistic-editorial content within the meaning of Â§ 18 (2) MStV, identify the person responsible and provide the required name and address here."
+              data-de="VerÃ¶ffentlicht diese Website journalistisch-redaktionelle Inhalte im Sinne von Â§ 18 Abs. 2 MStV, sind hier die verantwortliche Person sowie die erforderlichen Namens- und Adressangaben aufzunehmen."
             >
               If this website publishes journalistic-editorial content within
-              the meaning of § 18 (2) MStV, identify the person responsible and
+              the meaning of Â§ 18 (2) MStV, identify the person responsible and
               provide the required name and address here.
             </p>
-            <p class="legal-placeholder">
-              [Confirm whether this disclosure applies to the final site. If it
-              does: insert the responsible person’s full name and legally
-              sufficient service address. If it does not, remove this section.]
-            </p>
+            
           </section>
-          +
           <section class="legal-block" id="disputes">
             <h2
               data-en="Consumer dispute resolution"
@@ -264,17 +599,10 @@
             >
               Consumer dispute resolution
             </h2>
-            <p class="legal-placeholder">
-              [Choose the statement that reflects the company’s actual position
-              and legal duties: (A) “We are neither willing nor obliged to
-              participate in dispute-resolution proceedings before a consumer
-              arbitration board.” or (B) name the competent consumer arbitration
-              body and provide its address/website where participation or
-              disclosure is required.]
-            </p>
+            
             <p
-              data-en="The former European Commission Online Dispute Resolution platform was discontinued on 20 July 2025; its old link should not appear here. Check current German and EU consumer ADR information duties for the services and markets Paradoxx actually serves."
-              data-de="Die frühere Online-Streitbeilegungsplattform der Europäischen Kommission wurde am 20. Juli 2025 eingestellt; der frühere Link sollte hier nicht erscheinen. Prüfen Sie die aktuellen deutschen und europäischen Informationspflichten zur Verbraucherstreitbeilegung für die tatsächlich angebotenen Leistungen und Märkte von Paradoxx."
+              data-en="The former European Commission Online Dispute Resolution platform closed on 20 July 2025. For current information about consumer dispute resolution, please contact us or consult the competent consumer arbitration body."
+              data-de="Die frÃ¼here Online-Streitbeilegungsplattform der EuropÃ¤ischen Kommission wurde am 20. Juli 2025 eingestellt; der frÃ¼here Link sollte hier nicht erscheinen. PrÃ¼fen Sie die aktuellen deutschen und europÃ¤ischen Informationspflichten zur Verbraucherstreitbeilegung fÃ¼r die tatsÃ¤chlich angebotenen Leistungen und MÃ¤rkte von Paradoxx."
             >
               The former European Commission Online Dispute Resolution platform
               was discontinued on 20 July 2025; its old link should not appear
@@ -282,16 +610,15 @@
               for the services and markets Paradoxx actually serves.
             </p>
           </section>
-          +
           <section class="legal-block" id="content-liability">
-            <h2 data-en="Liability for content" data-de="Haftung für Inhalte">
+            <h2 data-en="Liability for content" data-de="Haftung fÃ¼r Inhalte">
               Liability for content
             </h2>
             <p
-              data-en="We prepare this website’s content with care and update it when appropriate. Even so, we cannot promise that every item is complete, accurate or current. Mandatory statutory liability remains unaffected. We are responsible for our own content under applicable law. We are not generally required to monitor information transmitted or stored by third parties or to investigate circumstances indicating unlawful activity, except where a legal duty requires it. When we become aware of a specific infringement, we will review the content and take action as required by law."
-              data-de="Wir erstellen die Inhalte dieser Website sorgfältig und aktualisieren sie bei Bedarf. Dennoch können wir nicht zusichern, dass alle Angaben vollständig, richtig oder aktuell sind. Zwingende gesetzliche Haftung bleibt unberührt. Für eigene Inhalte sind wir nach den geltenden Gesetzen verantwortlich. Eine allgemeine Pflicht, von Dritten übermittelte oder gespeicherte Informationen zu überwachen oder aktiv nach Umständen rechtswidriger Tätigkeiten zu suchen, besteht nicht, soweit keine gesetzliche Pflicht greift. Werden uns konkrete Rechtsverletzungen bekannt, prüfen wir die Inhalte und ergreifen die gesetzlich erforderlichen Maßnahmen."
+              data-en="We prepare this websiteâ€™s content with care and update it when appropriate. Even so, we cannot promise that every item is complete, accurate or current. Mandatory statutory liability remains unaffected. We are responsible for our own content under applicable law. We are not generally required to monitor information transmitted or stored by third parties or to investigate circumstances indicating unlawful activity, except where a legal duty requires it. When we become aware of a specific infringement, we will review the content and take action as required by law."
+              data-de="Wir erstellen die Inhalte dieser Website sorgfÃ¤ltig und aktualisieren sie bei Bedarf. Dennoch kÃ¶nnen wir nicht zusichern, dass alle Angaben vollstÃ¤ndig, richtig oder aktuell sind. Zwingende gesetzliche Haftung bleibt unberÃ¼hrt. FÃ¼r eigene Inhalte sind wir nach den geltenden Gesetzen verantwortlich. Eine allgemeine Pflicht, von Dritten Ã¼bermittelte oder gespeicherte Informationen zu Ã¼berwachen oder aktiv nach UmstÃ¤nden rechtswidriger TÃ¤tigkeiten zu suchen, besteht nicht, soweit keine gesetzliche Pflicht greift. Werden uns konkrete Rechtsverletzungen bekannt, prÃ¼fen wir die Inhalte und ergreifen die gesetzlich erforderlichen MaÃŸnahmen."
             >
-              We prepare this website’s content with care and update it when
+              We prepare this websiteâ€™s content with care and update it when
               appropriate. Even so, we cannot promise that every item is
               complete, accurate or current. Mandatory statutory liability
               remains unaffected. We are responsible for our own content under
@@ -303,14 +630,13 @@
               required by law.
             </p>
           </section>
-          +
           <section class="legal-block">
             <h2 data-en="External links" data-de="Externe Links">
               External links
             </h2>
             <p
               data-en="This website may link to services operated by other organisations. We do not control those websites or their content. The respective provider is responsible for the linked page. If we learn of a specific legal infringement, we will review the link and respond as required by law."
-              data-de="Diese Website kann auf Angebote anderer Anbieter verlinken. Wir kontrollieren weder diese Websites noch deren Inhalte. Für die verlinkte Seite ist der jeweilige Anbieter verantwortlich. Erfahren wir von einer konkreten Rechtsverletzung, prüfen wir den Link und reagieren im gesetzlich erforderlichen Umfang."
+              data-de="Diese Website kann auf Angebote anderer Anbieter verlinken. Wir kontrollieren weder diese Websites noch deren Inhalte. FÃ¼r die verlinkte Seite ist der jeweilige Anbieter verantwortlich. Erfahren wir von einer konkreten Rechtsverletzung, prÃ¼fen wir den Link und reagieren im gesetzlich erforderlichen Umfang."
             >
               This website may link to services operated by other organisations.
               We do not control those websites or their content. The respective
@@ -319,7 +645,6 @@
               as required by law.
             </p>
           </section>
-          +
           <section class="legal-block" id="copyright">
             <h2
               data-en="Copyright and intellectual property"
@@ -328,8 +653,8 @@
               Copyright and intellectual property
             </h2>
             <p
-              data-en="Content created by Paradoxx UG for this website is protected by copyright and other intellectual-property laws unless a page states otherwise. You may use it as allowed by law; other reproduction, adaptation, distribution or public communication requires permission from the relevant rights holder. Rights in third-party content remain with their owners. To report a rights concern, contact [business email] and identify the material and the right concerned."
-              data-de="Von Paradoxx UG für diese Website erstellte Inhalte sind urheberrechtlich und durch sonstige Vorschriften zum geistigen Eigentum geschützt, sofern eine Seite nichts anderes angibt. Die gesetzlich erlaubte Nutzung bleibt möglich; jede darüber hinausgehende Vervielfältigung, Bearbeitung, Verbreitung oder öffentliche Wiedergabe bedarf der Zustimmung des jeweiligen Rechteinhabers. Rechte an Inhalten Dritter verbleiben bei deren Inhabern. Bei einem Rechtehinweis schreiben Sie an [Geschäfts-E-Mail-Adresse] und benennen Sie das betroffene Material sowie das geltend gemachte Recht."
+              data-en="Content created by Paradoxx UG for this website is protected by copyright and other intellectual-property laws unless a page states otherwise. You may use it as allowed by law; other reproduction, adaptation, distribution or public communication requires permission from the relevant rights holder. Rights in third-party content remain with their owners. To report a rights concern, contact <a href="mailto:info@kutas.org">info@kutas.org</a> and identify the material and the right concerned."
+              data-de="Von Paradoxx UG fÃ¼r diese Website erstellte Inhalte sind urheberrechtlich und durch sonstige Vorschriften zum geistigen Eigentum geschÃ¼tzt, sofern eine Seite nichts anderes angibt. Die gesetzlich erlaubte Nutzung bleibt mÃ¶glich; jede darÃ¼ber hinausgehende VervielfÃ¤ltigung, Bearbeitung, Verbreitung oder Ã¶ffentliche Wiedergabe bedarf der Zustimmung des jeweiligen Rechteinhabers. Rechte an Inhalten Dritter verbleiben bei deren Inhabern. Bei einem Rechtehinweis schreiben Sie an  und benennen Sie das betroffene Material sowie das geltend gemachte Recht."
             >
               Content created by Paradoxx UG for this website is protected by
               copyright and other intellectual-property laws unless a page
@@ -337,36 +662,834 @@
               reproduction, adaptation, distribution or public communication
               requires permission from the relevant rights holder. Rights in
               third-party content remain with their owners. To report a rights
-              concern, contact [business email] and identify the material and
+              concern, contact <a href="mailto:info@kutas.org">info@kutas.org</a> and identify the material and
               the right concerned.
             </p>
           </section>
         </article>
       </div>
     </main>
-    <footer class="legal-footer">
-      <div class="legal-wrap legal-footer-inner">
-        <div class="legal-footer-links">
-          <a href="LegalNotice.html" data-en="Legal notice" data-de="Impressum"
-            >Legal notice</a
-          ><a
-            href="PrivacyPolicy.html"
-            data-en="Privacy policy"
-            data-de="Datenschutzerklärung"
-            >Privacy policy</a
-          ><a
-            href="TermsOfService.html"
-            data-en="Terms of service"
-            data-de="Nutzungsbedingungen"
-            >Terms of service</a
-          >
-        </div>
-        <small
-          >© <span data-current-year>2026</span> Paradoxx UG
-          (haftungsbeschränkt)</small
+    <!-- Footer -->
+    <footer
+      class="w-full bg-surface-container-lowest py-xl shadow-[0_-4px_20px_rgba(17,19,24,0.02)]"
+    >
+      <div class="max-w-container-max mx-auto px-4 sm:px-md">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg mb-xl"
         >
+          <div class="lg:col-span-2">
+            <div class="flex items-center gap-sm mb-md">
+              <img
+                alt="Paradoxx Primary Logo"
+                class="h-6 w-auto object-contain"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+              /><span class="font-headline-md text-headline-md text-primary"
+                >Paradoxx</span
+              >
+            </div>
+            <p
+              class="text-body-md font-body-md text-on-surface-variant max-w-xs mb-sm"
+              data-i18n="footer_desc"
+            >
+              Software, digital products and technological services engineered
+              for human intent.
+            </p>
+            <p
+              class="text-caption font-caption text-outline"
+              data-i18n="footer_loc"
+            >
+              Varel, Germany
+            </p>
+          </div>
+          <div>
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_company_title"
+            >
+              Company
+            </h4>
+            <ul
+              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_about"
+                  href="about.html"
+                  >About</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_story"
+                  href="about.html"
+                  >Story</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_lead"
+                  href="careers.html"
+                  >Leadership</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_careers"
+                  href="careers.html"
+                  >Careers</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_news"
+                  href="index.html"
+                  >Newsroom</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_cap_title"
+            >
+              Capabilities
+            </h4>
+            <ul
+              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_services"
+                  href="services.html"
+                  >Services</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_products"
+                  href="company.html"
+                  >Products</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_solutions"
+                  href="solutions.html"
+                  >Solutions</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_industries"
+                  href="industries.html"
+                  >Industries</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_work"
+                  href="services.html"
+                  >Work</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_res_title"
+              href="index.html"
+            >
+              Resources
+            </h4>
+            <ul
+              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+            >
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_insights"
+                  href="index.html"
+                  >Insights</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_research"
+                  href="index.html"
+                  >Research</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_faqs"
+                  href="contact.html"
+                  >FAQs</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_support"
+                  href="Support.html"
+                  >Support</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_contact"
+                  href="Contact.html"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-outline-variant pt-md flex flex-col md:flex-row justify-between items-center gap-md"
+        >
+          <span
+            class="text-caption font-caption text-on-surface-variant text-center md:text-left"
+            data-i18n="footer_copyright"
+            >© <span class="current-year">2026</span> Paradoxx UG
+            (haftungsbeschränkt). All rights reserved.</span
+          >
+          <div
+            class="flex flex-wrap justify-center gap-md text-caption font-caption text-on-surface-variant"
+          >
+            <a class="hover:text-secondary" data-i18n="footer_privacy" href="PrivacyPolicy.html"
+              >Privacy Policy</a
+            ><a class="hover:text-secondary" data-i18n="footer_terms" href="TermsOfService.html"
+              >Terms of Service</a
+            ><a class="hover:text-secondary" data-i18n="footer_legal" href="LegalNotice.html"
+              >Legal Notice</a
+            >
+          </div>
+        </div>
       </div>
     </footer>
-    <script src="legal.js" defer></script>
+    <script>
+      // Complete Translation Dictionary
+      const translations = {
+        en: {
+          // Nav
+          nav_products: "Products",
+          nav_services: "Services",
+          nav_solutions: "Solutions",
+          nav_industries: "Industries",
+          nav_work: "Work",
+          nav_company: "Company",
+          nav_contact: "Contact",
+          btn_start_project: "Start a project",
+
+          // Hero
+          hero_tag: "SOFTWARE · DIGITAL PRODUCTS · TECHNOLOGY",
+          hero_h1_part1: "Complex ideas.",
+          hero_h1_part2: "Clear digital products.",
+          hero_desc:
+            "Paradoxx designs, develops and operates software that helps companies and organisations solve real problems, simplify their work and create new possibilities.",
+          hero_btn_primary: "Start a project",
+          hero_btn_secondary: "Explore our capabilities",
+
+          // Core Philosophy Statement
+          intro_statement:
+            "Technology should make things clearer, not more complicated.",
+          intro_subtext:
+            "We work across product strategy, design, software development and operations. Whether validating an idea or modernising an existing platform, we build the clear path forward.",
+
+          // Services / Capabilities
+          services_section_title: "From first question to working product",
+          services_section_sub:
+            "We provide end-to-end capabilities designed to bridge the gap between human intent and machine execution.",
+          services_view_all: "View all services",
+          svc_ai_title: "AI Solutions",
+          svc_ai_desc:
+            "Integrating intelligent systems that reason, learn, and adapt to automate complex workflows and surface unseen insights.",
+          svc_strat_title: "Product Strategy",
+          svc_strat_desc:
+            "Defining the clear path from ambiguous problem to viable digital product.",
+          svc_dev_title: "Software Development",
+          svc_dev_desc:
+            "Robust engineering designed for scale, performance, and longevity.",
+          svc_design_title: "UI/UX Design",
+          svc_design_desc:
+            "Crafting intuitive, highly polished interfaces that guide human intent.",
+          svc_auto_title: "Automation",
+          svc_auto_desc:
+            "Streamlining operations by connecting disjointed systems and processes.",
+          svc_cloud_title: "Cloud & Operations",
+          svc_cloud_desc:
+            "Reliable infrastructure management and continuous deployment strategies.",
+
+          // Flagship Methodology
+          flagship_tag: "FLAGSHIP METHODOLOGY",
+          flagship_title: "Launch the right product, not just more software.",
+          flagship_desc:
+            "We believe in deliberate engineering. Every line of code should serve a human purpose. We partner with visionaries to build systems that are as elegant underneath as they are on the surface.",
+          flagship_stat1: "Uptime Reliability %",
+          flagship_stat2: "Products Launched",
+
+          // Products built by Paradoxx
+          prod_tag: "Products",
+          prod_h2: "Products built by Paradoxx",
+          prod_sub:
+            "We are developing digital products designed to solve recurring, meaningful problems. Public products and experiments will appear here as they become available.",
+          prod_badge: "In Development / Pipeline",
+          prod_card1_tag: "In private development",
+          prod_card1_title: "Internal Tooling & Workflow Engine",
+          prod_card1_desc:
+            "Next-generation orchestration infrastructure built to eliminate context-switching and automate high-fidelity knowledge pipelines.",
+          prod_card1_meta: "Cohort testing",
+          prod_card2_tag: "In private development",
+          prod_card2_title: "Knowledge & Intelligence Layer",
+          prod_card2_desc:
+            "Context-aware interface layer turning heterogeneous corporate records into verified, actionable execution paths.",
+          prod_card2_meta: "Early preview partners",
+
+          // Sectors & Contexts
+          ind_tag: "Sectors & Contexts",
+          ind_h2: "Technology adapted to real contexts",
+          ind_sub:
+            "Tailored digital architectures engineered for domain-specific compliance, operations, and user realities.",
+          ind_c1_title: "Business & Professional Services",
+          ind_c1_desc:
+            "Modern client portals, practice management software, and automated reporting systems.",
+          ind_c2_title: "Education",
+          ind_c2_desc:
+            "Intuitive learning platforms, modular curriculum management, and accessible learner portals.",
+          ind_c3_title: "Government",
+          ind_c3_desc:
+            "Citizen-facing public services, highly secure registry integrations, and sovereign data systems.",
+          ind_c4_title: "NGOs",
+          ind_c4_desc:
+            "Transparent resource distribution engines, grassroots engagement tools, and reporting dashboards.",
+          ind_c5_title: "Agriculture",
+          ind_c5_desc:
+            "Field telemetry ingestion, supply traceability, and localized resource management tools.",
+          ind_c6_title: "Logistics",
+          ind_c6_desc:
+            "End-to-end dispatch orchestration, inventory verification, and resilient offline tracking.",
+          ind_c7_title: "Climate & Energy",
+          ind_c7_desc:
+            "Grid load optimization interfaces, renewable accounting protocols, and carbon footprint telemetry.",
+
+          // Portfolio
+          work_tag: "Portfolio",
+          work_confidential: "Client Confidentiality Protected",
+          work_title: "Selected work",
+          work_desc:
+            "Public project stories are being prepared. Contact us to discuss relevant experience and delivery approaches.",
+          work_cta: "Discuss case studies",
+
+          // Methodology / How We Build
+          method_tag: "Methodology",
+          method_title: "How we build",
+          method_sub:
+            "The architectural and operational convictions guiding every line of code and interface decision.",
+          meth_c1_title: "Useful before impressive",
+          meth_c1_desc:
+            "We prioritise meaningful outcomes over unnecessary features.",
+          meth_c2_title: "Clear before complex",
+          meth_c2_desc:
+            "We make product and technology decisions understandable.",
+          meth_c3_title: "Responsible by design",
+          meth_c3_desc:
+            "Privacy, accessibility and security are considered from the beginning.",
+          meth_c4_title: "Built to evolve",
+          meth_c4_desc:
+            "We create foundations that can adapt to future requirements.",
+
+          // About
+          about_tag: "About Paradoxx",
+          about_title:
+            "A technology company from Varel with a wider perspective.",
+          about_desc:
+            "We fuse German engineering precision with forward-thinking design to create digital solutions that stand the test of time. Our team operates at the intersection of complex logic and simple, intuitive user experiences.",
+          about_cta: "Read our story",
+          about_coords: "53°23'N 8°08'E – Varel",
+
+          // Footer
+          footer_desc:
+            "Software, digital products and technological services engineered for human intent.",
+          footer_loc: "Varel, Germany",
+          ft_company_title: "Company",
+          ft_company_about: "About",
+          ft_company_story: "Story",
+          ft_company_lead: "Leadership",
+          ft_company_careers: "Careers",
+          ft_company_news: "Newsroom",
+          ft_cap_title: "Capabilities",
+          ft_cap_services: "Services",
+          ft_cap_products: "Products",
+          ft_cap_solutions: "Solutions",
+          ft_cap_industries: "Industries",
+          ft_cap_work: "Work",
+          ft_res_title: "Resources",
+          ft_res_insights: "Insights",
+          ft_res_research: "Research",
+          ft_res_faqs: "FAQs",
+          ft_res_support: "Support",
+          ft_res_contact: "Contact",
+          footer_rights: "All rights reserved.",
+          footer_privacy: "Privacy Policy",
+          footer_terms: "Terms of Service",
+          footer_legal: "Legal Notice",
+        },
+        de: {
+          // Nav
+          nav_products: "Produkte",
+          nav_services: "Leistungen",
+          nav_solutions: "Lösungen",
+          nav_industries: "Branchen",
+          nav_work: "Referenzen",
+          nav_company: "Unternehmen",
+          nav_contact: "Kontakt",
+          btn_start_project: "Projekt starten",
+
+          // Hero
+          hero_tag: "SOFTWARE · DIGITALE PRODUKTE · TECHNOLOGIE",
+          hero_h1_part1: "Komplexe Ideen.",
+          hero_h1_part2: "Klare digitale Produkte.",
+          hero_desc:
+            "Paradoxx konzipiert, entwickelt und betreibt Software, die Unternehmen und Organisationen hilft, echte Probleme zu lösen, ihre Arbeit zu vereinfachen und neue Möglichkeiten zu schaffen.",
+          hero_btn_primary: "Projekt starten",
+          hero_btn_secondary: "Unsere Leistungen",
+
+          // Core Philosophy Statement
+          intro_statement:
+            "Technologie sollte Dinge verständlicher machen, nicht komplizierter.",
+          intro_subtext:
+            "Wir arbeiten über Produktstrategie, Design, Softwareentwicklung und Betrieb hinweg. Ob Validierung einer Idee oder Modernisierung einer bestehenden Plattform – wir schaffen den klaren Weg nach vorn.",
+
+          // Services / Capabilities
+          services_section_title:
+            "Von der ersten Frage zum marktreifen Produkt",
+          services_section_sub:
+            "Wir bieten durchgängige Kompetenzen, um die Lücke zwischen menschlicher Absicht und technischer Umsetzung zu schließen.",
+          services_view_all: "Alle Leistungen ansehen",
+          svc_ai_title: "KI-Lösungen",
+          svc_ai_desc:
+            "Integration intelligenter Systeme, die logisch schlussfolgern, lernen und sich anpassen, um komplexe Arbeitsabläufe zu automatisieren und verborgene Erkenntnisse zu erschließen.",
+          svc_strat_title: "Produktstrategie",
+          svc_strat_desc:
+            "Der klare Weg von vagen Problemstellungen zu tragfähigen digitalen Produkten.",
+          svc_dev_title: "Softwareentwicklung",
+          svc_dev_desc:
+            "Robuste Entwicklungsarbeit, ausgelegt auf Skalierbarkeit, Performance und Langlebigkeit.",
+          svc_design_title: "UI/UX-Design",
+          svc_design_desc:
+            "Entwicklung intuitiver, präziser Benutzeroberflächen, die menschliche Absichten verständlich leiten.",
+          svc_auto_title: "Automatisierung & Integration",
+          svc_auto_desc:
+            "Optimierung operativer Abläufe durch die nahtlose Verbindung verteilter Systeme und Prozesse.",
+          svc_cloud_title: "Cloud & Infrastruktur",
+          svc_cloud_desc:
+            "Zuverlässiges Infrastrukturmanagement und kontinuierliche Bereitstellungsstrategien.",
+
+          // Flagship Methodology
+          flagship_tag: "LEITMETHODIK",
+          flagship_title:
+            "Das richtige Produkt launchen – nicht bloß mehr Software.",
+          flagship_desc:
+            "Wir glauben an zielgerichtete Ingenieurskunst. Jede Zeile Code muss einem menschlichen Zweck dienen. Gemeinsam mit visionären Teams schaffen wir Systeme, die im Kern genauso elegant sind wie an ihrer Oberfläche.",
+          flagship_stat1: "98% Zuverlässige Verfügbarkeit",
+          flagship_stat2: "42+ Erfolgreiche Produkte",
+
+          // Products built by Paradoxx
+          prod_tag: "PRODUKTE",
+          prod_h2: "Von Paradoxx entwickelte Produkte",
+          prod_sub:
+            "Wir entwickeln digitale Produkte zur Lösung wiederkehrender, relevanter Problemstellungen. Öffentliche Produkte und Experimente werden hier vorgestellt, sobald sie verfügbar sind.",
+          prod_badge: "In Entwicklung / Pipeline",
+          prod_card1_tag: "In interner Entwicklung",
+          prod_card1_title: "Interne Tooling- & Workflow-Engine",
+          prod_card1_desc:
+            "Orchestrierungsinfrastruktur der nächsten Generation zur Vermeidung von Kontextwechseln und Automatisierung anspruchsvoller Wissenspipelines.",
+          prod_card1_meta: "Kohorten-Testing",
+          prod_card2_tag: "In interner Entwicklung",
+          prod_card2_title: "Knowledge & Intelligence Layer",
+          prod_card2_desc:
+            "Kontextsensitive Schnittstellenebene, die heterogene Unternehmensdaten in verifizierte, handlungsrelevante Abläufe transformiert.",
+          prod_card2_meta: "Early-Preview-Partner",
+
+          // Sectors & Contexts
+          ind_tag: "BRANCHEN & KONTEXTE",
+          ind_h2: "Technologie angepasst an reale Kontexte",
+          ind_sub:
+            "Maßgeschneiderte digitale Architekturen, konzipiert für fachspezifische Compliance, operative Abläufe und Nutzerrealitäten.",
+          ind_c1_title: "Unternehmens- & Beratungsdienstleistungen",
+          ind_c1_desc:
+            "Moderne Mandantenportale, Kanzleimanagement-Software und automatisierte Berichtssysteme.",
+          ind_c2_title: "Bildungswesen",
+          ind_c2_desc:
+            "Intuitive Lernplattformen, modulare Curriculum-Verwaltung und barrierefreie Lernportale.",
+          ind_c3_title: "Öffentliche Hand & Verwaltung",
+          ind_c3_desc:
+            "Bürgernahe Fachdienste, hochsichere Register-Integrationen und souveräne Datensysteme.",
+          ind_c4_title: "Gemeinnützige Organisationen & NGOs",
+          ind_c4_desc:
+            "Transparente Ressourcenverteilung, Bürgerbeteiligungs-Tools und wirkungsorientierte Dashboards.",
+          ind_c5_title: "Landwirtschaft & Agrar",
+          ind_c5_desc:
+            "Feldtelemetrie-Erfassung, lückenlose Lieferketten-Rückverfolgung und dezentrale Betriebsführung.",
+          ind_c6_title: "Logistik & Transport",
+          ind_c6_desc:
+            "Durchgängige Flottendisposition, Bestandsverifikation und ausfallsicheres Offline-Tracking.",
+          ind_c7_title: "Klima & Energie",
+          ind_c7_desc:
+            "Netzlast-Optimierung, regenerative Zertifikatsverwaltung und Carbon-Footprint-Telemetrie.",
+
+          // Portfolio
+          work_tag: "Portfolio",
+          work_confidential: "Vertraulichkeit geschützt",
+          work_title: "Ausgewählte Projekte",
+          work_desc:
+            "Öffentliche Projektberichte werden derzeit vorbereitet. Kontaktieren Sie uns, um relevante Erfahrungen und Projektergebnisse zu besprechen.",
+          work_cta: "Fallstudien besprechen",
+
+          // Methodology / How We Build
+          method_tag: "METHODIK",
+          method_title: "Wie wir entwickeln",
+          method_sub:
+            "Die architektonischen und operativen Grundsätze, die jede Zeile Code und jede Interface-Entscheidung prägen.",
+          meth_c1_title: "Nützlichkeit vor Selbstdarstellung",
+          meth_c1_desc:
+            "Wir priorisieren echten Mehrwert gegenüber überflüssigen Funktionen und scheinbarer Komplexität.",
+          meth_c2_title: "Klarheit vor Komplexität",
+          meth_c2_desc:
+            "Wir machen Produkt- und Technologieentscheidungen für alle Beteiligten nachvollziehbar und transparent.",
+          meth_c3_title: "Verantwortung als Prinzip",
+          meth_c3_desc:
+            "Datenschutz, Barrierefreiheit, Sicherheit und ethische Standards fließen ab dem ersten Entwurf ein.",
+          meth_c4_title: "Gebaut für kontinuierliche Entwicklung",
+          meth_c4_desc:
+            "Wir schaffen modulare architektonische Grundlagen, die sich nahtlos an zukünftige Anforderungen anpassen.",
+
+          // About
+          about_tag: "ÜBER PARADOXX",
+          about_title: "Ein Technologieunternehmen aus Varel mit Weitblick.",
+          about_desc:
+            "Wir verbinden deutsche Ingenieurspräzision mit zukunftsgewandtem Design, um beständige digitale Lösungen zu schaffen. Unser Team arbeitet an der Schnittstelle von komplexer Logik und intuitiven Nutzererlebnissen.",
+          about_cta: "Unsere Geschichte lesen",
+          about_coords: "53°23'N 8°08'E – Varel",
+
+          // Footer
+          footer_desc:
+            "Software, digitale Produkte und Technologie-Dienstleistungen, entwickelt für menschliche Absichten.",
+          footer_loc: "Varel, Deutschland",
+          ft_company_title: "Unternehmen",
+          ft_company_about: "Über uns",
+          ft_company_story: "Story",
+          ft_company_lead: "Team & Führung",
+          ft_company_careers: "Karriere",
+          ft_company_news: "Aktuelles",
+          ft_cap_title: "Kompetenzen",
+          ft_cap_services: "Leistungen",
+          ft_cap_products: "Produkte",
+          ft_cap_solutions: "Lösungen",
+          ft_cap_industries: "Branchen",
+          ft_cap_work: "Referenzen",
+          ft_res_title: "Ressourcen",
+          ft_res_insights: "Einblicke",
+          ft_res_research: "Forschung",
+          ft_res_faqs: "FAQs",
+          ft_res_support: "Support",
+          ft_res_contact: "Kontakt",
+          footer_rights: "Alle Rechte vorbehalten.",
+          footer_privacy: "Datenschutz",
+          footer_terms: "AGB",
+          footer_legal: "Impressum",
+        },
+      };
+
+      let currentLang = "en";
+
+      function setLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
+        try {
+          localStorage.setItem("paradoxx_lang", lang);
+        } catch (e) {}
+
+        // Update document lang
+        document.documentElement.lang = lang;
+
+        // Update Pill Buttons across desktop and mobile
+        const btnsEn = document.querySelectorAll(".lang-btn-en");
+        const btnsDe = document.querySelectorAll(".lang-btn-de");
+        btnsEn.forEach((b) => {
+          if (lang === "en") {
+            b.className =
+              "px-sm py-unit rounded-full bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all lang-btn-en";
+          } else {
+            b.className =
+              "px-sm py-unit rounded-full text-on-surface-variant hover:text-primary transition-all lang-btn-en";
+          }
+        });
+        btnsDe.forEach((b) => {
+          if (lang === "de") {
+            b.className =
+              "px-sm py-unit rounded-full bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all lang-btn-de";
+          } else {
+            b.className =
+              "px-sm py-unit rounded-full text-on-surface-variant hover:text-primary transition-all lang-btn-de";
+          }
+        });
+
+        // Apply translations to all matching DOM elements
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang][key] !== undefined) {
+            el.textContent = translations[lang][key];
+          }
+        });
+      }
+
+      // Mobile Drawer Control Logic
+      function initMobileDrawer() {
+        const openBtn = document.getElementById("mobile-menu-open-btn");
+        const closeBtn = document.getElementById("mobile-menu-close-btn");
+        const overlayWrapper = document.getElementById(
+          "mobile-nav-overlay-wrapper",
+        );
+        const backdrop = document.getElementById("mobile-nav-backdrop");
+        const drawer = document.getElementById("mobile-nav-drawer");
+        const navLinks = document.querySelectorAll(".mobile-nav-link");
+
+        if (!openBtn || !drawer || !backdrop || !overlayWrapper) return;
+
+        function openDrawer() {
+          overlayWrapper.classList.remove("pointer-events-none");
+          backdrop.classList.remove("pointer-events-none", "opacity-0");
+          backdrop.classList.add("pointer-events-auto", "opacity-100");
+          drawer.classList.remove("translate-x-full");
+          drawer.classList.add("translate-x-0");
+          openBtn.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeDrawer() {
+          drawer.classList.remove("translate-x-0");
+          drawer.classList.add("translate-x-full");
+          backdrop.classList.remove("pointer-events-auto", "opacity-100");
+          backdrop.classList.add("pointer-events-none", "opacity-0");
+          overlayWrapper.classList.add("pointer-events-none");
+          openBtn.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+
+        openBtn.addEventListener("click", openDrawer);
+        if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+        backdrop.addEventListener("click", closeDrawer);
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", closeDrawer);
+        });
+
+        window.addEventListener("keydown", (e) => {
+          if (
+            e.key === "Escape" &&
+            openBtn.getAttribute("aria-expanded") === "true"
+          ) {
+            closeDrawer();
+          }
+        });
+      }
+
+      // Counter Animation
+      document.addEventListener("DOMContentLoaded", () => {
+        initMobileDrawer();
+
+        // Dynamic year
+        document.querySelectorAll(".current-year").forEach((el) => {
+          el.textContent = new Date().getFullYear();
+        });
+
+        // Check stored language preference
+        try {
+          const stored = localStorage.getItem("paradoxx_lang");
+          if (stored === "de" || stored === "en") {
+            setLanguage(stored);
+          }
+        } catch (e) {}
+
+        const counters = document.querySelectorAll(".counter-animate");
+        const animateCounter = (el) => {
+          const target = parseInt(el.getAttribute("data-target"));
+          const duration = 2000;
+          const stepTime = Math.abs(Math.floor(duration / target));
+          let current = 0;
+          const timer = setInterval(() => {
+            current += 1;
+            el.textContent = current;
+            if (current >= target) {
+              clearInterval(timer);
+              el.textContent = target;
+            }
+          }, stepTime);
+        };
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 },
+        );
+
+        counters.forEach((counter) => observer.observe(counter));
+
+        // Abstract Hero Interaction (Complexity to Clarity)
+        const container = document.getElementById("particle-network");
+        if (container) {
+          const numParticles = 40;
+          const particles = [];
+          let mouseX = 0,
+            mouseY = 0;
+          let isHovering = false;
+
+          container.addEventListener("mousemove", (e) => {
+            const rect = container.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+          });
+
+          container.addEventListener("mouseenter", () => (isHovering = true));
+          container.addEventListener("mouseleave", () => (isHovering = false));
+
+          for (let i = 0; i < numParticles; i++) {
+            const p = document.createElement("div");
+            p.className =
+              "absolute w-1.5 h-1.5 bg-outline rounded-full transition-colors duration-300";
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            p.style.left = `${x}%`;
+            p.style.top = `${y}%`;
+
+            // Base positions for 'clarity' state (structured grid)
+            const cols = 8;
+            const gridX = ((i % cols) / (cols - 1)) * 80 + 10;
+            const gridY =
+              (Math.floor(i / cols) / (Math.floor(numParticles / cols) - 1)) *
+                80 +
+              10;
+
+            particles.push({
+              el: p,
+              chaosX: x,
+              chaosY: y,
+              gridX: gridX,
+              gridY: gridY,
+              vx: (Math.random() - 0.5) * 0.4,
+              vy: (Math.random() - 0.5) * 0.4,
+            });
+            container.appendChild(p);
+          }
+
+          const svg = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "svg",
+          );
+          svg.setAttribute(
+            "class",
+            "absolute inset-0 w-full h-full pointer-events-none",
+          );
+          container.appendChild(svg);
+          const lines = [];
+
+          for (let i = 0; i < numParticles; i++) {
+            for (let j = i + 1; j < numParticles; j++) {
+              if (Math.random() > 0.82) {
+                const line = document.createElementNS(
+                  "http://www.w3.org/2000/svg",
+                  "line",
+                );
+                line.setAttribute("stroke", "currentColor");
+                line.setAttribute("stroke-width", "0.5");
+                line.setAttribute(
+                  "class",
+                  "text-outline/30 transition-colors duration-300",
+                );
+                svg.appendChild(line);
+                lines.push({ el: line, p1: particles[i], p2: particles[j] });
+              }
+            }
+          }
+
+          function animate() {
+            particles.forEach((p) => {
+              if (isHovering) {
+                p.chaosX += (p.gridX - p.chaosX) * 0.05;
+                p.chaosY += (p.gridY - p.chaosY) * 0.05;
+                p.el.classList.replace("bg-outline", "bg-secondary");
+              } else {
+                p.chaosX += p.vx;
+                p.chaosY += p.vy;
+
+                if (p.chaosX < 0 || p.chaosX > 100) p.vx *= -1;
+                if (p.chaosY < 0 || p.chaosY > 100) p.vy *= -1;
+
+                p.el.classList.replace("bg-secondary", "bg-outline");
+              }
+
+              p.el.style.transform = `translate(-50%, -50%)`;
+              p.el.style.left = `${p.chaosX}%`;
+              p.el.style.top = `${p.chaosY}%`;
+            });
+
+            lines.forEach((l) => {
+              l.el.setAttribute("x1", `${l.p1.chaosX}%`);
+              l.el.setAttribute("y1", `${l.p1.chaosY}%`);
+              l.el.setAttribute("x2", `${l.p2.chaosX}%`);
+              l.el.setAttribute("y2", `${l.p2.chaosY}%`);
+
+              if (isHovering) {
+                l.el.classList.replace("text-outline/30", "text-secondary/30");
+              } else {
+                l.el.classList.replace("text-secondary/30", "text-outline/30");
+              }
+            });
+
+            requestAnimationFrame(animate);
+          }
+          animate();
+        }
+      });
+    </script>
+
+    <script>
+      // Apply the homepage language choice to the legal copy as well.
+      const legalHomepageSetLanguage = window.setLanguage;
+      window.setLanguage = function (lang) {
+        legalHomepageSetLanguage(lang);
+        document.querySelectorAll("[data-en][data-de]").forEach((el) => {
+          el.innerHTML = el.getAttribute(`data-${lang}`);
+        });
+      };
+      try {
+        const legalStoredLanguage = localStorage.getItem("paradoxx_lang");
+        if (legalStoredLanguage === "de" || legalStoredLanguage === "en") {
+          window.setLanguage(legalStoredLanguage);
+        }
+      } catch (e) {}
+    </script>
   </body>
 </html>
