@@ -150,7 +150,8 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
-  </head>
+  <link rel="stylesheet" href="services-page.css">
+</head>
   <body class="bg-background font-body-md text-on-surface">
     <header
       class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(17,19,24,0.04)]"
@@ -158,81 +159,129 @@
       <div
         class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between"
       >
-        <div class="flex items-center gap-sm">
+        <a class="flex items-center gap-sm" href="index.html">
           <img
             alt="Paradoxx Primary Logo"
             class="h-8 w-auto object-contain"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
-          /><span
+          />
+          <span
             class="font-headline-md text-headline-md text-primary tracking-tight"
             >Paradoxx</span
           >
-        </div>
-        <nav
-          class="hidden lg:flex items-center gap-lg"
-          data-active-classes="text-secondary font-semibold"
-        >
+        </a>
+        <!-- Desktop Nav Links (hidden on < lg) -->
+        <nav class="hidden lg:flex items-center gap-lg">
           <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
-            data-path="products"
-            href="#"
+            data-i18n="nav_products"
+            href="industry.html"
             >Products</a
-          ><a
-            aria-current="page"
-            class="transition-colors text-secondary font-semibold"
-            data-path="services"
-            href="#"
+          >
+          <a
+            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            data-i18n="nav_services"
+            href="services.html"
             >Services</a
-          ><a
+          >
+          <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
-            data-path="solutions"
-            href="#"
+            data-i18n="nav_solutions"
+            href="solutions.html"
             >Solutions</a
-          ><a
+          >
+          <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
-            data-path="industries"
-            href="#"
+            data-i18n="nav_industries"
+            href="industry.html"
             >Industries</a
-          ><a
+          >
+          <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
-            data-path="work"
-            href="#"
+            data-i18n="nav_work"
+            href="work.html"
             >Work</a
-          ><a
+          >
+          <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
-            data-path="company"
-            href="#"
+            data-i18n="nav_company"
+            href="company.html"
             >Company</a
           >
         </nav>
-        <div class="flex items-center gap-md">
+        <!-- Desktop Actions (hidden on < lg) -->
+        <div class="hidden lg:flex items-center gap-md">
+          <!-- Language Toggle Pill -->
+          <div
+            class="inline-flex items-center bg-surface-container rounded-full p-unit border border-outline-variant/30 font-label-mono text-caption"
+            id="lang-toggle-container"
+          >
+            <button
+              class="px-sm py-unit rounded-full bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all lang-btn-en"
+              onclick="setLanguage('en')"
+            >
+              EN
+            </button>
+            <button
+              class="px-sm py-unit rounded-full text-on-surface-variant hover:text-primary transition-all lang-btn-de"
+              onclick="setLanguage('de')"
+            >
+              DE
+            </button>
+          </div>
           <a
-            class="hidden sm:block text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
-            data-path="contact"
-            href="#"
+            class="inline-flex items-center justify-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-md py-xs rounded-lg text-body-md font-body-md transition-all"
+            data-i18n="nav_contact"
+            href="contact.html "
             >Contact</a
-          ><button
+          >
+          <button
             class="bg-secondary text-on-secondary px-md py-xs rounded-lg text-body-md font-body-md hover:shadow-lg transition-all"
+            data-i18n="btn_start_project"
+            href="contact.html "
           >
             Start a project
           </button>
-          <div
-            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
-          >
-            <span class="material-symbols-outlined text-on-primary text-[18px]"
-              >person</span
-            >
-          </div>
         </div>
+        <!-- Mobile Hamburger Button (visible ONLY on < lg) -->
+        <button
+          aria-controls="mobile-nav-drawer"
+          aria-expanded="false"
+          aria-label="Open Navigation Menu"
+          class="lg:hidden flex items-center justify-center w-11 h-11 rounded-lg border border-outline-variant/40 bg-surface-container-low hover:bg-surface-container text-on-surface hover:text-secondary transition-all"
+          id="mobile-menu-open-btn"
+        >
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
       </div>
     </header>
     <main class="w-full pt-20 bg-background">
+<section class="services-hero relative overflow-hidden bg-surface-container-low text-on-surface" aria-labelledby="services-hero-title">
+ <div class="services-hero-inner max-w-container-max mx-auto px-md py-2xl lg:py-3xl">
+  <div class="services-hero-copy">
+   <span class="font-label-mono text-caption uppercase tracking-widest text-secondary" data-en="PARADOXX · CAPABILITIES" data-de="PARADOXX · LEISTUNGEN">PARADOXX · CAPABILITIES</span>
+   <h1 id="services-hero-title" class="text-headline-xl font-headline mt-md max-w-3xl" data-en="Technology that brings people closer to possibility." data-de="Technologie, die Menschen neuen Möglichkeiten näherbringt.">Technology that brings people closer to possibility.</h1>
+   <p class="text-body-lg text-on-surface-variant mt-md max-w-2xl" data-en="We connect people, thoughtful ideas and practical technology to make everyday work clearer, more useful and ready for what comes next." data-de="Wir verbinden Menschen, durchdachte Ideen und praktische Technologie, damit Arbeit klarer, hilfreicher und bereit für das wird, was kommt.">We connect people, thoughtful ideas and practical technology to make everyday work clearer, more useful and ready for what comes next.</p>
+   <div class="flex flex-wrap gap-md mt-xl"><a class="services-action services-action-primary bg-secondary text-on-secondary" href="contact.html" data-en="Talk to our team" data-de="Mit unserem Team sprechen">Talk to our team <span aria-hidden="true">→</span></a><a class="services-action services-action-secondary" href="#service-offerings" data-en="Explore our capabilities" data-de="Unsere Leistungen entdecken">Explore our capabilities <span aria-hidden="true">↓</span></a></div>
+  </div>
+  <div class="services-hero-visual" aria-hidden="true"><div class="services-orbit orbit-one"></div><div class="services-orbit orbit-two"></div><div class="services-visual-core"><span class="material-symbols-outlined">hub</span><span>People <i>+</i> Technology</span></div><div class="services-float-card float-card-top"><span class="material-symbols-outlined">groups</span><span>People first</span></div><div class="services-float-card float-card-bottom"><span class="material-symbols-outlined">lightbulb</span><span>Useful by design</span></div></div>
+ </div><div class="services-hero-bottom" aria-hidden="true"><span>DESIGNED AROUND PEOPLE</span><span>BUILT FOR WHAT’S NEXT</span></div>
+</section>
+<section class="services-why max-w-container-max mx-auto px-md py-2xl" aria-labelledby="services-why-title">
+ <div class="services-why-intro"><span class="font-label-mono text-caption uppercase tracking-widest text-secondary" data-en="WHY CHOOSE US" data-de="WARUM MIT UNS">WHY CHOOSE US</span><h2 id="services-why-title" class="text-headline-lg font-headline mt-sm" data-en="Good technology starts with people." data-de="Gute Technologie beginnt bei den Menschen.">Good technology starts with people.</h2><p class="text-body-md text-on-surface-variant mt-md" data-en="We make complex things easier to use, easier to understand and more valuable to the people who rely on them." data-de="Wir machen Komplexes leichter nutzbar, verständlicher und wertvoller für die Menschen, die darauf angewiesen sind.">We make complex things easier to use, easier to understand and more valuable to the people who rely on them.</p></div>
+ <div class="services-value-grid"><article class="service-value-card"><span class="material-symbols-outlined" aria-hidden="true">person_raised_hand</span><h3 data-en="People before platforms" data-de="Menschen vor Plattformen">People before platforms</h3><p data-en="We begin with the people, needs and everyday realities behind every challenge." data-de="Wir beginnen mit den Menschen, ihren Bedürfnissen und ihrem Alltag.">We begin with the people, needs and everyday realities behind every challenge.</p></article><article class="service-value-card"><span class="material-symbols-outlined" aria-hidden="true">conversion_path</span><h3 data-en="Clear from the start" data-de="Von Anfang an klar">Clear from the start</h3><p data-en="A thoughtful path from the first question to a solution your team can use." data-de="Ein durchdachter Weg von der ersten Frage bis zu einer Lösung für Ihr Team.">A thoughtful path from the first question to a solution your team can use.</p></article><article class="service-value-card"><span class="material-symbols-outlined" aria-hidden="true">deployed_code</span><h3 data-en="Made to move forward" data-de="Für Weiterentwicklung gemacht">Made to move forward</h3><p data-en="Practical foundations designed to adapt as your work and ambitions grow." data-de="Praktische Grundlagen, die mit Ihrer Arbeit und Ihren Zielen mitwachsen.">Practical foundations designed to adapt as your work and ambitions grow.</p></article></div>
+</section>
+<section class="services-connection py-2xl" aria-labelledby="services-connect-title"><div class="services-connection-inner max-w-container-max mx-auto px-md">
+ <div class="services-connection-art" aria-hidden="true"><svg class="services-network-lines" viewBox="0 0 600 420" fill="none"><path d="M112 115L290 210L470 96M112 115L170 330L290 210L420 332L470 96M170 330L420 332"/><circle cx="112" cy="115" r="12"/><circle cx="290" cy="210" r="15"/><circle cx="470" cy="96" r="12"/><circle cx="170" cy="330" r="12"/><circle cx="420" cy="332" r="12"/></svg><div class="connection-tile connection-people"><span class="material-symbols-outlined">diversity_3</span><strong>People</strong><small>Needs · ideas · teams</small></div><div class="connection-tile connection-technology"><span class="material-symbols-outlined">devices</span><strong>Technology</strong><small>Tools · products · systems</small></div><div class="connection-center"><span class="material-symbols-outlined">join_inner</span></div></div>
+ <div class="services-connection-copy"><span class="font-label-mono text-caption uppercase tracking-widest text-secondary" data-en="OUR APPROACH" data-de="UNSER ANSATZ">OUR APPROACH</span><h2 id="services-connect-title" class="text-headline-lg font-headline mt-sm" data-en="Connecting people &amp; technology." data-de="Menschen und Technologie verbinden.">Connecting people &amp; technology.</h2><p class="text-body-md text-on-surface-variant mt-md" data-en="Technology matters when it helps people do meaningful work. We bring the right expertise and digital tools together around real needs, so every solution feels useful in practice—not just impressive on paper." data-de="Technologie ist dann wertvoll, wenn sie Menschen bei sinnvoller Arbeit unterstützt. Wir bringen passende Fachkenntnisse und digitale Werkzeuge für konkrete Bedürfnisse zusammen, damit Lösungen im Alltag helfen – und nicht nur auf dem Papier überzeugen.">Technology matters when it helps people do meaningful work. We bring the right expertise and digital tools together around real needs, so every solution feels useful in practice—not just impressive on paper.</p><div class="services-approach-points"><div><span class="material-symbols-outlined" aria-hidden="true">check_circle</span><span data-en="Understand the people doing the work" data-de="Die Menschen und ihre Arbeit verstehen">Understand the people doing the work</span></div><div><span class="material-symbols-outlined" aria-hidden="true">check_circle</span><span data-en="Choose technology for a clear purpose" data-de="Technologie mit einem klaren Ziel auswählen">Choose technology for a clear purpose</span></div></div><a class="services-text-link" href="contact.html" data-en="Start a conversation" data-de="Ins Gespräch kommen">Start a conversation <span aria-hidden="true">→</span></a></div>
+</div></section>
+
       <div class="flex flex-col w-full relative overflow-hidden bg-background">
         <div
           class="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"
         ></div>
         <!-- Hero Section -->
-        <section
+        <section id="service-offerings"
           class="max-w-container-max mx-auto px-md pt-xl pb-lg w-full relative z-10 flex flex-col md:flex-row items-end justify-between gap-lg"
         >
           <div class="max-w-3xl">
@@ -829,7 +878,7 @@
     <footer
       class="w-full bg-surface-container-lowest py-xl shadow-[0_-4px_20px_rgba(17,19,24,0.02)]"
     >
-      <div class="max-w-container-max mx-auto px-md">
+      <div class="max-w-container-max mx-auto px-4 sm:px-md">
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg mb-xl"
         >
@@ -845,63 +894,195 @@
             </div>
             <p
               class="text-body-md font-body-md text-on-surface-variant max-w-xs mb-sm"
+              data-i18n="footer_desc"
             >
               Software, digital products and technological services engineered
               for human intent.
             </p>
-            <p class="text-caption font-caption text-outline">Varel, Germany</p>
+            <p
+              class="text-caption font-caption text-outline"
+              data-i18n="footer_loc"
+            >
+              Varel, Germany
+            </p>
           </div>
           <div>
-            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_company_title"
+            >
               Company
             </h4>
             <ul
               class="space-y-sm text-body-md font-body-md text-on-surface-variant"
             >
-              <li><a class="hover:text-secondary" href="#">About Us</a></li>
-              <li><a class="hover:text-secondary" href="#">Careers</a></li>
-              <li><a class="hover:text-secondary" href="#">News</a></li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_about"
+                  href="about.html"
+                  >About</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_story"
+                  href="about.html"
+                  >Story</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_lead"
+                  href="careers.html"
+                  >Leadership</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_careers"
+                  href="careers.html"
+                  >Careers</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_company_news"
+                  href="index.html"
+                  >Newsroom</a
+                >
+              </li>
             </ul>
           </div>
           <div>
-            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_cap_title"
+            >
               Capabilities
             </h4>
             <ul
               class="space-y-sm text-body-md font-body-md text-on-surface-variant"
             >
-              <li><a class="hover:text-secondary" href="#">Strategy</a></li>
-              <li><a class="hover:text-secondary" href="#">Design</a></li>
-              <li><a class="hover:text-secondary" href="#">Engineering</a></li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_services"
+                  href="services.html"
+                  >Services</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_products"
+                  href="company.html"
+                  >Products</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_solutions"
+                  href="solutions.html"
+                  >Solutions</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_industries"
+                  href="industries.html"
+                  >Industries</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_cap_work"
+                  href="services.html"
+                  >Work</a
+                >
+              </li>
             </ul>
           </div>
           <div>
-            <h4 class="font-headline-md text-body-md text-on-surface mb-md">
+            <h4
+              class="font-headline-md text-body-md text-on-surface mb-md"
+              data-i18n="ft_res_title"
+              href="index.html"
+            >
               Resources
             </h4>
             <ul
               class="space-y-sm text-body-md font-body-md text-on-surface-variant"
             >
-              <li>
-                <a class="hover:text-secondary" href="#">Documentation</a>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_insights"
+                  href="index.html"
+                  >Insights</a
+                >
               </li>
-              <li><a class="hover:text-secondary" href="#">Support</a></li>
-              <li><a class="hover:text-secondary" href="#">Case Studies</a></li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_research"
+                  href="index.html"
+                  >Research</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_faqs"
+                  href="contact.html"
+                  >FAQs</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_support"
+                  href="Support.html"
+                  >Support</a
+                >
+              </li>
+              <li class="">
+                <a
+                  class="hover:text-secondary"
+                  data-i18n="ft_res_contact"
+                  href="Contact.html"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
         </div>
         <div
           class="border-t border-outline-variant pt-md flex flex-col md:flex-row justify-between items-center gap-md"
         >
-          <span class="text-caption font-caption text-on-surface-variant"
-            >© 2024 Paradoxx UG (haftungsbeschränkt). All rights reserved.</span
+          <span
+            class="text-caption font-caption text-on-surface-variant text-center md:text-left"
+            data-i18n="footer_copyright"
+            >© <span class="current-year">2026</span> Paradoxx UG
+            (haftungsbeschränkt). All rights reserved.</span
           >
           <div
-            class="flex gap-md text-caption font-caption text-on-surface-variant"
+            class="flex flex-wrap justify-center gap-md text-caption font-caption text-on-surface-variant"
           >
-            <a class="hover:text-secondary" href="#">Privacy Policy</a
-            ><a class="hover:text-secondary" href="#">Terms of Service</a
-            ><a class="hover:text-secondary" href="#">Legal Notice</a>
+            <a class="hover:text-secondary" data-i18n="footer_privacy" href="PrivacyPolicy.html"
+              >Privacy Policy</a
+            ><a class="hover:text-secondary" data-i18n="footer_terms" href="TermsOfService.html"
+              >Terms of Service</a
+            ><a class="hover:text-secondary" data-i18n="footer_legal" href="LegalNotice.html"
+              >Legal Notice</a
+            >
           </div>
         </div>
       </div>
