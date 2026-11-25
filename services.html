@@ -1,7 +1,10 @@
+<!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Capabilities &amp; Engineering Services — Paradoxx</title>
     <style>
       @layer base {
         html,
@@ -23,123 +26,94 @@
         display: none;
       }
     </style>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
       tailwind.config = {
+        darkMode: "class",
         theme: {
           extend: {
             colors: {
-              "surface-container-low": "#f2f4f6",
-              "on-tertiary-fixed": "#001d36",
-              secondary: "#5129e5",
-              "surface-dim": "#d9dadc",
-              "outline-variant": "#c6c6cb",
-              "inverse-surface": "#2e3132",
-              error: "#ba1a1a",
-              "on-background": "#191c1e",
-              "primary-fixed": "#e2e2e9",
-              "tertiary-container": "#001d36",
-              "surface-container": "#edeef0",
-              "secondary-fixed-dim": "#c8bfff",
-              "primary-fixed-dim": "#c6c6cd",
-              "on-primary-container": "#82838a",
-              tertiary: "#000000",
-              "secondary-fixed": "#e5deff",
-              "surface-container-high": "#e7e8ea",
-              "surface-variant": "#e1e2e4",
-              "on-tertiary": "#ffffff",
-              background: "#f8f9fb",
-              "tertiary-fixed-dim": "#9dcaff",
-              "inverse-primary": "#c6c6cd",
-              outline: "#76777b",
-              "on-tertiary-container": "#1588dd",
-              "surface-tint": "#5d5e64",
-              "on-tertiary-fixed-variant": "#00497c",
-              "on-secondary-container": "#f3eeff",
-              "surface-bright": "#f8f9fb",
-              "on-secondary-fixed-variant": "#4206d7",
-              "tertiary-fixed": "#d1e4ff",
-              "on-error": "#ffffff",
-              "on-primary-fixed-variant": "#45474c",
-              "on-secondary": "#ffffff",
               "primary-container": "#1a1b21",
-              "surface-container-lowest": "#ffffff",
-              "on-primary-fixed": "#1a1b21",
-              "on-surface-variant": "#46464b",
-              surface: "#f8f9fb",
-              "on-error-container": "#93000a",
               "error-container": "#ffdad6",
-              "inverse-on-surface": "#f0f1f3",
-              "on-secondary-fixed": "#190064",
+              "outline-variant": "#c6c6cb",
+              "surface-variant": "#e1e2e4",
               primary: "#000000",
-              "on-primary": "#ffffff",
+              error: "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "surface-tint": "#5d5e64",
+              "primary-fixed-dim": "#c6c6cd",
+              background: "#f8f9fb",
+              "surface-container": "#edeef0",
+              "on-surface-variant": "#46464b",
+              "on-secondary-fixed": "#190064",
+              "surface-container-high": "#e7e8ea",
+              "on-secondary-container": "#f3eeff",
+              "secondary-fixed": "#e5deff",
               "secondary-container": "#6a4bfd",
+              "inverse-on-surface": "#f0f1f3",
+              "inverse-primary": "#c6c6cd",
               "on-surface": "#191c1e",
+              "on-error-container": "#93000a",
+              "tertiary-fixed": "#d1e4ff",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-container": "#001d36",
+              "primary-fixed": "#e2e2e9",
+              "on-tertiary-fixed": "#001d36",
+              surface: "#f8f9fb",
+              "tertiary-fixed-dim": "#9dcaff",
+              "on-primary-fixed-variant": "#45474c",
+              "secondary-fixed-dim": "#c8bfff",
+              "on-tertiary-container": "#1588dd",
+              "surface-dim": "#d9dadc",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#4206d7",
+              "on-tertiary-fixed-variant": "#00497c",
+              tertiary: "#000000",
+              "on-background": "#191c1e",
+              outline: "#76777b",
               "surface-container-highest": "#e1e2e4",
+              "surface-bright": "#f8f9fb",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "on-error": "#ffffff",
+              secondary: "#5129e5",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#1a1b21",
+              "on-primary-container": "#82838a",
             },
             borderRadius: {
               DEFAULT: "0.25rem",
               lg: "0.5rem",
               xl: "0.75rem",
+              "2xl": "1rem",
+              "3xl": "1.5rem",
               full: "9999px",
             },
             spacing: {
-              xs: "8px",
-              lg: "48px",
-              md: "24px",
-              gutter: "24px",
-              xl: "80px",
               "container-max": "1280px",
+              xl: "80px",
               unit: "4px",
+              lg: "48px",
               sm: "16px",
+              gutter: "24px",
+              xs: "8px",
+              md: "24px",
             },
             fontFamily: {
-              "body-lg": ["Inter"],
-              "headline-lg-mobile": ["Space Grotesk"],
-              caption: ["Inter"],
-              "headline-lg": ["Space Grotesk"],
-              "body-md": ["Inter"],
-              "headline-md": ["Space Grotesk"],
-              "label-mono": ["IBM Plex Mono"],
-              "headline-xl": ["Space Grotesk"],
-            },
-            fontSize: {
-              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
-              "headline-lg-mobile": [
-                "32px",
-                {
-                  lineHeight: "1.2",
-                  letterSpacing: "-0.01em",
-                  fontWeight: "600",
-                },
-              ],
-              caption: ["12px", { lineHeight: "1.4", fontWeight: "500" }],
-              "headline-lg": [
-                "40px",
-                {
-                  lineHeight: "1.2",
-                  letterSpacing: "-0.01em",
-                  fontWeight: "600",
-                },
-              ],
-              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
-              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
-              "label-mono": ["14px", { lineHeight: "1.2", fontWeight: "500" }],
-              "headline-xl": [
-                "64px",
-                {
-                  lineHeight: "1.1",
-                  letterSpacing: "-0.02em",
-                  fontWeight: "700",
-                },
-              ],
+              "body-md": ["Inter", "sans-serif"],
+              "headline-xl": ["Space Grotesk", "sans-serif"],
+              "label-mono": ["IBM Plex Mono", "monospace"],
+              "body-lg": ["Inter", "sans-serif"],
+              caption: ["Inter", "sans-serif"],
+              "headline-md": ["Space Grotesk", "sans-serif"],
+              "headline-lg": ["Space Grotesk", "sans-serif"],
             },
           },
         },
       };
     </script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap"
       rel="stylesheet"
     />
     <link
@@ -147,760 +121,1453 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       rel="stylesheet"
     />
-  <link rel="stylesheet" href="services-page.css">
-</head>
-  <body class="bg-background font-body-md text-on-surface">
+  </head>
+  <body
+    class="bg-background font-body-md text-on-surface antialiased selection:bg-secondary selection:text-white"
+  >
+    <!-- Desktop & Mobile Header -->
     <header
-      class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(17,19,24,0.04)]"
+      class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-b border-surface-variant/50 shadow-[0_4px_20px_rgba(17,19,24,0.04)]"
     >
       <div
-        class="h-20 max-w-container-max mx-auto px-md flex items-center justify-between"
+        class="h-20 max-w-container-max mx-auto px-4 sm:px-6 lg:px-md flex items-center justify-between relative"
       >
-        <a class="flex items-center gap-sm" href="index.html">
-          <img
-            alt="Paradoxx Primary Logo"
-            class="h-8 w-auto object-contain"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
-          />
+        <div class="flex items-center gap-sm">
+          <a class="flex items-center gap-2.5" href="#">
+            <img
+              alt="Paradoxx Primary Logo"
+              class="h-8 w-auto object-contain"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+            />
+            <span
+              class="font-headline-md text-headline-md text-primary tracking-tight font-bold"
+              >Paradoxx</span
+            >
+          </a>
           <span
-            class="font-headline-md text-headline-md text-primary tracking-tight"
-            >Paradoxx</span
+            class="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label-mono bg-surface-container text-on-surface-variant border border-outline-variant/40"
+            >Varel / DE</span
           >
-        </a>
-        <!-- Desktop Nav Links (hidden on < lg) -->
+        </div>
+        <!-- Navigation links -->
         <nav class="hidden lg:flex items-center gap-lg">
           <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
             data-i18n="nav_products"
-            href="industry.html"
+            data-path="products"
+            href="#"
             >Products</a
           >
           <a
-            class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
+            aria-current="page"
+            class="text-body-md font-semibold text-secondary relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-secondary"
             data-i18n="nav_services"
-            href="services.html"
+            data-path="services"
+            href="#"
             >Services</a
           >
           <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
             data-i18n="nav_solutions"
-            href="solutions.html"
+            data-path="solutions"
+            href="#"
             >Solutions</a
           >
           <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
             data-i18n="nav_industries"
-            href="industry.html"
+            data-path="industries"
+            href="#"
             >Industries</a
           >
           <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
             data-i18n="nav_work"
-            href="work.html"
+            data-path="work"
+            href="#"
             >Work</a
           >
           <a
             class="text-body-md font-body-md text-on-surface-variant hover:text-secondary transition-colors"
             data-i18n="nav_company"
-            href="company.html"
+            data-path="company"
+            href="#"
             >Company</a
           >
         </nav>
-        <!-- Desktop Actions (hidden on < lg) -->
-        <div class="hidden lg:flex items-center gap-md">
-          <!-- Language Toggle Pill -->
+        <!-- Language & CTA Actions -->
+        <div class="hidden lg:flex items-center gap-3 sm:gap-md flex-shrink-0">
           <div
-            class="inline-flex items-center bg-surface-container rounded-full p-unit border border-outline-variant/30 font-label-mono text-caption"
-            id="lang-toggle-container"
+            class="flex items-center bg-surface-container-high rounded-full p-1 text-caption font-label-mono border border-outline-variant/30"
           >
             <button
-              class="px-sm py-unit rounded-full bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all lang-btn-en"
+              class="px-2.5 py-1 rounded-full bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all"
+              id="lang-btn-en"
               onclick="setLanguage('en')"
             >
               EN
             </button>
             <button
-              class="px-sm py-unit rounded-full text-on-surface-variant hover:text-primary transition-all lang-btn-de"
+              class="px-2.5 py-1 rounded-full text-on-surface-variant hover:text-primary transition-all"
+              id="lang-btn-de"
               onclick="setLanguage('de')"
             >
               DE
             </button>
           </div>
           <a
-            class="inline-flex items-center justify-center border border-outline-variant hover:border-primary text-on-surface hover:text-primary px-md py-xs rounded-lg text-body-md font-body-md transition-all"
+            class="inline-flex items-center justify-center whitespace-nowrap text-body-md font-medium text-on-surface px-md py-xs rounded-lg border border-outline-variant hover:border-secondary hover:text-secondary hover:bg-secondary/5 transition-all"
             data-i18n="nav_contact"
-            href="contact.html "
+            data-path="contact"
+            href="#"
             >Contact</a
           >
           <button
-            class="bg-secondary text-on-secondary px-md py-xs rounded-lg text-body-md font-body-md hover:shadow-lg transition-all"
-            data-i18n="btn_start_project"
-            href="contact.html "
+            class="inline-flex items-center gap-2 bg-secondary text-on-secondary px-md py-xs rounded-lg text-body-md font-semibold hover:shadow-lg hover:shadow-secondary/20 hover:brightness-105 transition-all whitespace-nowrap"
+            data-i18n="nav_cta"
           >
-            Start a project
+            <span>Start a project</span>
+            <span class="material-symbols-outlined text-[18px]"
+              >arrow_forward</span
+            >
           </button>
         </div>
-        <!-- Mobile Hamburger Button (visible ONLY on < lg) -->
+        <!-- Mobile Hamburger Button -->
         <button
-          aria-controls="mobile-nav-drawer"
-          aria-expanded="false"
-          aria-label="Open Navigation Menu"
-          class="lg:hidden flex items-center justify-center w-11 h-11 rounded-lg border border-outline-variant/40 bg-surface-container-low hover:bg-surface-container text-on-surface hover:text-secondary transition-all"
-          id="mobile-menu-open-btn"
+          aria-label="Toggle navigation menu"
+          class="lg:hidden p-2.5 text-neutral-800 hover:text-black focus:outline-none"
+          id="mobile-menu-toggle"
         >
           <i class="fa-solid fa-bars text-xl"></i>
         </button>
       </div>
-    </header>
-    <main class="w-full pt-20 bg-background">
-<section class="services-hero relative overflow-hidden bg-surface-container-low text-on-surface" aria-labelledby="services-hero-title">
- <div class="services-hero-inner max-w-container-max mx-auto px-md py-2xl lg:py-3xl">
-  <div class="services-hero-copy">
-   <span class="font-label-mono text-caption uppercase tracking-widest text-secondary" data-en="PARADOXX · CAPABILITIES" data-de="PARADOXX · LEISTUNGEN">PARADOXX · CAPABILITIES</span>
-   <h1 id="services-hero-title" class="text-headline-xl font-headline mt-md max-w-3xl" data-en="Technology that brings people closer to possibility." data-de="Technologie, die Menschen neuen Möglichkeiten näherbringt.">Technology that brings people closer to possibility.</h1>
-   <p class="text-body-lg text-on-surface-variant mt-md max-w-2xl" data-en="We connect people, thoughtful ideas and practical technology to make everyday work clearer, more useful and ready for what comes next." data-de="Wir verbinden Menschen, durchdachte Ideen und praktische Technologie, damit Arbeit klarer, hilfreicher und bereit für das wird, was kommt.">We connect people, thoughtful ideas and practical technology to make everyday work clearer, more useful and ready for what comes next.</p>
-   <div class="flex flex-wrap gap-md mt-xl"><a class="services-action services-action-primary bg-secondary text-on-secondary" href="contact.html" data-en="Talk to our team" data-de="Mit unserem Team sprechen">Talk to our team <span aria-hidden="true">→</span></a><a class="services-action services-action-secondary" href="#service-offerings" data-en="Explore our capabilities" data-de="Unsere Leistungen entdecken">Explore our capabilities <span aria-hidden="true">↓</span></a></div>
-  </div>
-  <div class="services-hero-visual" aria-hidden="true"><div class="services-orbit orbit-one"></div><div class="services-orbit orbit-two"></div><div class="services-visual-core"><span class="material-symbols-outlined">hub</span><span>People <i>+</i> Technology</span></div><div class="services-float-card float-card-top"><span class="material-symbols-outlined">groups</span><span>People first</span></div><div class="services-float-card float-card-bottom"><span class="material-symbols-outlined">lightbulb</span><span>Useful by design</span></div></div>
- </div><div class="services-hero-bottom" aria-hidden="true"><span>DESIGNED AROUND PEOPLE</span><span>BUILT FOR WHAT’S NEXT</span></div>
-</section>
-<section class="services-why max-w-container-max mx-auto px-md py-2xl" aria-labelledby="services-why-title">
- <div class="services-why-intro"><span class="font-label-mono text-caption uppercase tracking-widest text-secondary" data-en="WHY CHOOSE US" data-de="WARUM MIT UNS">WHY CHOOSE US</span><h2 id="services-why-title" class="text-headline-lg font-headline mt-sm" data-en="Good technology starts with people." data-de="Gute Technologie beginnt bei den Menschen.">Good technology starts with people.</h2><p class="text-body-md text-on-surface-variant mt-md" data-en="We make complex things easier to use, easier to understand and more valuable to the people who rely on them." data-de="Wir machen Komplexes leichter nutzbar, verständlicher und wertvoller für die Menschen, die darauf angewiesen sind.">We make complex things easier to use, easier to understand and more valuable to the people who rely on them.</p></div>
- <div class="services-value-grid"><article class="service-value-card"><span class="material-symbols-outlined" aria-hidden="true">person_raised_hand</span><h3 data-en="People before platforms" data-de="Menschen vor Plattformen">People before platforms</h3><p data-en="We begin with the people, needs and everyday realities behind every challenge." data-de="Wir beginnen mit den Menschen, ihren Bedürfnissen und ihrem Alltag.">We begin with the people, needs and everyday realities behind every challenge.</p></article><article class="service-value-card"><span class="material-symbols-outlined" aria-hidden="true">conversion_path</span><h3 data-en="Clear from the start" data-de="Von Anfang an klar">Clear from the start</h3><p data-en="A thoughtful path from the first question to a solution your team can use." data-de="Ein durchdachter Weg von der ersten Frage bis zu einer Lösung für Ihr Team.">A thoughtful path from the first question to a solution your team can use.</p></article><article class="service-value-card"><span class="material-symbols-outlined" aria-hidden="true">deployed_code</span><h3 data-en="Made to move forward" data-de="Für Weiterentwicklung gemacht">Made to move forward</h3><p data-en="Practical foundations designed to adapt as your work and ambitions grow." data-de="Praktische Grundlagen, die mit Ihrer Arbeit und Ihren Zielen mitwachsen.">Practical foundations designed to adapt as your work and ambitions grow.</p></article></div>
-</section>
-<section class="services-connection py-2xl" aria-labelledby="services-connect-title"><div class="services-connection-inner max-w-container-max mx-auto px-md">
- <div class="services-connection-art" aria-hidden="true"><svg class="services-network-lines" viewBox="0 0 600 420" fill="none"><path d="M112 115L290 210L470 96M112 115L170 330L290 210L420 332L470 96M170 330L420 332"/><circle cx="112" cy="115" r="12"/><circle cx="290" cy="210" r="15"/><circle cx="470" cy="96" r="12"/><circle cx="170" cy="330" r="12"/><circle cx="420" cy="332" r="12"/></svg><div class="connection-tile connection-people"><span class="material-symbols-outlined">diversity_3</span><strong>People</strong><small>Needs · ideas · teams</small></div><div class="connection-tile connection-technology"><span class="material-symbols-outlined">devices</span><strong>Technology</strong><small>Tools · products · systems</small></div><div class="connection-center"><span class="material-symbols-outlined">join_inner</span></div></div>
- <div class="services-connection-copy"><span class="font-label-mono text-caption uppercase tracking-widest text-secondary" data-en="OUR APPROACH" data-de="UNSER ANSATZ">OUR APPROACH</span><h2 id="services-connect-title" class="text-headline-lg font-headline mt-sm" data-en="Connecting people &amp; technology." data-de="Menschen und Technologie verbinden.">Connecting people &amp; technology.</h2><p class="text-body-md text-on-surface-variant mt-md" data-en="Technology matters when it helps people do meaningful work. We bring the right expertise and digital tools together around real needs, so every solution feels useful in practice—not just impressive on paper." data-de="Technologie ist dann wertvoll, wenn sie Menschen bei sinnvoller Arbeit unterstützt. Wir bringen passende Fachkenntnisse und digitale Werkzeuge für konkrete Bedürfnisse zusammen, damit Lösungen im Alltag helfen – und nicht nur auf dem Papier überzeugen.">Technology matters when it helps people do meaningful work. We bring the right expertise and digital tools together around real needs, so every solution feels useful in practice—not just impressive on paper.</p><div class="services-approach-points"><div><span class="material-symbols-outlined" aria-hidden="true">check_circle</span><span data-en="Understand the people doing the work" data-de="Die Menschen und ihre Arbeit verstehen">Understand the people doing the work</span></div><div><span class="material-symbols-outlined" aria-hidden="true">check_circle</span><span data-en="Choose technology for a clear purpose" data-de="Technologie mit einem klaren Ziel auswählen">Choose technology for a clear purpose</span></div></div><a class="services-text-link" href="contact.html" data-en="Start a conversation" data-de="Ins Gespräch kommen">Start a conversation <span aria-hidden="true">→</span></a></div>
-</div></section>
-
-      <div class="flex flex-col w-full relative overflow-hidden bg-background">
+      <!-- Slide-out Mobile Navigation Drawer -->
+      <div
+        class="fixed inset-0 z-50 pointer-events-none transition-all duration-300"
+        id="mobile-nav-drawer"
+      >
         <div
-          class="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"
+          class="absolute inset-0 bg-primary/40 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-none"
+          id="mobile-drawer-backdrop"
         ></div>
-        <!-- Hero Section -->
-        <section id="service-offerings"
-          class="max-w-container-max mx-auto px-md pt-xl pb-lg w-full relative z-10 flex flex-col md:flex-row items-end justify-between gap-lg"
+        <div
+          class="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-surface-container-lowest shadow-2xl flex flex-col justify-between p-6 transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-auto overflow-y-auto"
+          id="mobile-drawer-panel"
         >
-          <div class="max-w-3xl">
-            <div class="flex items-center gap-xs mb-sm">
-              <span class="w-12 h-[2px] bg-secondary"></span>
-              <span
-                class="text-label-mono font-label-mono text-secondary uppercase tracking-widest"
-                >Capabilities</span
-              >
-            </div>
-            <h1 class="text-headline-xl font-headline-xl text-on-surface mb-md">
-              Engineered for<br />Human Intent.
-            </h1>
-            <p
-              class="text-body-lg font-body-lg text-on-surface-variant max-w-xl"
+          <div class="flex flex-col">
+            <div
+              class="flex items-center justify-between pb-4 border-b border-surface-variant"
             >
-              We build digital products, custom software, and AI solutions that
-              balance technological precision with human-centered clarity.
-            </p>
+              <div class="flex items-center gap-sm">
+                <img
+                  alt="Paradoxx Primary Logo"
+                  class="h-7 w-auto object-contain"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
+                />
+                <span
+                  class="font-headline-md text-headline-md text-primary tracking-tight font-bold"
+                  >Paradoxx</span
+                >
+              </div>
+              <button
+                aria-label="Close navigation menu"
+                class="p-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors focus:outline-none"
+                id="mobile-menu-close"
+              >
+                <i class="fa-solid fa-xmark text-xl"></i>
+              </button>
+            </div>
+            <div
+              class="py-3 text-caption font-label-mono text-outline flex items-center justify-between"
+            >
+              <span>STUDIO / SERVICES</span>
+              <span>53°23'N 8°08'E</span>
+            </div>
+            <nav class="flex flex-col space-y-1 mt-2">
+              <a
+                class="text-body-lg font-body-md text-on-surface-variant hover:text-secondary hover:bg-surface-container-low px-3 py-2.5 rounded-lg transition-colors"
+                data-i18n="nav_products"
+                data-path="products"
+                href="#"
+                >Products</a
+              >
+              <a
+                aria-current="page"
+                class="text-body-lg font-semibold text-secondary bg-secondary/10 px-3 py-2.5 rounded-lg transition-colors"
+                data-i18n="nav_services"
+                data-path="services"
+                href="#"
+                >Services</a
+              >
+              <a
+                class="text-body-lg font-body-md text-on-surface-variant hover:text-secondary hover:bg-surface-container-low px-3 py-2.5 rounded-lg transition-colors"
+                data-i18n="nav_solutions"
+                data-path="solutions"
+                href="#"
+                >Solutions</a
+              >
+              <a
+                class="text-body-lg font-body-md text-on-surface-variant hover:text-secondary hover:bg-surface-container-low px-3 py-2.5 rounded-lg transition-colors"
+                data-i18n="nav_industries"
+                data-path="industries"
+                href="#"
+                >Industries</a
+              >
+              <a
+                class="text-body-lg font-body-md text-on-surface-variant hover:text-secondary hover:bg-surface-container-low px-3 py-2.5 rounded-lg transition-colors"
+                data-i18n="nav_work"
+                data-path="work"
+                href="#"
+                >Work</a
+              >
+              <a
+                class="text-body-lg font-body-md text-on-surface-variant hover:text-secondary hover:bg-surface-container-low px-3 py-2.5 rounded-lg transition-colors"
+                data-i18n="nav_company"
+                data-path="company"
+                href="#"
+                >Company</a
+              >
+              <a
+                class="text-body-lg font-body-md text-on-surface-variant hover:text-secondary hover:bg-surface-container-low px-3 py-2.5 rounded-lg transition-colors"
+                data-i18n="nav_contact"
+                data-path="contact"
+                href="#"
+                >Contact</a
+              >
+            </nav>
           </div>
-          <div class="flex-shrink-0 mb-sm">
-            <div
-              class="w-32 h-32 rounded-full border border-secondary flex items-center justify-center p-2 relative group cursor-pointer hover:bg-secondary/5 transition-colors"
-            >
-              <div
-                class="w-full h-full rounded-full flex flex-col items-center justify-center text-secondary relative z-10"
-              >
-                <span
-                  class="material-symbols-outlined text-headline-md font-headline-md mb-1 group-hover:scale-110 transition-transform"
-                  >arrow_downward</span
-                >
-                <span
-                  class="text-caption font-caption text-secondary uppercase tracking-widest"
-                  >Explore</span
-                >
-              </div>
-              <svg
-                class="absolute inset-0 w-full h-full animate-[spin_10s_linear_infinite]"
-                viewbox="0 0 100 100"
-              >
-                <path
-                  d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
-                  fill="none"
-                  id="circlePath"
-                ></path>
-                <text>
-                  <textpath
-                    class="text-[9px] font-label-mono fill-secondary tracking-[0.2em] uppercase"
-                    href="#circlePath"
-                    startoffset="0%"
-                  >
-                    Paradoxx Services • Digital Products • Custom Software •
-                  </textpath>
-                </text>
-              </svg>
-            </div>
-          </div>
-        </section>
-        <!-- Flagship Offering: Digital Product Launch -->
-        <section class="w-full py-xl relative">
-          <div class="absolute inset-0 bg-surface-container-highest/30"></div>
-          <div class="max-w-container-max mx-auto px-md relative z-10">
-            <div
-              class="mb-lg flex flex-col md:flex-row justify-between items-start md:items-end gap-md"
-            >
-              <div>
-                <span
-                  class="text-label-mono font-label-mono text-secondary mb-xs block"
-                  >Flagship Methodology</span
-                >
-                <h2 class="text-headline-lg font-headline-lg text-on-surface">
-                  Digital Product Launch
-                </h2>
-              </div>
-              <p
-                class="text-body-md font-body-md text-on-surface-variant max-w-md"
-              >
-                Our end-to-end framework for turning complex ideas into
-                market-ready digital realities. A systematic approach to
-                innovation.
-              </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-sm">
-              <!-- Stage 1 -->
-              <div
-                class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
-              >
-                <div
-                  class="absolute top-0 right-0 p-sm text-surface-variant text-headline-xl font-headline-xl leading-none opacity-50 group-hover:text-secondary/10 transition-colors"
-                >
-                  01
-                </div>
-                <div
-                  class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors text-on-surface"
-                >
-                  <span class="material-symbols-outlined text-[20px]"
-                    >search</span
-                  >
-                </div>
-                <h3
-                  class="text-body-lg font-headline-md text-on-surface mb-xs relative z-10"
-                >
-                  Discover
-                </h3>
-                <p
-                  class="text-body-md font-body-md text-on-surface-variant relative z-10 text-sm"
-                >
-                  Deep-dive research into user needs, market gaps, and
-                  technological feasibility.
-                </p>
-              </div>
-              <!-- Stage 2 -->
-              <div
-                class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
-              >
-                <div
-                  class="absolute top-0 right-0 p-sm text-surface-variant text-headline-xl font-headline-xl leading-none opacity-50 group-hover:text-secondary/10 transition-colors"
-                >
-                  02
-                </div>
-                <div
-                  class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors text-on-surface"
-                >
-                  <span class="material-symbols-outlined text-[20px]"
-                    >architecture</span
-                  >
-                </div>
-                <h3
-                  class="text-body-lg font-headline-md text-on-surface mb-xs relative z-10"
-                >
-                  Define
-                </h3>
-                <p
-                  class="text-body-md font-body-md text-on-surface-variant relative z-10 text-sm"
-                >
-                  Mapping product architecture, core features, and technical
-                  requirements.
-                </p>
-              </div>
-              <!-- Stage 3 -->
-              <div
-                class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
-              >
-                <div
-                  class="absolute top-0 right-0 p-sm text-surface-variant text-headline-xl font-headline-xl leading-none opacity-50 group-hover:text-secondary/10 transition-colors"
-                >
-                  03
-                </div>
-                <div
-                  class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors text-on-surface"
-                >
-                  <span class="material-symbols-outlined text-[20px]"
-                    >design_services</span
-                  >
-                </div>
-                <h3
-                  class="text-body-lg font-headline-md text-on-surface mb-xs relative z-10"
-                >
-                  Design
-                </h3>
-                <p
-                  class="text-body-md font-body-md text-on-surface-variant relative z-10 text-sm"
-                >
-                  Crafting intuitive, minimalist interfaces rooted in user
-                  psychology.
-                </p>
-              </div>
-              <!-- Stage 4 -->
-              <div
-                class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
-              >
-                <div
-                  class="absolute top-0 right-0 p-sm text-surface-variant text-headline-xl font-headline-xl leading-none opacity-50 group-hover:text-secondary/10 transition-colors"
-                >
-                  04
-                </div>
-                <div
-                  class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors text-on-surface"
-                >
-                  <span class="material-symbols-outlined text-[20px]"
-                    >terminal</span
-                  >
-                </div>
-                <h3
-                  class="text-body-lg font-headline-md text-on-surface mb-xs relative z-10"
-                >
-                  Build
-                </h3>
-                <p
-                  class="text-body-md font-body-md text-on-surface-variant relative z-10 text-sm"
-                >
-                  Robust, scalable engineering using modern stacks and AI
-                  integration.
-                </p>
-              </div>
-              <!-- Stage 5 -->
-              <div
-                class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
-              >
-                <div
-                  class="absolute top-0 right-0 p-sm text-surface-variant text-headline-xl font-headline-xl leading-none opacity-50 group-hover:text-secondary/10 transition-colors"
-                >
-                  05
-                </div>
-                <div
-                  class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors text-on-surface"
-                >
-                  <span class="material-symbols-outlined text-[20px]"
-                    >rocket_launch</span
-                  >
-                </div>
-                <h3
-                  class="text-body-lg font-headline-md text-on-surface mb-xs relative z-10"
-                >
-                  Launch
-                </h3>
-                <p
-                  class="text-body-md font-body-md text-on-surface-variant relative z-10 text-sm"
-                >
-                  Strategic deployment, performance monitoring, and market
-                  entry.
-                </p>
-              </div>
-              <!-- Stage 6 -->
-              <div
-                class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
-              >
-                <div
-                  class="absolute top-0 right-0 p-sm text-surface-variant text-headline-xl font-headline-xl leading-none opacity-50 group-hover:text-secondary/10 transition-colors"
-                >
-                  06
-                </div>
-                <div
-                  class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors text-on-surface"
-                >
-                  <span class="material-symbols-outlined text-[20px]"
-                    >insights</span
-                  >
-                </div>
-                <h3
-                  class="text-body-lg font-headline-md text-on-surface mb-xs relative z-10"
-                >
-                  Learn
-                </h3>
-                <p
-                  class="text-body-md font-body-md text-on-surface-variant relative z-10 text-sm"
-                >
-                  Iterative optimization based on real-world data and user
-                  feedback.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- Core Services Matrix -->
-        <section class="max-w-container-max mx-auto px-md py-xl">
-          <div class="mb-lg">
-            <h2 class="text-headline-lg font-headline-lg text-on-surface mb-xs">
-              Core Capabilities
-            </h2>
-            <p
-              class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl"
-            >
-              Specialized expertise across the digital lifecycle.
-            </p>
-          </div>
-          <!-- Bento Grid for Services -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-sm">
-            <!-- 1. Digital Product Strategy (Large Card) -->
-            <div
-              class="md:col-span-2 bg-surface-container-low p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group overflow-hidden relative"
-            >
-              <div
-                class="absolute -right-20 -top-20 w-64 h-64 bg-primary-fixed/20 rounded-full blur-3xl group-hover:bg-secondary/20 transition-colors"
-              ></div>
-              <div class="relative z-10">
-                <div
-                  class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-md"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface text-[24px]"
-                    >strategy</span
-                  >
-                </div>
-                <h3
-                  class="text-headline-md font-headline-md text-on-surface mb-sm"
-                >
-                  Digital Product Strategy
-                </h3>
-                <p
-                  class="text-body-md font-body-md text-on-surface-variant max-w-md mb-md"
-                >
-                  We align business objectives with user needs to define
-                  roadmaps that deliver measurable impact. From MVP conception
-                  to enterprise scaling.
-                </p>
-              </div>
-              <div class="relative z-10 flex gap-2 flex-wrap">
-                <span
-                  class="px-2 py-1 bg-surface-container-highest rounded text-caption font-label-mono text-on-surface-variant"
-                  >Roadmapping</span
-                >
-                <span
-                  class="px-2 py-1 bg-surface-container-highest rounded text-caption font-label-mono text-on-surface-variant"
-                  >Market Analysis</span
-                >
-                <span
-                  class="px-2 py-1 bg-surface-container-highest rounded text-caption font-label-mono text-on-surface-variant"
-                  >Prototyping</span
-                >
-              </div>
-            </div>
-            <!-- 4. UI/UX Design (Visual Card) -->
-            <div
-              class="bg-surface-container-low p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
-            >
-              <div
-                class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity"
-                data-alt="Abstract minimal geometric shapes intersecting in a bright white and soft violet studio environment. Subtle lighting, high resolution, clean lines."
-                style="
-                  background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBKL0SXNKSSX8jVKhT7dGUn18LYWxk3ToNm79AuEnY1NB96lGDnSDlXfRoiJPsRgR03b90KKomsIszoRHv_nWX1v2OzgmAnqOtPa6mVyW6Gi7tfgY69YJ3exlxbTlkSYhCclLNhfk2soPdrBi8g-NHrY4Y3UNgmMoDrITWSvuYR-qZSz-skZ8U4G_qytEGjs8W6jqpS15MXneZ_p9w4YBm_mroW2N8zEfOJmlgExn5f49XzJ93R4zRh&quot;);
-                "
-              ></div>
-              <div class="relative z-10 flex flex-col h-full">
-                <div
-                  class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center mb-md"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface text-[24px]"
-                    >palette</span
-                  >
-                </div>
-                <h3
-                  class="text-headline-md font-headline-md text-on-surface mb-sm"
-                >
-                  UI/UX Design
-                </h3>
-                <p
-                  class="text-body-md font-body-md text-on-surface-variant mb-auto"
-                >
-                  Interfaces designed for extreme legibility and cognitive ease.
-                  Balancing visual impact with functional clarity.
-                </p>
-              </div>
-            </div>
-            <!-- 2. Custom Software -->
-            <div
-              class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <span
-                class="material-symbols-outlined text-secondary text-[24px] mb-sm"
-                >code_blocks</span
-              >
-              <h3 class="text-body-lg font-headline-md text-on-surface mb-xs">
-                Custom Software
-              </h3>
-              <p
-                class="text-body-md font-body-md text-on-surface-variant text-sm"
-              >
-                Bespoke applications engineered for specific operational needs.
-                Scalable, secure, and maintainable.
-              </p>
-            </div>
-            <!-- 3. Web Dev -->
-            <div
-              class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <span
-                class="material-symbols-outlined text-secondary text-[24px] mb-sm"
-                >language</span
-              >
-              <h3 class="text-body-lg font-headline-md text-on-surface mb-xs">
-                Web Development
-              </h3>
-              <p
-                class="text-body-md font-body-md text-on-surface-variant text-sm"
-              >
-                High-performance web applications using modern JavaScript
-                frameworks and headless architectures.
-              </p>
-            </div>
-            <!-- 5. AI Solutions (Special Card) -->
-            <div
-              class="bg-primary text-on-primary p-md rounded-xl shadow-md hover:shadow-lg transition-shadow relative overflow-hidden group"
-            >
-              <div
-                class="absolute inset-0 bg-gradient-to-br from-secondary/40 to-transparent opacity-50"
-              ></div>
-              <div class="relative z-10">
-                <div class="flex items-center gap-xs mb-sm">
-                  <span
-                    class="material-symbols-outlined text-on-primary text-[24px]"
-                    >memory</span
-                  >
-                  <span
-                    class="text-caption font-label-mono text-on-primary/80 uppercase"
-                    >Strategic Focus</span
-                  >
-                </div>
-                <h3 class="text-body-lg font-headline-md text-on-primary mb-xs">
-                  AI Solutions
-                </h3>
-                <p class="text-body-md font-body-md text-on-primary/80 text-sm">
-                  Responsible AI integration. We implement machine learning
-                  models that augment human capabilities safely and ethically.
-                </p>
-              </div>
-            </div>
-            <!-- 6. Automation -->
-            <div
-              class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <span
-                class="material-symbols-outlined text-secondary text-[24px] mb-sm"
-                >sync_alt</span
-              >
-              <h3 class="text-body-lg font-headline-md text-on-surface mb-xs">
-                Automation
-              </h3>
-              <p
-                class="text-body-md font-body-md text-on-surface-variant text-sm"
-              >
-                Streamlining workflows through API integrations and automated
-                data pipelines.
-              </p>
-            </div>
-            <!-- 7. Cloud -->
-            <div
-              class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <span
-                class="material-symbols-outlined text-secondary text-[24px] mb-sm"
-                >cloud</span
-              >
-              <h3 class="text-body-lg font-headline-md text-on-surface mb-xs">
-                Cloud Operations
-              </h3>
-              <p
-                class="text-body-md font-body-md text-on-surface-variant text-sm"
-              >
-                Infrastructure design, deployment, and management on AWS, Google
-                Cloud, or Azure.
-              </p>
-            </div>
-            <!-- 8. Data -->
-            <div
-              class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow"
-            >
-              <span
-                class="material-symbols-outlined text-secondary text-[24px] mb-sm"
-                >bar_chart</span
-              >
-              <h3 class="text-body-lg font-headline-md text-on-surface mb-xs">
-                Data &amp; Analytics
-              </h3>
-              <p
-                class="text-body-md font-body-md text-on-surface-variant text-sm"
-              >
-                Transforming raw data into actionable insights through robust
-                warehousing and visualization.
-              </p>
-            </div>
-          </div>
-          <!-- Additional Services List -->
-          <div class="mt-lg">
-            <h3 class="text-headline-md font-headline-md text-on-surface mb-md">
-              Support &amp; Advisory
-            </h3>
-            <div class="flex flex-col">
-              <!-- 9 -->
-              <div
-                class="group flex flex-col md:flex-row md:items-center justify-between py-md border-b border-surface-variant hover:bg-surface-container-low transition-colors -mx-4 px-4 cursor-pointer"
-              >
-                <div class="flex items-center gap-md">
-                  <span class="text-label-mono font-label-mono text-outline w-6"
-                    >09</span
-                  >
-                  <h4 class="text-body-lg font-headline-md text-on-surface">
-                    Technology Consulting
-                  </h4>
-                </div>
-                <div
-                  class="mt-2 md:mt-0 text-body-md font-body-md text-on-surface-variant max-w-md"
-                >
-                  Strategic guidance on tech stack selection, architecture
-                  design, and digital transformation initiatives.
-                </div>
-                <span
-                  class="material-symbols-outlined text-surface-variant group-hover:text-secondary hidden md:block"
-                  >arrow_forward</span
-                >
-              </div>
-              <!-- 10 -->
-              <div
-                class="group flex flex-col md:flex-row md:items-center justify-between py-md border-b border-surface-variant hover:bg-surface-container-low transition-colors -mx-4 px-4 cursor-pointer"
-              >
-                <div class="flex items-center gap-md">
-                  <span class="text-label-mono font-label-mono text-outline w-6"
-                    >10</span
-                  >
-                  <h4 class="text-body-lg font-headline-md text-on-surface">
-                    Maintenance &amp; Support
-                  </h4>
-                </div>
-                <div
-                  class="mt-2 md:mt-0 text-body-md font-body-md text-on-surface-variant max-w-md"
-                >
-                  Proactive monitoring, security updates, and SLA-backed
-                  technical support for critical systems.
-                </div>
-                <span
-                  class="material-symbols-outlined text-surface-variant group-hover:text-secondary hidden md:block"
-                  >arrow_forward</span
-                >
-              </div>
-              <!-- 11 -->
-              <div
-                class="group flex flex-col md:flex-row md:items-center justify-between py-md border-b border-surface-variant hover:bg-surface-container-low transition-colors -mx-4 px-4 cursor-pointer"
-              >
-                <div class="flex items-center gap-md">
-                  <span class="text-label-mono font-label-mono text-outline w-6"
-                    >11</span
-                  >
-                  <h4 class="text-body-lg font-headline-md text-on-surface">
-                    Technical Training
-                  </h4>
-                </div>
-                <div
-                  class="mt-2 md:mt-0 text-body-md font-body-md text-on-surface-variant max-w-md"
-                >
-                  Upskilling your internal teams on modern development
-                  practices, new tools, and platform handovers.
-                </div>
-                <span
-                  class="material-symbols-outlined text-surface-variant group-hover:text-secondary hidden md:block"
-                  >arrow_forward</span
-                >
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- CTA Section -->
-        <section class="max-w-container-max mx-auto px-md py-xl mb-xl">
           <div
-            class="bg-secondary text-on-secondary rounded-2xl p-xl flex flex-col md:flex-row items-center justify-between gap-lg relative overflow-hidden shadow-xl"
+            class="pt-6 border-t border-surface-variant flex flex-col gap-3 mt-8"
           >
             <div
-              class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent opacity-50"
-            ></div>
-            <div class="relative z-10 max-w-xl">
-              <h2
-                class="text-headline-lg font-headline-lg text-on-secondary mb-sm"
+              class="flex items-center justify-between bg-surface-container-high rounded-lg p-1.5 mb-1"
+            >
+              <span class="text-caption font-label-mono text-outline px-2"
+                >LANGUAGE</span
               >
-                Ready to build?
-              </h2>
-              <p class="text-body-lg font-body-lg text-on-secondary/90 mb-md">
-                Let's discuss how our capabilities align with your next digital
-                initiative.
-              </p>
+              <div
+                class="flex items-center bg-surface-container-lowest rounded-md p-0.5 text-caption font-label-mono"
+              >
+                <button
+                  class="px-2.5 py-1 rounded bg-primary text-on-primary font-semibold transition-all"
+                  id="drawer-lang-btn-en"
+                  onclick="setLanguage('en')"
+                >
+                  EN
+                </button>
+                <button
+                  class="px-2.5 py-1 rounded text-on-surface-variant hover:text-primary transition-all"
+                  id="drawer-lang-btn-de"
+                  onclick="setLanguage('de')"
+                >
+                  DE
+                </button>
+              </div>
+            </div>
+            <a
+              class="w-full text-center py-2.5 rounded-lg border border-outline-variant text-on-surface font-body-md hover:border-secondary hover:text-secondary transition-all"
+              data-i18n="nav_contact"
+              data-path="contact"
+              href="#"
+              >Contact</a
+            >
+            <button
+              class="w-full bg-secondary text-on-secondary py-3 rounded-lg font-body-md font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              data-i18n="nav_cta"
+            >
+              <span>Start a project</span>
+              <span class="material-symbols-outlined text-[18px]"
+                >arrow_forward</span
+              >
+            </button>
+            <div
+              class="text-center text-caption font-label-mono text-outline pt-2"
+            >
+              Paradoxx UG • Varel, Germany
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="w-full pt-20 bg-background">
+      <!-- SECTION 1: HERO BANNER SECTION -->
+      <section
+        class="relative w-full overflow-hidden bg-primary-container min-h-[640px] lg:min-h-[720px] flex items-center border-b border-surface-variant/20"
+      >
+        <!-- Full-bleed high-tech studio photographic background -->
+        <div class="absolute inset-0 z-0">
+          <img
+            alt="German high-tech engineering studio laboratory"
+            class="w-full h-full object-cover object-center scale-105 filter brightness-[0.42] contrast-125"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd9PC4Hqpyd5LZrUscPbG4l6ofeIG5JD5pXJz4kHfvqDl5aX79d00NoC1cPDU-M8P3HuJyVjfo8nd79WTiyj6tCKBKvdSQsZHC2TmmXQUngzlE5wJKO0Rc7xg24FqiDNwrGkt44VQZ8O-k2_Ax_6zeooRFK5jxtcLUy1cgIH76OSmqWHhsXposNGL8GXSwdoMGC9wm13YTylWQfPsW2us5qlBxCjcYa9J8axxzXto"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/85 to-transparent"
+          ></div>
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-primary-container via-transparent to-primary-container/40"
+          ></div>
+          <div
+            class="absolute top-1/4 left-10 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] pointer-events-none"
+          ></div>
+        </div>
+        <!-- Main Banner Content -->
+        <div
+          class="relative z-10 max-w-container-max mx-auto px-4 sm:px-6 lg:px-md py-16 lg:py-24 w-full flex flex-col justify-between"
+        >
+          <div class="max-w-3xl mb-12 sm:mb-16">
+            <!-- Overline Tagline -->
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white/90 text-caption font-label-mono uppercase tracking-widest mb-6"
+            >
+              <span
+                class="w-2 h-2 rounded-full bg-secondary animate-pulse"
+              ></span>
+              <span data-i18n="hero_overline"
+                >PRECISION ENGINEERING &amp; HIGH-ASSURANCE SYSTEMS</span
+              >
+            </div>
+            <!-- Bold Headline -->
+            <h1
+              class="text-3xl sm:text-5xl lg:text-6xl font-headline-xl text-white font-bold tracking-tight leading-[1.1] mb-6"
+              data-i18n="hero_banner_title"
+              data-i18n-html="true"
+            >
+              Fast, Reliable Solutions for Complex Engineering Problems.
+            </h1>
+            <!-- Subtitle Paragraph -->
+            <p
+              class="text-base sm:text-xl font-body-lg text-white/80 max-w-2xl leading-relaxed mb-8"
+              data-i18n="hero_banner_desc"
+            >
+              From system architecture and bespoke software development to
+              sovereign AI integration, our senior engineering studio delivers
+              fast, dependable digital solutions ensuring long-term resilience.
+            </p>
+            <!-- Dual CTA Buttons -->
+            <div
+              class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+            >
               <button
-                class="bg-surface-container-lowest text-secondary px-lg py-sm rounded-lg text-body-md font-headline-md hover:shadow-lg transition-all flex items-center gap-2"
+                class="bg-secondary text-on-secondary px-8 py-4 rounded-xl text-base font-semibold hover:shadow-xl hover:shadow-secondary/30 hover:brightness-110 transition-all inline-flex items-center justify-center gap-2 text-center"
+                data-i18n="hero_btn_quote"
               >
-                Start a conversation
-                <span class="material-symbols-outlined text-[18px]"
+                <span>Get a Free Architecture Quote</span>
+                <span class="material-symbols-outlined text-[20px]"
                   >arrow_forward</span
                 >
               </button>
-            </div>
-            <!-- Decorative element -->
-            <div
-              class="relative z-10 w-full md:w-1/3 aspect-square max-w-[200px]"
-            >
-              <svg
-                class="w-full h-full text-on-secondary opacity-20"
-                fill="currentColor"
-                viewbox="0 0 100 100"
+              <a
+                class="px-8 py-4 rounded-xl text-base font-semibold text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all inline-flex items-center justify-center gap-2 text-center"
+                data-i18n="hero_btn_contact"
+                href="#"
               >
-                <rect height="30" rx="4" width="30" x="10" y="10"></rect>
-                <rect height="30" rx="4" width="30" x="50" y="10"></rect>
-                <rect height="30" rx="4" width="30" x="10" y="50"></rect>
-                <rect height="30" rx="4" width="30" x="50" y="50"></rect>
-                <circle
-                  cx="25"
-                  cy="25"
-                  fill="var(--tw-colors-secondary)"
-                  r="5"
-                ></circle>
-              </svg>
+                <span>Contact Us Today</span>
+                <span class="material-symbols-outlined text-[20px]">chat</span>
+              </a>
             </div>
           </div>
-        </section>
-      </div>
-    </main>
-    <footer
-      class="w-full bg-surface-container-lowest py-xl shadow-[0_-4px_20px_rgba(17,19,24,0.02)]"
-    >
-      <div class="max-w-container-max mx-auto px-4 sm:px-md">
+          <!-- Bottom Floating Banners: Left Trust Badge & Right Accreditation Strip -->
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end pt-4 border-t border-white/10"
+          >
+            <!-- Left Trust Badge Pill -->
+            <div class="lg:col-span-5">
+              <div
+                class="inline-flex items-center gap-3.5 bg-black/40 backdrop-blur-xl border border-white/15 px-4 py-3 rounded-2xl shadow-2xl"
+              >
+                <div class="flex -space-x-2.5 overflow-hidden">
+                  <div
+                    class="inline-block h-9 w-9 rounded-full ring-2 ring-white/20 bg-secondary flex items-center justify-center text-white font-label-mono text-xs font-bold"
+                  >
+                    YR
+                  </div>
+                  <div
+                    class="inline-block h-9 w-9 rounded-full ring-2 ring-white/20 bg-primary-container flex items-center justify-center text-white font-label-mono text-xs font-bold"
+                  >
+                    MK
+                  </div>
+                  <div
+                    class="inline-block h-9 w-9 rounded-full ring-2 ring-white/20 bg-indigo-700 flex items-center justify-center text-white font-label-mono text-xs font-bold"
+                  >
+                    AL
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span
+                      class="text-xs sm:text-sm font-semibold text-white"
+                      data-i18n="trust_stat_headline"
+                      >100% Sovereign EU Cloud</span
+                    >
+                  </div>
+                  <span
+                    class="text-[11px] font-label-mono text-white/60"
+                    data-i18n="trust_stat_sub"
+                    >99.98% Guaranteed Uptime SLA</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Right Accreditation / Award strip -->
+            <div class="lg:col-span-7">
+              <div
+                class="bg-black/40 backdrop-blur-xl border border-white/15 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              >
+                <div class="text-left">
+                  <span
+                    class="text-[11px] font-label-mono uppercase tracking-wider text-secondary-fixed block mb-0.5"
+                    data-i18n="cert_tag"
+                    >VERIFIED STANDARDS</span
+                  >
+                  <span
+                    class="text-sm font-medium text-white/90"
+                    data-i18n="cert_title"
+                    >Recognized for Engineering Excellence &amp; Data
+                    Privacy</span
+                  >
+                </div>
+                <div class="flex items-center flex-wrap gap-2 sm:gap-3">
+                  <span
+                    class="px-2.5 py-1 rounded bg-white/10 border border-white/15 text-[11px] font-label-mono text-white tracking-wider flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[14px] text-emerald-400"
+                      >verified</span
+                    >
+                    ISO 27001
+                  </span>
+                  <span
+                    class="px-2.5 py-1 rounded bg-white/10 border border-white/15 text-[11px] font-label-mono text-white tracking-wider flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[14px] text-blue-400"
+                      >shield</span
+                    >
+                    DSGVO / GDPR
+                  </span>
+                  <span
+                    class="px-2.5 py-1 rounded bg-white/10 border border-white/15 text-[11px] font-label-mono text-white tracking-wider flex items-center gap-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[14px] text-purple-400"
+                      >lock</span
+                    >
+                    BSI C5 Aligned
+                  </span>
+                  <span
+                    class="px-2.5 py-1 rounded bg-white/10 border border-white/15 text-[11px] font-label-mono text-white tracking-wider"
+                  >
+                    WCAG 2.1 AAA
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION 2: SPLIT SERVICES SHOWCASE -->
+      <section
+        class="relative w-full py-16 lg:py-24 overflow-hidden bg-background"
+      >
+        <!-- Ambient dynamic wavy graphic on the left edge inspired by reference image -->
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-lg mb-xl"
+          class="absolute left-0 top-1/4 -translate-y-12 w-96 h-96 pointer-events-none opacity-40 z-0"
         >
-          <div class="lg:col-span-2">
+          <svg
+            class="w-full h-full text-secondary"
+            fill="none"
+            viewbox="0 0 400 400"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="opacity-40"
+              d="M-80,180 C40,120 80,300 220,220 C340,150 280,380 420,320"
+              stroke="currentColor"
+              stroke-dasharray="6 6"
+              stroke-width="3"
+            ></path>
+            <path
+              class="opacity-60"
+              d="M-60,220 C60,160 100,340 240,260 C360,190 300,420 440,360"
+              stroke="#38bdf8"
+              stroke-width="2"
+            ></path>
+            <path
+              class="opacity-30"
+              d="M-100,140 C20,80 60,260 200,180 C320,110 260,340 400,280"
+              stroke="currentColor"
+              stroke-width="1.5"
+            ></path>
+          </svg>
+        </div>
+        <div
+          class="relative z-10 max-w-container-max mx-auto px-4 sm:px-6 lg:px-md"
+        >
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
+          >
+            <!-- Left Column: Layered Multi-Image Composition with Overlapping Floating Badge -->
+            <div
+              class="lg:col-span-6 relative flex justify-center items-center"
+            >
+              <div class="relative w-full max-w-lg">
+                <!-- Top-Left Photo: Engineering Studio Collaboration -->
+                <div
+                  class="w-3/4 aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-surface-container-lowest bg-surface-container"
+                >
+                  <img
+                    alt="Engineering team collaborating over architecture"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="https://lh3.googleusercontent.com/aida/ALJJyrCeiQEmRmYTibFj0WzaWWU7q-RgADH-QQ1z8F51jAWsX5dbvJPo-2rlAYgyaWtjucF8hZbUlF11CwnASBRCaFLgnoaXthiNGzbvSKlk291e0nnYMcUpQMc5z_TrWqUcrCGzTtUJY123NvQrhEsMvm5K_QNswuavqUR2AP0btWph8rsOW3hcJ0aSbSeujDz0bf6FZADOA2MJguvKIXZsQRl1kecymQp1Ei3YmC-NrZE-"
+                  />
+                </div>
+                <!-- Bottom-Right Photo: Modern Workstation & Telemetry -->
+                <div
+                  class="w-3/4 aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-surface-container-lowest bg-surface-container -mt-20 ml-auto z-10 relative"
+                >
+                  <img
+                    alt="Software architect analyzing telemetry monitors"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src="https://lh3.googleusercontent.com/aida/ALJJyrBrRdWEJVDfJ45hGTfInAtl554NKkOv0k19HXYPF5kr5l-OZx_PooQIlsTK_8l_-9FQjs82LdCdBGDIZXGiQN6odNPF3oiUJQzg06wNShGPIhXUtWGGVlsK9oSwysWwx1W8z2rcLWlP990mnmmL_eB9SP8umSnDQYercMVh_41F6_XvXDc0D6AnDgRWNS9gwGDktiPexJBWTW6RtAb_Xy-qtMn5KB66RJ4xygbC_LX-dBWvy33oAFzBrQ"
+                  />
+                </div>
+                <!-- Overlapping Floating White Badge (Zero Legacy Debt / Modern Engineering Lab) -->
+                <div
+                  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-surface-container-lowest px-7 py-6 rounded-2xl shadow-2xl border border-surface-variant text-center min-w-[200px]"
+                >
+                  <div
+                    class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary mx-auto mb-2"
+                  >
+                    <span class="material-symbols-outlined text-[22px]"
+                      >verified</span
+                    >
+                  </div>
+                  <span
+                    class="block text-2xl font-headline-xl font-bold text-primary tracking-tight"
+                    data-i18n="badge_title"
+                    >Zero Legacy</span
+                  >
+                  <span
+                    class="block text-xs font-label-mono uppercase tracking-wider text-secondary font-semibold mt-1"
+                    data-i18n="badge_sub"
+                    >Modern Architecture</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Right Column: Clean Content Typography, Features & Founder Signoff -->
+            <div class="lg:col-span-6 flex flex-col justify-center">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="w-8 h-[2px] bg-secondary"></span>
+                <span
+                  class="text-label-mono font-label-mono text-secondary uppercase tracking-widest text-xs font-semibold"
+                  data-i18n="split_overline"
+                  >WHO WE ARE &amp; WHAT WE DELIVER</span
+                >
+              </div>
+              <h2
+                class="text-2xl sm:text-4xl font-headline-lg font-bold text-on-surface mb-4 tracking-tight leading-[1.2]"
+                data-i18n="split_headline"
+              >
+                We Help Ambitious Teams Build Resilient Digital Products.
+              </h2>
+              <p
+                class="text-base sm:text-body-lg font-body-lg text-on-surface-variant mb-8 leading-relaxed"
+                data-i18n="split_lead"
+              >
+                Built from the ground up on modern engineering principles. We
+                eliminate legacy overhead and bureaucratic friction to build
+                high-performance software, sovereign AI systems, and cloud
+                architectures engineered to endure.
+              </p>
+              <!-- 2 Highlight Items Matching Reference Layout (Certified Company & Direct Leadership) -->
+              <div class="space-y-6 mb-10">
+                <!-- Item 1: Certified Engineering Standards -->
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center flex-shrink-0 text-secondary"
+                  >
+                    <span class="material-symbols-outlined text-[26px]"
+                      >workspace_premium</span
+                    >
+                  </div>
+                  <div>
+                    <h3
+                      class="text-lg font-headline-md font-semibold text-on-surface mb-1"
+                      data-i18n="feat_1_title"
+                    >
+                      Certified Engineering Standards
+                    </h3>
+                    <p
+                      class="text-sm font-body-md text-on-surface-variant leading-relaxed"
+                      data-i18n="feat_1_desc"
+                    >
+                      Every line of code and infrastructure deployment adheres
+                      to strict European data privacy (DSGVO/GDPR) and ISO
+                      security baselines.
+                    </p>
+                  </div>
+                </div>
+                <!-- Item 2: Direct Senior Focus -->
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center flex-shrink-0 text-secondary"
+                  >
+                    <span class="material-symbols-outlined text-[26px]"
+                      >military_tech</span
+                    >
+                  </div>
+                  <div>
+                    <h3
+                      class="text-lg font-headline-md font-semibold text-on-surface mb-1"
+                      data-i18n="feat_2_title"
+                    >
+                      Direct Founder &amp; Principal Focus
+                    </h3>
+                    <p
+                      class="text-sm font-body-md text-on-surface-variant leading-relaxed"
+                      data-i18n="feat_2_desc"
+                    >
+                      Work directly with senior architects and systems
+                      specialists from day one—zero junior handoffs or opaque
+                      agency layers.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Signature Block -->
+              <div
+                class="pt-6 border-t border-surface-variant flex items-center gap-6"
+              >
+                <!-- Stylized Autograph -->
+                <div
+                  class="font-serif italic text-2xl font-bold tracking-tight text-on-surface opacity-85 select-none"
+                >
+                  Dr. Yuno Rolfes
+                </div>
+                <div class="h-8 w-px bg-surface-variant"></div>
+                <div>
+                  <div
+                    class="text-sm font-semibold text-on-surface"
+                    data-i18n="sig_name"
+                  >
+                    Dr. Yuno Rolfes
+                  </div>
+                  <div
+                    class="text-caption font-label-mono text-on-surface-variant"
+                    data-i18n="sig_title"
+                  >
+                    Founder &amp; Managing Director, Paradoxx UG
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION 3: "WHY CHOOSE US" / TABBED VALUE SECTION -->
+      <!-- SECTION 4: OUR SERVICES & SUPPORT & ADVISORY (3-Column Card Layout with Top Images) -->
+      <section
+        class="max-w-container-max mx-auto px-4 sm:px-6 lg:px-md py-16 lg:py-24"
+      >
+        <!-- Our Services Header -->
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span
+            class="text-label-mono font-label-mono text-secondary uppercase tracking-widest text-xs font-semibold mb-2 block"
+            data-i18n="services_label"
+            >FULL STACK CAPABILITIES</span
+          >
+          <h2
+            class="text-3xl sm:text-5xl font-headline-xl font-bold text-on-surface tracking-tight mb-4"
+            data-i18n="services_title"
+          >
+            Our Services
+          </h2>
+          <p
+            class="text-base sm:text-lg font-body-lg text-on-surface-variant leading-relaxed"
+            data-i18n="services_sub"
+          >
+            Specialized expertise across the digital lifecycle.
+          </p>
+          <div class="w-12 h-1 bg-[#6C4DFF] mx-auto mt-5 rounded-full"></div>
+        </div>
+        <!-- 8 Core Services 3-Column Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- 1. Digital Product Strategy -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="Digital Product Strategy"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrCeiQEmRmYTibFj0WzaWWU7q-RgADH-QQ1z8F51jAWsX5dbvJPo-2rlAYgyaWtjucF8hZbUlF11CwnASBRCaFLgnoaXthiNGzbvSKlk291e0nnYMcUpQMc5z_TrWqUcrCGzTtUJY123NvQrhEsMvm5K_QNswuavqUR2AP0btWph8rsOW3hcJ0aSbSeujDz0bf6FZADOA2MJguvKIXZsQRl1kecymQp1Ei3YmC-NrZE-"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="cap_strategy_title"
+              >
+                Digital Product Strategy
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="cap_strategy_sub"
+              >
+                Roadmapping &amp; Market Validation
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_strategy_b1"
+                    >Business-aligned product roadmaps</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_strategy_b2"
+                    >Market &amp; competitive gap analysis</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_strategy_b3"
+                    >Rapid MVP scoping &amp; prototyping</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="cap_cta_explore">Explore Service</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <!-- 2. UI/UX Design -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="UI/UX Design"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrBGz1m5k_FPCw8jRh9dTrzCfLKwc_n-urH7ALMQBhu524SDTdVnJbVWZ87xLVwc1CzxFIpExbasDoKabtKhF3n1nKyMW8GDIy5cxZrxsxMCuSh-zRWszmvOHE7_BkMixO5h02FQyG-zjSvxe8c5jeYTxj-W7J4MXRmO8WiX-2XUsb1eddQpWX5j7LmAGHhZ7WxmX-Dqp80jnMYRZ9b1ybsOxM6S6wPzBvULfwTGEdlJ"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="cap_design_title"
+              >
+                UI/UX Design
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="cap_design_sub"
+              >
+                Cognitive Clarity &amp; Design Systems
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_design_b1"
+                    >High-legibility enterprise interfaces</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_design_b2"
+                    >Scalable multi-brand design tokens</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_design_b3"
+                    >WCAG 2.1 AAA accessibility compliance</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="cap_cta_explore">Explore Service</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <!-- 3. Custom Software -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="Custom Software"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrCkh3MIHYHKqqIaRLg1hNcESJu3tFWm7EkLHdzMLNgleJhYGzG-LIlZElMMcj0mzA9TTiwKykqKrIGMjyRWAlgrYKRXFwcSgGkvHJ1wTI7566iCSswRh_Mc0Ym4oNvuDlV8WQ9fYl0OPGlj08qbFqhazEeDWDd_hvdkbq1XYoJvVGH1KeZJsO99RU-buv7s9gTLHlrAwVr57hRu1KmoOjdFx6g7BeH6pgtwKAsdtfKF"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="cap_software_title"
+              >
+                Custom Software
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="cap_software_sub"
+              >
+                Type-Safe Enterprise Engineering
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_software_b1"
+                    >Bespoke TypeScript &amp; Rust backends</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_software_b2"
+                    >Zero-downtime legacy modernization</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_software_b3"
+                    >Automated CI/CD &amp; full test coverage</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="cap_cta_explore">Explore Service</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <!-- 4. Web Development -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="Web Development"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrCqBEdfTdi459KPYVb0uuHVGXLxkCo7vX_3kCEav2QkHDSlCp3PusM2-DPKPMH6AQ0qXQW0YeWd5mzVTvsdwSLEdpkA-xDFZTvNxSNOllZW5A80qf40KfFdWxF9h1IEpfP-Hq1tmdUAhtWnhWfUbp9Qzu6DJCCiIDNjo3J-jGbRBbXoxWYOfJ2lyRXe_5szOwtVjoBPgQNgLP1T2lKdhZ3gG_6QjUTYSSgM5ndEmyAh3WfeU_8_Y2Dx1v0"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="cap_web_title"
+              >
+                Web Development
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="cap_web_sub"
+              >
+                Modern Headless Architectures
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_web_b1"
+                    >Sub-100ms edge-rendered web apps</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_web_b2"
+                    >Composable API &amp; CMS integrations</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_web_b3"
+                    >Core Web Vitals &amp; SEO optimization</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="cap_cta_explore">Explore Service</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <!-- 5. AI Solutions -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="AI Solutions"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrC4Zfw2o1Y-uuJbZ0fA4IJ1nD7kHtiVYnFycTVz0_xWu2CuTHbsfgtL4PSDjS1Pirt0ggNVfaY5T-GoIHh-tXOX4ECtTSeIlPtsxdQrNKYyM05MKrMEOjSYJKBB41lt23KeZgH1I_UrpdpT5RVRzK9oyv19FC_xcQmH1jd77BEoFpKFg6sxNDD5TB6MfgmzuwsfUm6KLNRfKMqi4iUZdJGb3xQAmT98obD978LwDx1vD8arEsDFJq48mhc"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="cap_ai_title"
+              >
+                AI Solutions
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="cap_ai_badge"
+              >
+                Strategic Focus • Sovereign AI
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_ai_b1"
+                    >100% EU GDPR compliant private LLMs</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_ai_b2"
+                    >RAG &amp; vector database pipelines</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_ai_b3"
+                    >Zero-retention ethical ML deployment</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="cap_cta_explore">Explore Service</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <!-- 6. Automation -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="Automation"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrCgfIzho-rcO-p0eY5Ttn7DTv0V9B5YpMTMHGaNGeuqktf8RdHuNIWSRx2hix0qrFSQK9D2zI_8p_MxSKfwOQXI0aIyehxOcKI9kA4fqRTVOOU4hOMMTyuP8L6Td91ZrtV1zIPFEwbXx2Nj5Bf2bqqMF3EdF4IWJWVk5PIkgDVXEDy5EfUGWrOvmKPQxN4wbCaqFsSlnvSXXOltc9WJVPRw6l1roNw4qYZ0Ej1jznolEO6hQ90Tfw-y5wI"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="cap_auto_title"
+              >
+                Automation
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="cap_auto_sub"
+              >
+                Workflow &amp; API Orchestration
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_auto_b1"
+                    >End-to-end ERP &amp; CRM integrations</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_auto_b2"
+                    >Event-driven microservice pipelines</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_auto_b3"
+                    >Automated compliance &amp; reporting</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="cap_cta_explore">Explore Service</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <!-- 7. Cloud Operations -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="Cloud Operations"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrAniblUmmV038ZUsKZ06qUNiBPtzBIrnbbTybcwH_eTl9MhwUQaFJRKOnaLN0KvZeaGtPx2gSixpnSSGHIxCIwBAXUyq7grljQa75toJtVieCDwwH6bBYwvJ0h3xt0xFFaEQ3z5Fzam7QTqWPRFIs_jDsiqWGgfQWlLAeRqMECYYhilphLnFQtdDSYdbfkVk22m_xweqmvsF8HK4CpK-edVOofMLhVvq1e3upwHEoH5"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="cap_cloud_title"
+              >
+                Cloud Operations
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="cap_cloud_sub"
+              >
+                Sovereign EU Infrastructure
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_cloud_b1"
+                    >AWS, GCP &amp; Kubernetes orchestration</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_cloud_b2"
+                    >Infrastructure-as-Code (Terraform)</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_cloud_b3"
+                    >ISO 27001 &amp; BSI C5 aligned security</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="cap_cta_explore">Explore Service</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <!-- 8. Data & Analytics -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="Data &amp; Analytics"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrDySsJJXwpCZ8lnoYxK6Ow5XlORE3wy2omfzGb44LwzVLhBpKo4QF6D3EbgYdr_RgqwybhS2KtBO6WbMVs4HVxOwXzDc_kssx8oDPZz6b0TNtdXXjqLQiK_y7aXyjWz-kYrd9Btkfi2RQD-tnb3Db8sz5HDFY92drJI8GzrBeKF1MPGSvLCIL-IHFIIeuyi8X6lijYBeSqbDuXvYF3CBP_j1zICWemD5WXprpyADaEiUz6ag1i9cqEbZw"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="cap_data_title"
+              >
+                Data &amp; Analytics
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="cap_data_sub"
+              >
+                Warehousing &amp; Real-Time Telemetry
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_data_b1"
+                    >High-throughput ETL data pipelines</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_data_b2"
+                    >Executive BI &amp; live telemetry dashboards</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="cap_data_b3"
+                    >GDPR-anonymized analytics governance</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="cap_cta_explore">Explore Service</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Support & Advisory Header -->
+        <div
+          class="mt-24 pt-16 border-t border-surface-variant/60 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
+        >
+          <div>
+            <span
+              class="text-label-mono font-label-mono text-secondary uppercase tracking-widest text-xs font-semibold mb-2 block"
+              data-i18n="adv_tag"
+              >STRATEGIC ENGAGEMENT</span
+            >
+            <h2
+              class="text-2xl sm:text-4xl font-headline-lg font-bold text-on-surface tracking-tight"
+              data-i18n="advisory_heading"
+            >
+              Support &amp; Advisory
+            </h2>
+          </div>
+          <p
+            class="text-base font-body-md text-on-surface-variant max-w-md leading-relaxed"
+            data-i18n="adv_lead"
+          >
+            Continuous technical oversight, SLA guarantees, and CTO-level
+            advisory designed for resilient digital scale.
+          </p>
+        </div>
+        <!-- 3 Support & Advisory Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- 9. Technology Consulting -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="Technology Consulting"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrA9yAG90os2vNNS5XmUuTAb0zPhTgRIA2K0hPbqnrASiHVuzG7s3pdRrw4bcGPygH_Yb2LkpbAPuaQ89vry403bmaLkxO6ApIPGzErbvbyy5aLtB4HpjGJ5bIfbiG05z273BhLqC5CmEsgh6G91fASO_WNATVFzfaMf_JhTPzYKdy0rasQF7KE7TqngBiHU3X-Dj_5CU6t696ghlUUmZdJA2m3GU71TfyW3"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="adv_consulting_title"
+              >
+                Technology Consulting
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="adv_consulting_sub"
+              >
+                CTO-Level Architecture &amp; Strategy
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="adv_consulting_b1"
+                    >Tech stack selection &amp; due diligence</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="adv_consulting_b2"
+                    >Cloud migration &amp; modernization roadmap</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="adv_consulting_b3"
+                    >Performance &amp; security audit</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="adv_card1_cta">Request Advisory Session</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <!-- 10. Maintenance & Support -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="Maintenance &amp; Support"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrCBf8x-dAdh6pTlvzhemJczFE6Z3EJG3D_l_MqVibieria_yM4VJZ4m5FSIjuqaoWOM49g6VbDo5Ut7cz2qjw8y2Ru0Aa94mF7CQscfs-7dWN-0ujU0SRS_c0KPQE_Pwu7xwCZEMQuCopsGBbboJ8_DQRmxPd28M5s3Y0TeOvYS0QJJwhLZPlM5V2XVwUDw8FP8QbIKiAGkcaf71rrW_ARzgVuFRKBDvUFRQdR0WrOHt-Wyxirpw1E_xdk"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="adv_maint_title"
+              >
+                Maintenance &amp; Support
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="adv_maint_sub"
+              >
+                99.98% Guaranteed Uptime SLA
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="adv_maint_b1"
+                    >24/7 automated monitoring &amp; telemetry</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="adv_maint_b2"
+                    >Proactive vulnerability patching</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="adv_maint_b3"
+                    >Priority emergency incident response</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="adv_card2_cta">Review SLA Packages</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <!-- 11. Technical Training -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+          >
+            <img
+              alt="Technical Training"
+              class="h-52 w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrBrRdWEJVDfJ45hGTfInAtl554NKkOv0k19HXYPF5kr5l-OZx_PooQIlsTK_8l_-9FQjs82LdCdBGDIZXGiQN6odNPF3oiUJQzg06wNShGPIhXUtWGGVlsK9oSwysWwx1W8z2rcLWlP990mnmmL_eB9SP8umSnDQYercMVh_41F6_XvXDc0D6AnDgRWNS9gwGDktiPexJBWTW6RtAb_Xy-qtMn5KB66RJ4xygbC_LX-dBWvy33oAFzBrQ"
+            />
+            <div class="p-7 flex-1 flex flex-col">
+              <h3
+                class="text-xl font-headline-md font-bold text-on-surface mb-1"
+                data-i18n="adv_training_title"
+              >
+                Technical Training
+              </h3>
+              <div
+                class="text-sm font-medium text-[#6C4DFF] mb-4"
+                data-i18n="adv_training_sub"
+              >
+                Custom Engineering Workshops
+              </div>
+              <ul class="space-y-2.5 text-sm text-on-surface-variant mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="adv_training_b1"
+                    >Team upskilling on modern frameworks</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="adv_training_b2"
+                    >Secure coding &amp; compliance workflows</span
+                  >
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="material-symbols-outlined text-emerald-500 text-[18px] flex-shrink-0 mt-0.5"
+                    >check_circle</span
+                  >
+                  <span data-i18n="adv_training_b3"
+                    >Hands-on architecture pair programming</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-auto pt-4 border-t border-slate-100 text-[#6C4DFF] font-medium text-sm flex items-center justify-between hover:opacity-80 transition-opacity"
+                href="#"
+              >
+                <span data-i18n="adv_card3_cta">Book Team Workshop</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION: Ready to build CTA -->
+      <section
+        class="max-w-container-max mx-auto px-4 sm:px-6 lg:px-md py-12 sm:py-16 lg:py-xl mb-12 sm:mb-xl"
+      >
+        <div
+          class="bg-secondary text-on-secondary rounded-2xl p-6 sm:p-lg lg:p-xl flex flex-col md:flex-row items-center justify-between gap-lg relative overflow-hidden shadow-2xl"
+        >
+          <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent opacity-60"
+          ></div>
+          <div class="relative z-10 max-w-xl text-center md:text-left">
+            <h2
+              class="text-2xl sm:text-headline-lg font-headline-lg font-bold text-on-secondary mb-sm"
+              data-i18n="cta_title"
+            >
+              Ready to build?
+            </h2>
+            <p
+              class="text-base sm:text-body-lg font-body-lg text-on-secondary/90 mb-md"
+              data-i18n="cta_desc"
+            >
+              Let's discuss how our capabilities align with your next digital
+              initiative.
+            </p>
+            <button
+              class="bg-surface-container-lowest text-secondary px-6 sm:px-lg py-sm rounded-lg text-body-md font-headline-md font-semibold hover:shadow-xl hover:scale-105 transition-all inline-flex items-center justify-center gap-2 mx-auto md:mx-0 w-full sm:w-auto"
+            >
+              <span data-i18n="cta_button">Start a conversation</span>
+              <span class="material-symbols-outlined text-[18px]"
+                >arrow_forward</span
+              >
+            </button>
+          </div>
+          <div
+            class="relative z-10 w-32 sm:w-full md:w-1/3 aspect-square max-w-[200px]"
+          >
+            <svg
+              class="w-full h-full text-on-secondary opacity-25"
+              fill="currentColor"
+              viewbox="0 0 100 100"
+            >
+              <rect height="30" rx="6" width="30" x="10" y="10"></rect>
+              <rect height="30" rx="6" width="30" x="50" y="10"></rect>
+              <rect height="30" rx="6" width="30" x="10" y="50"></rect>
+              <rect height="30" rx="6" width="30" x="50" y="50"></rect>
+              <circle cx="25" cy="25" fill="white" r="5"></circle>
+            </svg>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Global Footer -->
+    <footer
+      class="w-full bg-surface-container-lowest py-xl shadow-[0_-4px_20px_rgba(17,19,24,0.02)] border-t border-surface-variant/40"
+    >
+      <div class="max-w-container-max mx-auto px-4 sm:px-6 lg:px-md">
+        <div
+          class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-md sm:gap-lg mb-12 sm:mb-xl"
+        >
+          <div class="col-span-2 lg:col-span-2">
             <div class="flex items-center gap-sm mb-md">
               <img
                 alt="Paradoxx Primary Logo"
                 class="h-6 w-auto object-contain"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqL423Rkzpa-5qb-no2rrYBDc1MS-U2CHjSlq6PVdeLrVyRPsg67sHIsxwy56nfl-r6MH-l2PHBGFhpY6bNF2Nm8szuqoS88T4rdwbhfQxpdJbX7E3fIpxOyOMRYQQVFHIDDlmFXcgg21blhcyP41Fna6Q0KrOyA3SOAboWvIr8L1vU3Us-0GcpEsiJ4oXDYnNhJQpOWrZJIT80BH-Q5hRXYVaKD_qrAdw_QEIEAWOg0eELP73vTms"
-              /><span class="font-headline-md text-headline-md text-primary"
+              />
+              <span
+                class="font-headline-md text-headline-md font-bold text-primary"
                 >Paradoxx</span
               >
             </div>
             <p
-              class="text-body-md font-body-md text-on-surface-variant max-w-xs mb-sm"
+              class="text-body-md font-body-md text-on-surface-variant max-w-xs mb-sm text-sm sm:text-base"
               data-i18n="footer_desc"
             >
               Software, digital products and technological services engineered
               for human intent.
             </p>
             <p
-              class="text-caption font-caption text-outline"
+              class="text-caption font-caption text-outline font-label-mono"
               data-i18n="footer_loc"
             >
               Varel, Germany
@@ -908,51 +1575,51 @@
           </div>
           <div>
             <h4
-              class="font-headline-md text-body-md text-on-surface mb-md"
+              class="font-headline-md text-body-md text-on-surface mb-sm sm:mb-md font-semibold"
               data-i18n="ft_company_title"
             >
               Company
             </h4>
             <ul
-              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+              class="space-y-sm text-sm sm:text-body-md font-body-md text-on-surface-variant"
             >
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_company_about"
-                  href="about.html"
+                  href="#"
                   >About</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_company_story"
-                  href="about.html"
+                  href="#"
                   >Story</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_company_lead"
-                  href="careers.html"
+                  href="#"
                   >Leadership</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_company_careers"
-                  href="careers.html"
+                  href="#"
                   >Careers</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_company_news"
-                  href="index.html"
+                  href="#"
                   >Newsroom</a
                 >
               </li>
@@ -960,104 +1627,103 @@
           </div>
           <div>
             <h4
-              class="font-headline-md text-body-md text-on-surface mb-md"
+              class="font-headline-md text-body-md text-on-surface mb-sm sm:mb-md font-semibold"
               data-i18n="ft_cap_title"
             >
               Capabilities
             </h4>
             <ul
-              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+              class="space-y-sm text-sm sm:text-body-md font-body-md text-on-surface-variant"
             >
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_cap_services"
-                  href="services.html"
+                  href="#"
                   >Services</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_cap_products"
-                  href="company.html"
+                  href="#"
                   >Products</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_cap_solutions"
-                  href="solutions.html"
+                  href="#"
                   >Solutions</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_cap_industries"
-                  href="industries.html"
+                  href="#"
                   >Industries</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_cap_work"
-                  href="services.html"
+                  href="#"
                   >Work</a
                 >
               </li>
             </ul>
           </div>
-          <div>
+          <div class="col-span-2 sm:col-span-1">
             <h4
-              class="font-headline-md text-body-md text-on-surface mb-md"
+              class="font-headline-md text-body-md text-on-surface mb-sm sm:mb-md font-semibold"
               data-i18n="ft_res_title"
-              href="index.html"
             >
               Resources
             </h4>
             <ul
-              class="space-y-sm text-body-md font-body-md text-on-surface-variant"
+              class="space-y-sm text-sm sm:text-body-md font-body-md text-on-surface-variant"
             >
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_res_insights"
-                  href="index.html"
+                  href="#"
                   >Insights</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_res_research"
-                  href="index.html"
+                  href="#"
                   >Research</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_res_faqs"
-                  href="contact.html"
+                  href="#"
                   >FAQs</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_res_support"
-                  href="Support.html"
+                  href="#"
                   >Support</a
                 >
               </li>
-              <li class="">
+              <li>
                 <a
-                  class="hover:text-secondary"
+                  class="hover:text-secondary transition-colors"
                   data-i18n="ft_res_contact"
-                  href="Contact.html"
+                  href="#"
                   >Contact</a
                 >
               </li>
@@ -1065,28 +1731,482 @@
           </div>
         </div>
         <div
-          class="border-t border-outline-variant pt-md flex flex-col md:flex-row justify-between items-center gap-md"
+          class="border-t border-outline-variant/40 pt-md flex flex-col md:flex-row justify-between items-center gap-md text-center md:text-left"
         >
           <span
-            class="text-caption font-caption text-on-surface-variant text-center md:text-left"
+            class="text-caption font-caption text-on-surface-variant"
             data-i18n="footer_copyright"
+            data-i18n-html="true"
             >© <span class="current-year">2026</span> Paradoxx UG
             (haftungsbeschränkt). All rights reserved.</span
           >
           <div
-            class="flex flex-wrap justify-center gap-md text-caption font-caption text-on-surface-variant"
+            class="flex flex-wrap justify-center gap-sm sm:gap-md text-caption font-caption text-on-surface-variant"
           >
-            <a class="hover:text-secondary" data-i18n="footer_privacy" href="PrivacyPolicy.html"
+            <a class="hover:text-secondary" data-i18n="footer_privacy" href="#"
               >Privacy Policy</a
-            ><a class="hover:text-secondary" data-i18n="footer_terms" href="TermsOfService.html"
+            >
+            <a class="hover:text-secondary" data-i18n="footer_terms" href="#"
               >Terms of Service</a
-            ><a class="hover:text-secondary" data-i18n="footer_legal" href="LegalNotice.html"
+            >
+            <a class="hover:text-secondary" data-i18n="footer_legal" href="#"
               >Legal Notice</a
             >
           </div>
         </div>
       </div>
     </footer>
+    <script>
+      const translations = {
+        en: {
+          nav_products: "Products",
+          nav_services: "Services",
+          nav_solutions: "Solutions",
+          nav_industries: "Industries",
+          nav_work: "Work",
+          nav_company: "Company",
+          nav_contact: "Contact",
+          nav_cta: "Start a project",
+          hero_overline: "PRECISION ENGINEERING & HIGH-ASSURANCE SYSTEMS",
+          hero_banner_title:
+            "Fast, Reliable Solutions for Complex Engineering Problems.",
+          hero_banner_desc:
+            "From system architecture and bespoke software development to sovereign AI integration, our senior engineering studio delivers fast, dependable digital solutions ensuring long-term resilience.",
+          hero_btn_quote: "Get a Free Architecture Quote",
+          hero_btn_contact: "Contact Us Today",
+          trust_stat_headline: "100% Sovereign EU Cloud",
+          trust_stat_sub: "99.98% Guaranteed Uptime SLA",
+          cert_tag: "VERIFIED STANDARDS",
+          cert_title: "Recognized for Engineering Excellence & Data Privacy",
+          split_overline: "WHO WE ARE & WHAT WE DELIVER",
+          split_headline:
+            "We Help Technology Companies Scale Engineering Capacity.",
+          split_lead:
+            "Paradoxx operates as an elite embedded engineering lab. We solve intractable architectural roadblocks, eliminate legacy friction, and build resilient, type-safe digital platforms tailored to enterprise compliance.",
+          feat_1_title: "Certified Engineering Team",
+          feat_1_desc:
+            "Assurance-backed architecture, strict type safety, zero junior outsourcing, and rigorous German engineering peer reviews.",
+          feat_2_title: "Rapid Deployment Cycles",
+          feat_2_desc:
+            "Agile release trains, automated end-to-end CI/CD pipelines, sub-100ms API response latency, and verifiable uptime SLAs.",
+          feat_3_title: "Sovereign Cloud & AI",
+          feat_3_desc:
+            "Localized European data residency, isolated zero-trust execution enclaves, and responsible ethical machine learning integration.",
+          badge_stat_exp: "Of Precision Engineering",
+          badge_stat_sub: "20+ Enterprise Systems",
+          sig_name: "Dr. Yuno Rolfes",
+          sig_title: "Founder & Managing Director, Paradoxx UG",
+          tab_overline: "WHY CHOOSE PARADOXX",
+          tab_headline: "Engineering Solutions for Every Enterprise Scale.",
+          tab_title_mission: "Our Mission",
+          tab_title_expertise: "Our Expertise",
+          tab_title_values: "Our Values",
+          tab_body_mission:
+            "At Paradoxx, our mission is to turn technological complexity into high-performance, dependable digital products tailored to meet the strict demands of European modern enterprise. We strive to be your long-term engineering partner.",
+          tab_body_expertise:
+            "Deep specialization across distributed TypeScript & Rust architectures, cloud-native infrastructure (AWS/GCP/Kubernetes), sovereign AI integration, and production design systems with zero technical debt.",
+          tab_body_values:
+            "Useful before impressive, Clear before complex, Responsible by design, and Built to evolve. We measure our impact solely on your operational reliability and sustainable business velocity.",
+          tab_check_1: "Reliable, fast, and resilient architecture",
+          tab_check_2: "Senior practitioners, zero junior outsourcing",
+          tab_check_3: "Transparent non-binding scoping, zero hidden fees",
+          tab_check_4: "Guaranteed EU GDPR & ISO compliance, every time",
+          services_label: "FULL STACK CAPABILITIES",
+          services_title: "Our Services",
+          services_sub: "Specialized expertise across the digital lifecycle.",
+          cap_cta_explore: "Explore Service",
+          cap_strategy_title: "Digital Product Strategy",
+          cap_strategy_sub: "Roadmapping & Market Validation",
+          cap_strategy_b1: "Business-aligned product roadmaps",
+          cap_strategy_b2: "Market & competitive gap analysis",
+          cap_strategy_b3: "Rapid MVP scoping & prototyping",
+          cap_design_title: "UI/UX Design",
+          cap_design_sub: "Cognitive Clarity & Design Systems",
+          cap_design_b1: "High-legibility enterprise interfaces",
+          cap_design_b2: "Scalable multi-brand design tokens",
+          cap_design_b3: "WCAG 2.1 AAA accessibility compliance",
+          cap_software_title: "Custom Software",
+          cap_software_sub: "Type-Safe Enterprise Engineering",
+          cap_software_b1: "Bespoke TypeScript & Rust backends",
+          cap_software_b2: "Zero-downtime legacy modernization",
+          cap_software_b3: "Automated CI/CD & full test coverage",
+          cap_web_title: "Web Development",
+          cap_web_sub: "Modern Headless Architectures",
+          cap_web_b1: "Sub-100ms edge-rendered web apps",
+          cap_web_b2: "Composable API & CMS integrations",
+          cap_web_b3: "Core Web Vitals & SEO optimization",
+          cap_ai_title: "AI Solutions",
+          cap_ai_badge: "Strategic Focus • Sovereign AI",
+          cap_ai_b1: "100% EU GDPR compliant private LLMs",
+          cap_ai_b2: "RAG & vector database pipelines",
+          cap_ai_b3: "Zero-retention ethical ML deployment",
+          cap_auto_title: "Automation",
+          cap_auto_sub: "Workflow & API Orchestration",
+          cap_auto_b1: "End-to-end ERP & CRM integrations",
+          cap_auto_b2: "Event-driven microservice pipelines",
+          cap_auto_b3: "Automated compliance & reporting",
+          cap_cloud_title: "Cloud Operations",
+          cap_cloud_sub: "Sovereign EU Infrastructure",
+          cap_cloud_b1: "AWS, GCP & Kubernetes orchestration",
+          cap_cloud_b2: "Infrastructure-as-Code (Terraform)",
+          cap_cloud_b3: "ISO 27001 & BSI C5 aligned security",
+          cap_data_title: "Data & Analytics",
+          cap_data_sub: "Warehousing & Real-Time Telemetry",
+          cap_data_b1: "High-throughput ETL data pipelines",
+          cap_data_b2: "Executive BI & live telemetry dashboards",
+          cap_data_b3: "GDPR-anonymized analytics governance",
+          adv_tag: "STRATEGIC ENGAGEMENT",
+          advisory_heading: "Support & Advisory",
+          adv_lead:
+            "Continuous technical oversight, SLA guarantees, and CTO-level advisory designed for resilient digital scale.",
+          adv_consulting_title: "Technology Consulting",
+          adv_consulting_sub: "CTO-Level Architecture & Strategy",
+          adv_consulting_b1: "Tech stack selection & due diligence",
+          adv_consulting_b2: "Cloud migration & modernization roadmap",
+          adv_consulting_b3: "Performance & security audit",
+          adv_card1_cta: "Request Advisory Session",
+          adv_maint_title: "Maintenance & Support",
+          adv_maint_sub: "99.98% Guaranteed Uptime SLA",
+          adv_maint_b1: "24/7 automated monitoring & telemetry",
+          adv_maint_b2: "Proactive vulnerability patching",
+          adv_maint_b3: "Priority emergency incident response",
+          adv_card2_cta: "Review SLA Packages",
+          adv_training_title: "Technical Training",
+          adv_training_sub: "Custom Engineering Workshops",
+          adv_training_b1: "Team upskilling on modern frameworks",
+          adv_training_b2: "Secure coding & compliance workflows",
+          adv_training_b3: "Hands-on architecture pair programming",
+          adv_card3_cta: "Book Team Workshop",
+          cta_title: "Ready to build?",
+          cta_desc:
+            "Let's discuss how our capabilities align with your next digital initiative.",
+          cta_button: "Start a conversation",
+          footer_desc:
+            "Software, digital products and technological services engineered for human intent.",
+          footer_loc: "Varel, Germany",
+          ft_company_title: "Company",
+          ft_company_about: "About",
+          ft_company_story: "Story",
+          ft_company_lead: "Leadership",
+          ft_company_careers: "Careers",
+          ft_company_news: "Newsroom",
+          ft_cap_title: "Capabilities",
+          ft_cap_services: "Services",
+          ft_cap_products: "Products",
+          ft_cap_solutions: "Solutions",
+          ft_cap_industries: "Industries",
+          ft_cap_work: "Work",
+          ft_res_title: "Resources",
+          ft_res_insights: "Insights",
+          ft_res_research: "Research",
+          ft_res_faqs: "FAQs",
+          ft_res_support: "Support",
+          ft_res_contact: "Contact",
+          footer_copyright:
+            '© <span class="current-year">' +
+            new Date().getFullYear() +
+            "</span> Paradoxx UG (haftungsbeschränkt). All rights reserved.",
+          footer_privacy: "Privacy Policy",
+          footer_terms: "Terms of Service",
+          footer_legal: "Legal Notice",
+        },
+        de: {
+          nav_products: "Produkte",
+          nav_services: "Leistungen",
+          nav_solutions: "Lösungen",
+          nav_industries: "Branchen",
+          nav_work: "Referenzen",
+          nav_company: "Unternehmen",
+          nav_contact: "Kontakt",
+          nav_cta: "Projekt starten",
+          hero_overline: "PRÄZISIONSENTWICKLUNG & HOCHVERFÜGBARE SYSTEME",
+          hero_banner_title:
+            "Schnelle, verlässliche Lösungen für komplexe Engineering-Herausforderungen.",
+          hero_banner_desc:
+            "Von der Systemarchitektur und individuellen Softwareentwicklung bis hin zur souveränen KI-Integration: Unser Senior Engineering Studio liefert verlässliche, zukunftssichere digitale Lösungen.",
+          hero_btn_quote: "Kostenloses Architektur-Angebot",
+          hero_btn_contact: "Jetzt Kontakt aufnehmen",
+          trust_stat_headline: "100% Souveräne EU Cloud",
+          trust_stat_sub: "99.98% Garantierte Uptime-SLA",
+          cert_tag: "VERIFIZIERTE STANDARDS",
+          cert_title: "Ausgezeichnet für Engineering-Exzellenz & Datenschutz",
+          split_overline: "WER WIR SIND & WAS WIR LIEFERN",
+          split_headline:
+            "Wir unterstützen Technologieunternehmen beim Ausbau ihrer Engineering-Kapazität.",
+          split_lead:
+            "Paradoxx agiert als hochkarätiges Engineering-Labor. Wir lösen komplexe Architekturengpässe, beseitigen Altsystem-Reibungsverluste und entwickeln resiliente, typsichere Digitalplattformen.",
+          feat_1_title: "Zertifiziertes Engineering-Team",
+          feat_1_desc:
+            "Garantierte Architektur-Qualität, strenge Typsicherheit, null Junior-Outsourcing und gründliche deutsche Peer-Reviews.",
+          feat_2_title: "Schnelle Deployment-Zyklen",
+          feat_2_desc:
+            "Agile Meilensteine, vollautomatisierte CI/CD-Pipelines, Sub-100ms API-Latenz und nachweisbare Uptime-Garantien.",
+          feat_3_title: "Souveräne Cloud & KI",
+          feat_3_desc:
+            "Lokale europäische Datenresidenz, isolierte Zero-Trust-Enklaven und verantwortungsvolle, ethische KI-Modelle.",
+          badge_stat_exp: "Jahre Präzisions-Engineering",
+          badge_stat_sub: "20+ Enterprise-Systeme",
+          sig_name: "Dr. Yuno Rolfes",
+          sig_title: "Gründer & Geschäftsführer, Paradoxx UG",
+          tab_overline: "WARUM PARADOXX",
+          tab_headline: "Engineering-Lösungen für jeden Enterprise-Maßstab.",
+          tab_title_mission: "Unsere Mission",
+          tab_title_expertise: "Unsere Expertise",
+          tab_title_values: "Unsere Werte",
+          tab_body_mission:
+            "Unsere Mission bei Paradoxx ist es, technologische Komplexität in hochperformante, verlässliche digitale Produkte zu transformieren – exakt abgestimmt auf die Anforderungen europäischer Spitzenunternehmen.",
+          tab_body_expertise:
+            "Tiefgehende Spezialisierung auf verteilte TypeScript- und Rust-Architekturen, moderne Cloud-Infrastrukturen (AWS/GCP/Kubernetes), souveräne KI-Integration und wartbare Designsysteme ohne technische Schulden.",
+          tab_body_values:
+            "Nützlich vor beeindruckend, Klar vor kompliziert, Verantwortungsbewusst von Grund auf und gebaut für Weiterentwicklung. Unser Erfolg bemisst sich allein an Ihrer Stabilität.",
+          tab_check_1: "Verlässliche, schnelle und resiliente Architektur",
+          tab_check_2:
+            "Ausschließlich Senior-Entwickler, kein Junior-Outsourcing",
+          tab_check_3:
+            "Transparente unverbindliche Leistungsbeschreibung, keine versteckten Kosten",
+          tab_check_4:
+            "Garantierte DSGVO- und ISO-Konformität bei jedem Projekt",
+          services_label: "FULL-STACK-KOMPETENZEN",
+          services_title: "Unsere Leistungen",
+          services_sub:
+            "Spezialisiertes Fachwissen über den gesamten digitalen Lebenszyklus.",
+          cap_cta_explore: "Leistung entdecken",
+          cap_strategy_title: "Digitale Produktstrategie",
+          cap_strategy_sub: "Roadmapping & Marktvalidierung",
+          cap_strategy_b1: "Geschäftsorientierte Produkt-Roadmaps",
+          cap_strategy_b2: "Markt- und Wettbewerbsanalysen",
+          cap_strategy_b3: "Schnelles MVP-Scoping & Prototyping",
+          cap_design_title: "UI/UX Design",
+          cap_design_sub: "Kognitive Klarheit & Designsysteme",
+          cap_design_b1: "Hochlesbare Enterprise-Interfaces",
+          cap_design_b2: "Skalierbare Multi-Brand Design-Tokens",
+          cap_design_b3: "WCAG 2.1 AAA Barrierefreiheit",
+          cap_software_title: "Maßgeschneiderte Software",
+          cap_software_sub: "Typsichere Enterprise-Entwicklung",
+          cap_software_b1: "Individuelle TypeScript & Rust Backends",
+          cap_software_b2: "Zero-Downtime Altsystem-Modernisierung",
+          cap_software_b3: "Automatisierte CI/CD & volle Testabdeckung",
+          cap_web_title: "Webentwicklung",
+          cap_web_sub: "Moderne Headless-Architekturen",
+          cap_web_b1: "Sub-100ms Edge-gerenderte Web-Apps",
+          cap_web_b2: "Komponierbare API- & CMS-Integrationen",
+          cap_web_b3: "Core Web Vitals & SEO-Optimierung",
+          cap_ai_title: "KI-Lösungen",
+          cap_ai_badge: "Strategischer Fokus • Souveräne KI",
+          cap_ai_b1: "100% DSGVO-konforme Private LLMs",
+          cap_ai_b2: "RAG- & Vektordatenbank-Pipelines",
+          cap_ai_b3: "Zero-Retention ethisches ML-Deployment",
+          cap_auto_title: "Automatisierung",
+          cap_auto_sub: "Workflow- & API-Orchestrierung",
+          cap_auto_b1: "End-to-End ERP- & CRM-Integrationen",
+          cap_auto_b2: "Event-gesteuerte Microservice-Pipelines",
+          cap_auto_b3: "Automatisierte Compliance & Berichte",
+          cap_cloud_title: "Cloud & Betrieb",
+          cap_cloud_sub: "Souveräne EU-Infrastruktur",
+          cap_cloud_b1: "AWS, GCP & Kubernetes Orchestrierung",
+          cap_cloud_b2: "Infrastructure-as-Code (Terraform)",
+          cap_cloud_b3: "ISO 27001 & BSI C5 konforme Sicherheit",
+          cap_data_title: "Daten & Analytik",
+          cap_data_sub: "Warehousing & Echtzeit-Telemetrie",
+          cap_data_b1: "Hochdurchsatz-ETL-Datenpipelines",
+          cap_data_b2: "Executive BI & Live-Telemetrie-Dashboards",
+          cap_data_b3: "DSGVO-anonymisierte Analytics-Governance",
+          adv_tag: "STRATEGISCHE ZUSAMMENARBEIT",
+          advisory_heading: "Beratung & Betreuung",
+          adv_lead:
+            "Kontinuierliche technische Begleitung, SLA-Garantien und CTO-Beratung für nachhaltige Skalierung.",
+          adv_consulting_title: "Technologieberatung",
+          adv_consulting_sub: "CTO-Level Architektur & Strategie",
+          adv_consulting_b1: "Technologie-Auswahl & Due Diligence",
+          adv_consulting_b2: "Cloud-Migrations- & Modernisierungs-Roadmap",
+          adv_consulting_b3: "Performance- & Sicherheits-Audits",
+          adv_card1_cta: "Beratung anfragen",
+          adv_maint_title: "Wartung & Support",
+          adv_maint_sub: "99,98% Garantierte Uptime-SLA",
+          adv_maint_b1: "24/7 automatisiertes Monitoring & Telemetrie",
+          adv_maint_b2: "Proaktives Beheben von Sicherheitslücken",
+          adv_maint_b3: "Priorisierter Notfall-Einsatz",
+          adv_card2_cta: "SLA-Pakete ansehen",
+          adv_training_title: "Technische Schulungen",
+          adv_training_sub: "Individuelle Engineering-Workshops",
+          adv_training_b1: "Team-Weiterbildung in modernen Frameworks",
+          adv_training_b2: "Sicheres Coding & Compliance-Workflows",
+          adv_training_b3: "Praxisorientiertes Architektur-Pairing",
+          adv_card3_cta: "Team-Workshop buchen",
+          cta_title: "Bereit zu bauen?",
+          cta_desc:
+            "Lassen Sie uns besprechen, wie unsere Fähigkeiten zu Ihrer nächsten digitalen Initiative passen.",
+          cta_button: "Gespräch beginnen",
+          footer_desc:
+            "Software, digitale Produkte und Technologiedienstleistungen – entwickelt für menschliche Absichten.",
+          footer_loc: "Varel, Deutschland",
+          ft_company_title: "Unternehmen",
+          ft_company_about: "Über uns",
+          ft_company_story: "Geschichte",
+          ft_company_lead: "Führung",
+          ft_company_careers: "Karriere",
+          ft_company_news: "Newsroom",
+          ft_cap_title: "Kompetenzen",
+          ft_cap_services: "Leistungen",
+          ft_cap_products: "Produkte",
+          ft_cap_solutions: "Lösungen",
+          ft_cap_industries: "Branchen",
+          ft_cap_work: "Referenzen",
+          ft_res_title: "Ressourcen",
+          ft_res_insights: "Einblicke",
+          ft_res_research: "Forschung",
+          ft_res_faqs: "FAQs",
+          ft_res_support: "Support",
+          ft_res_contact: "Kontakt",
+          footer_copyright:
+            '© <span class="current-year">' +
+            new Date().getFullYear() +
+            "</span> Paradoxx UG (haftungsbeschränkt). Alle Rechte vorbehalten.",
+          footer_privacy: "Datenschutz",
+          footer_terms: "AGB",
+          footer_legal: "Impressum",
+        },
+      };
+
+      let currentLang = "en";
+
+      function setLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
+        document.documentElement.lang = lang;
+
+        const btnEn = document.getElementById("lang-btn-en");
+        const btnDe = document.getElementById("lang-btn-de");
+        const drawerBtnEn = document.getElementById("drawer-lang-btn-en");
+        const drawerBtnDe = document.getElementById("drawer-lang-btn-de");
+
+        const activeClasses = [
+          "bg-surface-container-lowest",
+          "text-primary",
+          "shadow-sm",
+          "font-semibold",
+        ];
+        const inactiveClasses = [
+          "text-on-surface-variant",
+          "hover:text-primary",
+        ];
+
+        if (btnEn && btnDe) {
+          if (lang === "en") {
+            btnEn.classList.add(...activeClasses);
+            btnEn.classList.remove(...inactiveClasses);
+            btnDe.classList.remove(...activeClasses);
+            btnDe.classList.add(...inactiveClasses);
+          } else {
+            btnDe.classList.add(...activeClasses);
+            btnDe.classList.remove(...inactiveClasses);
+            btnEn.classList.remove(...activeClasses);
+            btnEn.classList.add(...inactiveClasses);
+          }
+        }
+
+        if (drawerBtnEn && drawerBtnDe) {
+          if (lang === "en") {
+            drawerBtnEn.className =
+              "px-2.5 py-1 rounded bg-primary text-on-primary font-semibold transition-all";
+            drawerBtnDe.className =
+              "px-2.5 py-1 rounded text-on-surface-variant hover:text-primary transition-all";
+          } else {
+            drawerBtnDe.className =
+              "px-2.5 py-1 rounded bg-primary text-on-primary font-semibold transition-all";
+            drawerBtnEn.className =
+              "px-2.5 py-1 rounded text-on-surface-variant hover:text-primary transition-all";
+          }
+        }
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang][key] !== undefined) {
+            if (el.hasAttribute("data-i18n-html")) {
+              el.innerHTML = translations[lang][key];
+            } else {
+              el.textContent = translations[lang][key];
+            }
+          }
+        });
+
+        document.querySelectorAll(".current-year").forEach((el) => {
+          el.textContent = new Date().getFullYear();
+        });
+      }
+
+      // Interactive Tab Switching Logic
+      function switchTab(tabKey) {
+        const tabs = ["mission", "expertise", "values"];
+        tabs.forEach((key) => {
+          const btn = document.getElementById(`tab-btn-${key}`);
+          const content = document.getElementById(`tab-content-${key}`);
+          if (!btn || !content) return;
+
+          if (key === tabKey) {
+            btn.className =
+              "tab-button text-base sm:text-lg font-headline-md font-semibold text-secondary pb-3 -mb-3 border-b-2 border-secondary transition-all";
+            content.classList.remove("hidden");
+            content.classList.add("block");
+          } else {
+            btn.className =
+              "tab-button text-base sm:text-lg font-headline-md font-semibold text-on-surface-variant hover:text-on-surface pb-3 -mb-3 border-b-2 border-transparent transition-all";
+            content.classList.remove("block");
+            content.classList.add("hidden");
+          }
+        });
+      }
+
+      // Mobile Drawer Navigation
+      window.openMobileNav = function () {
+        const drawer = document.getElementById("mobile-nav-drawer");
+        const backdrop = document.getElementById("mobile-drawer-backdrop");
+        const panel = document.getElementById("mobile-drawer-panel");
+        if (!drawer || !backdrop || !panel) return;
+        drawer.classList.remove("pointer-events-none");
+        backdrop.classList.remove("opacity-0", "pointer-events-none");
+        backdrop.classList.add("opacity-100", "pointer-events-auto");
+        panel.classList.remove("translate-x-full");
+        document.body.style.overflow = "hidden";
+      };
+
+      window.closeMobileNav = function () {
+        const drawer = document.getElementById("mobile-nav-drawer");
+        const backdrop = document.getElementById("mobile-drawer-backdrop");
+        const panel = document.getElementById("mobile-drawer-panel");
+        if (!drawer || !backdrop || !panel) return;
+        backdrop.classList.remove("opacity-100", "pointer-events-auto");
+        backdrop.classList.add("opacity-0", "pointer-events-none");
+        panel.classList.add("translate-x-full");
+        drawer.classList.add("pointer-events-none");
+        document.body.style.overflow = "";
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".current-year").forEach((el) => {
+          el.textContent = new Date().getFullYear();
+        });
+
+        const menuToggle = document.getElementById("mobile-menu-toggle");
+        const menuClose = document.getElementById("mobile-menu-close");
+        const backdrop = document.getElementById("mobile-drawer-backdrop");
+        const drawerPanel = document.getElementById("mobile-drawer-panel");
+
+        if (menuToggle)
+          menuToggle.addEventListener("click", window.openMobileNav);
+        if (menuClose)
+          menuClose.addEventListener("click", window.closeMobileNav);
+        if (backdrop) backdrop.addEventListener("click", window.closeMobileNav);
+        if (drawerPanel) {
+          drawerPanel
+            .querySelectorAll(
+              "a, button:not(#drawer-lang-btn-en):not(#drawer-lang-btn-de):not(#mobile-menu-close)",
+            )
+            .forEach((el) => {
+              el.addEventListener("click", () => window.closeMobileNav());
+            });
+        }
+      });
+    </script>
   </body>
 </html>
-
